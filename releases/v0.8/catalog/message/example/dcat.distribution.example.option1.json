@@ -1,0 +1,154 @@
+{
+  "@context": "https://w3id.org/dspace/v0.8/context.json",
+  "@id": "http://provider.com/catalog1/dataset1/",
+  "@type": "dcat:Dataset",
+  "dct:title": "IDS Dataset Collection",
+  "dct:description": [
+    {
+      "@language": "en",
+      "@value": "This dataset includes all assets which identifiers comply to the pattern 'urn:guid:[A-F0-9]{8}\\-[A-F0-9]{4}\\-[A-F0-9]{4}\\-[A-F0-9]{4}\\-[A-F0-9]{12}'. A download via a S3 transfer costs 5 EUR, while the HTTP_REST transfer option costs only 2 EUR. The consumer must be a TRUST_PLUS certfified connector. No further distribution is allowed."
+    },
+    {
+      "@language": "de",
+      "@value": "Dieses Dataset bezeichnet alle Assets, deren Identifier dem Pattern 'urn:guid:[A-F0-9]{8}\\-[A-F0-9]{4}\\-[A-F0-9]{4}\\-[A-F0-9]{4}\\-[A-F0-9]{12}' folgen. Ein Transfer via S3 kostet etwa 5 Euro, wohingegen der Transfer via HTTP_RESt nur mit etwa 2 Euro zu Buche schlägt. Der Consumer muss ein TRUST_PLUS zertifizierter Connetor sein. Eine Weiterverbreitung ist nicht gestattet."
+    }
+  ],
+  "dcat:keyword": [
+    "data space",
+    "data asset",
+    "dcat dataset",
+    "collection"
+  ],
+  "dcat:distribution": [
+    {
+      "@type": "dcat:Distribution",
+      "dct:title": "Distribution#1",
+      "dct:description": [
+        "This is a distribution everyone can see."
+      ],
+      "dcat:keyword": [
+        "HTTP",
+        "REST"
+      ],
+      "dspace:transportType": "dspace:HTTP_REST",
+      "dcat:accessService": [
+        {
+          "@type": [
+            "dcat:DataService",
+            "dspace:NEGOTIATION_SERVICE"
+          ],
+          "dcat:endpointURL": "https://provider.com/connector/negotiation"
+        },
+        {
+          "@type": [
+            "dcat:DataService",
+            "dspace:TRANSFER_SERVICE"
+          ],
+          "dcat:endpointURL": "https://provider.com/connector/transfer"
+        }
+      ]
+    },
+    {
+      "@type": "dcat:Distribution",
+      "dct:title": "Distribution#2",
+      "dct:description": [
+        "This is another distribution."
+      ],
+      "dcat:keyword": [
+        "S3",
+        "public"
+      ],
+      "dspace:transportType": "dspace:S3",
+      "dcat:accessService": [
+        {
+          "@type": [
+            "dcat:DataService",
+            "dspace:NEGOTIATION_SERVICE"
+          ],
+          "dcat:endpointURL": "https://provider.com/connector/negotiation"
+        },
+        {
+          "@type": [
+            "dcat:DataService",
+            "dspace:TRANSFER_SERVICE"
+          ],
+          "dcat:endpointURL": "https://provider.com/connector/transfer"
+        }
+      ]
+    }
+  ],
+  "odrl:hasPolicy": [
+    {
+      "@type": "odrl:Offer",
+      "@id": "https://provider.com/connector/offer/1",
+      "odrl:permission": [
+        {
+          "odrl:action": "odrl:use",
+          "odrl:constraint": [
+            {
+              "odrl:leftOperand": "idsc:SECURITY_LEVEL",
+              "odrl:operator": "odrl:eq",
+              "odrl:rightOperand": "idsc:TRUST_PLUS_SECURITY_PROFILE"
+            }
+          ],
+          "odrl:duty": [
+            {
+              "odrl:action": "odrl:compensate",
+              "odrl:constraint": [
+                {
+                  "odrl:xone": [
+                    {
+                      "odrl:and": [
+                        {
+                          "odrl:leftOperand": "dspace:TRANSPORT",
+                          "odrl:operator": "odrl:eq",
+                          "odrl:rightOperand": "dspace:S3"
+                        },
+                        {
+                          "odrl:leftOperand": "odrl:payAmount",
+                          "odrl:operator": "odrl:eq",
+                          "odrl:rightOperand": {
+                            "@type": "xsd:decimal",
+                            "@value": "5.0"
+                          },
+                          "odrl:unit": {
+                            "@id": "http://dbpedia.org/resource/Euro"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "odrl:and": [
+                        {
+                          "odrl:leftOperand": "dspace:TRANSPORT",
+                          "odrl:operator": "odrl:eq",
+                          "odrl:rightOperand": "dspace:HTTP_REST"
+                        },
+                        {
+                          "odrl:leftOperand": "odrl:payAmount",
+                          "odrl:operator": "odrl:eq",
+                          "odrl:rightOperand": {
+                            "@type": "xsd:decimal",
+                            "@value": "2.0"
+                          },
+                          "odrl:unit": {
+                            "@id": "http://dbpedia.org/resource/Euro"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "odrl:prohibition": [
+        {
+          "odrl:action": "odrl:distribute"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+@startuml "contract-negotiation-termination-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:ContractNegotiationTerminationMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:ContractNegotiationTerminationMessage"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+    dspace:code : String
+    dspace:reason : Array
+}
+
+@enduml

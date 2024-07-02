@@ -1,0 +1,85 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix cred: <https://www.w3.org/2018/credentials#> .
+@prefix sec: <https://w3id.org/security#> .
+
+@prefix dspace: <https://w3id.org/dspace/v0.8/> .
+@prefix dspace_shapes: <https://w3id.org/dspace/shapes/v0.8/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shapes:
+	a owl:Ontology ;
+	sh:declare [
+		sh:prefix "rdf" ;
+		sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+	] ;
+	sh:declare [
+		sh:prefix "dspace" ;
+		sh:namespace "https://w3id.org/dspace/v0.8/"^^xsd:anyURI ;
+	] ;
+.
+
+shapes:DataAddressShape
+	a sh:NodeShape ;
+	sh:targetClass dspace:DataAddress ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:endpointType ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-data-address-shape.ttl> (DataAddressShape): An dspace:endpointType property must point exactly one xsd:anyURI field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:endpoint ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-data-address-shape.ttl> (DataAddressShape): An dspace:endpoint property must point exactly one xsd:anyURI field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:endpointProperties ;
+		sh:class dspace:EndpointProperty ;
+		sh:minCount 0 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-data-address-shape.ttl> (TransferErrorShape): An dspace:endpointProperties property must point to zero or more dspace:EndpointProperty."@en ;
+	] ;
+
+.
+
+shapes:EndpointPropertyShape
+	sh:targetClass dspace:EndpointProperty ;
+  
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:name ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-start-message-shape.ttl> (EndpointPropertyShape): An dspace:name property must point exactly one xsd:string field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:value ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-start-message-shape.ttl> (EndpointPropertyShape): An dspace:value property must point exactly one xsd:string field."@en ;
+	] ;
+.

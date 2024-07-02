@@ -1,0 +1,25 @@
+@startuml "contract-negotiation-error"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:ContractNegotiationError" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:ContractNegotiationError"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+    dspace:code : String
+    dspace:reason : Array
+}
+
+class "MultilanguageProperty" {
+    @language : BCP47 Language-Tag
+    @value: String
+}
+
+"dspace:ContractNegotiationError" "1" *-- "*" "MultilanguageProperty" : "dct:description"
+
+@enduml

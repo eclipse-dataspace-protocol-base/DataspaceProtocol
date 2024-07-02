@@ -1,0 +1,46 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "ContractAgreementVerificationMessageSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/ContractAgreementVerificationMessage"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/schemas/v0.8/ContractAgreementVerificationMessageSchema",
+	"definitions": {
+		"ContractAgreementVerificationMessage": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/v0.8/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:ContractAgreementVerificationMessage"
+				},
+				"dspace:providerPid": {
+					"type": "string"
+				},
+				"dspace:consumerPid": {
+					"type": "string"
+				},
+				"dspace:hashedMessage": {
+					"type": "object",
+					"properties": {
+						"dspace:digest": {
+							"type": "string"
+						},
+						"dspace:algorithm": {
+							"type": "string"
+						}
+					},
+					"required": [ "dspace:digest", "dspace:algorithm"]
+				}
+
+			},
+			"required": [ "@context", "@type", "dspace:providerPid", "dspace:consumerPid", "dspace:hashedMessage" ]
+		}
+	}
+}

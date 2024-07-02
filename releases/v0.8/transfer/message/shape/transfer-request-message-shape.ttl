@@ -1,0 +1,81 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix cred: <https://www.w3.org/2018/credentials#> .
+@prefix sec: <https://w3id.org/security#> .
+
+@prefix dspace: <https://w3id.org/dspace/v0.8/> .
+@prefix dspace_shapes: <https://w3id.org/dspace/shapes/v0.8/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+shapes:
+	a owl:Ontology ;
+	sh:declare [
+		sh:prefix "rdf" ;
+		sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+	] ;
+	sh:declare [
+		sh:prefix "dspace" ;
+		sh:namespace "https://w3id.org/dspace/v0.8/"^^xsd:anyURI ;
+	] ;
+.
+
+shapes:TransferRequestMessageShape
+	a sh:NodeShape ;
+	sh:targetClass dspace:TransferRequestMessage ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:agreementId ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-request-message-shape.ttl> (TransferRequestMessageShape): An dspace:agreementId property must point exactly one xsd:anyURI field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dct:format ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-request-message-shape.ttl> (TransferRequestMessageShape): A dct:format property must point exactly one entity."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:dataAddress ;
+		sh:class dspace:DataAddress ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 0 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-request-message-shape.ttl> (TransferRequestMessageShape): An dspace:dataAddress property must point zero or one dspace:DataAddress field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:callbackAddress ;
+		sh:datatype xsd:anyURI ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-request-message-shape.ttl> (TransferRequestMessageShape): An dspace:callbackAddress property must point exactly one xsd:anyURI field."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:consumerPid ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/transfer-request-message-shape.ttl> (TransferRequestMessageShape): An dspace:consumerPid property must point exactly one xsd:string field."@en ;
+	] ;
+.

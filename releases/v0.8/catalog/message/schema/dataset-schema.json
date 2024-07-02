@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "DatasetSchema",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/Dataset"
+        }
+    ],
+    "$id": "https://w3id.org/dspace/schemas/v0.8/DatasetSchema",
+    "definitions": {
+        "Dataset": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "https://w3id.org/dspace/schemas/v0.8/catalog-schema.json#/definitions/Resource"
+                },
+                {
+                    "properties": {
+                        "dcat:distribution": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://w3id.org/dspace/schemas/v0.8/catalog-schema.json#/definitions/Distribution"
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

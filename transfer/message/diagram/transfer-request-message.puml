@@ -1,0 +1,34 @@
+@startuml "transfer-request-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:TransferRequestMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:TransferRequestMessage"
+    dspace:consumerPid : String
+    dspace:agreementId : String
+    dct:format : String
+    dspace:callbackAddress : String
+}
+
+class "dspace:DataAddress" {
+    @type : "dspace:DataAddress"
+    dspace:endpointType : String
+    dspace:endpoint : String
+}
+
+class "dspace:EndpointProperty" {
+    @type : "dspace:EndpointProperty"
+    dspace:name : String
+    dspace:value : String
+}
+
+"dspace:TransferRequestMessage" "1" *-- "0..1" "dspace:DataAddress" : "dspace:dataAddress"
+"dspace:DataAddress" "1" *-- "0..*" "dspace:EndpointProperty" : "dspace:endpointProperties"
+
+
+@enduml

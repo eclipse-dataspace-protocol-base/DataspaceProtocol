@@ -1,0 +1,20 @@
+*.log
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+.idea
+*.iml
+.vs
+.vscode
+
+/secrets
+**/secrets
+
+.DS_Store
+.env

@@ -1,0 +1,11 @@
+{
+  "@context":  "https://w3id.org/dspace/2024/1/context.json",
+  "@type": "dspace:TransferSuspensionMessage",
+  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "dspace:code": "...",
+  "dspace:reason": [
+    {},
+    {}
+  ]
+}

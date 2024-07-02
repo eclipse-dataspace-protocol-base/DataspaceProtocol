@@ -1,0 +1,27 @@
+@startuml "transfer-process"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:TransferProcess" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:TransferProcess"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+}
+
+
+enum dspace:TransferState {
+    "dspace:REQUESTED"
+    "dspace:STARTED"
+    "dspace:TERMINATED"
+    "dspace:COMPLETED"
+    "dspace:SUSPENDED"
+}
+
+"dspace:TransferProcess" "1" *-- "1" "dspace:TransferState" : "dspace:state"
+
+@enduml

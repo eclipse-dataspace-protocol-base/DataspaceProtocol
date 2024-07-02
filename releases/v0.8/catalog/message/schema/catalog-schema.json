@@ -1,0 +1,335 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "CatalogSchema",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/Catalog"
+        }
+    ],
+    "$id": "https://w3id.org/dspace/schemas/v0.8/CatalogSchema",
+    "definitions": {
+        "Catalog": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Dataset"
+                },
+                {
+                    "properties": {
+                        "@context": {
+                            "type": "string",
+                            "const": "https://w3id.org/dspace/v0.8/context.json"
+                        },
+                        "@type": {
+                            "type": "string",
+                            "const": "dcat:Catalog"
+                        },
+                        "dcat:dataset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Dataset"
+                            },
+                            "minItems": 1
+                        },
+                        "dcat:record": {
+                            "$ref": "#/definitions/CatalogRecord"
+                        },
+                        "dcat:service": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DataService"
+                            },
+                            "minItems": 1
+                        },
+                        "dcat:themeTaxonomy": {
+                            "$ref": "#/definitions/Reference"
+                        },
+                        "dct:hasPart": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ResourceChoice"
+                            },
+                            "minItems": 1
+                        },
+                        "foaf:homepage": {
+                            "$ref": "#/definitions/Reference"
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "@context",
+                "@type"
+            ],
+            "additionalProperties": false
+        },
+        "ResourceChoice": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/Catalog"
+                },
+                {
+                    "$ref": "#/definitions/Dataset"
+                },
+                {
+                    "$ref": "#/definitions/DataService"
+                }
+            ]
+        },
+        "CatalogRecord": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "dcat:CatalogRecord"
+                },
+                "dct:conformsTo": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dct:issued": {
+                    "type": "string"
+                },
+                "dct:modified": {
+                    "type": "string"
+                },
+                "dct:title": {
+                    "type": "string"
+                },
+                "foaf:primaryTopic": {
+                    "$ref": "#/definitions/Resource"
+                }
+            }
+        },
+        "Resource": {
+            "type": "object",
+            "properties": {
+                "dcat:contactPoint": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:keyword": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dcat:landingPage": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:theme": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Reference"
+                    },
+                    "minItems": 1
+                },
+                "dct:conformsTo": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:creator": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dct:identifier": {
+                    "type": "string"
+                },
+                "dct:isReferencedBy": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:issued": {
+                    "type": "string"
+                },
+                "dct:language": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:license": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:modified": {
+                    "type": "string"
+                },
+                "dct:publisher": {
+                    "type": "string"
+                },
+                "dct:relation": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:title": {
+                    "type": "string"
+                },
+                "dct:type": {
+                    "type": "string"
+                },
+                "odrl:hasPolicy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/dcat-catalog-schema-and-shape/negotiation/message/schema/contract-schema.json#/definitions/Policy"
+                    },
+                    "minItems": 1
+                }
+            }
+        },
+        "DataService": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                },
+                {
+                    "properties": {
+                        "dcat:endpointDescription": {
+                            "$ref": "#/definitions/Reference"
+                        },
+                        "dcat:endpointURL": {
+                            "type": "string"
+                        },
+                        "dcat:servesDataset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://w3id.org/dspace/schemas/v0.8/dataset-schema.json#/definitions/Dataset"
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ]
+        },
+        "Distribution": {
+            "type": "object",
+            "properties": {
+                "dcat:accessService": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataService"
+                    },
+                    "minItems": 1
+                },
+                "dcat:accessURL": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:byteSize": {
+                    "type": "string"
+                },
+                "dcat:compressFormat": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:downloadURL": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:mediaType": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:packageFormat": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dcat:spatialResolutionInMeters": {
+                    "$ref": "#/definitions/decimal"
+                },
+                "dcat:temporalResolution": {
+                    "$ref": "#/definitions/duration"
+                },
+                "dct:conformsTo": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "dct:description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dct:format": {
+                    "type": "string"
+                },
+                "dct:issued": {
+                    "type": "string"
+                },
+                "dct:modified": {
+                    "type": "string"
+                },
+                "dct:title": {
+                    "type": "string"
+                },
+                "odrl:hasPolicy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/dcat-catalog-schema-and-shape/negotiation/message/schema/contract-schema.json#/definitions/Policy"
+                    },
+                    "minItems": 1
+                }
+            }
+        },
+        "time": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "xsd:dateTime"
+                },
+                "@value": {
+                    "type": "string",
+                    "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?"
+                }
+            },
+            "required": ["@value", "@type"]
+        },
+        "duration": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "xsd:duration"
+                },
+                "@value": {
+                    "type": "string",
+                    "pattern": "^(-?)P(?=.)((\\d+)Y)?((\\d+)M)?((\\d+)D)?(T(?=.)((\\d+)H)?((\\d+)M)?(\\d*(\\.\\d+)?S)?)?$"
+                }
+            },
+            "required": ["@value", "@type"]
+        },
+        "decimal": {
+            "type": "object",
+            "properties": {
+                "@type": {
+                    "type": "string",
+                    "const": "xsd:decimal"
+                },
+                "@value": {
+                    "type": "string"
+                }
+            },
+            "required": ["@value", "@type"]
+        },
+        "Reference": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string"
+                }
+            },
+            "required": ["@id"]
+        },
+        "Multilanguage": {
+            "type": "object",
+            "properties": {
+                "@value": {
+                    "type": "string"
+                },
+                "@language": {
+                    "type": "string"
+                }
+            },
+            "required": ["@value", "@language"]
+        }
+    }
+}

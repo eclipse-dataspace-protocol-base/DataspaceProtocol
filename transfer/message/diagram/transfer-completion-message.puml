@@ -1,0 +1,16 @@
+@startuml "transfer-completion-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:TransferCompletionMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:TransferCompletionMessage"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+}
+
+@enduml

@@ -1,0 +1,68 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "TransferStartMessageSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/TransferStartMessage"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/schemas/v0.8/TransferStartMessageSchema",
+	"definitions": {
+		"TransferStartMessage": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/v0.8/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:TransferStartMessage"
+				},
+				"dspace:providerPid": {
+					"type": "string"
+				},
+				"dspace:consumerPid": {
+					"type": "string"
+				},
+				"dspace:dataAddress": {
+					"type": "object",
+					"properties": {
+						"@type": {
+								"type": "string",
+								"const": "dspace:DataAddress"
+						},
+						"dspace:endpointType": {
+							"type": "string"
+						},
+						"dspace:endpoint": {
+							"type": "string"
+						},
+						"dspace:endpointProperties": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"@type": {
+										"type": "string",
+										"const": "dspace:EndpointProperty"
+									},
+									"dspace:name": {
+										"type": "string"
+									},
+									"dspace:value": {
+										"type": "string"
+									}
+								},
+								"required": ["@type", "dspace:name", "dspace:value"]
+							}
+						}
+          			},
+					"required": ["@type", "dspace:endpointType", "dspace:endpoint"]
+				}
+			},
+			"required": [ "@context", "@type", "dspace:providerPid", "dspace:consumerPid" ]
+		}
+	}
+}

@@ -1,0 +1,267 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix cred: <https://www.w3.org/2018/credentials#> .
+@prefix sec: <https://w3id.org/security#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix dspace: <https://w3id.org/dspace/2024/1/> .
+@prefix dspace_shapes: <https://w3id.org/dspace/shapes/2024/1/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+dspace_shapes:
+	a owl:Ontology ;
+	sh:declare [
+		sh:prefix "rdf" ;
+		sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+	] ;
+	sh:declare [
+		sh:prefix "dspace" ;
+		sh:namespace "https://w3id.org/dspace/2024/1/"^^xsd:anyURI ;
+	] ;
+.
+
+
+dspace_shapes:ResourceShape
+	a sh:NodeShape ;
+	sh:targetClass dcat:Resource ;
+
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path dcat:keyword ;
+        sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dcat:keyword property must point to a xsd:string field."@en ;
+	] ;
+
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path dcat:theme ;
+		sh:class skos:Concept ;
+        sh:minCount 0 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dcat:theme property must point to a skos:Concept."@en ;
+	] ;
+
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:conformsTo ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:accessconformsToRights property must point to a xsd:string field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:creator ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:creator property must point to a xsd:string field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:description ;
+        sh:datatype rdf:langString ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:description property must point to a rdf:langString field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:identifier ;
+        sh:datatype xsd:string ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:identifier property must point to a xsd:string field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:issued ;
+        sh:datatype xsd:dateTime ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:issued property must point to a xsd:dateTime field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:modified ;
+        sh:datatype xsd:dateTime ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:modified property must point to a xsd:dateTime field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:title ;
+        sh:datatype rdf:langString ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): A dct:title property must point to a rdf:langString field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path odrl:hasPolicy ;
+        sh:class odrl:Offer ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (ResourceShape): An odrl:hasPolicy property must point to an odrl:Offer."@en ;
+    ] ;
+
+.
+
+
+dspace_shapes:DatasetShape
+	a sh:NodeShape ;
+	sh:targetClass dcat:Dataset ;
+    rdfs:subClassOf dspace_shapes:ResourceShape ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dcat:distribution ;
+        sh:class dcat:Distribution ;
+        sh:minCount 0;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dataset-shape.ttl> (DatasetShape): A dcat:distribution property must point to a dcat:Distribution."@en ;
+    ] ;
+
+.
+
+dspace_shapes:CatalogShape
+	a sh:NodeShape ;
+	sh:targetClass dcat:Catalog ;
+    rdfs:subClassOf dspace_shapes:DatasetShape ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dcat:dataset ;
+		sh:class dcat:Dataset ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (CatalogShape): A dcat:dataset property must point to a dcat:Dataset."@en ;
+	] ;
+    
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path dcat:service ;
+		sh:class dcat:DataService ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (CatalogShape): A dcat:service property must point to a dcat:DataService."@en ;
+	] ;
+
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path foaf:homepage ;
+		sh:datatype xsd:string ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (CatalogShape): A foaf:homepage property must point to a xsd:string field."@en ;
+	] ;
+
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:participantId ;
+        sh:nodeKind sh:IRI ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (CatalogShape): A dspace:participantId property must point to an IRI."@en ;
+	] ;
+
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path odrl:hasPolicy ;
+        sh:maxCount 0 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (CatalogShape): A dspace:Catalog must not have any odrl:hasPolicy property."@en ;
+	] ;
+
+.
+
+
+dspace_shapes:DistributionShape
+	a sh:NodeShape ;
+	sh:targetClass dcat:Distribution ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:description ;
+        sh:datatype rdf:langString ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): A dct:description property must point to a rdf:langString field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:issued ;
+        sh:datatype xsd:dateTime ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): A dct:issued property must point to a xsd:dateTime field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:modified ;
+        sh:datatype xsd:dateTime ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): A dct:modified property must point to a xsd:dateTime field."@en ;
+    ] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dct:title ;
+        sh:datatype rdf:langString ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): A dct:title property must point to a rdf:langString field."@en ;
+    ] ;
+    
+    sh:property [
+		a sh:PropertyShape ;
+		sh:path dcat:accessService ;
+		sh:class dcat:DataService ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): A dcat:accessService property must point to a dcat:DataService."@en ;
+	] ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path odrl:hasPolicy ;
+        sh:class odrl:Offer ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DistributionShape): An odrl:hasPolicy property must point to an odrl:Offer."@en ;
+    ] ;
+.
+
+dspace_shapes:DataServiceShape
+	a sh:NodeShape ;
+	sh:targetClass dcat:DataService ;
+    rdfs:subClassOf dspace_shapes:ResourceShape ;
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dcat:endpointDescription ;
+        sh:datatype xsd:anyURI ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DataServiceShape): A dcat:endpointDescription property must point to a xsd:string field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dcat:endpointURL ;
+        sh:datatype xsd:anyURI ;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DataServiceShape): A dcat:endpointURL property must point to a xsd:anyURI field."@en ;
+    ] ;  
+
+    sh:property [
+        a sh:PropertyShape ;
+        sh:path dcat:servesDataset ;
+        sh:class dcat:Dataset ;
+        sh:minCount 0;
+        sh:severity sh:Violation ;
+        sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/dcat-shapes.ttl> (DataServiceShape): A dcat:servesDataset property must point to a dcat:Dataset."@en ;
+    ] ;
+
+.

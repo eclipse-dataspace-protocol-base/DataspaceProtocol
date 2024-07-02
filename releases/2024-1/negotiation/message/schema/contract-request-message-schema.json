@@ -1,0 +1,39 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "ContractRequestMessageSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/ContractRequestMessage"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/2024/1/negotiation/contract-request-message-schema.json",
+	"definitions": {
+		"ContractRequestMessage": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/2024/1/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:ContractRequestMessage"
+				},
+				"dspace:providerPid": {
+					"type": "string"
+				},
+				"dspace:consumerPid": {
+					"type": "string"
+				},
+				"dspace:offer": {
+					"$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/MessageOffer"
+				},
+				"dspace:callbackAddress": {
+					"type" : "string"
+				}
+			},
+			"required": [ "@context", "@type", "dspace:consumerPid", "dspace:offer", "dspace:callbackAddress" ]
+		}
+	}
+}

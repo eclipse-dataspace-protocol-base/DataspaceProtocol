@@ -1,0 +1,45 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "ContractNegotiationSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/ContractNegotiation"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/schemas/v0.8/ContractNegotiationSchema",
+	"definitions": {
+		"ContractNegotiation": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/v0.8/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:ContractNegotiation"
+				},
+				"dspace:providerPid": {
+					"type": "string"
+				},
+				"dspace:consumerPid": {
+					"type": "string"
+				},
+				"dspace:state": {
+					"type": "string",
+					"enum": [
+						"dspace:REQUESTED",
+						"dspace:OFFERED",
+						"dspace:ACCEPTED",
+						"dspace:AGREED",
+						"dspace:VERIFIED",
+						"dspace:FINALIZED",
+						"dspace:TERMINATED"
+					]
+				}
+			},
+			"required": [ "@context", "@type", "dspace:providerPid", "dspace:consumerPid", "dspace:state" ]
+		}
+	}
+}
