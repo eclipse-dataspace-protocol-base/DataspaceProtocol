@@ -23,7 +23,7 @@
 
 * [Transfer completion message (json)](./../transfer/message/example/transfer-completion-message.json)
 * [Transfer error (json)](./../transfer/message/example/transfer-error.json)
-* [Transfer prcess (json)](./../transfer/message/example/transfer-process.json)
+* [Transfer process (json)](./../transfer/message/example/transfer-process.json)
 * [Transfer request message (json)](./../transfer/message/example/transfer-request-message.json)
 * [Transfer start message (json)](./../transfer/message/example/transfer-start-message.json)
 * [Transfer suspension message (json)](./../transfer/message/example/transfer-suspension-message.json)
