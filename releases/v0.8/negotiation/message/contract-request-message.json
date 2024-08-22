@@ -1,0 +1,20 @@
+{
+  "@context":  "https://w3id.org/dspace/v0.8/context.json",
+  "@type": "dspace:ContractRequestMessage",
+  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "dspace:offer": {
+    "odrl:target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
+    "dspace:providerId": "urn:tsdshhs636378",
+    "dspace:consumerId": "urn:jashd766",
+    "odrl:permission": [{
+      "odrl:action": "odrl:use" ,
+      "odrl:constraint": [{
+        "odrl:leftOperand": "odrl:dateTime",
+        "odrl:operand": "odrl:lteq",
+        "odrl:rightOperand": { "@value": "2023-12-31T06:00Z", "@type": "xsd:dateTime" }
+      }]
+    }]
+  },
+  "dspace:callbackAddress": "https://......"
+}

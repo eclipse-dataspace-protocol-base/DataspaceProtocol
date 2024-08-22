@@ -1,0 +1,43 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "TransferProcessSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/TransferProcess"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/schemas/v0.8/TransferProcessSchema",
+	"definitions": {
+		"TransferProcess": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/v0.8/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:TransferProcess"
+				},
+				"dspace:providerPid": {
+					"type": "string"
+				},
+				"dspace:consumerPid": {
+					"type": "string"
+				},
+				"dspace:state": {
+					"type": "string",
+					"enum": [
+						"dspace:REQUESTED",
+						"dspace:STARTED",
+						"dspace:TERMINATED",
+						"dspace:COMPLETED",
+						"dspace:SUSPENDED"
+					]
+				}
+			},
+			"required": [ "@context", "@type", "dspace:providerPid", "dspace:consumerPid", "dspace:consumerPid", "dspace:state" ]
+		}
+	}
+}

@@ -1,0 +1,29 @@
+@startuml "transfer-process-state-machine"
+!pragma layout smetana
+
+!include ../common/style/diagram.styles.puml
+
+hide empty description
+
+state REQUESTED: <color:$darkGray>TransferRequestMessage
+state STARTED: <color:$darkGray>TransferStartMessage
+state COMPLETED: <color:$darkGray>TransferCompletionMessage
+state SUSPENDED: <color:$darkGray>TransferSuspensionMessage
+
+state TERMINATED $lightRed #$borderRed : <color:$darkGray>TransferTerminationMessage
+
+[*] --> REQUESTED: C
+REQUESTED -->  STARTED: P
+REQUESTED -->  TERMINATED: C/P
+
+STARTED -->  COMPLETED: P/C
+STARTED -->  SUSPENDED: P/C
+STARTED -->  TERMINATED: P/C
+
+SUSPENDED --> STARTED: P/C
+SUSPENDED --> TERMINATED: P/C
+
+COMPLETED -->[*]
+TERMINATED --> [*]
+
+@enduml

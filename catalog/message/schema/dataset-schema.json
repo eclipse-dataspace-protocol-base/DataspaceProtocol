@@ -1,0 +1,175 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "DatasetSchema",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/Dataset"
+        }
+    ],
+    "$id": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json",
+    "definitions": {
+        "AbstractDataset": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                },
+                {
+                    "properties": {
+                        "odrl:hasPolicy": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+                            },
+                            "minItems": 1
+                        },
+                        "dcat:distribution": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Distribution"
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ]
+        },
+        "Dataset": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AbstractDataset"
+                }
+            ],
+            "required": [
+                "odrl:hasPolicy"
+            ]
+        },
+        "Resource": {
+            "type": "object",
+            "properties": {
+                "dcat:keyword": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "dcat:theme": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Reference"
+                    },
+                    "minItems": 1
+                },
+                "dct:conformsTo": {
+                    "type": "string"
+                },
+                "dct:creator": {
+                    "type": "string"
+                },
+                "dct:description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dct:identifier": {
+                    "type": "string"
+                },
+                "dct:issued": {
+                    "type": "string"
+                },
+                "dct:modified": {
+                    "type": "string"
+                },
+                "dct:title": {
+                    "type": "string"
+                }
+            }
+        },
+        "Distribution": {
+            "type": "object",
+            "properties": {
+                "dct:title": {
+                    "type": "string"
+                },
+                "dct:description": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Multilanguage"
+                    }
+                },
+                "dct:issued": {
+                    "type": "string"
+                },
+                "dct:modified": {
+                    "type": "string"
+                },
+                "odrl:hasPolicy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+                    },
+                    "minItems": 1
+                },
+                "dcat:accessService": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DataService"
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": [
+                "dcat:accessService"
+            ]
+        },
+        "DataService": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                },
+                {
+                    "properties": {
+                        "dcat:endpointDescription": {
+                            "type": "string"
+                        },
+                        "dcat:endpointURL": {
+                            "type": "string"
+                        },
+                        "dcat:servesDataset": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Dataset"
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ]
+        },
+        "Reference": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string"
+                }
+            },
+            "required": [ "@id" ]
+        },
+        "Multilanguage": {
+            "type": "object",
+            "properties": {
+                "@value": {
+                    "type": "string"
+                },
+                "@language": {
+                    "type": "string"
+                }
+            },
+            "required": [ "@value", "@language" ]
+        }
+    }
+}

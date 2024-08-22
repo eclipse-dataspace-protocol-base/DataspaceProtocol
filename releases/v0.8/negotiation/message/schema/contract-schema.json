@@ -1,0 +1,365 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "PolicySchema",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "#/definitions/Policy"
+        }
+    ],
+    "$id": "https://w3id.org/dspace/schemas/0/8/PolicySchema",
+    "definitions": {
+        "Policy": {
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/Offer"
+                },
+                {
+                    "$ref": "#/definitions/Agreement"
+                }
+            ]
+        },
+        "PolicyClass": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AbstractPolicyRule"
+                },
+                {
+                    "properties": {
+                        "@id": {
+                            "type": "string"
+                        },
+                        "odrl:profile": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Reference"
+                            }
+                        },
+                        "odrl:permission": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Permission"
+                            },
+                            "minItems": 1
+                        },
+                        "odrl:obligation": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Duty"
+                            },
+                            "minItems": 1
+                        }
+                    },
+                    "required": [
+                        "@id"
+                    ]
+                }
+            ]
+        },
+        "AbstractPolicyRule": {
+            "properties": {
+                "dspace:providerId": {
+                    "type": "string"
+                },
+                "dspace:consumerId": {
+                    "type": "string"
+                }
+            }
+        },
+        "Offer": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/PolicyClass"
+                },
+                {
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "const": "odrl:Offer"
+                        }
+                    }
+                },
+                {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "odrl:permission"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "odrl:prohibition"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "required": [
+                "@type",
+                "dspace:providerId"
+            ]
+        },
+        "Agreement": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/PolicyClass"
+                },
+                {
+                    "properties": {
+                        "@type": {
+                            "type": "string",
+                            "const": "odrl:Agreement"
+                        },
+                        "dspace:timestamp": {
+                    "type": "string",
+                    "pattern": "-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?|(24:00:00(\\.0+)?))(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?" 
+                        }
+                    }
+                },
+                {
+                    "anyOf": [
+                        {
+                            "required": [
+                                "odrl:permission"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "odrl:prohibition"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "required": [
+                "@type",
+                "dspace:providerId",
+                "dspace:consumerId", 
+                "dspace:timestamp"
+            ]
+        },
+        "RuleClass": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AbstractPolicyRule"
+                },
+                {
+                    "properties": {
+                        "odrl:action": {
+                            "$ref": "#/definitions/Action"
+                        },
+                        "odrl:constraint": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Constraint"
+                            },
+                            "minItems": 1
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "odrl:action"
+            ]
+        },
+        "Permission": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AbstractPolicyRule"
+                },
+                {
+                    "properties": {
+                        "odrl:action": {
+                            "$ref": "#/definitions/Action"
+                        },
+                        "odrl:constraint": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Constraint"
+                            },
+                            "minItems": 1
+                        },
+                        "odrl:duty": {
+                            "$ref": "#/definitions/Duty"
+                        }
+                    },
+                    "required": [
+                        "odrl:action"
+                    ]
+                }
+            ]
+        },
+        "Duty": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/AbstractPolicyRule"
+                },
+                {
+                    "properties": {
+                        "@id": {
+                            "type": "string"
+                        },
+                        "odrl:action": {
+                            "$ref": "#/definitions/Action"
+                        },
+                        "odrl:constraint": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Constraint"
+                            }
+                        }
+                    },
+                    "required": [
+                        "odrl:action"
+                    ]
+                }
+            ]
+        },
+        "Action": {
+            "type": "string",
+            "enum": [
+                "odrl:delete",
+                "odrl:execute",
+                "cc:SourceCode",
+                "odrl:anonymize",
+                "odrl:extract",
+                "odrl:read",
+                "odrl:index",
+                "odrl:compensate",
+                "odrl:sell",
+                "odrl:derive",
+                "odrl:ensureExclusivity",
+                "odrl:annotate",
+                "cc:Reproduction",
+                "odrl:translate",
+                "odrl:include",
+                "cc:DerivativeWorks",
+                "cc:Distribution",
+                "odrl:textToSpeech",
+                "odrl:inform",
+                "odrl:grantUse",
+                "odrl:archive",
+                "odrl:modify",
+                "odrl:aggregate",
+                "odrl:attribute",
+                "odrl:nextPolicy",
+                "odrl:digitize",
+                "cc:Attribution",
+                "odrl:install",
+                "odrl:concurrentUse",
+                "odrl:distribute",
+                "odrl:synchronize",
+                "odrl:move",
+                "odrl:obtainConsent",
+                "odrl:print",
+                "cc:Notice",
+                "odrl:give",
+                "odrl:uninstall",
+                "cc:Sharing",
+                "odrl:reviewPolicy",
+                "odrl:watermark",
+                "odrl:play",
+                "odrl:reproduce",
+                "odrl:transform",
+                "odrl:display",
+                "odrl:stream",
+                "cc:ShareAlike",
+                "odrl:acceptTracking",
+                "cc:CommericalUse",
+                "odrl:present",
+                "odrl:use"
+            ]
+        },
+        "Constraint": {
+            "type": "object",
+            "properties": {
+                "odrl:rightOperand": {
+                    "$ref": "#/definitions/RightOperand"
+                },
+                "odrl:rightOperandReference": {
+                    "$ref": "#/definitions/Reference"
+                },
+                "odrl:leftOperand": {
+                    "$ref": "#/definitions/LeftOperand"
+                },
+                "odrl:operator": {
+                    "$ref": "#/definitions/Operator"
+                }
+            }
+        },
+        "Operator": {
+            "type": "string",
+            "enum": [
+                "odrl:eq",
+                "odrl:gt",
+                "odrl:gteq",
+                "odrl:hasPart",
+                "odrl:isA",
+                "odrl:isAllOf",
+                "odrl:isAnyOf",
+                "odrl:isNoneOf",
+                "odrl:isPartOf",
+                "odrl:lt",
+                "odrl:term-lteq",
+                "odrl:neq"
+            ]
+        },
+        "RightOperand": {},
+        "LeftOperand": {
+            "type": "string",
+            "enum": [
+                "odrl:absolutePosition",
+                "odrl:absoluteSize",
+                "odrl:absoluteSpatialPosition",
+                "odrl:absoluteTemporalPosition",
+                "odrl:count",
+                "odrl:dateTime",
+                "odrl:delayPeriod",
+                "odrl:deliveryChannel",
+                "odrl:device",
+                "odrl:elapsedTime",
+                "odrl:event",
+                "odrl:fileFormat",
+                "odrl:industry",
+                "odrl:language",
+                "odrl:media",
+                "odrl:meteredTime",
+                "odrl:payAmount",
+                "odrl:percentage",
+                "odrl:product",
+                "odrl:purpose",
+                "odrl:recipient",
+                "odrl:relativePosition",
+                "odrl:relativeSize",
+                "odrl:relativeSpatialPosition",
+                "odrl:relativeTemporalPosition",
+                "odrl:resolution",
+                "odrl:spatial",
+                "odrl:spatialCoordinates",
+                "odrl:system",
+                "odrl:systemDevice",
+                "odrl:timeInterval",
+                "odrl:unitOfCount",
+                "odrl:version",
+                "odrl:virtualLocation"
+            ]
+        },
+        "Reference": {
+            "type": "object",
+            "properties": {
+                "@id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@id"
+            ]
+        }
+    }
+}

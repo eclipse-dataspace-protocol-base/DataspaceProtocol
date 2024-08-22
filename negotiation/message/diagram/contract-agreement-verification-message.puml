@@ -1,0 +1,17 @@
+@startuml "contract-agreement-verification-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:ContractAgreementVerificationMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:ContractAgreementVerificationMessage"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+}
+
+
+@enduml

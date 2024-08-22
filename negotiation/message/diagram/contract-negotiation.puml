@@ -1,0 +1,29 @@
+@startuml "contract-negotiation"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:ContractNegotiation" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:ContractNegotiation"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+}
+
+enum dspace:NegotiationState {
+    "dspace:REQUESTED"
+    "dspace:OFFERED"
+    "dspace:ACCEPTED"
+    "dspace:AGREED"
+    "dspace:VERIFIED"
+    "dspace:FINALIZED"
+    "dspace:TERMINATED"
+    "..."
+}
+
+"dspace:ContractNegotiation" "1" *-- "1" "dspace:NegotiationState" : "dspace:state"
+
+@enduml

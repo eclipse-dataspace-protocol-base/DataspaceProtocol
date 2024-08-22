@@ -1,0 +1,69 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix cred: <https://www.w3.org/2018/credentials#> .
+@prefix sec: <https://w3id.org/security#> .
+
+@prefix dspace: <https://w3id.org/dspace/v0.8/> .
+@prefix dspace_shapes: <https://w3id.org/dspace/shapes/v0.8/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+dspace_shapes:
+	a owl:Ontology ;
+	sh:declare [
+		sh:prefix "rdf" ;
+		sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+	] ;
+	sh:declare [
+		sh:prefix "dspace" ;
+		sh:namespace "https://w3id.org/dspace/v0.8/"^^xsd:anyURI ;
+	] ;
+.
+
+dspace_shapes:ContractRequestMessageShape
+	a sh:NodeShape ;
+	sh:targetClass dspace:ContractRequestMessage ;
+	rdfs:subClassOf dspace_shapes:ContractNegotiationMessageShape ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:providerPid ;
+		sh:datatype xsd:string ;
+		sh:maxCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/contract-request-message-shape.ttl> (ContractRequestMessageShape): An dspace:providerPid property must point to exactly one xsd:string value."@en ;
+	] ;
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:consumerPid ;
+		sh:datatype xsd:string ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/contract-request-message-shape.ttl> (ContractRequestMessageShape): An dspace:consumerPid property must point to exactly one xsd:string value."@en ;
+	] ;
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:offer ;
+		sh:class odrl:Offer ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/contract-request-message-shape.ttl> (ContractRequestMessageShape): An dspace:offer property must point to exactly one odrl:Offer class."@en ;
+	] ;
+
+	sh:property [
+		a sh:PropertyShape ;
+		sh:path dspace:callbackAddress ;
+		sh:datatype xsd:string ;
+		sh:maxCount 1 ;
+		sh:minCount 1 ;
+		sh:severity sh:Violation ;
+		sh:message "<https://raw.githubusercontent.com/International-Data-Spaces-Association/ids-specification/master/schemas/contract-request-message-shape.ttl> (ContractRequestMessageShape): An dspace:callbackAddress property must point to exactly one xsd:string value."@en ;
+	] ;
+.

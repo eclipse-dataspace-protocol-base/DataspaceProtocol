@@ -1,0 +1,15 @@
+@startuml "catalog-request-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:CatalogRequestMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : dspace:CatalogRequestMessage
+    dspace:filter : Object
+}
+
+@enduml

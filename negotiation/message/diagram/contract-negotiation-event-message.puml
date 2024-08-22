@@ -1,0 +1,23 @@
+@startuml "contract-negotiation-event-message"
+!pragma layout smetana
+
+!include ../../../common/style/diagram.styles.puml
+
+hide empty description
+
+
+class "dspace:ContractNegotiationEventMessage" {
+    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @type : "dspace:ContractNegotiationEventMessage"
+    dspace:providerPid : String
+    dspace:consumerPid : String
+}
+
+enum dspace:NegotiationEvent {
+    dspace:ACCEPTED
+    dspace:FINALIZED
+}
+
+"dspace:ContractNegotiationEventMessage" "1" *-- "1" "dspace:NegotiationEvent" : "dspace:eventType"
+
+@enduml

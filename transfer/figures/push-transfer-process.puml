@@ -1,0 +1,38 @@
+@startuml "push-transfer-process"
+!pragma layout smetana
+
+!include ../../common/style/diagram.styles.puml
+
+hide empty description
+
+skinparam defaultTextAlignment center
+
+box Consumer
+participant DataPlane_C
+participant ControlPlane_C
+end box
+
+box Provider
+participant ControlPlane_P
+participant DataPlane_P
+end box
+
+activate ControlPlane_C
+activate ControlPlane_P
+
+ControlPlane_C -> ControlPlane_P : TransferRequestMessage(dataAddress)
+
+ControlPlane_P -> ControlPlane_C : TransferStartMessage
+
+activate DataPlane_C
+activate DataPlane_P
+DataPlane_P -> DataPlane_C : push data
+deactivate DataPlane_P
+deactivate DataPlane_C
+
+ControlPlane_P -> ControlPlane_C : TransferCompletionMessage
+
+deactivate ControlPlane_C
+deactivate ControlPlane_P
+
+@enduml

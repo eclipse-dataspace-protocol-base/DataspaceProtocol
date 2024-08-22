@@ -1,0 +1,39 @@
+@startuml "contract-negotiation-state-machine"
+!pragma layout smetana
+
+!include ../common/style/diagram.styles.puml
+
+hide empty description
+
+state REQUESTED: <color:$darkGray>ContractRequestMessage
+state OFFERED: <color:$darkGray>ContractOfferMessage
+state ACCEPTED: <color:$darkGray>ContractNegotiationEventMessage:accepted
+state AGREED: <color:$darkGray>ContractAgreementMessage
+state VERIFIED: <color:$darkGray>ContractAgreementVerificationMessage
+state FINALIZED: <color:$darkGray>ContractNegotiationEventMessage:finalized
+
+state TERMINATED $lightRed #$borderRed:  <color:$darkGray>ContractNegotiationTerminationMessage
+
+[*] --> REQUESTED: C
+REQUESTED -->  OFFERED: P
+REQUESTED -->  AGREED: P
+REQUESTED --> TERMINATED: C/P
+
+[*] --> OFFERED: P
+OFFERED -->  REQUESTED: C
+OFFERED -->  ACCEPTED: C
+OFFERED -->  TERMINATED: C/P
+
+ACCEPTED --> AGREED: P
+ACCEPTED -> TERMINATED: P
+
+AGREED --> VERIFIED: C
+AGREED --> TERMINATED: C
+
+VERIFIED --> FINALIZED: P
+VERIFIED -> TERMINATED: P
+
+FINALIZED -->[*]
+TERMINATED --> [*]
+
+@enduml

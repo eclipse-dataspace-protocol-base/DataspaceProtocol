@@ -1,0 +1,33 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"title": "CatalogRequestMessageSchema",
+	"type": "object",
+	"allOf": [
+	  {
+		"$ref": "#/definitions/CatalogRequestMessage"
+	  }
+	],
+	"$id": "https://w3id.org/dspace/schemas/v0.8/CatalogRequestMessageSchema",
+	"definitions": {
+		"CatalogRequestMessage": {
+			"type": "object",
+			"properties": {
+				"@context": {
+					"type": "string",
+					"const": "https://w3id.org/dspace/v0.8/context.json"
+				},
+				"@type": {
+					"type": "string",
+					"const": "dspace:CatalogRequestMessage"
+				},
+				"dspace:filter": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				}
+			},
+			"required": [ "@context", "@type"]
+		}
+	}
+}
