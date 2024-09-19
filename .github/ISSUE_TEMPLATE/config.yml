@@ -1,0 +1,9 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question or get support
+    url: https://github.com/eclipse-dataspace-protocol-base/DataspaceProtocol/discussions
+    about: Ask a question or request support for using the Dataspace Protocol
+  - name: Take a look at the best practices
+    url: https://github.com/eclipse-dataspace-protocol-base/dsp_best_practices
+    about: Browse the best practices documents for more information
