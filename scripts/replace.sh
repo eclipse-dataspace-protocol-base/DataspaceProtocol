@@ -1,7 +1,7 @@
 cp scripts/respec-template.html index.html
-mkdir ./message
-mkdir ./message/diagram
+mkdir ./message/diagram -p
 cp ./**/message/diagram/*.png ./message/diagram/
+cp ./releases/* . -r
 index=`cat index.html`
 ovph="THIS IS THE PLACEHOLDER FOR THE OVERVIEW"
 modph="THIS IS THE PLACEHOLDER FOR THE MODEL"
