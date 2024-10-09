@@ -1,0 +1,42 @@
+name: Auto-Publish
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Validate
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Inject md to html
+        run: |
+          chmod +x ./scripts/replace.sh
+          ./scripts/replace.sh
+      - name: Run Respec
+        run:
+          sudo npx puppeteer browsers install chrome
+          npx respec --src index.html --out index.html.build.html -t 60 --disable-sandbox --verbose
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
