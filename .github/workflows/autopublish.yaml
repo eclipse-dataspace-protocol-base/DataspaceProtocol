@@ -18,8 +18,10 @@ jobs:
           node-version: 22.x
       - name: Inject md to html
         run: |
-          chmod +x ./scripts/replace.sh
-          ./scripts/replace.sh
+          mkdir ./message/diagram -p
+          cp ./**/message/diagram/*.png ./message/diagram/
+          cp ./**/figures/*.png ./figures/
+          cp ./releases/* . -r
       - name: Run Respec
         run:
           sudo npx puppeteer browsers install chrome
