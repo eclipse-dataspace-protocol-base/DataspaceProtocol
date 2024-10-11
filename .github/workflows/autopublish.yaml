@@ -16,9 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
-      - name: Inject md to html
+      - name: Copy files for correct web access
         run: |
           mkdir ./message/diagram -p
+          mkdir ./figures
           cp ./**/message/diagram/*.png ./message/diagram/
           cp ./**/figures/*.png ./figures/
           cp ./releases/* . -r
