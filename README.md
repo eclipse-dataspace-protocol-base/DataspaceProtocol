@@ -77,3 +77,4 @@ Users of this specification are invited to provide feedback such as, but not lim
 * What did you like in this document?
 
 Please provide your feedback as Issue in our [GitHub repository](https://github.com/International-Data-Spaces-Association/ids-specification/issues).
+

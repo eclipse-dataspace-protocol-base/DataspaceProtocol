@@ -19,8 +19,12 @@ jobs:
       - name: Copy files for correct web access
         run: |
           mkdir ./message/diagram -p
+          mkdir ./message/schema
+          mkdir ./message/shape
           mkdir ./figures
           cp ./**/message/diagram/*.png ./message/diagram/
+          cp ./**/message/schema/*.json ./message/schema/
+          cp ./**/message/shape/*.ttl ./message/shape/
           cp ./model/*.png .
           cp ./**/figures/*.png ./figures/
           cp ./releases/* . -r
