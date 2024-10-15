@@ -21,6 +21,7 @@ jobs:
           mkdir ./message/diagram -p
           mkdir ./figures
           cp ./**/message/diagram/*.png ./message/diagram/
+          cp ./model/*.png .
           cp ./**/figures/*.png ./figures/
           cp ./releases/* . -r
       - name: Run Respec
