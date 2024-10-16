@@ -2,94 +2,94 @@
 
 This and the following sections define the core concepts, entities, and relationships that underpin a __dataspace__ and its protocol.
 
-### Agreement
+<dfn>Agreement</dfn>
 
-A concrete [Policy](#policy) associated with a specific [Dataset](#dataset) that has been signed by both the [Provider](#provider) and consumer [Participants](#participant). An Agreement is a result of a [Contract Negotiation](../negotiation/contract.negotiation.protocol.md) and is associated with _exactly one_ [Dataset](#dataset).
+A concrete [=Policy=] associated with a specific [=Dataset=] that has been signed by both the [=Provider=] and consumer [=Participants=]. An Agreement is a result of a [=Contract Negotiation=] and is associated with _exactly one_ [=Dataset=].
 
-### Catalog
+<dfn>Catalog</dfn>
 
-A collection of entries representing [Datasets](#dataset) and their [Offers](#offer) that is advertised by a [Provider](#provider) [Participant](#participant).
+A collection of entries representing [=Datasets=] and their [=Offers=] that is advertised by a [=Provider=] [=Participant=].
 
-### Catalog Protocol
+<dfn>Catalog Protocol</dfn>
 
-A set of allowable [Message Types](#message-type) that are used to request a [Catalog](#catalog) from a [Catalog Service](#catalog-service).
+A set of allowable [=Message Types=] that are used to request a [=Catalog=] from a [=Catalog Service=].
 
-### Catalog Service
+<dfn>Catalog Service</dfn>
 
-A [Participant Agent](#participant-agent) that makes a [Catalog](#catalog) accessible to [Participants](#participant).
+A [=Participant Agent=] that makes a [=Catalog=] accessible to [=Participants=].
 
-### Connector (Data Service)
+<dfn data-lt="Data Service">Connector</dfn> (Data Service)
 
-A [Participant Agent](#participant-agent) that produces [Agreements](#agreement) and manages [Dataset](#dataset) sharing.
+A [=Participant Agent=] that produces [=Agreements=] and manages [=Dataset=] sharing.
 
-### Consumer
+<dfn>Consumer</dfn>
 
-A [Participant Agent](#participant-agent) that requests access to an offered [Dataset](#dataset).
+A [=Participant Agent=] that requests access to an offered [=Dataset=].
 
-### Contract Negotiation
+<dfn>Contract Negotiation</dfn>
 
-A set of interactions between a [Provider](#provider) and [Consumer](#consumer) that establish an [Agreement](#agreement). It is an instantiation of the state machine of a [Contract Negotiation Protocol](#contract-negotiation-protocol).
+A set of interactions between a [=Provider=] and [=Consumer=] that establish an [=Agreement=]. It is an instantiation of the state machine of a [=Contract Negotiation Protocol=].
 
-### Contract Negotiation Protocol
+<dfn>Contract Negotiation Protocol</dfn>
 
-A set of allowable [Message Type](#message-type) sequences defined as a state machine.
+A set of allowable [=Message Type=] sequences defined as a state machine.
 
-## Credential Issuer
+<dfn>Credential Issuer</dfn>
 
-A Credential Issuer is a trusted technology system that issues verifiable credentials for a [Participant](#participant) and [Participant Agents](#participant-agent).
+A Credential Issuer is a trusted technology system that issues verifiable credentials for a [=Participant=] and [=Participant Agents=].
 
-### Dataset
+<dfn>Dataset</dfn>
 
-Data or a technical service that can be shared by a [Participant](#participant).
+Data or a technical service that can be shared by a [=Participant=].
 
-### Dataspace
+<dfn>Dataspace</dfn>
 
-A set of technical services that facilitate interoperable [Dataset](#dataset) sharing between entities.
+A set of technical services that facilitate interoperable [=Dataset=] sharing between entities.
 
-### Dataspace Authority
+<dfn>Dataspace Authority</dfn>
 
-An entity that manages a [Dataspace](#dataspace). The form and capabilities of a Dataspace Authority are not covered in these specifications.
+An entity that manages a [=Dataspace=]. The form and capabilities of a Dataspace Authority are not covered in these specifications.
 
-### Dataspace Registration Service (Dataspace Registry)
+<dfn data-lt="Dataspace Registry" >Dataspace Registration Service</dfn> (Dataspace Registry)
 
-A technology system that maintains the state of [Participants](#participant) in a [Dataspace](#dataspace).  The form and capabilities of a Dataspace Registration Service are not covered in these specifications.
+A technology system that maintains the state of [=Participants=] in a [=Dataspace=].  The form and capabilities of a Dataspace Registration Service are not covered in these specifications.
 
-### Identity Provider
+<dfn>Identity Provider</dfn>
 
-A trusted technology system that creates, maintains, and manages identity information for a [Participant](#participant) and [Participant Agents](#participant-agent).
+A trusted technology system that creates, maintains, and manages identity information for a [=Participant=] and [=Participant Agents=].
 
-### Message
+<dfn>Message</dfn>
 
-An instantiation of a [Message Type](#message-type).
+An instantiation of a [=Message Type=].
 
-### Message Type
+<dfn>Message Type</dfn>
 
-A definition of the structure of a [Message](#message).
+A definition of the structure of a [=Message=].
 
-### Offer
+<dfn>Offer</dfn>
 
-A concrete [Policy](#policy) associated with a specific [Dataset](#dataset).
+A concrete [=Policy=] associated with a specific [=Dataset=].
 
-### Participant
+<dfn>Participant</dfn>
 
-A [Dataspace](#dataspace) member that provides and/or consumes [Datasets](#dataset).
+A [=Dataspace=] member that provides and/or consumes [=Datasets=].
 
-### Participant Agent
+<dfn>Participant Agent</dfn>
 
-A technology system that performs operations on behalf of a [Participant](#participant) that offers a [Dataset](#dataset).
+A technology system that performs operations on behalf of a [=Participant=] that offers a [=Dataset=].
 
-### Policy
+<dfn data-lt="Usage Policy">Policy</dfn>
 
-A set of rules, duties, and obligations that define the terms of use for a [Dataset](#dataset). Also referred to as "Usage Policy".
+A set of rules, duties, and obligations that define the terms of use for a [=Dataset=]. Also referred to as "Usage Policy".
 
-### Provider
+<dfn>Provider</dfn>
 
-A [Participant Agent](#participant-agent) that offers a [Dataset](#dataset).
+A [=Participant Agent=] that offers a [=Dataset=].
 
-### Transfer Process
+<dfn>Transfer Process</dfn>
 
-A set of interactions between a [Provider](#provider) and [Consumer](#consumer) that give access to a [Dataset](#dataset) under the terms of an [Agreement](#agreement). It is an instantiation of the state machine of a [Transfer Process Protocol](#transfer-process-protocol).
+A set of interactions between a [=Provider=] and [=Consumer=] that give access to a [=Dataset=] under the terms of an [=Agreement=]. It is an instantiation of the state machine of a [=Transfer Process Protocol=].
 
-### Transfer Process Protocol
+<dfn>Transfer Process Protocol</dfn>
 
-A set of allowable [Message Type](#message-type) sequences defined as a state machine.
+A set of allowable [=Message Type=] sequences defined as a state machine.
