@@ -3,9 +3,12 @@
 <head>
     <meta charset='utf-8'>
     <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <script class="remove" src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.1.0/dist/main.js"></script>
     <script class='remove'>
         var respecConfig = {
           specStatus: "unofficial",
+          latestVersion: null,
+          postProcess: [window.respecMermaid.createFigures],
           editors: [{
               name: "Sebastian Steinbuss",
               url: "https://github.com/ssteinbuss",
@@ -17,8 +20,9 @@
             repoURL: "eclipse-dataspace-protocol-base/DataspaceProtocol",
           },
           xref: "web-platform",
-          lint: { "no-unused-dfns": false },
-          format: "markdown"
+          lint: { "no-unused-dfns": false, "local-refs-exist": true },
+          format: "markdown",
+          maxTocLevel: 4,
         };
     </script>
     <title>Dataspace Protocol Release 2024-1</title>
@@ -45,39 +49,37 @@
     </p>
 </section>
 
-<section>
-
-THIS IS THE PLACEHOLDER FOR THE OVERVIEW
-
+<section data-include="README.md" data-include-format="markdown">
 </section>
 
-<section>
-
-THIS IS THE PLACEHOLDER FOR THE MODEL
-
+<section data-include="model/terminology.md" data-include-format="markdown">
 </section>
 
-<section>
-
-THIS IS THE PLACEHOLDER FOR THE COMMON FUNCTIONALITIES
-
+<section data-include="model/model.md" data-include-format="markdown">
 </section>
 
-<section>
-
-THIS IS THE PLACEHOLDER FOR THE CATALOG PROTOCOL
-
-</section>
-<section>
-
-THIS IS THE PLACEHOLDER FOR THE CONTRACT NEGOTIATION PROTOCOL
-
+<section data-include="common/common.protocol.md" data-include-format="markdown">
 </section>
 
-<section>
+<section data-include="common/common.binding.https.md" data-include-format="markdown">
+</section>
 
-THIS IS THE PLACEHOLDER FOR THE TRANSFER PROCESS PROTOCOL
+<section data-include="catalog/catalog.protocol.md" data-include-format="markdown">
+</section>
 
+<section data-include="catalog/catalog.binding.https.md" data-include-format="markdown">
+</section>
+
+<section data-include="negotiation/contract.negotiation.protocol.md" data-include-format="markdown">
+</section>
+
+<section data-include="negotiation/contract.negotiation.binding.https.md" data-include-format="markdown">
+</section>
+
+<section data-include="transfer/transfer.process.protocol.md" data-include-format="markdown">
+</section>
+
+<section data-include="transfer/transfer.process.binding.https.md" data-include-format="markdown">
 </section>
 
 <section id='conformance'></section>

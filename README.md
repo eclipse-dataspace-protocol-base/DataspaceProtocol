@@ -64,7 +64,7 @@ A [Connector](./model/terminology.md#connector--data-service-) will implement ad
 
 The same applies for the actual data that is transferred between the systems. While this document does not define the transport protocol, the structure, syntax or semantics of the data, a specification for those aspects is required and subject to the agreements of the [Participants](./model/terminology.md#participant) or the [Dataspace](./model/terminology.md#dataspace).
 
-![Overview on protocol and context](./resources/figures/ProtocolOverview.png)
+![Overview on protocol and context](./resources/figures/ProtocolOverview.png "Overview on protocol and context")
 
 ## Best Practices
 
@@ -77,3 +77,4 @@ Users of this specification are invited to provide feedback such as, but not lim
 * What did you like in this document?
 
 Please provide your feedback as Issue in our [GitHub repository](https://github.com/International-Data-Spaces-Association/ids-specification/issues).
+

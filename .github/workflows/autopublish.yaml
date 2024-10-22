@@ -16,10 +16,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
-      - name: Inject md to html
+      - name: Copy files for correct web access
         run: |
-          chmod +x ./scripts/replace.sh
-          ./scripts/replace.sh
+          mkdir ./message/diagram -p
+          mkdir ./message/schema
+          mkdir ./message/shape
+          mkdir ./figures
+          cp ./**/message/diagram/*.png ./message/diagram/
+          cp ./**/message/schema/*.json ./message/schema/
+          cp ./**/message/shape/*.ttl ./message/shape/
+          cp ./model/*.png .
+          cp ./**/figures/*.png ./figures/
+          cp ./releases/* . -r
       - name: Run Respec
         run:
           sudo npx puppeteer browsers install chrome
