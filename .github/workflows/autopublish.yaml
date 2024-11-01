@@ -18,15 +18,11 @@ jobs:
           node-version: 22.x
       - name: Copy files for correct web access
         run: |
-          mkdir ./message/diagram -p
-          mkdir ./message/schema
-          mkdir ./message/shape
+          mkdir ./message
           mkdir ./figures
-          cp ./**/message/diagram/*.png ./message/diagram/
-          cp ./**/message/schema/*.json ./message/schema/
-          cp ./**/message/shape/*.ttl ./message/shape/
-          cp ./model/*.png .
+          cp ./**/message/* -R ./message/
           cp ./**/figures/*.png ./figures/
+          cp ./model/*.png .
           cp ./releases/* . -r
       - name: Run Respec
         run:
