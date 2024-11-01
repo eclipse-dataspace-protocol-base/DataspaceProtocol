@@ -1,6 +1,6 @@
 # Catalog HTTPS Binding
 
-This specification defines a RESTful API over HTTPS for the [Catalog Protocol](#catalog-protocol).
+This specification defines a RESTful API over HTTPS for the [=Catalog Protocol=].
 
 ## Introduction
 
@@ -57,7 +57,7 @@ Authorization: ...
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
 a [Catalog](#ack-catalog) (which is a
 profiled [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) type described by
-the [Catalog Protocol](#catalog-protocol)).
+the [=Catalog Protocol=]).
 
 ### The `catalog/datasets/:id` Endpoint (Provider-side)
 
@@ -89,7 +89,7 @@ Authorization: ...
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
 a [Dataset](#ack-dataset) (which is
 a [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) type described by
-the [Catalog Protocol](#catalog-protocol)).
+the [=Catalog Protocol=]).
 
 ## Technical Considerations
 
