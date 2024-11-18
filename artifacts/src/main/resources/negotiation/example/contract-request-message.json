@@ -1,0 +1,26 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@type": "ContractRequestMessage",
+  "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "offer": {
+    "@type": "Offer",
+    "@id": "urn:uuid:d526561f-528e-4d5a-ae12-9a9dd9b7a815",
+    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
+    "permission": [
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "leftOperand": "dateTime",
+            "operator": "lteq",
+            "rightOperand": "2023-12-31T06:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  "callbackAddress": "https://example.com/callback"
+}

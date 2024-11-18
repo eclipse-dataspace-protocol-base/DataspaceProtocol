@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@type": "ContractAgreementMessage",
+  "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "agreement": {
+    "@id": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
+    "@type": "Agreement",
+    "target": "urn:uuid:3dd1add4-4d2d-569e-d634-8394a8836d23",
+    "timestamp": "2023-01-01T01:00:00Z",
+    "assigner": "http://example.com/Provider",
+    "assignee": "http://example.com/Consumer",
+    "permission": [
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "leftOperand": "dateTime",
+            "operator": "lteq",
+            "rightOperand": "2023-12-31T06:00Z"
+          }
+        ]
+      }
+    ]
+  },
+  "callbackAddress": "https://example.com/callback"
+}

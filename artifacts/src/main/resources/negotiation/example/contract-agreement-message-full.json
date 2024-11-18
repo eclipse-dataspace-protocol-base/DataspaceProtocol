@@ -1,0 +1,154 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@type": "ContractAgreementMessage",
+  "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "agreement": {
+    "@id": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
+    "@type": "Agreement",
+    "target": "urn:uuid:3dd1add4-4d2d-569e-d634-8394a8836d23",
+    "profile": "https://test.com/profile",
+    "timestamp": "2023-01-01T01:00:00Z",
+    "assigner": "http://example.com/Provider",
+    "assignee": "http://example.com/Consumer",
+    "permission": [
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "leftOperand": "dateTime",
+            "operator": "lteq",
+            "rightOperand": "2023-12-31T06:00Z"
+          }
+        ]
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "and": [
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "gold"
+              },
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "silver"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "or": [
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "gold"
+              },
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "silver"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "leftOperand": "partner",
+            "operator": "eq",
+            "rightOperand": "gold"
+          }
+        ],
+        "duty": {
+          "action": "report",
+          "constraint": [
+            {
+              "leftOperand": "event",
+              "operator": "gt",
+              "rightOperand": "use"
+            }
+          ]
+        }
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "andSequence": [
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "gold"
+              },
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "silver"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "xone": [
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "gold"
+              },
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "silver"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "action": "use",
+        "constraint": [
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "leftOperand": "constraint1",
+                    "operator": "eq",
+                    "rightOperand": "value1"
+                  },
+                  {
+                    "leftOperand": "constraint2",
+                    "operator": "eq",
+                    "rightOperand": "value2"
+                  }
+                ]
+              },
+              {
+                "leftOperand": "partner",
+                "operator": "eq",
+                "rightOperand": "silver"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "callbackAddress": "https://example.com/callback"
+}

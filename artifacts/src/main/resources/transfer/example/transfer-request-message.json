@@ -1,0 +1,27 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@type": "TransferRequestMessage",
+  "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
+  "agreementId": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
+  "format": "example:HTTP_PUSH",
+  "dataAddress": {
+    "@type": "DataAddress",
+    "endpointType": "https://w3id.org/idsa/v4.1/HTTP",
+    "endpoint": "http://example.com",
+    "endpointProperties": [
+      {
+        "@type": "EndpointProperty",
+        "name": "authorization",
+        "value": "TOKEN-ABCDEFG"
+      },
+      {
+        "@type": "EndpointProperty",
+        "name": "authType",
+        "value": "bearer"
+      }
+    ]
+  },
+  "callbackAddress": "https://example.com/callback"
+}
