@@ -11,6 +11,7 @@
  *       Metaform Systems, Inc. - initial API and implementation
  *
  */
+
 package org.eclipse.dsp.schema.common;
 
 import org.eclipse.dsp.schema.fixtures.AbstractSchemaTest;

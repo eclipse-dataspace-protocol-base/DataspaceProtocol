@@ -135,7 +135,7 @@ public class InvalidPolicySchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String INVALID_MULTIPLICITY_CONSTRAINT = """
+    private static final String INVALID_MULTIPLICITY_CONSTRAINT = """
             {
                  "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
                  "@type": "Offer",

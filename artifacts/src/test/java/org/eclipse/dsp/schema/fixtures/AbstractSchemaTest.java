@@ -19,8 +19,8 @@ import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SchemaLocation;
 
-import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
 import static com.networknt.schema.SpecVersion.VersionFlag.V202012;
+import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
 
 /**
  * Base test class.

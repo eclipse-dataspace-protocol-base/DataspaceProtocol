@@ -37,7 +37,7 @@ public class AgreementSchemaTest extends AbstractSchemaTest {
         setUp("/negotiation/contract-schema.json");
     }
 
-    private final static String AGREEMENT = """
+    private static final String AGREEMENT = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Agreement",
@@ -56,7 +56,7 @@ public class AgreementSchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String MINIMAL_AGREEMENT = """
+    private static final String MINIMAL_AGREEMENT = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Agreement",
@@ -70,7 +70,7 @@ public class AgreementSchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String INVALID_AGREEMENT_NO_TARGET = """
+    private static final String INVALID_AGREEMENT_NO_TARGET = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Agreement",
@@ -90,7 +90,7 @@ public class AgreementSchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String INVALID_AGREEMENT_NO_ASSIGNEE = """
+    private static final String INVALID_AGREEMENT_NO_ASSIGNEE = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Agreement",
@@ -110,7 +110,7 @@ public class AgreementSchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String INVALID_AGREEMENT_NO_ASSIGNER = """
+    private static final String INVALID_AGREEMENT_NO_ASSIGNER = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Agreement",

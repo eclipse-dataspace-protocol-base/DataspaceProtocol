@@ -41,7 +41,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
         setUp("/negotiation/contract-schema.json");
     }
 
-    private final static String POLICY = """
+    private static final String POLICY = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Offer",
@@ -61,7 +61,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String POLICY_STRING_PROFILE = """
+    private static final String POLICY_STRING_PROFILE = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Offer",
@@ -82,7 +82,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String POLICY_ARRAY_PROFILE = """
+    private static final String POLICY_ARRAY_PROFILE = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Offer",
@@ -103,7 +103,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
               ]
             }""";
 
-    private final static String POLICY_PERMISSION_DUTY = """
+    private static final String POLICY_PERMISSION_DUTY = """
             {
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "@type": "Offer",
@@ -130,7 +130,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
             }""";
 
 
-    private final static String POLICY_OR_CONSTRAINT = """
+    private static final String POLICY_OR_CONSTRAINT = """
             {
                  "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
                  "@type": "Offer",
@@ -157,7 +157,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                }
             """;
 
-    private final static String POLICY_AND_CONSTRAINT = """
+    private static final String POLICY_AND_CONSTRAINT = """
             {
                  "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
                  "@type": "Offer",
@@ -184,7 +184,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                }
             """;
 
-    private final static String POLICY_AND_SEQUENCE_CONSTRAINT = """
+    private static final String POLICY_AND_SEQUENCE_CONSTRAINT = """
             {
                  "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
                  "@type": "Offer",
@@ -211,7 +211,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                }
             """;
 
-    private final static String POLICY_XONE_SEQUENCE_CONSTRAINT = """
+    private static final String POLICY_XONE_SEQUENCE_CONSTRAINT = """
             {
                  "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
                  "@type": "Offer",

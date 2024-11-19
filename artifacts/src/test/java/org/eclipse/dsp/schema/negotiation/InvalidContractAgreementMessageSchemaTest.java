@@ -22,9 +22,6 @@ import static com.networknt.schema.InputFormat.JSON;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- *
- */
 public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTest {
 
     @Test
