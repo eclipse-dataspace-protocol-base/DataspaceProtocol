@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "TransferSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/DataAddress"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-schema.json",
+  "definitions": {
+    "DataAddress": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "DataAddress"
+        },
+        "endpointType": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "endpointProperties": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "@type": {
+                "type": "string",
+                "const": "EndpointProperty"
+              },
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "@type",
+              "name",
+              "value"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "@type",
+        "endpointType",
+        "endpoint"
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "ContractRequestMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/ContractRequestMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/negotiation/contract-request-message-schema.json",
+  "definitions": {
+    "ContractRequestMessage": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ContractRequestMessage"
+        },
+        "consumerPid": {
+          "type": "string"
+        },
+        "providerPid": {
+          "type": "string"
+        },
+        "offer": {
+          "oneOf": [
+            {
+              "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/MessageOffer"
+            },
+            {
+              "properties": {
+                "@id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id"
+              ],
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "permission"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "prohibition"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "callbackAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@context",
+        "@type",
+        "consumerPid",
+        "offer",
+        "callbackAddress"
+      ]
+    }
+  }
+}

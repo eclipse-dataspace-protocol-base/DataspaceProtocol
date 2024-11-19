@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "ContractOfferMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/ContractOfferMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/negotiation/contract-offer-message-schema.json",
+  "definitions": {
+    "ContractOfferMessage": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ContractOfferMessage"
+        },
+        "providerPid": {
+          "type": "string"
+        },
+        "consumerPid": {
+          "type": "string"
+        },
+        "offer": {
+          "allOf": [
+            {
+              "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/MessageOffer"
+            },
+            {
+              "properties": {
+                "@id": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "@id",
+                "target"
+              ]
+            }
+          ]
+        },
+        "callbackAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@context",
+        "@type",
+        "providerPid",
+        "offer",
+        "callbackAddress"
+      ]
+    }
+  }
+}

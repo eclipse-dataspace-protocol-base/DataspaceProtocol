@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "ContractAgreementMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/ContractAgreementMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/negotiation/contract-agreement-message-schema.json",
+  "definitions": {
+    "ContractAgreementMessage": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ContractAgreementMessage"
+        },
+        "providerPid": {
+          "type": "string"
+        },
+        "consumerPid": {
+          "type": "string"
+        },
+        "agreement": {
+          "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Agreement"
+        },
+        "callbackAddress": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@context",
+        "@type",
+        "providerPid",
+        "consumerPid",
+        "agreement",
+        "callbackAddress"
+      ]
+    }
+  }
+}

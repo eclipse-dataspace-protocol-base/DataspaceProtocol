@@ -1,0 +1,28 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
+  "@type": "Catalog",
+  "participantId": "urn:example:DataProviderA",
+  "catalog": [
+    {
+      "@id": "02e83f88-f025-4a1c-89f2-8723c98fa92b",
+      "@type": "Catalog",
+      "distribution": [
+        {
+          "@type": "Distribution",
+          "format": "Catalog",
+          "accessService": "urn:uuid:4aa2dcc8-4d2d-569e-d634-8394a8834d77"
+        }
+      ],
+      "service": [
+        {
+          "@id": "urn:uuid:4aa2dcc8-4d2d-569e-d634-8394a8834d77",
+          "@type": "DataService",
+          "endpointURL": "https://provder-a.com/subcatalog"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "DatasetSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Dataset"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json",
+  "definitions": {
+    "AbstractDataset": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        },
+        {
+          "properties": {
+            "hasPolicy": {
+              "type": "array",
+              "items": {
+                "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+              },
+              "minItems": 1
+            },
+            "distribution": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Distribution"
+              },
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "Dataset": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/AbstractDataset"
+        }
+      ],
+      "required": [
+        "hasPolicy",
+        "distribution"
+      ]
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@id"
+      ]
+    },
+    "Distribution": {
+      "type": "object",
+      "properties": {
+        "hasPolicy": {
+          "type": "array",
+          "items": {
+            "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+          },
+          "minItems": 1
+        },
+        "accessService": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/definitions/DataService"
+            }
+          ]
+        },
+        "format": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "accessService",
+        "format"
+      ]
+    },
+    "DataService": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        },
+        {
+          "properties": {
+            "@id": {
+              "type": "string"
+            },
+            "@type": {
+              "type": "string",
+              "const": "DataService"
+            },
+            "endpointURL": {
+              "type": "string"
+            },
+            "servesDataset": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Dataset"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "@id",
+            "@type",
+            "endpointURL"
+          ]
+        }
+      ]
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@id"
+      ]
+    }
+  }
+}
