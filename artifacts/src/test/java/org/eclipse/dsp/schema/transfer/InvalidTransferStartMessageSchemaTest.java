@@ -25,9 +25,9 @@ public class InvalidTransferStartMessageSchemaTest extends AbstractSchemaTest {
 
     @Test
     void verifyInvalidCases() {
-       assertThat(schema.validate(INVALID_NO_TYPE, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-       assertThat(schema.validate(INVALID_NO_PROVIDER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-       assertThat(schema.validate(INVALID_NO_CONSUMER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_NO_TYPE, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_NO_PROVIDER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_NO_CONSUMER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
     }
 
     @BeforeEach

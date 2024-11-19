@@ -36,12 +36,12 @@ import java.util.Map;
 
 import static com.apicatalog.jsonld.JsonLd.compact;
 import static com.apicatalog.jsonld.JsonLd.expand;
-import static org.eclipse.dsp.DspConstants.DSP_CONTEXT;
-import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
-import static org.eclipse.dsp.DspConstants.ODRL_CONTEXT;
 import static com.networknt.schema.SpecVersion.VersionFlag.V202012;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.eclipse.dsp.DspConstants.DSP_CONTEXT;
+import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
+import static org.eclipse.dsp.DspConstants.ODRL_CONTEXT;
 
 /**
  * Base class for Json-Ld expansion and compaction tests.
@@ -79,7 +79,7 @@ public abstract class AbstractJsonLdTest {
         mapper.registerModule(new JSONPModule());
 
         try (var dspaceStream = getClass().getResourceAsStream("/context/dspace.jsonld");
-             var odrlStream = getClass().getResourceAsStream("/context/odrl.jsonld")) {
+                var odrlStream = getClass().getResourceAsStream("/context/odrl.jsonld")) {
             var dspaceContext = mapper.readValue(dspaceStream, JsonObject.class);
             @SuppressWarnings("DataFlowIssue")
             Map<String, Document> cache = Map.of(DSP_CONTEXT, JsonDocument.of(dspaceContext),
@@ -97,7 +97,7 @@ public abstract class AbstractJsonLdTest {
     private static class LocalDocumentLoader implements DocumentLoader {
         private final Map<String, Document> contexts = new HashMap<>();
 
-        public LocalDocumentLoader(Map<String, Document> contexts) {
+        LocalDocumentLoader(Map<String, Document> contexts) {
             this.contexts.putAll(contexts);
         }
 
