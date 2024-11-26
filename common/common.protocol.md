@@ -23,8 +23,7 @@ offers version `1.0` endpoints at `<host>/some/path/v1`.
 }
 ```
 
-This data object must comply to the [JSON Schema](schema/version-schema.json) and
-the [SHACL Shape](shape/version-shape.ttl).
+This data object must comply to the [JSON Schema](schema/version-schema.json).
 
 The requesting [=Connector=] may select from the endpoints in the response. If the [=Connector=] can't identify a
 matching Dataspace Protocol Version, it must terminate the communication. 
