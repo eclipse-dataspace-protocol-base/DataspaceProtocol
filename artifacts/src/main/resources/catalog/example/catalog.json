@@ -1,0 +1,49 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
+  "@type": "Catalog",
+  "participantId": "urn:example:DataProviderA",
+  "service": [
+    {
+      "@id": "urn:uuid:4aa2dcc8-4d2d-569e-d634-8394a8834d77",
+      "@type": "DataService",
+      "endpointURL": "https://provider-a.com/connector"
+    }
+  ],
+  "dataset": [
+    {
+      "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
+      "@type": "Dataset",
+      "hasPolicy": [
+        {
+          "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
+          "@type": "Offer",
+          "permission": [
+            {
+              "action": "use",
+              "constraint": [
+                {
+                  "leftOperand": "spatial",
+                  "operator": "eq",
+                  "rightOperand": "http://example.org/EU"
+                }
+              ],
+              "duty": {
+                "action": "Attribution"
+              }
+            }
+          ]
+        }
+      ],
+      "distribution": [
+        {
+          "@type": "Distribution",
+          "format": "HttpData-PULL",
+          "accessService": "urn:uuid:4aa2dcc8-4d2d-569e-d634-8394a8834d77"
+        }
+      ]
+    }
+  ]
+}

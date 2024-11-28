@@ -1,0 +1,37 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
+  "@type": "Dataset",
+  "hasPolicy": [
+    {
+      "@type": "Offer",
+      "@id": "urn:uuid:2828282:3dd1add8-4d2d-569e-d634-8394a8836a88",
+      "assigner": "http://example.com/Provider",
+      "permission": [
+        {
+          "action": "use",
+          "constraint": [
+            {
+              "leftOperand": "spatial",
+              "rightOperand": "_:EU",
+              "operator": "eq"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "distribution": [
+    {
+      "@type": "Distribution",
+      "format": "HttpData-PULL",
+      "accessService": {
+        "@id": "urn:uuid:4aa2dcc8-4d2d-569e-d634-8394a8834d77",
+        "@type": "DataService",
+        "endpointURL": "https://provider-a.com/connector"
+      }
+    }
+  ]
+}

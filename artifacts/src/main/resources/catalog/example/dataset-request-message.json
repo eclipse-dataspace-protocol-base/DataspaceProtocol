@@ -1,0 +1,7 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2024/1/context.json"
+  ],
+  "@type": "DatasetRequestMessage",
+  "dataset": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57"
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "TransferStartMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/TransferStartMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-start-message-schema.json",
+  "definitions": {
+    "TransferStartMessage": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "TransferStartMessage"
+        },
+        "providerPid": {
+          "type": "string"
+        },
+        "consumerPid": {
+          "type": "string"
+        },
+        "dataAddress": {
+          "$ref": "https://w3id.org/dspace/2024/1/transfer/data-address-schema.json"
+        }
+      },
+      "required": [
+        "@context",
+        "@type",
+        "providerPid",
+        "consumerPid"
+      ]
+    }
+  }
+}

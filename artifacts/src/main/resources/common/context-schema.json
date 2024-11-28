@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "ContextSchema",
+  "type": "array",
+  "allOf": [
+    {
+      "$ref": "#/definitions/ContextSchema"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/common/context-schema.json",
+  "definitions": {
+    "ContextSchema": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "items": {
+          "type": "string"
+        }
+      },
+      "contains": {
+        "const": "https://w3id.org/dspace/2024/1/context.json"
+      }
+    }
+  }
+}

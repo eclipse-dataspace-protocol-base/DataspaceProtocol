@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "CatalogErrorSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/CatalogError"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/catalog/catalog-error-schema.json",
+  "definitions": {
+    "CatalogError": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "CatalogError"
+        },
+        "code": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "@context",
+        "@type"
+      ]
+    }
+  }
+}

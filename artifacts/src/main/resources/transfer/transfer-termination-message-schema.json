@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "TransferTerminationMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/TransferTerminationMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-termination-message-schema.json",
+  "definitions": {
+    "TransferTerminationMessage": {
+      "allOf": [
+        {
+          "$ref": "https://w3id.org/dspace/2024/1/transfer/transfer-schema.json#definitions/AbstractTransferCodeMessage"
+        },
+        {
+          "properties": {
+            "@type": {
+              "type": "string",
+              "const": "TransferTerminationMessage"
+            }
+          },
+          "required": [
+            "@type"
+          ]
+        }
+      ]
+    }
+  }
+}

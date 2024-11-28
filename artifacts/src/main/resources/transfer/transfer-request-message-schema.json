@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "TransferRequestMessageSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/TransferRequestMessage"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-request-message-schema.json",
+  "definitions": {
+    "TransferRequestMessage": {
+      "type": "object",
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "@type": {
+          "type": "string",
+          "const": "TransferRequestMessage"
+        },
+        "agreementId": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "dataAddress": {
+          "$ref": "https://w3id.org/dspace/2024/1/transfer/data-address-schema.json"
+        },
+        "callbackAddress": {
+          "type": "string"
+        },
+        "consumerPid": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@context",
+        "@type",
+        "agreementId",
+        "format",
+        "callbackAddress",
+        "consumerPid"
+      ]
+    }
+  }
+}

@@ -57,7 +57,7 @@ as abstract message types.
 | **Sent by**         | [=Consumer=]                                                                                                                            |
 | **Resulting state** | `REQUESTED`, `TERMINATED`                                                                                                               |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                          |
-| **Schema**          | [TTL Shape](./message/shape/contract-request-message-shape.ttl), [JSON Schema](./message/schema/contract-request-message-schema.json)   |
+| **Schema**          | [JSON Schema](./message/schema/contract-request-message-schema.json)   |
 | **Example**         | Initiating [Message](./message/example/contract-request-message_initial.json), [Message](./message/example/contract-offer-message.json) |
 | **Diagram(s)**      | ![](./message/diagram/contract-request-message.png "Contract Request Message")                                                          |
 
@@ -85,7 +85,7 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 | **Sent by**         | [=Provider=]                                                                                                                                                                                                                                            |
 | **Resulting state** | `OFFERED`, `TERMINATED`                                                                                                                                                                                                                                 |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                                                                                                          |
-| **Schema**          | [TTL Shape](./message/shape/contract-offer-message-shape.ttl), [JSON Schema](./message/schema/contract-offer-message-schema.json)                                                                                                                       |
+| **Schema**          | [JSON Schema](./message/schema/contract-offer-message-schema.json)                                                                                                                       |
 | **Example**         | [Example Initial Message](./message/example/contract-offer-message_initial.json), [Example Message](./message/example/contract-offer-message.json)                                                                                                      |
 | **Diagram(s)**      | ![](./message/diagram/contract-offer-message_initial.png "Initial Contract Offer message (note the missing `consumerPid`)") <p/> ![](./message/diagram/contract-offer-message.png "Contract Offer Message following a [[[#contract-request-message]]]") |
 
@@ -108,7 +108,7 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
 | **Sent by**         | [=Provider=]                                                                                                                              |
 | **Resulting state** | `AGREED`, `TERMINATED`                                                                                                                    |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                            |
-| **Schema**          | [TTL Shape](./message/shape/contract-agreement-message-shape.ttl), [JSON Schema](./message/schema/contract-agreement-message-schema.json) |
+| **Schema**          | [JSON Schema](./message/schema/contract-agreement-message-schema.json) |
 | **Example**         | [Message](./message/example/contract-agreement-message.json)                                                                              |
 | **Diagram(s)**      | ![](./message/diagram/contract-agreement-message.png "Contract Agreement Message")                                                        |
 
@@ -134,7 +134,7 @@ complete [=Agreement=].
 | **Sent by**         | [=Consumer=]                                                                                                                                                        |
 | **Resulting state** | `VERIFIED`, `TERMINATED`                                                                                                                                            |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                      |
-| **Schema**          | [TTL Shape](./message/shape/contract-agreement-verification-message-shape.ttl), [JSON Schema](./message/schema/contract-agreement-verification-message-schema.json) |
+| **Schema**          | [JSON Schema](./message/schema/contract-agreement-verification-message-schema.json) |
 | **Example**         | [Message](./message/example/contract-agreement-verification-message.json)                                                                                           |
 | **Diagram(s)**      | ![](./message/diagram/contract-agreement-verification-message.png "Contract Agreement Verification Message")                                                        |
 
@@ -150,7 +150,7 @@ The Contract Agreement Verification Message is sent by a [=Consumer=] to verify 
 | **Sent by**         | [=Consumer=], [=Provider=]                                                                                                                                |
 | **Resulting state** | `FINALIZED`, `ACCEPTED`, `TERMINATED`                                                                                                                     |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                            |
-| **Schema**          | [TTL Shape](./message/shape/contract-negotiation-event-message-shape.ttl), [JSON Schema](./message/schema/contract-negotiation-event-message-schema.json) |
+| **Schema**          | [JSON Schema](./message/schema/contract-negotiation-event-message-schema.json) |
 | **Example**         | [Message](./message/example/contract-negotiation-event-message.json)                                                                                      |
 | **Diagram(s)**      | ![](./message/diagram/contract-negotiation-event-message.png "Contract Negotiation Event Message")                                                        |
 
@@ -177,7 +177,7 @@ terminal state.
 | **Sent by**         | [=Consumer=], [=Provider=]                                                                                                                                            |
 | **Resulting state** | `TERMINATED`                                                                                                                                                          |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                        |
-| **Schema**          | [TTL Shape](./message/shape/contract-negotiation-termination-message-shape.ttl), [JSON Schema](./message/schema/contract-negotiation-termination-message-schema.json) |
+| **Schema**          | [JSON Schema](./message/schema/contract-negotiation-termination-message-schema.json) |
 | **Example**         | [Message](./message/example/contract-negotiation-termination-message.json)                                                                                            |
 | **Diagram(s)**      | ![](./message/diagram/contract-negotiation-termination-message.png "Contract Negotiation Termination message")                                                        |
 
@@ -202,7 +202,7 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 |                |                                                                                                                               |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                                                                                    |
-| **Schema**     | [TTL Shape](./message/shape/contract-negotiation-shape.ttl), [JSON Schema](./message/schema/contract-negotiation-schema.json) |
+| **Schema**     | [JSON Schema](./message/schema/contract-negotiation-schema.json) |
 | **Example**    | [Process](./message/example/contract-negotiation.json)                                                                        |
 | **Diagram(s)** | ![](./message/diagram/contract-negotiation.png "Contract Negotiation ACK")                                                    |
 
@@ -214,7 +214,7 @@ happened.
 |                |                                                                                                                                           |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                                                                                                |
-| **Schema**     | [TTL Shape](./message/shape/contract-negotiation-error-shape.ttl), [JSON Schema](./message/schema/contract-negotiation-error-schema.json) |
+| **Schema**     | [JSON Schema](./message/schema/contract-negotiation-error-schema.json) |
 | **Example**    | [Error](./message/example/contract-negotiation-error.json)                                                                                |
 | **Diagram(s)** | ![](./message/diagram/contract-negotiation-error.png "Contract Negotiation Error")                                                        |
 

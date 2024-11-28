@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "CatalogSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/RootCatalog"
+    }
+  ],
+  "$id": "https://w3id.org/dspace/2024/1/catalog/catalog-schema.json",
+  "definitions": {
+    "RootCatalog": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Catalog"
+        }
+      ],
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        },
+        "participantId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@context",
+        "participantId"
+      ]
+    },
+    "Catalog": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/AbstractDataset"
+        },
+        {
+          "properties": {
+            "@type": {
+              "type": "string",
+              "const": "Catalog"
+            },
+            "dataset": {
+              "type": "array",
+              "items": {
+                "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/Dataset"
+              },
+              "minItems": 1
+            },
+            "catalog": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Catalog"
+              },
+              "minItems": 1
+            },
+            "service": {
+              "type": "array",
+              "items": {
+                "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/DataService"
+              },
+              "minItems": 1
+            }
+          }
+        }
+      ],
+      "required": [
+        "@id",
+        "@type"
+      ],
+      "anyOf": [
+        {
+          "not": {
+            "required": [
+              "hasPolicy"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
