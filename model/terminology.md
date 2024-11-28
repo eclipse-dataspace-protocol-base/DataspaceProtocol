@@ -1,4 +1,4 @@
-# Terminology
+# Terms and definitions {#terminology}
 
 This and the following sections define the core concepts, entities, and relationships that underpin a __dataspace__ and its protocol.
 
