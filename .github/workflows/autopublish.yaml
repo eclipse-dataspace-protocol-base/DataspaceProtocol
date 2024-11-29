@@ -18,12 +18,8 @@ jobs:
           node-version: 22.x
       - name: Copy files for correct web access
         run: |
-          mkdir ./message
-          mkdir ./figures
-          cp ./**/message/* -R ./message/
-          cp ./**/figures/*.png ./figures/
-          cp ./model/*.png .
-          cp ./releases/* . -r
+          chmod +x ./.github/workflows/script.sh
+          ./.github/workflows/script.sh
       - name: Run Respec
         run:
           sudo npx puppeteer browsers install chrome

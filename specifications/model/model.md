@@ -14,7 +14,7 @@ a Dataspace. This may require additional concepts, which are not in the scope of
 The definitions below are therefore informative and not-normative.
 The relationships between the primary [=Dataspace=] entities are defined as follows:
 
-![](m.dataspace.relationships.png "Information Model Relationships")
+![](figures/m.dataspace.relationships.png "Information Model Relationships")
 
 Note that all relationships are multiplicities unless specified. `Dataspace Authority` and `Dataspace Registry` are non-normative entities.
 
@@ -34,7 +34,7 @@ The following concepts are therefore normative.
 
 The diagram below depicts the relationships between [=Participant Agent=] types:
 
-![](m.participant.entities.png "Class Diagram Participant Agent")
+![](figures/m.participant.entities.png "Class Diagram Participant Agent")
 
 - A [=Catalog Service=] is a [=Participant Agent=] that makes a [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) available to other [=Participants=].
 - A [=Catalog=] contains one or more [=Datasets=], which are [DCAT Datasets](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset). A [=Catalog=] also contains **_at least one_** [DCAT DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) that references a [=Connector=] where [=Datasets=] may be obtained.

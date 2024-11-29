@@ -29,4 +29,4 @@ The same applies for the actual data that is transferred between the systems. Wh
 transport protocol, the structure, syntax or semantics of the data, a specification for those aspects is required and
 subject to the agreements of the [=Participants=] or the [=Dataspace=].
 
-![Overview on protocol and context](resources/figures/ProtocolOverview.png "Overview on protocol and context")
+![Overview on protocol and context](./figures/ProtocolOverview.png "Overview on protocol and context")

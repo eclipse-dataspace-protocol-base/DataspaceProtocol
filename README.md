@@ -16,8 +16,8 @@ This version ([2024-1](https://github.com/International-Data-Spaces-Association/
 The __Dataspace Protocol__ is a set of specifications designed to facilitate interoperable data sharing between entities governed by usage control and based on Web technologies. These specifications define the schemas and protocols required for entities to publish data, negotiate [Agreements](specifications/model/terminology.md#agreement), and access data as part of a federation of technical systems termed a [Dataspace](specifications/model/terminology.md#dataspace).
 
 
-* [Introduction to the Dataspace Protocol](specifications/introduction.md)
-* [Scope of the Dataspace Protocol](specifications/scope.md)
+* [Introduction to the Dataspace Protocol](specifications/common/introduction.md)
+* [Scope of the Dataspace Protocol](specifications/common/scope.md)
 
 ## Introduction
 
