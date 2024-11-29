@@ -48,4 +48,10 @@ public class CatalogContextTest extends AbstractJsonLdTest {
         verifyRoundTrip("/catalog/example/nested-catalog.json",
                 "/catalog/catalog-schema.json");
     }
+
+    @Test
+    void verifyCatalogRequestMessage() {
+        verifyRoundTrip("/catalog/example/catalog-request-message.json",
+                "/catalog/catalog-request-message-schema.json");
+    }
 }
