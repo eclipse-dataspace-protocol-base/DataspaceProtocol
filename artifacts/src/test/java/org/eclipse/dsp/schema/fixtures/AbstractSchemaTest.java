@@ -27,6 +27,7 @@ import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
  */
 public abstract class AbstractSchemaTest {
     protected static final String MIN_CONTAINS = "minContains";
+    protected static final String MIN_ITEMS = "minItems";
     protected static final String REQUIRED = "required";
     protected static final String ONE_OF = "oneOf";
     protected static final String TYPE = "type";

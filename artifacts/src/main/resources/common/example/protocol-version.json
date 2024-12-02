@@ -1,0 +1,8 @@
+{
+  "protocolVersions": [
+    {
+      "version": "1.0",
+      "path": "/some/path/v1"
+    }
+  ]
+}
