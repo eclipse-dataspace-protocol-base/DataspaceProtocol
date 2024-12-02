@@ -97,9 +97,9 @@ formats.
 | **Sent by**         | [=Consumer=]                                                                 |
 | **Resulting state** | `TERMINATED`                                                                 |
 | **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                         |
-| **Schema**          | [JSON Schema](./message/schema/catalog-request-message-schema.json)          |
-| **Example**         | [Message](./message/example/catalog-request-message.json)                    |
-| **Diagram(s)**      | ![](./message/diagram/catalog-request-message.png "Catalog Request Message") |
+| **Schema**          | [JSON Schema](message/schema/catalog-request-message-schema.json)          |
+| **Example**         | [Message](message/example/catalog-request-message.json)                    |
+| **Diagram(s)**      | ![](message/diagram/catalog-request-message.png "Catalog Request Message") |
 
 The Catalog Request Message is message sent by a [=Consumer=] to
 a [=Catalog Service=].
@@ -120,9 +120,9 @@ is a valid instance of a [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Clas
 | **Sent by**         | [=Consumer=]                                                        |
 | **Resulting state** | `TERMINATED`                                                        |
 | **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                |
-| **Schema**          | [JSON Schema](./message/schema/dataset-request-message-schema.json) |
-| **Example**         | [Message](./message/example/dataset-request-message.json)           |
-| **Diagram(s)**      | ![](./message/diagram/dataset-request-message.png)                  |
+| **Schema**          | [JSON Schema](message/schema/dataset-request-message-schema.json) |
+| **Example**         | [Message](message/example/dataset-request-message.json)           |
+| **Diagram(s)**      | ![](message/diagram/dataset-request-message.png)                  |
 
 The Dataset Request Message is message sent by a [=Consumer=] to
 a [=Catalog Service=].
@@ -144,9 +144,9 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 |                |                                                     |
 |----------------|-----------------------------------------------------|
 | **Sent by**    | [=Provider=]                                        |
-| **Schema**     | [JSON Schema](./message/schema/catalog-schema.json) |
-| **Example**    | [Catalog Example](./message/example/catalog.json)   |
-| **Diagram(s)** | ![](./message/diagram/catalog.png)                  |
+| **Schema**     | [JSON Schema](message/schema/catalog-schema.json) |
+| **Example**    | [Catalog Example](message/example/catalog.json)   |
+| **Diagram(s)** | ![](message/diagram/catalog.png)                  |
 
 The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
 
@@ -155,18 +155,18 @@ The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
 |                |                                                     |
 |----------------|-----------------------------------------------------|
 | **Sent by**    | [=Provider=]                                        |
-| **Schema**     | [JSON Schema](./message/schema/dataset-schema.json) |
-| **Example**    | [Dataset Example](./message/example/dataset.json)   |
-| **Diagram(s)** | ![](./message/diagram/dataset.png)                  |
+| **Schema**     | [JSON Schema](message/schema/dataset-schema.json) |
+| **Example**    | [Dataset Example](message/example/dataset.json)   |
+| **Diagram(s)** | ![](message/diagram/dataset.png)                  |
 
 ### ERROR - Catalog Error
 
 |                |                                                           |
 |----------------|-----------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                |
-| **Schema**     | [JSON Schema](./message/schema/catalog-error-schema.json) |
-| **Example**    | [Error](./message/example/catalog-error.json)             |
-| **Diagram(s)** | ![](./message/diagram/catalog-error.png)                  |
+| **Schema**     | [JSON Schema](message/schema/catalog-error-schema.json) |
+| **Example**    | [Error](message/example/catalog-error.json)             |
+| **Diagram(s)** | ![](message/diagram/catalog-error.png)                  |
 
 A Catalog Error is used when an error occurred after a [Catalog Request Message](#catalog-request-message) or
 a [Dataset Request Message](#dataset-request-message) and the [=Provider=] cannot

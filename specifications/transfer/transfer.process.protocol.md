@@ -36,7 +36,7 @@ A push transfer is when the [=Provider=]'s data plane initiates sending data to 
 after the [=Consumer=] has issued a [Transfer Request Message](#transfer-request-message), the [=Provider=] begins data
 transmission to an endpoint specified by the [=Consumer=] using an agreed-upon wire protocol.
 
-![](./figures/push-transfer-process.png "Push Transfer Process")
+![](figures/push-transfer-process.png "Push Transfer Process")
 
 _Note that the illustration of the sequence is only exemplary. The activation of actors is not determined, also,
 responses, parameters, possible recursions, and interactions between the components of one participant are not shown._
@@ -47,7 +47,7 @@ A pull transfer is when the [=Consumer=]'s data plane initiates retrieval of dat
 example, after the [=Provider=] has issued a [Transfer Start Message](#transfer-start-message), the [=Consumer=] can
 request the data from the [=Provider=]-specified endpoint.
 
-![](./figures/pull-transfer-process.png "Pull Transfer Process")
+![](figures/pull-transfer-process.png "Pull Transfer Process")
 
 _Note that the illustration of the sequence is only exemplary. The activation of actors is not determined, also,
 responses, parameters, possible recursions, and interactions between the components of one participant are not shown._
@@ -76,7 +76,7 @@ The TP states are:
 
 The TP state machine is represented in the following diagram:
 
-![](./figures/transfer-process-state-machine.png "Transfer Process State Machine")
+![](figures/transfer-process-state-machine.png "Transfer Process State Machine")
 
 Transitions marked with `C` indicate a message sent by the [=Consumer=], transitions marked with `P` indicate
 a [=Provider=] message. Terminal states are final; the state machine may not transition to another state.
@@ -94,9 +94,9 @@ Further Dataspace specifications may define additional optional serialization fo
 | **Sent by**         | [=Consumer=]                                                                                                                          |
 | **Resulting state** | `REQUESTED`                                                                                                                           |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                                                                        |
-| **Schema**          | [JSON Schema](./message/schema/transfer-request-message-schema.json) |
-| **Example**         | [Message](./message/example/transfer-request-message.json)                                                                            |
-| **Diagram(s)**      | ![](./message/diagram/transfer-request-message.png "Transfer Request Message")                                                        |
+| **Schema**          | [JSON Schema](message/schema/transfer-request-message-schema.json) |
+| **Example**         | [Message](message/example/transfer-request-message.json)                                                                            |
+| **Diagram(s)**      | ![](message/diagram/transfer-request-message.png "Transfer Request Message")                                                        |
 
 The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
 
@@ -134,9 +134,9 @@ again, the [=Provider=] should respond with an appropriate [Transfer Start Messa
 | **Sent by**         | [=Provider=]                                                               |
 | **Resulting state** | `STARTED`                                                                  |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)             |
-| **Schema**          | [JSON Schema](./message/schema/transfer-start-message-schema.json)         |
-| **Example**         | [Message](./message/example/transfer-start-message.json)                   |
-| **Diagram(s)**      | ![](./message/diagram/transfer-start-message.png "Transfer Start Message") |
+| **Schema**          | [JSON Schema](message/schema/transfer-start-message-schema.json)         |
+| **Example**         | [Message](message/example/transfer-start-message.json)                   |
+| **Diagram(s)**      | ![](message/diagram/transfer-start-message.png "Transfer Start Message") |
 
 The Transfer Start Message is sent by the [=Provider=] to indicate the data transfer has been initiated.
 
@@ -156,9 +156,9 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 | **Sent by**         | [=Consumer=], [=Provider=]                                                           |
 | **Resulting state** | `SUSPENDED`                                                                          |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                       |
-| **Schema**          | [JSON Schema](./message/schema/transfer-suspension-message-schema.json)              |
-| **Example**         | [Message](./message/example/transfer-suspension-message.json)                        |
-| **Diagram(s)**      | ![](./message/diagram/transfer-suspension-message.png "Transfer Suspension Message") |
+| **Schema**          | [JSON Schema](message/schema/transfer-suspension-message-schema.json)              |
+| **Example**         | [Message](message/example/transfer-suspension-message.json)                        |
+| **Diagram(s)**      | ![](message/diagram/transfer-suspension-message.png "Transfer Suspension Message") |
 
 The Transfer Suspension Message is sent by the [=Provider=] or [=Consumer=] when either of them needs to temporarily
 suspend the TP.
@@ -170,9 +170,9 @@ suspend the TP.
 | **Sent by**         | [=Consumer=], [=Provider=]                                                           |
 | **Resulting state** | `COMPLETED`                                                                          |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                       |
-| **Schema**          | [JSON Schema](./message/schema/transfer-completion-message-schema.json)              |
-| **Example**         | [Message](./message/example/transfer-completion-message.json)                        |
-| **Diagram(s)**      | ![](./message/diagram/transfer-completion-message.png "Transfer Completion Message") |
+| **Schema**          | [JSON Schema](message/schema/transfer-completion-message-schema.json)              |
+| **Example**         | [Message](message/example/transfer-completion-message.json)                        |
+| **Diagram(s)**      | ![](message/diagram/transfer-completion-message.png "Transfer Completion Message") |
 
 The Transfer Completion Message is sent by the [=Provider=] or [=Consumer=] when a data transfer has completed. Note
 that some [=Connector=] implementations may optimize completion
@@ -186,9 +186,9 @@ need to be sent.
 | **Sent by**         | [=Consumer=], [=Provider=]                                                             |
 | **Resulting state** | `TERMINATED`                                                                           |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                         |
-| **Schema**          | [JSON Schema](./message/schema/transfer-termination-message-schema.json)               |
-| **Example**         | [Message](./message/example/transfer-termination-message.json)                         |
-| **Diagram(s)**      | ![](./message/diagram/transfer-termination-message.png "Transfer Termination Message") |
+| **Schema**          | [JSON Schema](message/schema/transfer-termination-message-schema.json)               |
+| **Example**         | [Message](message/example/transfer-termination-message.json)                         |
+| **Diagram(s)**      | ![](message/diagram/transfer-termination-message.png "Transfer Termination Message") |
 
 The Transfer Termination Message is sent by the [=Provider=] or [=Consumer=] at any point except a terminal state to
 indicate the TP should stop and be placed in a terminal state. If the termination was due to an error, the sender may
@@ -204,9 +204,9 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 |                |                                                                |
 |----------------|----------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                     |
-| **Schema**     | [JSON Schema](./message/schema/transfer-process-schema.json)   |
-| **Example**    | [Process](./message/example/transfer-process.json)             |
-| **Diagram(s)** | ![](./message/diagram/transfer-process.png "Transfer Process") |
+| **Schema**     | [JSON Schema](message/schema/transfer-process-schema.json)   |
+| **Example**    | [Process](message/example/transfer-process.json)             |
+| **Diagram(s)** | ![](message/diagram/transfer-process.png "Transfer Process") |
 
 The Transfer Process is an object returned by a [=Consumer=] or [=Provider=] indicating a successful state change
 happened.
@@ -216,9 +216,9 @@ happened.
 |                |                                                            |
 |----------------|------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                 |
-| **Schema**     | [JSON Schema](./message/schema/transfer-error-schema.json) |
-| **Example**    | [Process](./message/example/transfer-error.json)           |
-| **Diagram(s)** | ![](./message/diagram/transfer-error.png "Transfer Error") |
+| **Schema**     | [JSON Schema](message/schema/transfer-error-schema.json) |
+| **Example**    | [Process](message/example/transfer-error.json)           |
+| **Diagram(s)** | ![](message/diagram/transfer-error.png "Transfer Error") |
 
 The Transfer Error is an object returned by a [=Consumer=] or [=Provider=] indicating an error has occurred. It does not
 cause a state transition.

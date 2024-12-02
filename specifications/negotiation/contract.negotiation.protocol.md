@@ -33,7 +33,7 @@ The CN states are:
 
 The CN state machine is represented in the following diagram:
 
-!["Contract Negotiation State Machine"](./figures/contract.negotiation.state.machine.png "Contract Negotiation State Machine")
+!["Contract Negotiation State Machine"](figures/contract.negotiation.state.machine.png "Contract Negotiation State Machine")
 
 Transitions marked with `C` indicate a message sent by the [=Consumer=], transitions marked with `P` indicate
 a [=Provider=] message. Terminal states are final; the state machine may not transition to another state. A new CN may
@@ -57,9 +57,9 @@ as abstract message types.
 | **Sent by**         | [=Consumer=]                                                                                                                            |
 | **Resulting state** | `REQUESTED`, `TERMINATED`                                                                                                               |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                          |
-| **Schema**          | [JSON Schema](./message/schema/contract-request-message-schema.json)   |
-| **Example**         | Initiating [Message](./message/example/contract-request-message_initial.json), [Message](./message/example/contract-offer-message.json) |
-| **Diagram(s)**      | ![](./message/diagram/contract-request-message.png "Contract Request Message")                                                          |
+| **Schema**          | [JSON Schema](message/schema/contract-request-message-schema.json)   |
+| **Example**         | Initiating [Message](message/example/contract-request-message_initial.json), [Message](message/example/contract-offer-message.json) |
+| **Diagram(s)**      | ![](message/diagram/contract-request-message.png "Contract Request Message")                                                          |
 
 The Contract Request Message is sent by a [=Consumer=] to initiate a CN or to respond to
 a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
@@ -85,9 +85,9 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 | **Sent by**         | [=Provider=]                                                                                                                                                                                                                                            |
 | **Resulting state** | `OFFERED`, `TERMINATED`                                                                                                                                                                                                                                 |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                                                                                                          |
-| **Schema**          | [JSON Schema](./message/schema/contract-offer-message-schema.json)                                                                                                                       |
-| **Example**         | [Example Initial Message](./message/example/contract-offer-message_initial.json), [Example Message](./message/example/contract-offer-message.json)                                                                                                      |
-| **Diagram(s)**      | ![](./message/diagram/contract-offer-message_initial.png "Initial Contract Offer message (note the missing `consumerPid`)") <p/> ![](./message/diagram/contract-offer-message.png "Contract Offer Message following a [[[#contract-request-message]]]") |
+| **Schema**          | [JSON Schema](message/schema/contract-offer-message-schema.json)                                                                                                                       |
+| **Example**         | [Example Initial Message](message/example/contract-offer-message_initial.json), [Example Message](message/example/contract-offer-message.json)                                                                                                      |
+| **Diagram(s)**      | ![](message/diagram/contract-offer-message_initial.png "Initial Contract Offer message (note the missing `consumerPid`)") <p/> ![](message/diagram/contract-offer-message.png "Contract Offer Message following a [[[#contract-request-message]]]") |
 
 The Contract Offer Message is sent by a [=Provider=] to initiate a CN or to respond to
 a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
@@ -108,9 +108,9 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
 | **Sent by**         | [=Provider=]                                                                                                                              |
 | **Resulting state** | `AGREED`, `TERMINATED`                                                                                                                    |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                            |
-| **Schema**          | [JSON Schema](./message/schema/contract-agreement-message-schema.json) |
-| **Example**         | [Message](./message/example/contract-agreement-message.json)                                                                              |
-| **Diagram(s)**      | ![](./message/diagram/contract-agreement-message.png "Contract Agreement Message")                                                        |
+| **Schema**          | [JSON Schema](message/schema/contract-agreement-message-schema.json) |
+| **Example**         | [Message](message/example/contract-agreement-message.json)                                                                              |
+| **Diagram(s)**      | ![](message/diagram/contract-agreement-message.png "Contract Agreement Message")                                                        |
 
 The Contract Agreement Message is sent by a [=Provider=] when it agrees to a contract. It contains the
 complete [=Agreement=].
@@ -134,9 +134,9 @@ complete [=Agreement=].
 | **Sent by**         | [=Consumer=]                                                                                                                                                        |
 | **Resulting state** | `VERIFIED`, `TERMINATED`                                                                                                                                            |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                      |
-| **Schema**          | [JSON Schema](./message/schema/contract-agreement-verification-message-schema.json) |
-| **Example**         | [Message](./message/example/contract-agreement-verification-message.json)                                                                                           |
-| **Diagram(s)**      | ![](./message/diagram/contract-agreement-verification-message.png "Contract Agreement Verification Message")                                                        |
+| **Schema**          | [JSON Schema](message/schema/contract-agreement-verification-message-schema.json) |
+| **Example**         | [Message](message/example/contract-agreement-verification-message.json)                                                                                           |
+| **Diagram(s)**      | ![](message/diagram/contract-agreement-verification-message.png "Contract Agreement Verification Message")                                                        |
 
 The Contract Agreement Verification Message is sent by a [=Consumer=] to verify the acceptance of an [=Agreement=].
 
@@ -150,9 +150,9 @@ The Contract Agreement Verification Message is sent by a [=Consumer=] to verify 
 | **Sent by**         | [=Consumer=], [=Provider=]                                                                                                                                |
 | **Resulting state** | `FINALIZED`, `ACCEPTED`, `TERMINATED`                                                                                                                     |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                            |
-| **Schema**          | [JSON Schema](./message/schema/contract-negotiation-event-message-schema.json) |
-| **Example**         | [Message](./message/example/contract-negotiation-event-message.json)                                                                                      |
-| **Diagram(s)**      | ![](./message/diagram/contract-negotiation-event-message.png "Contract Negotiation Event Message")                                                        |
+| **Schema**          | [JSON Schema](message/schema/contract-negotiation-event-message-schema.json) |
+| **Example**         | [Message](message/example/contract-negotiation-event-message.json)                                                                                      |
+| **Diagram(s)**      | ![](message/diagram/contract-negotiation-event-message.png "Contract Negotiation Event Message")                                                        |
 
 When the Contract Negotiation Event Message is sent by a [=Provider=] with an `eventType` property set to `FINALIZED`,
 an [=Agreement=] has been finalized and the associated [=Dataset=] is accessible. The state machine is transitioned to
@@ -177,9 +177,9 @@ terminal state.
 | **Sent by**         | [=Consumer=], [=Provider=]                                                                                                                                            |
 | **Resulting state** | `TERMINATED`                                                                                                                                                          |
 | **Response**        | [ACK](#ack-contract-negotiation) or [ERROR](#error-contract-negotiation-error)                                                                                        |
-| **Schema**          | [JSON Schema](./message/schema/contract-negotiation-termination-message-schema.json) |
-| **Example**         | [Message](./message/example/contract-negotiation-termination-message.json)                                                                                            |
-| **Diagram(s)**      | ![](./message/diagram/contract-negotiation-termination-message.png "Contract Negotiation Termination message")                                                        |
+| **Schema**          | [JSON Schema](message/schema/contract-negotiation-termination-message-schema.json) |
+| **Example**         | [Message](message/example/contract-negotiation-termination-message.json)                                                                                            |
+| **Diagram(s)**      | ![](message/diagram/contract-negotiation-termination-message.png "Contract Negotiation Termination message")                                                        |
 
 The Contract Negotiation Termination Message is sent by a [=Consumer=] or [=Provider=] indicating it has cancelled the
 CN sequence. The message can be sent at any state of a CN without providing an explanation. Nevertheless, the sender may
@@ -202,9 +202,9 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 |                |                                                                                                                               |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                                                                                    |
-| **Schema**     | [JSON Schema](./message/schema/contract-negotiation-schema.json) |
-| **Example**    | [Process](./message/example/contract-negotiation.json)                                                                        |
-| **Diagram(s)** | ![](./message/diagram/contract-negotiation.png "Contract Negotiation ACK")                                                    |
+| **Schema**     | [JSON Schema](message/schema/contract-negotiation-schema.json) |
+| **Example**    | [Process](message/example/contract-negotiation.json)                                                                        |
+| **Diagram(s)** | ![](message/diagram/contract-negotiation.png "Contract Negotiation ACK")                                                    |
 
 The Contract Negotiation is an object returned by a [=Consumer=] or [=Provider=] indicating a successful state change
 happened.
@@ -214,9 +214,9 @@ happened.
 |                |                                                                                                                                           |
 |----------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | **Sent by**    | [=Consumer=], [=Provider=]                                                                                                                |
-| **Schema**     | [JSON Schema](./message/schema/contract-negotiation-error-schema.json) |
-| **Example**    | [Error](./message/example/contract-negotiation-error.json)                                                                                |
-| **Diagram(s)** | ![](./message/diagram/contract-negotiation-error.png "Contract Negotiation Error")                                                        |
+| **Schema**     | [JSON Schema](message/schema/contract-negotiation-error-schema.json) |
+| **Example**    | [Error](message/example/contract-negotiation-error.json)                                                                                |
+| **Diagram(s)** | ![](message/diagram/contract-negotiation-error.png "Contract Negotiation Error")                                                        |
 
 The Contract Negotiation Error is an object returned by a [=Consumer=] or [=Provider=] indicating an error has occurred.
 It does not cause a state transition.

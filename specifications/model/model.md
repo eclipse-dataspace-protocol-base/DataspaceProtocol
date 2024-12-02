@@ -14,7 +14,7 @@ a Dataspace. This may require additional concepts, which are not in the scope of
 The definitions below are therefore informative and not-normative.
 The relationships between the primary [=Dataspace=] entities are defined as follows:
 
-![](./m.dataspace.relationships.png "Information Model Relationships")
+![](figures/m.dataspace.relationships.png "Information Model Relationships")
 
 Note that all relationships are multiplicities unless specified. `Dataspace Authority` and `Dataspace Registry` are non-normative entities.
 
@@ -34,7 +34,7 @@ The following concepts are therefore normative.
 
 The diagram below depicts the relationships between [=Participant Agent=] types:
 
-![](./m.participant.entities.png "Class Diagram Participant Agent")
+![](figures/m.participant.entities.png "Class Diagram Participant Agent")
 
 - A [=Catalog Service=] is a [=Participant Agent=] that makes a [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) available to other [=Participants=].
 - A [=Catalog=] contains one or more [=Datasets=], which are [DCAT Datasets](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset). A [=Catalog=] also contains **_at least one_** [DCAT DataService](https://www.w3.org/TR/vocab-dcat-3/#Class:Data_Service) that references a [=Connector=] where [=Datasets=] may be obtained.
@@ -69,7 +69,7 @@ An [=Offer=] is an [ODRL Offer](https://www.w3.org/TR/odrl-model/#policy-offer) 
 
 - An ODRL `uid` is represented as an "@id" that is a unique identifier. (ODRL PROFILE)
 - The [=Offer=] must be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
-- The value of the `target` attribute is the dataset id. Except if the [Offer][Catalog](./terminology.md#offer) is used in an enclosing [=Catalog=] or [=Dataset=], then the there must not be any `target` attribute set.
+- The value of the `target` attribute is the dataset id. Except if the [Offer][Catalog](terminology.md#offer) is used in an enclosing [=Catalog=] or [=Dataset=], then the there must not be any `target` attribute set.
 
 ### Agreement
 

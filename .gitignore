@@ -7,8 +7,6 @@
 *.zip
 *.tar.gz
 *.rar
-# only top level images
-*.png
 
 .idea
 *.iml
