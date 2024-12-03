@@ -1,6 +1,3 @@
-import org.eclipse.dsp.generation.SchemaTableGeneratorPlugin
-import org.eclipse.dsp.generation.SchemaTableGeneratorPluginExtension
-
 /*
  *  Copyright (c) 2024 Metaform Systems, Inc.
  *
@@ -20,27 +17,15 @@ plugins {
     checkstyle
 }
 
-apply<SchemaTableGeneratorPlugin>();
-
 repositories {
     mavenCentral()
-}
-
-configure<SchemaTableGeneratorPluginExtension> {
-    schemaPrefix = "https://w3id.org/dspace/2024/1/"
-    schemaFileSuffix = "-schema.json"
 }
 
 dependencies {
     implementation("com.networknt:json-schema-validator:1.5.2") {
         exclude("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml")
     }
-
     testImplementation("org.assertj:assertj-core:3.26.3")
-    testImplementation("com.apicatalog:titanium-json-ld:1.4.1")
-    testImplementation("org.glassfish:jakarta.json:2.0.1")
-    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")
-    testImplementation("com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.18.0")
 }
 
 testing {
