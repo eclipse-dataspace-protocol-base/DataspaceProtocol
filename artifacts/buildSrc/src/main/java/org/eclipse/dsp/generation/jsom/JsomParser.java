@@ -220,7 +220,6 @@ public class JsomParser {
                         .description("")
                         .build();
             }
-            // FIXME support anyOf, oneOf
             return SchemaProperty.Builder.newInstance()
                     .name(name)
                     .types(Set.of(ANY.getName()))
