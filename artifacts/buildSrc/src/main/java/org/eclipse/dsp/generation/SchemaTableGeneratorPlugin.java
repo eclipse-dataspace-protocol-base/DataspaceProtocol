@@ -35,7 +35,9 @@ import static java.util.Objects.requireNonNull;
  */
 public class SchemaTableGeneratorPlugin implements Plugin<Project> {
     private static final String TASK_NAME = "generateTablesFromSchemas";
-    public static final String CONFIG_NAME = "schemaTableGenerator";
+    private static final String CONFIG_NAME = "schemaTableGenerator";
+    private static final String GENERATED = "generated";
+    private static final String TABLES = "tables";
 
     private final SchemaTypeTransformer<String> htmlTransformer = new HtmlTableTransformer();
 
@@ -44,7 +46,7 @@ public class SchemaTableGeneratorPlugin implements Plugin<Project> {
         var extension = project.getExtensions().create(CONFIG_NAME, SchemaTableGeneratorPluginExtension.class);
 
         project.task(TASK_NAME).doLast(task -> {
-            var tablesDir = task.getProject().getLayout().getBuildDirectory().dir("generated").get().dir("tables").getAsFile();
+            var tablesDir = task.getProject().getLayout().getBuildDirectory().dir(GENERATED).get().dir(TABLES).getAsFile();
             //noinspection ResultOfMethodCallIgnored
             tablesDir.mkdirs();
             var sourceSet = requireNonNull(project.getExtensions()
