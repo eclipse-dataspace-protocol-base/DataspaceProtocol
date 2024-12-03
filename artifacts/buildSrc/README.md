@@ -1,6 +1,6 @@
 # Introduction
 
-This directory contains the Schema Table Generator plugin. The generates readable type information in HTML for Json
+This directory contains the Schema Table Generator plugin. The plugin generates readable type information in HTML for Json
 schema definitions found in the project source set.
 
 For example:
