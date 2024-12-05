@@ -58,27 +58,24 @@ authorization.
 
 A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `negotiations/:providerPid`:
 
-```http request
-GET https://provider.com/negotiations/:providerPid
+<aside class="example" title="Get Negotiation Request">
+    <pre class="http">GET https://provider.com/negotiations/:providerPid
+Authorization: ...</pre>
 
-Authorization: ...
+</aside>
 
-```
 
 ##### Response
 
 If the CN is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
 containing the [Contract Negotiation](#ack-contract-negotiation):
 
-```json
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiation",
-  "dspace:providerPid": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:state": "REQUESTED"
-}  
-```
+<aside class="example" title="Contract Negotiation Response">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
+    </pre>
+</aside>
+
+
 
 Predefined states are: `REQUESTED`, `OFFERED`, `ACCEPTED`, `AGREED`, `VERIFIED`, `FINALIZED`, and `TERMINATED` (
 see [[[#contract-negotiation-states]]]).
@@ -93,23 +90,12 @@ A CN is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs an
 initiating [Contract Request Message](#contract-request-message)
 to `negotiations/request`:
 
-```http request
-POST https://provider.com/negotiations/request
-
-Authorization: ...
-
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractRequestMessage",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:offer": {
-    "@type": "odrl:Offer",
-    "@id": "...",
-    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
-  },
-  "dspace:callbackAddress": "https://..."
-}
-```
+<aside class="example" title="Contract Request">
+    <pre class="http">POST https://provider.com/negotiations/request
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-request-message.json">
+    </pre>
+</aside>
 
 - The `callbackAddress` property specifies the base endpoint `URL` where the client receives messages associated with
   the CN. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
@@ -123,15 +109,10 @@ Authorization: ...
 The [=Provider=] must return an HTTP 201 (Created) response with a body containing
 the [Contract Negotiation](#ack-contract-negotiation):
 
-```json
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiation",
-  "dspace:providerPid": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:state": "REQUESTED"
-}
-```
+<aside class="example" title="Contract Negotiation Response">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
+    </pre>
+</aside>
 
 ### The `negotiations/:providerPid/request` Endpoint _(Provider-side)_
 
@@ -143,23 +124,12 @@ A [=Consumer=] may make an [=Offer=] by POSTing
 a [Contract Request Message](#contract-request-message)
 to `negotiations/:providerPid/request`:
 
-```http request
-POST https://provider.com/negotiations/:providerPid/request
-
-Authorization: ...
-
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractRequestMessage",
-  "dspace:providerPid": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:offer": {
-    "@type": "odrl:Offer",
-    "@id": "...",
-    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
-  }
-}
-```
+<aside class="example" title="Contract Request">
+    <pre class="http">POST https://provider.com/negotiations/:providerPid/request
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-request-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -176,19 +146,12 @@ A [=Consumer=] can POST
 a [Contract Negotiation Event Message](#contract-negotiation-event-message)
 to `negotiations/:providerPid/events` to accept the current [=Provider=]'s [=Offer=].
 
-```http request
-POST https://provider.com/negotiations/:providerPid/events
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiationEventMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:eventType": "dspace:ACCEPTED"
-}
-```
+<aside class="example" title="Contract Negotiation Event Request">
+    <pre class="http">POST https://provider.com/negotiations/:providerPid/events
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-negotiation-event-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -209,18 +172,12 @@ The [=Consumer=] can POST
 a [Contract Agreement Verification Message](#contract-agreement-verification-message)
 to verify an [=Agreement=].
 
-```http request
-POST https://provider.com/negotiations/:providerPid/agreement/verification
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractAgreementVerificationMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833"
-}
-```
+<aside class="example" title="Contract Agreement Verification Request">
+    <pre class="http">POST https://provider.com/negotiations/:providerPid/agreement/verification
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-agreement-verification-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -237,22 +194,12 @@ The [=Consumer=] can POST
 a [Contract Negotiation Termination Message](#contract-negotiation-termination-message)
 to terminate a CN.
 
-```http request
-POST https://provider.com/negotiations/:providerPid/termination
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiationTerminationMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
-```
+<aside class="example" title="Contract Negotiation Termination Request">
+    <pre class="http">POST https://provider.com/negotiations/:providerPid/termination
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-negotiation-termination-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -287,23 +234,12 @@ resolved URL will be `https://consumer.com/callback/negotiations/:consumerPid/of
 A CN is started and placed in the `OFFERED` state when a [=Provider=] POSTs
 a [Contract Offer Message](#contract-offer-message) to `negotiations/offers`:
 
-```http request
-POST https://consumer.com/negotiations/offers
-
-Authorization: ...
-
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractOfferMessage",
-  "dspace:providerPid": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
-  "dspace:offer": {
-    "@type": "odrl:Offer",
-    "@id": "...",
-    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
-  },
-  "dspace:callbackAddress": "https://..."
-}
-```
+<aside class="example" title="Contract Offer Request">
+    <pre class="http">POST https://consumer.com/negotiations/offers
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-offer-message.json">
+    </pre>
+</aside>
 
 - The `callbackAddress` property specifies the base endpoint URL where the client receives messages associated with the
   CN. Support for the HTTPS scheme is required. Implementations may optionally support other URL schemes.
@@ -317,15 +253,10 @@ Authorization: ...
 The [=Consumer=] must return an HTTP 201 (Created) response with a body containing
 the [Contract Negotiation](#ack-contract-negotiation):
 
-```json
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiation",
-  "dspace:providerPid": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:state": "OFFERED"
-}
-```
+<aside class="example" title="Contract Negotiation Response">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
+    </pre>
+</aside>
 
 ### The `negotiations/:consumerPid/offers` Endpoint _(Consumer-side)_
 
@@ -336,27 +267,12 @@ the [Contract Negotiation](#ack-contract-negotiation):
 A [=Provider=] may make an [=Offer=] by POSTing a [Contract Offer Message](#contract-offer-message) to
 the `negotiations/:consumerPid/offers` callback:
 
-```http request
-POST https://consumer.com/:callback/negotiations/:consumerPid/offers
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractOfferMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:offer": {
-    "@type": "odrl:Offer",
-    "@id": "urn:uuid:6bcea82e-c509-443d-ba8c-8eef25984c07",
-    "odrl:target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
-    "dspace:providerId": "urn:tsdshhs636378",
-    "dspace:consumerId": "urn:jashd766",
-    ...
-  },
-  "dspace:callbackAddress": "https://......"
-}
-```
+<aside class="example" title="Contract Offer Request">
+    <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/offers
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-offer-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -372,28 +288,12 @@ not specified and clients are not required to process it.
 The [=Provider=] can POST a [Contract Agreement Message](#contract-agreement-message) to
 the `negotiations/:consumerPid/agreement` callback to create an [=Agreement=].
 
-```http request
-POST https://consumer.com/:callback/negotiations/:consumerPid/agreement
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractAgreementMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:agreement": {
-    "@id": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
-    "@type": "odrl:Agreement",
-    "odrl:target": "urn:uuid:3dd1add4-4d2d-569e-d634-8394a8836d23",
-    "dspace:timestamp": "2023-01-01T01:00:00Z",
-    "dspace:providerId": "urn:tsdshhs636378",
-    "dspace:consumerId": "urn:jashd766",
-    ...
-  },
-  "dspace:callbackAddress": "https://......"
-}
-```
+<aside class="example" title="Contract Agreement Request">
+    <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/agreement
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-agreement-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -409,19 +309,12 @@ not specified and clients are not required to process it.
 A [=Provider=] can POST a [Contract Negotiation Event Message](#contract-negotiation-event-message) to
 the `negotiations/:consumerPid/events` callback with an `eventType` of `FINALIZED` to finalize an [=Agreement=].
 
-```http request
-POST https://consumer.com/:callback/negotiations/:consumerPid/events
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiationEventMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:eventType": "dspace:FINALIZED"
-}
-```
+<aside class="example" title="Contract Negotiation Event Request">
+    <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/events
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-negotiation-event-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -437,22 +330,12 @@ not specified and clients are not required to process it.
 The [=Provider=] can POST a [Contract Negotiation Termination Message](#contract-negotiation-termination-message) to
 terminate a CN.
 
-```http request
-POST https://consumer.com/negotiations/:consumerPid/termination
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:ContractNegotiationTerminationMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
-```
+<aside class="example" title="Contract Negotiation Termination Request">
+    <pre class="http">POST https://consumer.com/negotiations/:consumerPid/termination
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/contract-negotiation-termination-message.json">
+    </pre>
+</aside>
 
 ##### Response
 

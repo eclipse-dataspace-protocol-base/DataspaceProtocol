@@ -32,17 +32,12 @@ a [Catalog Error](#error-catalog-error) in the response body.
 
 The [Catalog Request Message](#catalog-request-message) corresponds to `POST https://<base>/catalog/request`:
 
-```http request
-POST https://provider.com/catalog/request
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:CatalogRequestMessage",
-  "dspace:filter": {}
-}
-```
+<aside class="example" title="Catalog Request Message Request">
+    <pre class="http">POST https://provider.com/catalog/request
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/catalog-request-message.json">
+    </pre>
+</aside>
 
 - The `Authorization` header is optional if the [=Catalog Service=] does not require authorization. If present, the
   contents of the `Authorization` header are detailed in
@@ -68,17 +63,12 @@ the [=Catalog Protocol=]).
 The [Dataset Request Message](#dataset-request-message) corresponds
 to `GET https://<base>/catalog/datasets/:id}`:
 
-```http request
-GET https://provider.com/catalog/datasets/{id}
-
-Authorization: ...
-
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:DatasetRequestMessage",
-  "dspace:dataset": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
-}
-```
+<aside class="example" title="Dataset Request Message Request">
+    <pre class="http">GET https://provider.com/catalog/datasets/{id}
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/dataset-request-message.json">
+    </pre>
+</aside>
 
 - The `Authorization` header is optional if the [=Catalog Service=] does not require authorization. If present, the
   contents of the `Authorization` header are detailed in
@@ -108,7 +98,7 @@ Link: <https://provider.com/catalog?continuationToken=f59892315ac44de8ab4bdc9014
 
 {
   "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dcat:Catalog",
+  "@type": "Catalog",
   ...
 }
 ```
@@ -120,7 +110,7 @@ Link: <https://provider.com/catalog?continuationToken=a59779015bn44de8ab4bfc9014
 Link: <https://provider.com/catalog?continuationToken=f59892315ac44de8ab4bdc9014502d52>; rel="next"
 
 {
-   "@type": "dcat:Catalog",
+   "@type": "Catalog",
    ...
 }
 ```
@@ -131,7 +121,7 @@ Last page response:
 Link: <https://provider.com/catalog?continuationToken=bn9556075bn44de8ab4bfc9014582t76>; rel="previous"
 
 {
-   "@type": "dcat:Catalog",
+   "@type": "Catalog",
    ...
 }
 ```
