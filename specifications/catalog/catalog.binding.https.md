@@ -142,20 +142,3 @@ Link: <https://provider.com/catalog?continuationToken=bn9556075bn44de8ab4bfc9014
 a [Catalog Request](#catalog-request-message) by setting the `Content-Encoding` header to `gzip` as described in
 the [HTTP 1.1 Specification](https://www.rfc-editor.org/rfc/rfc9110.html#name-gzip-coding).
 
-## The Well-Known Proof Metadata Endpoint
-
-When an implementation supports protected [=Datasets=], it may offer a proof metadata
-endpoint clients can use to determine proof requirements. If the implementation offers a proof data endpoint, it must
-use the `dspace-trust` Well-Known Uniform Resource Identifier [[rfc8615]] at the top
-of the path hierarchy:
-
-```
-/.well-known/dspace-trust
-```
-
-The contents of the response is a JSON object defined by individual trust specifications and not defined here.
-
-Note that if multiple [=Connectors=] are hosted under the same base URL,
-an arbitrary path segment appended to the base well-known URL can be used, for
-example, `https://example.com/.well-known/dspace-trust/connector1.` In this case, the document retrievable at
-the `dspace-trust` path segment must contain all the child paths.
