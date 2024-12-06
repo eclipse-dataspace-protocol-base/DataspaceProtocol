@@ -50,25 +50,22 @@ If the client is not authorized, the [=Consumer=] or [=Provider=] must return an
 
 A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `transfers/:providerPid`:
 
-```http request
-GET https://provider.com/transfers/:providerPid
-Authorization: ...
-```
+<aside class="example" title="Get Transfers Request">
+    <pre class="http">GET https://provider.com/transfers/:providerPid
+Authorization: ...</pre>
+</aside>
 
 ##### Response
 
 If the TP is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
 containing the [Transfer Process](#ack-transfer-process):
 
-```json
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferProcess",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:state": "dspace:REQUESTED"
-} 
-```
+<aside class="example" title="Transfer Process Response">
+    <pre class="http">GET https://provider.com/transfers/:providerPid
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-process.json">
+    </pre>
+</aside>
 
 Predefined states are: `REQUESTED`, `STARTED`, `SUSPENDED`, `REQUESTED`, `COMPLETED`, and `TERMINATED`.
 
@@ -81,35 +78,12 @@ Predefined states are: `REQUESTED`, `STARTED`, `SUSPENDED`, `REQUESTED`, `COMPLE
 A TP is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs
 a [Transfer Request Message](#transfer-request-message) to `transfers/request`:
 
- ```http request
-POST https://provider.com/transfers/request
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferRequestMessage",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:agreementId": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
-  "dct:format": "example:HTTP_PUSH",
-  "dspace:dataAddress": {
-    "@type": "dspace:DataAddress",
-    "dspace:endpointType": "https://w3id.org/idsa/v4.1/HTTP",
-    "dspace:endpoint": "http://example.com",
-    "dspace:endpointProperties": [
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authorization",
-        "dspace:value": "TOKEN-ABCDEFG"
-      },
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authType",
-        "dspace:value": "bearer"
-      }
-    ]
-  },
-  "dspace:callbackAddress": "https://......"
-}
- ```
+<aside class="example" title="Transfer Request">
+    <pre class="http">POST https://provider.com/transfers/request
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-request-message.json">
+    </pre>
+</aside>
 
 - The `callbackAddress` property specifies the base endpoint `URL` where the client receives messages associated with
   the TP. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
@@ -123,15 +97,10 @@ Authorization: ...
 The [=Provider=] must return an HTTP 201 (Created) response with a body containing
 the [Transfer Process](#ack-transfer-process):
 
-```json
-{
-  "@context": "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferProcess",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:state": "dspace:REQUESTED"
-}
-```
+<aside class="example" title="Transfer Process Response">
+    <pre class="json" data-include="message/example/transfer-process.json">
+    </pre>
+</aside>
 
 ### The `transfers/:providerPid/start` Endpoint _(Provider-side)_
 
@@ -142,33 +111,12 @@ the [Transfer Process](#ack-transfer-process):
 The [=Consumer=] can POST a [Transfer Start Message](#transfer-start-message) to
 attempt to start a TP after it has been suspended:
 
- ```http request
-POST https://provider.com/transfers/:providerPid/start
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferStartMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:dataAddress": {
-    "@type": "dspace:DataAddress",
-    "dspace:endpointType": "https://w3id.org/idsa/v4.1/HTTP",
-    "dspace:endpoint": "http://example.com",
-    "dspace:endpointProperties": [
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authorization",
-        "dspace:value": "TOKEN-ABCDEFG"
-      },
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authType",
-        "dspace:value": "bearer"
-      }
-    ]
-  }
-}
- ```
+<aside class="example" title="Transfer Start Request">
+    <pre class="http">POST https://provider.com/transfers/:providerPid/start
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-start-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -184,16 +132,12 @@ not specified and clients are not required to process it.
 The [=Consumer=] can POST a [Transfer Completion Message](#transfer-completion-message)
 to complete a TP:
 
- ```http request
-POST https://provider.com/transfers/:providerPid/completion
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferCompletionMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833"
-}
- ```
+<aside class="example" title="Transfer Completion Request">
+    <pre class="http">POST https://provider.com/transfers/:providerPid/completion
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-completion-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -209,20 +153,12 @@ not specified and clients are not required to process it.
 The [=Consumer=] can POST
 a [Transfer Termination Message](#transfer-termination-message) to terminate a TP:
 
- ```http request
-POST https://provider.com/transfers/:providerPid/termination
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferTerminationMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
- ```
+<aside class="example" title="Transfer Termination Request">
+    <pre class="http">POST https://provider.com/transfers/:providerPid/termination
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-termination-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -238,20 +174,12 @@ not specified and clients are not required to process it.
 The [=Consumer=] can POST a [Transfer Suspension Message](#transfer-suspension-message)
 to suspend a TP:
 
- ```http request
-POST https://provider.com/transfers/:providerPid/suspension
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferSuspensionMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
- ```
+<aside class="example" title="Transfer Suspension Request">
+    <pre class="http">POST https://provider.com/transfers/:providerPid/suspension
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-suspension-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -284,33 +212,12 @@ be `https://consumer.com/callback/transfers/:consumerPid/start`.
 The [=Provider=] can POST a [Transfer Start Message](#transfer-start-message) to
 indicate the start of a TP:
 
- ```http request
-POST https://consumer.com/:callback/transfers/:consumerPid/start
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferStartMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:dataAddress": {
-    "@type": "dspace:DataAddress",
-    "dspace:endpointType": "https://w3id.org/idsa/v4.1/HTTP",
-    "dspace:endpoint": "http://example.com",
-    "dspace:endpointProperties": [
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authorization",
-        "dspace:value": "TOKEN-ABCDEFG"
-      },
-      {
-        "@type": "dspace:EndpointProperty",
-        "dspace:name": "authType",
-        "dspace:value": "bearer"
-      }
-    ]
-  }
-}
- ```
+<aside class="example" title="Transfer Start Request">
+    <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/start
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-start-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -326,16 +233,12 @@ not specified and clients are not required to process it.
 The [=Provider=] can POST a [Transfer Completion Message](#transfer-completion-message)
 to complete a TP:
 
- ```http request
-POST https://consumer.com/:callback/transfers/:consumerPid/completion
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferCompletionMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833"
-}
- ```
+<aside class="example" title="Transfer Completion Request">
+    <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/completion
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-completion-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -351,20 +254,12 @@ not specified and clients are not required to process it.
 The [=Provider=] can POST
 a [Transfer Termination Message](#transfer-termination-message) to terminate a TP:
 
- ```http request
-POST https://consumer.com/:callback/transfers/:consumerPid/termination
-Authorization: ...
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferTerminationMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
- ```
+<aside class="example" title="Transfer Termination Request">
+    <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/termination
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-termination-message.json">
+    </pre>
+</aside>
 
 ##### Response
 
@@ -380,20 +275,12 @@ not specified and clients are not required to process it.
 The [=Provider=] can POST a [Transfer Suspension Message](#transfer-suspension-message)
 to suspend a TP:
 
- ```http request
-POST https://consumer.com/:callback/transfers/:consumerPid/suspension
-Authorization: ... 
-{
-  "@context":  "https://w3id.org/dspace/2024/1/context.json",
-  "@type": "dspace:TransferSuspensionMessage",
-  "dspace:providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "dspace:consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-  "dspace:code": "...",
-  "dspace:reason": [
-    ...
-  ]
-}
- ```
+<aside class="example" title="Transfer Suspension Request">
+    <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/suspension
+Authorization: ...</pre>
+    <pre class="json" data-include="message/example/transfer-suspension-message.json">
+    </pre>
+</aside>
 
 ##### Response
 

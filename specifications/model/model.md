@@ -2,8 +2,7 @@
 
 The following sections outline the Dataspace Information Model, which form the foundation of this specification.
 Some aspects of this section describe additional concepts of Dataspaces and provide context for the Dataspace Protocol,
-those are considered as non-normative. Further information on the functional requirements of a Dataspace can be found  for example in
-the [IDSA Rulebook](https://docs.internationaldataspaces.org/idsa-rulebook).
+those are considered as non-normative.
 
 ## Dataspace Entity Relationships
 
@@ -23,9 +22,7 @@ Note that all relationships are multiplicities unless specified. `Dataspace Auth
 - A [=Participant=] is a member of one or more [=Dataspaces=]. A [=Participant=] registers [=Participant Agents=] that perform tasks on its behalf.
 - A [=Participant Agent=] performs tasks such as publishing a [=Catalog=] or engaging in a [=Transfer Process=]. In order to accomplish these tasks, a [=Participant Agent=] may use a _**verifiable presentation**_ generated from a _**credential**_ obtained from a third-party [=Credential Issuer=]. A [=Participant Agent=] may also use an _**ID token**_ issued by a third-party [=Identity Provider=]. Note that a [=Participant Agent=] is a logical construct and does not necessarily correspond to a single runtime process.
 - An [=Identity Provider=] is a trust anchor that generates `ID tokens` used to verify the identity of a [=Participant Agent=]. Multiple identity providers may operate in a [=Dataspace=]. The types and semantics of ID tokens are not part of this specification. An [=Identity Provider=] may be a third-party or a [=Participant=] itself (for example, in the case of decentralized identifiers).
-- A [=Credential Issuer=] issues _verifiable credentials_ used by [=Participant Agents=] to allow access to [Datasets=] and verify usage control.
-
-Further non-normative information on the context of the Dataspace Protocol can be found for example in the [IDSA Rulebook](https://docs.internationaldataspaces.org/idsa-rulebook).
+- A [=Credential Issuer=] issues _verifiable credentials_ used by [=Participant Agents=] to allow access to [=Datasets=] and verify usage control.
 
 ### Dataspace Protocol specific
 
