@@ -4,7 +4,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "#/definitions/Dataset"
+      "$ref": "#/definitions/RootDataset"
     }
   ],
   "$id": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json",
@@ -45,6 +45,22 @@
       "required": [
         "hasPolicy",
         "distribution"
+      ]
+    },
+    "RootDataset": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Dataset"
+        }
+      ],
+      "properties": {
+        "@context": {
+          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+        }
+      },
+      "required": [
+        "@context"
       ]
     },
     "Resource": {
