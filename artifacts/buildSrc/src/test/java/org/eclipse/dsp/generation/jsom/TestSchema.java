@@ -142,9 +142,11 @@ public interface TestSchema {
                           "type": "string"
                         },
                         "assigner": {
+                          "$comment" :"The dataset provider",
                           "type": "string"
                         },
                         "assignee": {
+                          "$comment" :"The dataset consumer",
                           "type": "string"
                         },
                         "timestamp": {

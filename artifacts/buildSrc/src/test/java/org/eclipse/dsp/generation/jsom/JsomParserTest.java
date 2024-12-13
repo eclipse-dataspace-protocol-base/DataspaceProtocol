@@ -46,6 +46,11 @@ class JsomParserTest {
         assertThat(agreement.getTransitiveRequiredProperties().size()).isEqualTo(5);
         assertThat(agreement.getTransitiveOptionalProperties().size()).isEqualTo(4);
 
+        assertThat(agreement.getRequiredProperties())
+                .filteredOn(p -> p.getName().equals("assignee"))
+                .first()
+                .extracting(p -> p.getResolvedProperty().getDescription())
+                .isEqualTo("The dataset consumer");
 
     }
 

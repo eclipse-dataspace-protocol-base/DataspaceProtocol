@@ -8,7 +8,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  *
  *  Contributors:
- *       SAP SE - extension to catalog request message 
+ *       SAP SE - extension to catalog request message
  *
  */
 

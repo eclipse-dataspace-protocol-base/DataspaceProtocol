@@ -33,8 +33,8 @@ class HtmlTableTransformerTest {
 
     @Test
     void verifyTransform() {
-        var barType = new SchemaType("Bar");
-        var fooType = new SchemaType("Foo");
+        var barType = new SchemaType("Bar", "object", "https://test.com/foo");
+        var fooType = new SchemaType("Foo", "object", "https://test.com/foo");
 
         var prop1 = SchemaProperty.Builder.newInstance()
                 .name("prop1")
@@ -68,9 +68,7 @@ class HtmlTableTransformerTest {
 
         var result = transformer.transform(fooType);
 
-        assertThat(result.contains("<td class=\"message-class\" colspan=\"3\">Foo</td><")).isTrue(); // verify type name
-        assertThat(result.contains("Required properties</td>")).isTrue(); // verify required properties
-        assertThat(result.contains("Optional properties</td>")).isTrue(); // verify optional properties
+        assertThat(result.contains("<td class=\"message-class\" colspan=\"4\">Foo</td><")).isTrue(); // verify type name
         assertThat(result.contains("<td>string</td>")).isTrue(); // verify property type names are included
         assertThat(result.contains("array[Bar]")).isTrue();  // verify array type names are included
     }

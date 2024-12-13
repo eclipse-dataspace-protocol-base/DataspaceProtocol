@@ -34,9 +34,6 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
     private final Set<SchemaType> resolvedTypes = new TreeSet<>();
     private final Set<ElementDefinition> itemTypes = new TreeSet<>();
 
-    private SchemaProperty() {
-    }
-
     public String getName() {
         return name;
     }
@@ -79,6 +76,9 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
             b.append(" [").append(constantValue).append("]");
         }
         return b.toString();
+    }
+
+    private SchemaProperty() {
     }
 
     public static final class Builder {
