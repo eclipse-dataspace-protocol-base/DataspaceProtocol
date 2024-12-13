@@ -30,6 +30,7 @@ import static java.util.stream.Stream.concat;
 import static org.eclipse.dsp.generation.jsom.ElementDefinition.Type.CONSTANT;
 import static org.eclipse.dsp.generation.jsom.ElementDefinition.Type.REFERENCE;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ALL_OF;
+import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.COMMENT;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONST;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONTAINS;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.DEFINITIONS;
@@ -211,25 +212,26 @@ public class JsomParser {
     @SuppressWarnings("unchecked")
     private SchemaProperty parseProperty(String name, Map<String, Object> value) {
         var type = value.get(TYPE);
+        var comment = value.containsKey(COMMENT) ? value.get(COMMENT).toString() : "";
         if (type == null) {
             var ref = value.get(REF);
             if (ref != null) {
                 return SchemaProperty.Builder.newInstance()
                         .name(name)
                         .types(Set.of((String) ref))
-                        .description("")
+                        .description(comment)
                         .build();
             }
             return SchemaProperty.Builder.newInstance()
                     .name(name)
                     .types(Set.of(ANY.getName()))
-                    .description("")
+                    .description(comment)
                     .build();
         } else if (ARRAY.getBaseType().equals(type)) {
             var property = SchemaProperty.Builder.newInstance()
                     .name(name)
                     .types(Set.of((String) type))
-                    .description("");
+                    .description(comment);
             var items = value.get(ITEMS);
             if (items instanceof Map) {
                 property.itemTypes(parseElementDefinition((Map<String, Object>) items));
@@ -239,7 +241,7 @@ public class JsomParser {
             var builder = SchemaProperty.Builder.newInstance()
                     .name(name)
                     .types(Set.of((String) type))
-                    .description("");
+                    .description(comment);
             var constantValue = value.get(CONST);
             if (constantValue != null) {
                 builder.constantValue(constantValue.toString());

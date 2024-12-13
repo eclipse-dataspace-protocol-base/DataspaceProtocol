@@ -56,7 +56,7 @@ public class SchemaType implements Comparable<SchemaType> {
      * Ctor for base Json types.
      */
     public SchemaType(String name) {
-        this(name, "any", JSON_BASE_URI);
+        this(name, name, JSON_BASE_URI);
         this.jsonBaseType = true;
     }
 

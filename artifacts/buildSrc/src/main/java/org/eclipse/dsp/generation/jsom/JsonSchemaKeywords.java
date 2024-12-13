@@ -21,6 +21,7 @@ public interface JsonSchemaKeywords {
     String REF = "$ref";
     String ALL_OF = "allOf";
     String ANY_OF = "anyOf";
+    String COMMENT = "$comment";
     String CONST = "const";
     String CONTAINS = "contains";
     String DEFINITIONS = "definitions";

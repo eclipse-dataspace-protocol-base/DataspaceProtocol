@@ -39,22 +39,22 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
     @NotNull
     public String transform(SchemaType schemaType) {
         var builder = new StringBuilder(CSS).append("<table class=\"message-table\">");
-        builder.append(format("<tr><td class=\"message-class\" colspan=\"3\">%s</td></tr>", schemaType.getName()));
-        transformProperties("Required", schemaType.getTransitiveRequiredProperties(), builder);
-        transformProperties("Optional", schemaType.getTransitiveOptionalProperties(), builder);
+        builder.append(format("<tr><td class=\"message-class\" colspan=\"4\">%s</td></tr>", schemaType.getName()));
+        transformProperties(schemaType.getTransitiveRequiredProperties(), true, builder);
+        transformProperties(schemaType.getTransitiveOptionalProperties(), false, builder);
         return builder.append("</table>").toString();
     }
 
-    private void transformProperties(String title, Set<SchemaPropertyReference> references, StringBuilder builder) {
+    private void transformProperties(Set<SchemaPropertyReference> references, boolean required, StringBuilder builder) {
         if (!references.isEmpty()) {
-            builder.append(format("<tr><td class=\"message-properties-heading\" colspan=\"3\">%s properties</td></tr>", title));
-            references.forEach(propertyReference -> transformProperty(propertyReference, builder));
+            references.forEach(propertyReference -> transformProperty(propertyReference, required, builder));
         }
     }
 
-    private void transformProperty(SchemaPropertyReference propertyReference, StringBuilder builder) {
+    private void transformProperty(SchemaPropertyReference propertyReference, boolean required, StringBuilder builder) {
         builder.append("<tr>");
         builder.append(format("<td class=\"code\">%s</td>", propertyReference.getName()));
+        builder.append("<td>").append(required ? "required" : "optional").append("</td>");
         var resolvedProperty = propertyReference.getResolvedProperty();
         if (resolvedProperty != null) {
             String resolvedTypes = "";
