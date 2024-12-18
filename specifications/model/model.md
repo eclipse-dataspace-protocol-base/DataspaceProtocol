@@ -48,7 +48,7 @@ The diagram below depicts the relationships between [=Participant Agent=] types:
 
 - A [=Catalog Service=] is a [=Participant Agent=] that makes a DCAT [=Catalog=] available to other [=Participants=].
 - A [=Catalog=] contains one or more [=Datasets=], which are DCAT [=Datasets=]. A [=Catalog=] also contains *
-  *_at least one_** DCAT [=DataService=] that references a [=Connector=] where [=Datasets=] may be obtained.
+  *_at least one_** DCAT [=Data Service=] that references a [=Connector=] where [=Datasets=] may be obtained.
 - A [=Dataset=] has **_at least one_** [=Offer=], which is an ODRL [=Offer=] describing the [=Usage Policy=] associated
   with the [=Dataset=].
 - A [=Connector=] is a [=Participant Agent=] that performs [=Contract Negotiation=] and [=Transfer Process=] operations
@@ -78,7 +78,7 @@ A [=Catalog=] is a DCAT [=Catalog=] with the following attributes:
 
 - 0..N [=Datasets=]. Since a [=Catalog=] may be dynamically generated for a request based on the
   requesting [=Participant=]'s credentials it is possible for it to contain 0 matching [=Datasets=].
-- 1..N DCAT [=DataService=] that references a [=Connector=] where [=Datasets=] may be obtained. 
+- 1..N DCAT [=Data Service=] that references a [=Connector=] where [=Datasets=] may be obtained. 
 
 ### Dataset
 
@@ -87,7 +87,7 @@ A [=Dataset=] has the following attributes:
 - 1..N `hasPolicy` attributes that contain an ODRL [=Offer=] defining the [=Usage Policy=] associated with
   the [=Dataset=]. *
   *_Offers must NOT contain any target attributes. The target of an [=Offer=] is the associated [=Dataset=]._**
-- 1..N DCAT [=Distributions=]. Each distribution must have at least one `DataService` which specifies where the
+- 1..N DCAT `Distributions`. Each must have at least one `DataService` which specifies where the
   distribution
   is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=]
   and [=Transfer Process=].

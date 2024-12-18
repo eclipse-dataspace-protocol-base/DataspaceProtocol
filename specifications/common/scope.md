@@ -20,9 +20,8 @@ The specifications are organized into the following documents:
 
 * [__*Dataspace Model*__](#dataspace-information-model) and [__*Dataspace Terminology*__](#terminology) documents that
   define key terms.
-* [__*Common Functionalities*__](#general-common-protocol-requirements) and their [__*Binding in HTTPS*
-  __](#general-common-protocol-requirement-bindings) declares cross-cutting functions as, e.g., the declaration of
-  supported versions of this Dataspace Protocol.
+* [__*Common Functionalities*__](#general-common-protocol-requirements) declares cross-cutting functions as, e.g., the declaration of
+  supported versions of this Dataspace Protocol and common data processing rules.
 * [__*Catalog Protocol*__](#catalog-protocol) and [__*Catalog HTTPS Binding*__](#catalog-https-binding) documents that
   define how [=Catalogs=] are published and accessed as HTTPS endpoints respectively.
 * [__*Contract Negotiation Protocol*__](#contract-negotiation-protocol) and [__*Contract Negotiation HTTPS Binding*

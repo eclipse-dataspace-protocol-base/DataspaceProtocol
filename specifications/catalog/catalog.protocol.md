@@ -13,10 +13,6 @@ Servers have no obligation to process properties that are not part of the schema
 
 ## Message Types
 
-All messages must be serialized in JSON-LD compact form as specified in
-the [JSON-LD 1.1 Processing Algorithms and API](https://www.w3.org/TR/json-ld11-api/#compaction-algorithms). 
-Further [=Dataspace=] specifications may define additional optional serialization formats.
-
 ### Catalog Request Message
 
 |                     |                                                                              |
