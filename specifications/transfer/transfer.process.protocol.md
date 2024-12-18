@@ -83,10 +83,6 @@ a [=Provider=] message. Terminal states are final; the state machine may not tra
 
 ## Message Types
 
-All messages must be serialized in JSON-LD compact form as specified in
-the [JSON-LD 1.1 Processing Algorithms and API](https://www.w3.org/TR/json-ld11-api/#compaction-algorithms) [[json-ld11-api]].
-Further Dataspace specifications may define additional optional serialization formats.
-
 ### Transfer Request Message
 
 |                     |                                                                                                                                       |
@@ -103,7 +99,7 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
 - The `consumerPid` property refers to the transfer id of the [=Consumer=] side.
 - The `agreementId` property refers to an existing contract [=Agreement=] between the [=Consumer=] and [=Provider=].
 - The `dct:format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
-  the [=Agreement=]. This is generally obtained from the [=Provider=]'s [Catalog](../model/terminology.md#catalog).
+  the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
 - The `dataAddress` property must only be provided if the `dct:format` requires a push transfer.
 - The `dataAddress` contains a transport-specific endpoint address for pushing the data. It may include a temporary
   authorization via the `endpointProperties` property.
@@ -222,10 +218,3 @@ happened.
 
 The Transfer Error is an object returned by a [=Consumer=] or [=Provider=] indicating an error has occurred. It does not
 cause a state transition.
-
-| Field         | Type          | Description                                                 |
-|---------------|---------------|-------------------------------------------------------------|
-| `consumerPid` | UUID          | The TF unique id on [=Consumer=] side.                      |
-| `providerPid` | UUID          | The TF unique id on [=Provider=] side.                      |
-| `code`        | string        | An optional implementation-specific error code.             |
-| `reasons`     | Array[object] | An optional array of implementation-specific error objects. |
