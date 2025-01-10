@@ -50,9 +50,12 @@ Authorization: ...</pre>
 ##### Response
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
-a [Catalog](#ack-catalog) (which is a
-profiled [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) type described by
-the [=Catalog Protocol=]).
+a [Catalog](#ack-catalog) (which is a profiled [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) type described by the [=Catalog Protocol=]).
+
+<aside class="example" title="Catalog Response">
+    <pre class="json" data-include="message/example/catalog.json">
+    </pre>
+</aside>
 
 ### The `catalog/datasets/:id` Endpoint (Provider-side)
 
@@ -77,9 +80,12 @@ Authorization: ...</pre>
 ##### Response
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
-a [Dataset](#ack-dataset) (which is
-a [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) type described by
-the [=Catalog Protocol=]).
+a [Dataset](#ack-dataset) (which isa [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) type described by the [=Catalog Protocol=]).
+
+<aside class="example" title="Dataset Response">
+    <pre class="json" data-include="message/example/dataset.json">
+    </pre>
+</aside>
 
 ## Technical Considerations
 

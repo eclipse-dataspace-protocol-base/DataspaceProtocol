@@ -47,8 +47,7 @@ as abstract message types.
 - Concrete wire formats are defined by the protocol binding, e.g., [Contract Negotiation HTTPS Binding](#contract-negotiation-https-binding).
 - All [=Policy=] types ([=Offer=], [=Agreement=]) must contain an unique identifier in the form of a URI. GUIDs can also
   be used in the form of URNs, for instance following the pattern <urn:uuid:{GUID}>.
-- An [ODRL Agreement](https://www.w3.org/TR/odrl-vocab/#term-Agreement) must have a target property containing
-  the [=Dataset=] id.
+- An ODRL [=Agreement=] must have a target property containing the [=Dataset=] id.
 
 ### Contract Request Message
 
@@ -96,7 +95,7 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
   does not include a `consumerPid`, a new CN will be created on [=Consumer=] side and the [=Consumer=] selects an
   appropriate `consumerPid`.
 - The [=Dataset=] id is not required but can be included when the [=Provider=] initiates a CN.
-- Different to a [=Dataset=] (see [DCAT Vocabulary Mapping](#dcat-vocabulary-mapping)),
+- Different to a [=Dataset=],
   the Offer inside a ContractOfferMessage must have an `odrl:target` attribute. However, it's contained Rules must not
   have any `odrl:target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
@@ -116,7 +115,7 @@ The Contract Agreement Message is sent by a [=Provider=] when it agrees to a con
 complete [=Agreement=].
 
 - The message must contain a `consumerPid` and a `providerPid`.
-- The message must contain an [ODRL Agreement](https://www.w3.org/TR/odrl-vocab/#term-Agreement).
+- The message must contain an ODRL [=Agreement=].
 - An [=Agreement=] must contain a `timestamp` property defined as
   an [XSD DateTime](https://www.w3schools.com/XML/schema_dtypes_date.asp) type.
 - An [=Agreement=] must contain an `assigner` and `assignee`. The contents of these properties are a dataspace-specific
