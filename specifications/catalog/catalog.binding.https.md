@@ -69,7 +69,6 @@ to `GET https://<base>/catalog/datasets/:id}`:
 <aside class="example" title="Dataset Request Message Request">
     <pre class="http">GET https://provider.com/catalog/datasets/{id}
 Authorization: ...</pre>
-    <pre class="json" data-include="message/example/dataset-request-message.json">
     </pre>
 </aside>
 
