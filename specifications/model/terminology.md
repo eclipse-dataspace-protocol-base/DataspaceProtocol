@@ -46,9 +46,9 @@ Data or a technical service that can be shared by a [=Participant=].
 
 A set of technical services that facilitate interoperable [=Dataset=] sharing between entities.
 
-<dfn>Dataspace Authority</dfn>
+<dfn>Dataspace Governance Authority</dfn>
 
-An entity that manages a [=Dataspace=]. The form and capabilities of a Dataspace Authority are not covered in these specifications.
+An entity that manages a [=Dataspace=]. The form and capabilities of a Dataspace Governance Authority are not covered in these specifications.
 
 <dfn data-lt="Dataspace Registry" >Dataspace Registration Service</dfn> (Dataspace Registry)
 

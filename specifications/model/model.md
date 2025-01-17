@@ -15,12 +15,12 @@ The relationships between the primary [=Dataspace=] entities are defined as foll
 
 ![](figures/m.dataspace.relationships.png "Information Model Relationships")
 
-Note that all relationships are multiplicities unless specified. `Dataspace Authority` and `Dataspace Registry` are
+Note that all relationships are multiplicities unless specified. `Dataspace Governance Authority` and `Dataspace Registry` are
 non-normative entities.
 
-- A [=Dataspace Authority=] manages one or more [=Dataspaces=]. This will include [=Participant=] registration and may
-  entail mandating business and/or technical requirements. For example, a [=Dataspace Authority=] may
-  require [=Participants=] to obtain some form of business certification. A [=Dataspace Authority=] may also impose
+- A [=Dataspace Governance Authority=] manages one or more [=Dataspaces=]. This will include [=Participant=] registration and may
+  entail mandating business and/or technical requirements. For example, a [=Dataspace Governance Authority=] may
+  require [=Participants=] to obtain some form of business certification. A [=Dataspace Governance Authority=] may also impose
   technical requirements such as support for the technical enforcement of specific usage policies.
 - A [=Dataspace Registry=] records dataspace participants.
 - A [=Participant=] is a member of one or more [=Dataspaces=]. A [=Participant=] registers [=Participant Agents=] that
@@ -58,7 +58,7 @@ The diagram below depicts the relationships between [=Participant Agent=] types:
 ## Classes
 
 Not all [=Dataspace=] entities have a concrete _technical_ materialization; some entities may exist as purely logical
-constructs. For example, a [=Dataspace Authority=] and a [=Participant Agent=] have no representation in the protocol
+constructs. For example, a [=Dataspace Governance Authority=] and a [=Participant Agent=] have no representation in the protocol
 message flows that constitute [=Dataspace=] interactions. This section outlines the classes that comprise the concrete
 elements of the model, i.e., those that are represented in protocol message flows.
 
