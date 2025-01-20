@@ -1,5 +1,20 @@
 # General Common Protocol Requirements
 
+## Authorization
+
+All requests to HTTPS endpoints should use the `Authorization` header to include an authorization token. The semantics
+of such tokens are not part of these specifications. The `Authorization` HTTP header is optional if the [=Connector=]
+does not require authorization.
+
+## Schemas, Contexts, and Message Processing
+
+All protocol messages are normatively defined by a [[json-schema]]. This specification also uses JSON-LD 1.1 and provides
+a JSON-LD context to serialize data structures and message types as it facilitates extensibility. The JSON-LD context is
+designed to produce message serializations using compaction that validate against the Json Schema for the given message
+type. This allows implementations to choose whether to process messages as plain Json or as JSON-LD and maintain
+interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide similar contexts that
+facilitate this approach to interoperability.
+
 ## Exposure of Dataspace Protocol Versions
 
 ### Generic Definition
@@ -25,11 +40,11 @@ offers version `1.0` endpoints at `<host>/some/path/v1`.
 }
 ```
 
-This data object must comply to the [JSON Schema](schema/version-schema.json). The requesting [=Connector=] may select
+This data object must comply to the [JSON Schema](message/schema/protocol-version-schema.json). The requesting [=Connector=] may select
 from the endpoints in the response. If the [=Connector=] can't identify a matching Dataspace Protocol Version, it must
 terminate the communication.
 
-### HTTP Binding
+### HTTPS Binding
 
 #### The Well-Known Version Metadata Endpoint
 
@@ -45,17 +60,4 @@ The contents of the response is a JSON object defined in section [[[#exposure-of
 Note that if multiple [=Connectors=] are hosted under the same base URL, a path segment appended to the base well-known
 URL can be used, for example, `https://example.com/.well-known/dspace-version/connector1.`
 
-#### Authorization
-
-All requests to HTTPS endpoints should use the `Authorization` header to include an authorization token. The semantics
-of such tokens are not part of these specifications. The `Authorization` HTTP header is optional if the [=Connector=]
-does not require authorization.
-
-## Schemas, Contexts, and Message Processing
-
-All protocol messages are normatively defined by a [json-schema]. This specification also uses JSON-LD 1.1 and provides
-a JSON-LD context to serialize data structures and message types as it facilitates extensibility. The JSON-LD context is
-designed to produce message serializations using compaction that validate against the Json Schema for the given message
-type. This allows implementations to choose whether to process messages as plain Json or as JSON-LD and maintain
-interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide similar contexts that
-facilitate this approach to interoperability.
+The version endpoint MUST be unprotected and unversioned.
