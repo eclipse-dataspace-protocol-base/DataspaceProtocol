@@ -98,8 +98,8 @@ An [=Offer=] is an ODRL [=Offer=] with the following attributes:
 
 - An ODRL `uid` is represented as an "@id" that is a unique identifier.
 - The [=Offer=] must be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
-- The value of the `target` attribute is the dataset id. Except if the [Offer] is used in an enclosing [=Catalog=]
-  or [=Dataset=], then the there must not be any `target` attribute set.
+- The value of the `target` attribute is the dataset id. Except if the [=Offer=] is used in an enclosing [=Catalog=]
+  or [=Dataset=], then there must not be any `target` attribute set.
 
 ### Agreement
 
