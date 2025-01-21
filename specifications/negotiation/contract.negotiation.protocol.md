@@ -47,7 +47,7 @@ as abstract message types.
 - Concrete wire formats are defined by the protocol binding, e.g., [Contract Negotiation HTTPS Binding](#contract-negotiation-https-binding).
 - All [=Policy=] types ([=Offer=], [=Agreement=]) must contain an unique identifier in the form of a URI. GUIDs can also
   be used in the form of URNs, for instance following the pattern <urn:uuid:{GUID}>.
-- An ODRL [=Agreement=] must have a target property containing the [=Dataset=] id.
+- An [=Agreement=] must have a `target` property containing the [=Dataset=] id.
 
 ### Contract Request Message
 
@@ -73,8 +73,8 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 - The `callbackAddress` is a URL indicating where messages to the [=Consumer=] should be sent in asynchronous settings.
   If the address is not understood, the [=Provider=] MUST return an UNRECOVERABLE error.
 - Different to a [=Catalog=] or [=Dataset=], the [=Offer=] inside
-  a [Contract Request Message](#contract-request-message) must have an `odrl:target` attribute. However, it's contained
-  Rules must not have any `odrl:target` attributes to prevent inconsistencies with
+  a [Contract Request Message](#contract-request-message) must have a `target` attribute. However, it's contained
+  Rules must not have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
 ### Contract Offer Message
@@ -96,8 +96,8 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
   appropriate `consumerPid`.
 - The [=Dataset=] id is not required but can be included when the [=Provider=] initiates a CN.
 - Different to a [=Dataset=],
-  the Offer inside a ContractOfferMessage must have an `odrl:target` attribute. However, it's contained Rules must not
-  have any `odrl:target` attributes to prevent inconsistencies with
+  the Offer inside a ContractOfferMessage must have a `target` attribute. However, its contained Rules must not
+  have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
 ### Contract Agreement Message
@@ -115,14 +115,14 @@ The Contract Agreement Message is sent by a [=Provider=] when it agrees to a con
 complete [=Agreement=].
 
 - The message must contain a `consumerPid` and a `providerPid`.
-- The message must contain an ODRL [=Agreement=].
+- The message must contain an [=Agreement=].
 - An [=Agreement=] must contain a `timestamp` property defined as
   an [XSD DateTime](https://www.w3schools.com/XML/schema_dtypes_date.asp) type.
 - An [=Agreement=] must contain an `assigner` and `assignee`. The contents of these properties are a dataspace-specific
   unique identifier of the [=Agreement=] parties. Note that these identifiers are not necessarily the same as the
   identifiers of the [=Participant Agents=] negotiating the contract (
   e.g., [=Connectors=]).
-- An [=Agreement=] must contain a `odrl:target` property. None of its Rules, however, must have any `odrl:target`
+- An [=Agreement=] must contain a `target` property. None of its Rules, however, must have any `target`
   attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 

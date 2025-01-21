@@ -46,14 +46,14 @@ The diagram below depicts the relationships between [=Participant Agent=] types:
 
 ![](figures/m.participant.entities.png "Class Diagram Participant Agent")
 
-- A [=Catalog Service=] is a [=Participant Agent=] that makes a DCAT [=Catalog=] available to other [=Participants=].
-- A [=Catalog=] contains one or more [=Datasets=], which are DCAT [=Datasets=]. A [=Catalog=] also contains *
-  *_at least one_** DCAT [=Data Service=] that references a [=Connector=] where [=Datasets=] may be obtained.
-- A [=Dataset=] has **_at least one_** [=Offer=], which is an ODRL [=Offer=] describing the [=Usage Policy=] associated
+- A [=Catalog Service=] is a [=Participant Agent=] that makes a [=Catalog=] available to other [=Participants=].
+- A [=Catalog=] contains one or more [=Datasets=], which are [=Datasets=]. A [=Catalog=] also contains 
+  **_at least one_** [=Data Service=] that references a [=Connector=] where [=Datasets=] may be obtained.
+- A [=Dataset=] has **_at least one_** [=Offer=] describing the [=Usage Policy=] associated
   with the [=Dataset=].
 - A [=Connector=] is a [=Participant Agent=] that performs [=Contract Negotiation=] and [=Transfer Process=] operations
-  with another [=Connector=]. An outcome of a [=Contract Negotiation=] may be the production of an [=Agreement=], which
-  is an ODRL [=Agreement=] defining the [=Usage Policy=] agreed to for a [=Dataset=].
+  with another [=Connector=]. An outcome of a [=Contract Negotiation=] may be the production of an [=Agreement=]
+  defining the [=Usage Policy=] agreed to for a [=Dataset=].
 
 ## Classes
 
@@ -64,7 +64,7 @@ elements of the model, i.e., those that are represented in protocol message flow
 
 **_Note 1:_**
 The classes and definitions used in the Dataspace Protocol are reused from different standards and specifications as
-much as possible, in particular, DCAT [[vocab-dcat-3]] and ODRL [[odrl-model]]. As, however, the external definitions
+much as possible, in particular, DCAT [[?vocab-dcat-3]] and ODRL [[?odrl-model]]. As, however, the external definitions
 allow different interpretations or provide more attributes than required, the Dataspace Protocol is leveraging
 _profiles_ of the original definitions rather than the complete original expressiveness. A _profile_ in this sense is a
 restriction or subset of an external definition, enforcing that every occurrence of an externally defined class is
@@ -74,36 +74,36 @@ types of the Dataspace Protocol.
 
 ### Catalog
 
-A [=Catalog=] is a DCAT [=Catalog=] with the following attributes:
+A [=Catalog=] has the following attributes:
 
 - 0..N [=Datasets=]. Since a [=Catalog=] may be dynamically generated for a request based on the
   requesting [=Participant=]'s credentials it is possible for it to contain 0 matching [=Datasets=].
-- 1..N DCAT [=Data Service=] that references a [=Connector=] where [=Datasets=] may be obtained. 
+- 1..N [=Data Services=] that references a [=Connector=] where [=Datasets=] may be obtained. 
 
 ### Dataset
 
 A [=Dataset=] has the following attributes:
 
-- 1..N `hasPolicy` attributes that contain an ODRL [=Offer=] defining the [=Usage Policy=] associated with
-  the [=Dataset=]. *
-  *_Offers must NOT contain any target attributes. The target of an [=Offer=] is the associated [=Dataset=]._**
-- 1..N DCAT `Distributions`. Each must have at least one `DataService` which specifies where the
+- 1..N `hasPolicy` attributes that contain an [=Offer=] defining the [=Usage Policy=] associated with
+  the [=Dataset=]. 
+  **_Offers must NOT contain any target attributes. The target of an [=Offer=] is the associated [=Dataset=]._**
+- 1..N `Distributions`. Each must have at least one `DataService` which specifies where the
   distribution
   is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=]
   and [=Transfer Process=].
 
 ### Offer
 
-An [=Offer=] is an ODRL [=Offer=] with the following attributes:
+An [=Offer=] has the following attributes:
 
-- An ODRL `uid` is represented as an "@id" that is a unique identifier.
+- An `@id` that is a unique identifier.
 - The [=Offer=] must be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
 - The value of the `target` attribute is the dataset id. Except if the [=Offer=] is used in an enclosing [=Catalog=]
   or [=Dataset=], then there must not be any `target` attribute set.
 
 ### Agreement
 
-An [=Agreement=] is an ODRL [=Agreement=] with the following attributes:
+An [=Agreement=] has the following attributes:
 
 - The [=Agreement=] class must include one `target` attribute that is the identifier of the [=Dataset=]
   the [=Agreement=] is associated with. An [=Agreement=] is therefore associated with **EXACTLY ONE** [=Dataset=].
