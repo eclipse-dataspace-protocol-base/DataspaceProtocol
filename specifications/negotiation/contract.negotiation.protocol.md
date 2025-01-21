@@ -73,7 +73,7 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 - The `callbackAddress` is a URL indicating where messages to the [=Consumer=] should be sent in asynchronous settings.
   If the address is not understood, the [=Provider=] MUST return an UNRECOVERABLE error.
 - Different to a [=Catalog=] or [=Dataset=], the [=Offer=] inside
-  a [Contract Request Message](#contract-request-message) must have an `target` attribute. However, it's contained
+  a [Contract Request Message](#contract-request-message) must have a `target` attribute. However, it's contained
   Rules must not have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
@@ -96,7 +96,7 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
   appropriate `consumerPid`.
 - The [=Dataset=] id is not required but can be included when the [=Provider=] initiates a CN.
 - Different to a [=Dataset=],
-  the Offer inside a ContractOfferMessage must have an `target` attribute. However, it's contained Rules must not
+  the Offer inside a ContractOfferMessage must have a `target` attribute. However, its contained Rules must not
   have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
