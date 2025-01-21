@@ -50,7 +50,7 @@ Authorization: ...</pre>
 ##### Response
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
-a [Catalog](#ack-catalog) (which is a profiled [DCAT Catalog](https://www.w3.org/TR/vocab-dcat-3/#Class:Catalog) type described by the [=Catalog Protocol=]).
+a [Catalog](#ack-catalog).
 
 <aside class="example" title="Catalog Response">
     <pre class="json" data-include="message/example/catalog.json">
