@@ -51,7 +51,7 @@ public class ContractRequestMessageSchemaTest extends AbstractSchemaTest {
     private static final String REQUEST_ID = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2024/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.json"
                 ],
                 "@type": "ContractRequestMessage",
                 "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -66,7 +66,7 @@ public class ContractRequestMessageSchemaTest extends AbstractSchemaTest {
     private static final String REQUEST_INITIAL_ID = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2024/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.json"
                 ],
                 "@type": "ContractRequestMessage",
                 "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",

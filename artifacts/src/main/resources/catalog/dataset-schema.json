@@ -7,7 +7,7 @@
       "$ref": "#/definitions/RootDataset"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json",
   "definitions": {
     "AbstractDataset": {
       "type": "object",
@@ -20,7 +20,7 @@
             "hasPolicy": {
               "type": "array",
               "items": {
-                "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+                "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Offer"
               },
               "minItems": 1
             },
@@ -56,7 +56,7 @@
       ],
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         }
       },
       "required": [
@@ -80,7 +80,7 @@
         "hasPolicy": {
           "type": "array",
           "items": {
-            "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Offer"
+            "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Offer"
           },
           "minItems": 1
         },

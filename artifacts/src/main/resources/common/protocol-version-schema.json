@@ -7,7 +7,7 @@
             "$ref": "#/definitions/Version"
         }
     ],
-    "$id": "https://w3id.org/dspace/2024/1/common/version-schema.json",
+    "$id": "https://w3id.org/dspace/2025/1/common/version-schema.json",
     "definitions": {
         "Version": {
             "type": "object",

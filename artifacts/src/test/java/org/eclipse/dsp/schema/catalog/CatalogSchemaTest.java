@@ -40,7 +40,7 @@ public class CatalogSchemaTest extends AbstractSchemaTest {
     private static final String MINIMAL_CATALOG = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
               "@type": "Catalog",

@@ -7,7 +7,7 @@ hide empty description
 
 
 class "dspace:TransferProcess" {
-    @context : "https://w3id.org/dspace/2024/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.json"
     @type : "dspace:TransferProcess"
     dspace:providerPid : String
     dspace:consumerPid : String

@@ -50,7 +50,7 @@ public class InvalidContractNegotiationEventMessageSchemaTest extends AbstractSc
     private static final String INVALID_MESSAGE_NO_TYPE = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
                "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -61,7 +61,7 @@ public class InvalidContractNegotiationEventMessageSchemaTest extends AbstractSc
     private static final String INVALID_MESSAGE_NO_PROVIDER_ID = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -72,7 +72,7 @@ public class InvalidContractNegotiationEventMessageSchemaTest extends AbstractSc
     private static final String INVALID_MESSAGE_NO_CONSUMER_ID = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -83,7 +83,7 @@ public class InvalidContractNegotiationEventMessageSchemaTest extends AbstractSc
     private static final String INVALID_MESSAGE_NO_EVENT_TYPE = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -94,7 +94,7 @@ public class InvalidContractNegotiationEventMessageSchemaTest extends AbstractSc
     private static final String INVALID_MESSAGE_EVENT_TYPE = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

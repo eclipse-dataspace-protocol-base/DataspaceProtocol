@@ -7,13 +7,13 @@
       "$ref": "#/definitions/ContractOfferMessage"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/negotiation/contract-offer-message-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/negotiation/contract-offer-message-schema.json",
   "definitions": {
     "ContractOfferMessage": {
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "@type": {
           "type": "string",
@@ -28,7 +28,7 @@
         "offer": {
           "allOf": [
             {
-              "$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/MessageOffer"
+              "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/MessageOffer"
             },
             {
               "properties": {

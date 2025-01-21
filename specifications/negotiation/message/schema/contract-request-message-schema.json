@@ -7,14 +7,14 @@
 		"$ref": "#/definitions/ContractRequestMessage"
 	  }
 	],
-	"$id": "https://w3id.org/dspace/2024/1/negotiation/contract-request-message-schema.json",
+	"$id": "https://w3id.org/dspace/2025/1/negotiation/contract-request-message-schema.json",
 	"definitions": {
 		"ContractRequestMessage": {
 			"type": "object",
 			"properties": {
 				"@context": {
 					"type": "string",
-					"const": "https://w3id.org/dspace/2024/1/context.json"
+					"const": "https://w3id.org/dspace/2025/1/context.json"
 				},
 				"@type": {
 					"type": "string",
@@ -27,7 +27,7 @@
 					"type": "string"
 				},
 				"dspace:offer": {
-					"$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/MessageOffer"
+					"$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/MessageOffer"
 				},
 				"dspace:callbackAddress": {
 					"type" : "string"

@@ -7,13 +7,13 @@
       "$ref": "#/definitions/AbstractTransferCodeMessage"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/transfer/transfer-schema.json",
   "definitions": {
     "AbstractTransferCodeMessage": {
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "providerPid": {
           "type": "string"

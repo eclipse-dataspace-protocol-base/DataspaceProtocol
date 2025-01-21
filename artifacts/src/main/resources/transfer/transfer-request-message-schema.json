@@ -7,13 +7,13 @@
       "$ref": "#/definitions/TransferRequestMessage"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-request-message-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/transfer/transfer-request-message-schema.json",
   "definitions": {
     "TransferRequestMessage": {
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "@type": {
           "type": "string",
@@ -26,7 +26,7 @@
           "type": "string"
         },
         "dataAddress": {
-          "$ref": "https://w3id.org/dspace/2024/1/transfer/data-address-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/transfer/data-address-schema.json"
         },
         "callbackAddress": {
           "type": "string"

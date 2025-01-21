@@ -6,7 +6,7 @@
     "dct": "http://purl.org/dc/terms/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "odrl": "http://www.w3.org/ns/odrl/2/",
-    "dspace": "https://w3id.org/dspace/2024/1/",
+    "dspace": "https://w3id.org/dspace/2025/1/",
     "DatasetRequestMessage": {
       "@id": "dspace:DatasetRequestMessage",
       "@context": {

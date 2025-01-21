@@ -41,7 +41,7 @@ public class ContractNegotiationEventMessageSchemaTest extends AbstractSchemaTes
     private static final String ACCEPTED_EVENT_TYPE = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -53,7 +53,7 @@ public class ContractNegotiationEventMessageSchemaTest extends AbstractSchemaTes
     private static final String FINALIZED_EVENT_TYPE = """
              {
                "@context": [
-                 "https://w3id.org/dspace/2024/1/context.json"
+                 "https://w3id.org/dspace/2025/1/context.json"
                ],
                "@type": "ContractNegotiationEventMessage",
                "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

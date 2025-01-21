@@ -8,7 +8,7 @@
 @prefix cred: <https://www.w3.org/2018/credentials#> .
 @prefix sec: <https://w3id.org/security#> .
 
-@prefix dspace: <https://w3id.org/dspace/2024/1/> .
+@prefix dspace: <https://w3id.org/dspace/2025/1/> .
 @prefix dspace_shapes: <https://w3id.org/dspace/shapes/2024/1/> .
 
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -21,7 +21,7 @@ dspace_shapes:
 	] ;
 	sh:declare [
 		sh:prefix "dspace" ;
-		sh:namespace "https://w3id.org/dspace/2024/1/"^^xsd:anyURI ;
+		sh:namespace "https://w3id.org/dspace/2025/1/"^^xsd:anyURI ;
 	] ;
 .
 
