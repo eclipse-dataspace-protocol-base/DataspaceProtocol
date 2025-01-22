@@ -7,14 +7,14 @@
 		"$ref": "#/definitions/ContractAgreementMessage"
 	  }
 	],
-	"$id": "https://w3id.org/dspace/2025/1/negotiation/contract-agreement-message-schema.json",
+	"$id": "https://w3id.org/dspace/2024/1/negotiation/contract-agreement-message-schema.json",
 	"definitions": {
 		"ContractAgreementMessage": {
 			"type": "object",
 			"properties": {
 				"@context": {
 					"type": "string",
-					"const": "https://w3id.org/dspace/2025/1/context.json"
+					"const": "https://w3id.org/dspace/2024/1/context.json"
 				},
 				"@type": {
 					"type": "string",
@@ -27,7 +27,7 @@
 					"type": "string"
 				},
 				"dspace:agreement": {
-					"$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Agreement"
+					"$ref": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json#/definitions/Agreement"
 				},
 				"dspace:callbackAddress": {
 					"type" : "string"

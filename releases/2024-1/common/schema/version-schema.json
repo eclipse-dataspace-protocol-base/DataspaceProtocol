@@ -7,14 +7,14 @@
             "$ref": "#/definitions/Version"
         }
     ],
-    "$id": "https://w3id.org/dspace/2025/1/common/version-schema.json",
+    "$id": "https://w3id.org/dspace/2024/1/common/version-schema.json",
     "definitions": {
         "Version": {
             "type": "object",
             "properties": {
                 "@context": {
                     "type": "string",
-                    "const": "https://w3id.org/dspace/2025/1/context.json"
+                    "const": "https://w3id.org/dspace/2024/1/context.json"
                 },
                 "protocolVersions": {
                     "type": "array",

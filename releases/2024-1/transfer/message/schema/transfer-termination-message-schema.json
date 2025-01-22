@@ -7,14 +7,14 @@
 		"$ref": "#/definitions/TransferTerminationMessage"
 	  }
 	],
-	"$id": "https://w3id.org/dspace/2025/1/transfer/transfer-termination-message-schema.json",
+	"$id": "https://w3id.org/dspace/2024/1/transfer/transfer-termination-message-schema.json",
 	"definitions": {
 		"TransferTerminationMessage": {
 			"type": "object",
 			"properties": {
 				"@context": {
 					"type": "string",
-					"const": "https://w3id.org/dspace/2025/1/context.json"
+					"const": "https://w3id.org/dspace/2024/1/context.json"
 				},
 				"@type": {
 					"type": "string",
