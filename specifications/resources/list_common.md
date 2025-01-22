@@ -1,8 +1,6 @@
 # Common
 
-* [Context (json)](../commonchema/context.json)
-* [Definitions schema (json)](../commonchema/definitions.schema.json)
-* [Version schema (json)](../commonchema/version-schema.json)
-* [ODRL shape (ttl)](../common/shape/odrl-shapes.ttl)
-* [Version shape (ttl)](../common/shape/odrl-shapes.ttl)
-* [Diagram styles (puml)](../commontyle/diagram.styles.puml)
+* [Context (json)](../common/schema/context.json)
+* [Definitions schema (json)](../common/schema/definitions.schema.json)
+* [Version schema (json)](../common/schema/version-schema.json)
+* [Diagram styles (puml)](../common/style/diagram.styles.puml)
