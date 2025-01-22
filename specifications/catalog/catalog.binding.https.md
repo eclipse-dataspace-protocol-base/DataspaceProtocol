@@ -35,7 +35,7 @@ The [Catalog Request Message](#catalog-request-message) corresponds to `POST htt
 <aside class="example" title="Catalog Request Message Request">
     <pre class="http">POST https://provider.com/catalog/request
 Authorization: ...</pre>
-    <pre class="json" data-include="message/example/catalog-request-message.json">
+    <pre class="json" data-include="../../artifacts/src/main/resources/catalog/example/catalog-request-message.json">
     </pre>
 </aside>
 
@@ -53,7 +53,7 @@ If the request is successful, the [=Catalog Service=] must return an HTTP 200 (O
 a [Catalog](#ack-catalog).
 
 <aside class="example" title="Catalog Response">
-    <pre class="json" data-include="message/example/catalog.json">
+    <pre class="json" data-include="../../artifacts/src/main/resources/catalog/example/catalog.json">
     </pre>
 </aside>
 
@@ -82,7 +82,7 @@ If the request is successful, the [=Catalog Service=] must return an HTTP 200 (O
 a [Dataset](#ack-dataset) (which isa [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) type described by the [=Catalog Protocol=]).
 
 <aside class="example" title="Dataset Response">
-    <pre class="json" data-include="message/example/dataset.json">
+    <pre class="json" data-include="../../artifacts/src/main/resources/catalog/example/dataset.json">
     </pre>
 </aside>
 
