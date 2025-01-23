@@ -1,7 +1,7 @@
 @startuml "contract-negotiation-state-machine"
 !pragma layout smetana
 
-!include ../common/style/diagram.styles.puml
+!include ../../common/style/diagram.styles.puml
 
 hide empty description
 
