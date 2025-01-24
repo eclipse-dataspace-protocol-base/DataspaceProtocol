@@ -66,7 +66,7 @@ The plugin can be applied and configured as follows:
 apply<SchemaTableGeneratorPlugin>();
 
 configure<SchemaTableGeneratorPluginExtension> {
-    schemaPrefix = "https://w3id.org/dspace/2024/1/"
+    schemaPrefix = "https://w3id.org/dspace/2025/1/"
     schemaFileSuffix = "-schema.json"
 }
 ```

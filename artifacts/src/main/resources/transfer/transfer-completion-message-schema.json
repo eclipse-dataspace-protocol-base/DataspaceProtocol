@@ -7,13 +7,13 @@
       "$ref": "#/definitions/TransferCompletionMessage"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-completion-message-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/transfer/transfer-completion-message-schema.json",
   "definitions": {
     "TransferCompletionMessage": {
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "@type": {
           "type": "string",

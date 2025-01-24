@@ -7,13 +7,13 @@
       "$ref": "#/definitions/CatalogError"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/catalog/catalog-error-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/catalog/catalog-error-schema.json",
   "definitions": {
     "CatalogError": {
       "type": "object",
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "@type": {
           "type": "string",

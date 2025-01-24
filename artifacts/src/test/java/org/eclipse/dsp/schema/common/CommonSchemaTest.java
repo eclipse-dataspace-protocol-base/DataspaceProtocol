@@ -26,13 +26,13 @@ public class CommonSchemaTest extends AbstractSchemaTest {
     @Test
     void verifyContext() {
         var baseInput = """
-                ["https://w3id.org/dspace/2024/1/context.json"]
+                ["https://w3id.org/dspace/2025/1/context.json"]
                 """;
         assertThat(schema.validate(baseInput, JSON)).isEmpty();
 
         var multiValueInput = """
                 [
-                    "https://w3id.org/dspace/2024/1/context.json",
+                    "https://w3id.org/dspace/2025/1/context.json",
                     "https://test.com/context.json"
                 ]
                 """;

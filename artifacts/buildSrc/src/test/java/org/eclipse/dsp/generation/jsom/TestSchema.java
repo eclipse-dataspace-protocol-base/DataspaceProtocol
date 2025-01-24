@@ -29,7 +29,7 @@ public interface TestSchema {
                   "$ref": "#/definitions/Policy"
                 }
               ],
-              "$id": "https://w3id.org/dspace/2024/1/negotiation/contract-schema.json",
+              "$id": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json",
               "definitions": {
                 "Policy": {
                   "oneOf": [

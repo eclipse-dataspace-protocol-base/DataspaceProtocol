@@ -7,7 +7,7 @@
       "$ref": "#/definitions/RootCatalog"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/catalog/catalog-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/catalog/catalog-schema.json",
   "definitions": {
     "RootCatalog": {
       "type": "object",
@@ -18,7 +18,7 @@
       ],
       "properties": {
         "@context": {
-          "$ref": "https://w3id.org/dspace/2024/1/common/context-schema.json"
+          "$ref": "https://w3id.org/dspace/2025/1/common/context-schema.json"
         },
         "participantId": {
           "type": "string"
@@ -33,7 +33,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/AbstractDataset"
+          "$ref": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json#/definitions/AbstractDataset"
         },
         {
           "properties": {
@@ -44,7 +44,7 @@
             "dataset": {
               "type": "array",
               "items": {
-                "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/Dataset"
+                "$ref": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json#/definitions/Dataset"
               },
               "minItems": 1
             },
@@ -58,7 +58,7 @@
             "service": {
               "type": "array",
               "items": {
-                "$ref": "https://w3id.org/dspace/2024/1/catalog/dataset-schema.json#/definitions/DataService"
+                "$ref": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json#/definitions/DataService"
               },
               "minItems": 1
             }

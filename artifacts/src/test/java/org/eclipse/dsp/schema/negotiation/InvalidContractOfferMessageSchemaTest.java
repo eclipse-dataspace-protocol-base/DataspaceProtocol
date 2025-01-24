@@ -37,7 +37,7 @@ public class InvalidContractOfferMessageSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_MESSAGE_NO_TARGET = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "ContractOfferMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -58,7 +58,7 @@ public class InvalidContractOfferMessageSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_MESSAGE_NO_CALLBACK = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "ContractOfferMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

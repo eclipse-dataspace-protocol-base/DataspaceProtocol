@@ -7,12 +7,12 @@
       "$ref": "#/definitions/TransferError"
     }
   ],
-  "$id": "https://w3id.org/dspace/2024/1/transfer/transfer-error-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/transfer/transfer-error-schema.json",
   "definitions": {
     "TransferError": {
       "allOf": [
         {
-          "$ref": "https://w3id.org/dspace/2024/1/transfer/transfer-schema.json#definitions/AbstractTransferCodeMessage"
+          "$ref": "https://w3id.org/dspace/2025/1/transfer/transfer-schema.json#definitions/AbstractTransferCodeMessage"
         },
         {
           "properties": {

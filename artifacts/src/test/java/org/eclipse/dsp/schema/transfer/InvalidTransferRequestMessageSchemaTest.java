@@ -55,7 +55,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_TYPE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
               "agreementId": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
@@ -67,7 +67,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_CONSUMER_ID = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "agreementId": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
@@ -79,7 +79,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_AGREEMENT_ID = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -91,7 +91,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_FORMAT = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -103,7 +103,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_CALLBACK = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -115,7 +115,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_NO_DA_TYPE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -132,7 +132,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_NO_DA_ENDPOINT_TYPE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -149,7 +149,7 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_NO_DA_ENDPOINT = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",

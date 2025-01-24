@@ -68,7 +68,7 @@ public class CatalogErrorSchemaTest extends AbstractSchemaTest {
     private static final String VALID_NO_CODE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "CatalogError"
             }""";
@@ -76,7 +76,7 @@ public class CatalogErrorSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_CODE_TYPE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "CatalogError",
               "code": 123,
@@ -88,7 +88,7 @@ public class CatalogErrorSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_REASON = """
             {
               "@context": [
-                "https://w3id.org/dspace/2024/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.json"
               ],
               "@type": "CatalogError",
               "code": "123-A",
