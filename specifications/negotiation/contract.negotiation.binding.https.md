@@ -71,7 +71,7 @@ If the CN is found and the client is authorized, the [=Provider=] must return an
 containing the [Contract Negotiation](#ack-contract-negotiation):
 
 <aside class="example" title="Contract Negotiation Response">
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation.json">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
     </pre>
 </aside>
 
@@ -93,7 +93,7 @@ to `negotiations/request`:
 <aside class="example" title="Contract Request">
     <pre class="http">POST https://provider.com/negotiations/request
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-request-message.json">
+    <pre class="json" data-include="message/example/contract-request-message.json">
     </pre>
 </aside>
 
@@ -110,7 +110,7 @@ The [=Provider=] must return an HTTP 201 (Created) response with a body containi
 the [Contract Negotiation](#ack-contract-negotiation):
 
 <aside class="example" title="Contract Negotiation Response">
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation.json">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
     </pre>
 </aside>
 
@@ -127,7 +127,7 @@ to `negotiations/:providerPid/request`:
 <aside class="example" title="Contract Request">
     <pre class="http">POST https://provider.com/negotiations/:providerPid/request
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-request-message.json">
+    <pre class="json" data-include="message/example/contract-request-message.json">
     </pre>
 </aside>
 
@@ -149,7 +149,7 @@ to `negotiations/:providerPid/events` to accept the current [=Provider=]'s [=Off
 <aside class="example" title="Contract Negotiation Event Request">
     <pre class="http">POST https://provider.com/negotiations/:providerPid/events
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation-event-message.json">
+    <pre class="json" data-include="message/example/contract-negotiation-event-message.json">
     </pre>
 </aside>
 
@@ -175,7 +175,7 @@ to verify an [=Agreement=].
 <aside class="example" title="Contract Agreement Verification Request">
     <pre class="http">POST https://provider.com/negotiations/:providerPid/agreement/verification
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-agreement-verification-message.json">
+    <pre class="json" data-include="message/example/contract-agreement-verification-message.json">
     </pre>
 </aside>
 
@@ -197,7 +197,7 @@ to terminate a CN.
 <aside class="example" title="Contract Negotiation Termination Request">
     <pre class="http">POST https://provider.com/negotiations/:providerPid/termination
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation-termination-message.json">
+    <pre class="json" data-include="message/example/contract-negotiation-termination-message.json">
     </pre>
 </aside>
 
@@ -237,7 +237,7 @@ a [Contract Offer Message](#contract-offer-message) to `negotiations/offers`:
 <aside class="example" title="Contract Offer Request">
     <pre class="http">POST https://consumer.com/negotiations/offers
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-offer-message.json">
+    <pre class="json" data-include="message/example/contract-offer-message.json">
     </pre>
 </aside>
 
@@ -254,7 +254,7 @@ The [=Consumer=] must return an HTTP 201 (Created) response with a body containi
 the [Contract Negotiation](#ack-contract-negotiation):
 
 <aside class="example" title="Contract Negotiation Response">
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation.json">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
     </pre>
 </aside>
 
@@ -270,7 +270,7 @@ the `negotiations/:consumerPid/offers` callback:
 <aside class="example" title="Contract Offer Request">
     <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/offers
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-offer-message.json">
+    <pre class="json" data-include="message/example/contract-offer-message.json">
     </pre>
 </aside>
 
@@ -291,7 +291,7 @@ the `negotiations/:consumerPid/agreement` callback to create an [=Agreement=].
 <aside class="example" title="Contract Agreement Request">
     <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/agreement
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-agreement-message.json">
+    <pre class="json" data-include="message/example/contract-agreement-message.json">
     </pre>
 </aside>
 
@@ -312,7 +312,7 @@ the `negotiations/:consumerPid/events` callback with an `eventType` of `FINALIZE
 <aside class="example" title="Contract Negotiation Event Request">
     <pre class="http">POST https://consumer.com/:callback/negotiations/:consumerPid/events
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation-event-message.json">
+    <pre class="json" data-include="message/example/contract-negotiation-event-message.json">
     </pre>
 </aside>
 
@@ -333,7 +333,7 @@ terminate a CN.
 <aside class="example" title="Contract Negotiation Termination Request">
     <pre class="http">POST https://consumer.com/negotiations/:consumerPid/termination
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/negotiation/example/contract-negotiation-termination-message.json">
+    <pre class="json" data-include="message/example/contract-negotiation-termination-message.json">
     </pre>
 </aside>
 

@@ -63,7 +63,7 @@ containing the [Transfer Process](#ack-transfer-process):
 <aside class="example" title="Transfer Process Response">
     <pre class="http">GET https://provider.com/transfers/:providerPid
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-process.json">
+    <pre class="json" data-include="message/example/transfer-process.json">
     </pre>
 </aside>
 
@@ -81,7 +81,7 @@ a [Transfer Request Message](#transfer-request-message) to `transfers/request`:
 <aside class="example" title="Transfer Request">
     <pre class="http">POST https://provider.com/transfers/request
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-request-message.json">
+    <pre class="json" data-include="message/example/transfer-request-message.json">
     </pre>
 </aside>
 
@@ -98,7 +98,7 @@ The [=Provider=] must return an HTTP 201 (Created) response with a body containi
 the [Transfer Process](#ack-transfer-process):
 
 <aside class="example" title="Transfer Process Response">
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-process.json">
+    <pre class="json" data-include="message/example/transfer-process.json">
     </pre>
 </aside>
 
@@ -114,7 +114,7 @@ attempt to start a TP after it has been suspended:
 <aside class="example" title="Transfer Start Request">
     <pre class="http">POST https://provider.com/transfers/:providerPid/start
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-start-message.json">
+    <pre class="json" data-include="message/example/transfer-start-message.json">
     </pre>
 </aside>
 
@@ -135,7 +135,7 @@ to complete a TP:
 <aside class="example" title="Transfer Completion Request">
     <pre class="http">POST https://provider.com/transfers/:providerPid/completion
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-completion-message.json">
+    <pre class="json" data-include="message/example/transfer-completion-message.json">
     </pre>
 </aside>
 
@@ -156,7 +156,7 @@ a [Transfer Termination Message](#transfer-termination-message) to terminate a T
 <aside class="example" title="Transfer Termination Request">
     <pre class="http">POST https://provider.com/transfers/:providerPid/termination
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-termination-message.json">
+    <pre class="json" data-include="message/example/transfer-termination-message.json">
     </pre>
 </aside>
 
@@ -177,7 +177,7 @@ to suspend a TP:
 <aside class="example" title="Transfer Suspension Request">
     <pre class="http">POST https://provider.com/transfers/:providerPid/suspension
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-suspension-message.json">
+    <pre class="json" data-include="message/example/transfer-suspension-message.json">
     </pre>
 </aside>
 
@@ -215,7 +215,7 @@ indicate the start of a TP:
 <aside class="example" title="Transfer Start Request">
     <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/start
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-start-message.json">
+    <pre class="json" data-include="message/example/transfer-start-message.json">
     </pre>
 </aside>
 
@@ -236,7 +236,7 @@ to complete a TP:
 <aside class="example" title="Transfer Completion Request">
     <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/completion
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-completion-message.json">
+    <pre class="json" data-include="message/example/transfer-completion-message.json">
     </pre>
 </aside>
 
@@ -257,7 +257,7 @@ a [Transfer Termination Message](#transfer-termination-message) to terminate a T
 <aside class="example" title="Transfer Termination Request">
     <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/termination
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-termination-message.json">
+    <pre class="json" data-include="message/example/transfer-termination-message.json">
     </pre>
 </aside>
 
@@ -278,7 +278,7 @@ to suspend a TP:
 <aside class="example" title="Transfer Suspension Request">
     <pre class="http">POST https://consumer.com/:callback/transfers/:consumerPid/suspension
 Authorization: ...</pre>
-    <pre class="json" data-include="../../artifacts/src/main/resources/transfer/example/transfer-suspension-message.json">
+    <pre class="json" data-include="message/example/transfer-suspension-message.json">
     </pre>
 </aside>
 
