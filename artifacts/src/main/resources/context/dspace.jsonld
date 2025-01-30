@@ -43,7 +43,7 @@
       "@context": {
         "@version": 1.1,
         "@protected": true,
-        "@import": "http://www.w3.org/dspace-odrl/odrl.jsonld",
+        "@import": "https://w3id.org/dspace/2025/1/odrl-profile.jsonld",
         "@propagate": true,
         "callbackAddress": "dspace:callbackAddress",
         "providerPid": {
@@ -65,7 +65,7 @@
       "@context": {
         "@version": 1.1,
         "@protected": true,
-        "@import": "http://www.w3.org/dspace-odrl/odrl.jsonld",
+        "@import": "https://w3id.org/dspace/2025/1/odrl-profile.jsonld",
         "@propagate": true,
         "callbackAddress": "dspace:callbackAddress",
         "providerPid": {
@@ -87,7 +87,7 @@
       "@context": {
         "@version": 1.1,
         "@protected": true,
-        "@import": "http://www.w3.org/dspace-odrl/odrl.jsonld",
+        "@import": "https://w3id.org/dspace/2025/1/odrl-profile.jsonld",
         "@propagate": true,
         "providerPid": {
           "@type": "@id",
@@ -392,7 +392,7 @@
       "@context": {
         "@version": 1.1,
         "@protected": true,
-        "@import": "http://www.w3.org/dspace-odrl/odrl.jsonld",
+        "@import": "https://w3id.org/dspace/2025/1/odrl-profile.jsonld",
         "@propagate": true,
         "distribution": {
           "@id": "dcat:distribution",

@@ -7,7 +7,7 @@ hide empty description
 
 
 class "dspace:ContractRequestMessage" {
-    @context : "https://w3id.org/dspace/2025/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.jsonld"
     @type : dspace:ContractRequestMessage
     dspace:consumerPid : String
     dspace:callbackAddress : String

@@ -75,7 +75,7 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
     private static final String INVALID_NO_TYPE = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -87,7 +87,7 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
     private static final String INVALID_NO_PROVIDER_ID = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractAgreementMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -99,7 +99,7 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
     private static final String INVALID_NO_CONSUMER_ID = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractAgreementMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -111,7 +111,7 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
     private static final String INVALID_NO_CALLBACK = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractAgreementMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -123,7 +123,7 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
     private static final String NO_AGREEMENT = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractAgreementMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

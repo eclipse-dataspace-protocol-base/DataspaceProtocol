@@ -44,7 +44,7 @@ public class TransferRequestMessageSchemaTest extends AbstractSchemaTest {
     private static final String MINIMAL_REQUEST = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "TransferRequestMessage",
               "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",

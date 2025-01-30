@@ -44,7 +44,7 @@ public class TransferTerminationMessageSchemaTest extends AbstractSchemaTest {
     private static final String MINIMAL_REQUEST = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "@type": "TransferTerminationMessage",
                 "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

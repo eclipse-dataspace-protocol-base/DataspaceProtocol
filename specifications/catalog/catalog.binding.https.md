@@ -102,7 +102,7 @@ The following request sequence demonstrates pagination:
 Link: <https://provider.com/catalog?continuationToken=f59892315ac44de8ab4bdc9014502d52>; rel="next"
 
 {
-  "@context":  "https://w3id.org/dspace/2025/1/context.json",
+  "@context":  "https://w3id.org/dspace/2025/1/context.jsonld",
   "@type": "Catalog",
   ...
 }

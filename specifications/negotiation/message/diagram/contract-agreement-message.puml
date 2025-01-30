@@ -7,7 +7,7 @@ hide empty description
 
 
 class "dspace:ContractAgreementMessage" {
-    @context : "https://w3id.org/dspace/2025/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.jsonld"
     @type : "dspace:ContractAgreementMessage"
     dspace:providerPid : String
     dspace:consumerPid : String

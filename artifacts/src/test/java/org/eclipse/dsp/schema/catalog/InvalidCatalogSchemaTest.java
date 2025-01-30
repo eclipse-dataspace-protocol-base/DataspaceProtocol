@@ -86,7 +86,7 @@ public class InvalidCatalogSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_CATALOG_NO_ID = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "Catalog",
               "participantId": "urn:example:DataProviderA",
@@ -104,7 +104,7 @@ public class InvalidCatalogSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_CATALOG_NO_PARTICIPANT_ID = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
               "@type": "Catalog",
@@ -122,7 +122,7 @@ public class InvalidCatalogSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_NO_SERVICE_ID = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
               "@type": "Catalog",
@@ -140,7 +140,7 @@ public class InvalidCatalogSchemaTest extends AbstractSchemaTest {
     private static final String INVALID_NO_SERVICE_ENDPOINT = format("""
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@id": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57",
               "@type": "Catalog",

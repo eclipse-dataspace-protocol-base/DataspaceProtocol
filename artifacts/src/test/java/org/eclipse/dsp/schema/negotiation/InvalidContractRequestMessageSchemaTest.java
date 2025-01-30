@@ -41,7 +41,7 @@ public class InvalidContractRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_OFFER = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "@type": "ContractRequestMessage",
                 "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -53,7 +53,7 @@ public class InvalidContractRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_ID = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "@type": "ContractRequestMessage",
                 "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -67,7 +67,7 @@ public class InvalidContractRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_CONSUMER_ID = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "@type": "ContractRequestMessage",
                 "offer": {
@@ -80,7 +80,7 @@ public class InvalidContractRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_CALLBACK = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "@type": "ContractRequestMessage",
                 "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
@@ -93,7 +93,7 @@ public class InvalidContractRequestMessageSchemaTest extends AbstractSchemaTest 
     private static final String INVALID_REQUEST_NO_TYPE = """
             {
                 "@context": [
-                  "https://w3id.org/dspace/2025/1/context.json"
+                  "https://w3id.org/dspace/2025/1/context.jsonld"
                 ],
                 "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
                 "offer": {

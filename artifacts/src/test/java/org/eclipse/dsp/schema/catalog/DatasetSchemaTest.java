@@ -36,7 +36,7 @@ public class DatasetSchemaTest extends AbstractSchemaTest {
     private static final String DATASET = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
               "hasPolicy": [
