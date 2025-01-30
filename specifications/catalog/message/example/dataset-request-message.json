@@ -1,5 +1,0 @@
-{
-  "@context":  "https://w3id.org/dspace/2025/1/context.json",
-  "@type": "dspace:DatasetRequestMessage",
-  "dspace:dataset": "urn:uuid:3afeadd8-ed2d-569e-d634-8394a8836d57"
-}

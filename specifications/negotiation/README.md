@@ -1,0 +1,1 @@
+Please find the schema files and examples [here](../../artifacts/src/main/resources/negotiation/).
