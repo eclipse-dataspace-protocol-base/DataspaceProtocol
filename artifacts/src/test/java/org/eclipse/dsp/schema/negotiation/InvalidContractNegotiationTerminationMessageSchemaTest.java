@@ -51,7 +51,7 @@ public class InvalidContractNegotiationTerminationMessageSchemaTest extends Abst
     private static final String MESSAGE_NO_TYPE = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "consumerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -65,7 +65,7 @@ public class InvalidContractNegotiationTerminationMessageSchemaTest extends Abst
     private static final String MESSAGE_NO_CONSUMER_ID = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractNegotiationTerminationMessage",
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
@@ -79,7 +79,7 @@ public class InvalidContractNegotiationTerminationMessageSchemaTest extends Abst
     private static final String MESSAGE_NO_PROVIDER_ID = """
             {
               "@context": [
-                "https://w3id.org/dspace/2025/1/context.json"
+                "https://w3id.org/dspace/2025/1/context.jsonld"
               ],
               "@type": "ContractNegotiationTerminationMessage",
               "consumerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",

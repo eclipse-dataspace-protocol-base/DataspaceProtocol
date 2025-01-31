@@ -41,7 +41,7 @@ import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.eclipse.dsp.DspConstants.DSP_CONTEXT;
 import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
-import static org.eclipse.dsp.DspConstants.ODRL_CONTEXT;
+import static org.eclipse.dsp.DspConstants.ODRL_PROFILE_CONTEXT;
 
 /**
  * Base class for Json-Ld expansion and compaction tests.
@@ -83,7 +83,7 @@ public abstract class AbstractJsonLdTest {
             var dspaceContext = mapper.readValue(dspaceStream, JsonObject.class);
             @SuppressWarnings("DataFlowIssue")
             Map<String, Document> cache = Map.of(DSP_CONTEXT, JsonDocument.of(dspaceContext),
-                    ODRL_CONTEXT, JsonDocument.of(odrlStream)
+                    ODRL_PROFILE_CONTEXT, JsonDocument.of(odrlStream)
             );
             var documentLoader = new LocalDocumentLoader(cache);
             compactionContext = mapper.readValue(CONTEXT_REFERENCE, JsonStructure.class);

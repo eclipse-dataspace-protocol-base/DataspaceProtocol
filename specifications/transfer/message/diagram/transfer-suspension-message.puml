@@ -7,7 +7,7 @@ hide empty description
 
 
 class "dspace:TransferSuspensionMessage" {
-    @context : "https://w3id.org/dspace/2025/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.jsonld"
     @type : "dspace:TransferSuspensionMessage"
     dspace:providerPid : String
     dspace:consumerPid : String

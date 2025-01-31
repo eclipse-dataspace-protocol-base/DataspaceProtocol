@@ -19,9 +19,9 @@ package org.eclipse.dsp;
  */
 public interface DspConstants {
 
-    String DSP_CONTEXT = "https://w3id.org/dspace/2025/1/context.json";
+    String DSP_CONTEXT = "https://w3id.org/dspace/2025/1/context.jsonld";
+    String ODRL_PROFILE_CONTEXT = "https://w3id.org/dspace/2025/1/odrl-profile.jsonld";
     String DSP_PREFIX = "https://w3id.org/dspace/2025/1/";
 
-    String ODRL_CONTEXT = "http://www.w3.org/dspace-odrl/odrl.jsonld";
 
 }

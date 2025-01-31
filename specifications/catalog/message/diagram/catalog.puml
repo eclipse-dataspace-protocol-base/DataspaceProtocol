@@ -7,7 +7,7 @@ hide empty description
 
 
 class dcat:Catalog {
-    @context : "https://w3id.org/dspace/2025/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.jsonld"
     @type : "dcat:Catalog"
     foaf:homepage : String
     dcat:theme : Array<String>

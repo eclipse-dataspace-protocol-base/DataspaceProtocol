@@ -6,7 +6,7 @@
 hide empty description
 
 class dcat:Dataset {
-    @context : "https://w3id.org/dspace/2025/1/context.json"
+    @context : "https://w3id.org/dspace/2025/1/context.jsonld"
     @type : "dcat:Dataset",
     dcat:theme : Array<String>
     dcat:keyword : Array<String>
