@@ -16,9 +16,11 @@ package org.eclipse.dsp.generation.jsom;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -28,6 +30,7 @@ import java.util.stream.Stream;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Stream.concat;
 import static org.eclipse.dsp.generation.jsom.ElementDefinition.Type.CONSTANT;
+import static org.eclipse.dsp.generation.jsom.ElementDefinition.Type.JSON;
 import static org.eclipse.dsp.generation.jsom.ElementDefinition.Type.REFERENCE;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ALL_OF;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.COMMENT;
@@ -35,10 +38,12 @@ import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONST;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONTAINS;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.DEFINITIONS;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ITEMS;
+import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ONE_OF;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.PROPERTIES;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.REF;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.REQUIRED;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.TYPE;
+import static org.eclipse.dsp.generation.jsom.JsonTypeMappings.TYPE_MAPPINGS;
 import static org.eclipse.dsp.generation.jsom.JsonTypes.ANY;
 import static org.eclipse.dsp.generation.jsom.JsonTypes.ARRAY;
 
@@ -125,7 +130,8 @@ public class JsomParser {
     private @NotNull SchemaType parseRootType(String schemaPath, Map<String, Object> root) {
         var typeName = prefix + schemaPath.substring(resolutionPath.length());
         var baseType = root.getOrDefault(TYPE, ANY.getName()).toString();
-        var rootType = new SchemaType(typeName, baseType, true, typeName);
+        var itemType = parseItemType(root, baseType);
+        var rootType = new SchemaType(typeName, baseType, itemType, true, typeName);
         parseAttributes(root, rootType);
         return rootType;
     }
@@ -135,10 +141,22 @@ public class JsomParser {
      */
     private @NotNull SchemaType parseTypeDefinition(String type, String schemaPath, Map<String, Object> definition) {
         var baseType = definition.getOrDefault(TYPE, ANY.getName()).toString();
+        var itemType = parseItemType(definition, baseType);
         var context = prefix + schemaPath.substring(resolutionPath.length());
-        var schemaType = new SchemaType(type, baseType, context);
+        var schemaType = new SchemaType(type, baseType, itemType, context);
         parseAttributes(definition, schemaType);
         return schemaType;
+    }
+
+    private @Nullable String parseItemType(Map<String, Object> definition, String baseType) {
+        String itemType = null;
+        if (baseType.equals(ARRAY.getBaseType())) {
+            var items = definition.get(ITEMS);
+            if (items instanceof Map itemsMap) {
+                itemType = (String) itemsMap.get(TYPE);
+            }
+        }
+        return itemType;
     }
 
     @SuppressWarnings("unchecked")
@@ -209,7 +227,6 @@ public class JsomParser {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private SchemaProperty parseProperty(String name, Map<String, Object> value) {
         var type = value.get(TYPE);
         var comment = value.containsKey(COMMENT) ? value.get(COMMENT).toString() : "";
@@ -222,21 +239,18 @@ public class JsomParser {
                         .description(comment)
                         .build();
             }
+            var oneOf = value.get(ONE_OF);
+            //noinspection rawtypes
+            if (oneOf instanceof List oneOfList) {
+                return parseListProperty(name, oneOfList, comment);
+            }
             return SchemaProperty.Builder.newInstance()
                     .name(name)
                     .types(Set.of(ANY.getName()))
                     .description(comment)
                     .build();
         } else if (ARRAY.getBaseType().equals(type)) {
-            var property = SchemaProperty.Builder.newInstance()
-                    .name(name)
-                    .types(Set.of((String) type))
-                    .description(comment);
-            var items = value.get(ITEMS);
-            if (items instanceof Map) {
-                property.itemTypes(parseElementDefinition((Map<String, Object>) items));
-            }
-            return property.build();
+            return parseArrayProperty(name, value, (String) type, comment);
         } else {
             var builder = SchemaProperty.Builder.newInstance()
                     .name(name)
@@ -248,5 +262,61 @@ public class JsomParser {
             }
             return builder.build();
         }
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private SchemaProperty parseListProperty(String name, List list, String comment) {
+        var types = new HashSet<String>();
+        var itemTypes = new HashSet<ElementDefinition>();
+        for (var entry : list) {
+            if (entry instanceof Map<?, ?> oneOfMap) {
+                var subtype = oneOfMap.get(TYPE);
+                if (ARRAY.getBaseType().equals(subtype)) {
+                    types.add(ARRAY.getBaseType());
+                    var items = oneOfMap.get(ITEMS);
+                    if (items instanceof Map) {
+                        itemTypes.addAll(parseElementDefinition((Map<String, Object>) items));
+                    } else if (items instanceof String itemString) {
+                        itemTypes.add(parseJsonElementDefinition(itemString));
+                    }
+                } else if (subtype == null) {
+                    var oneOfRef = oneOfMap.get(REF);
+                    if (oneOfRef instanceof String oneOfRefString) {
+                        itemTypes.add(parseRefElementDefinition(oneOfRefString));
+                    }
+                }
+            }
+        }
+        return SchemaProperty.Builder.newInstance()
+                .name(name)
+                .types(types)
+                .itemTypes(itemTypes)
+                .description(comment)
+                .build();
+    }
+
+    private @NotNull ElementDefinition parseRefElementDefinition(String ref) {
+        var elementDefinition = new ElementDefinition(REFERENCE, ref);
+        elementDefinition.resolvedType(JsonTypes.STRING);
+        return elementDefinition;
+    }
+
+    private @NotNull ElementDefinition parseJsonElementDefinition(String type) {
+        var elementDefinition = new ElementDefinition(JSON, TYPE_MAPPINGS.getOrDefault(type, ANY).getBaseType());
+        elementDefinition.resolvedType(JsonTypes.STRING);
+        return elementDefinition;
+    }
+
+    private SchemaProperty parseArrayProperty(String name, Map<String, Object> value, String type, String comment) {
+        var property = SchemaProperty.Builder.newInstance()
+                .name(name)
+                .types(Set.of(type))
+                .description(comment);
+        var items = value.get(ITEMS);
+        if (items instanceof Map) {
+            //noinspection unchecked
+            property.itemTypes(parseElementDefinition((Map<String, Object>) items));
+        }
+        return property.build();
     }
 }

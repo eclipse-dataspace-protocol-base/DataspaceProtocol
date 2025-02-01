@@ -40,6 +40,15 @@ class JsomParserTest {
         assertThat(schemaModel.getSchemaTypes()).isNotEmpty();
 
         var policyClass = schemaModel.resolveType("PolicyClass", LOCAL);
+
+        assertThat(policyClass.getProperties().size()).isEqualTo(4);    // PolicyClass should have 4 properties
+        //noinspection OptionalGetWithoutIsPresent
+        assertThat(policyClass.getProperties().stream()
+                .filter(p -> p.getName().equals("profile"))
+                .findFirst().get()
+                .getItemTypes().iterator().next().getValue())
+                .isEqualTo(JsonTypes.STRING.getBaseType());
+
         var agreement = schemaModel.resolveType("Agreement", LOCAL);
         assertThat(agreement.getResolvedAllOf()).contains(policyClass);
         assertThat(agreement.getProperties().size()).isEqualTo(5);    // Agreement should have 5 properties

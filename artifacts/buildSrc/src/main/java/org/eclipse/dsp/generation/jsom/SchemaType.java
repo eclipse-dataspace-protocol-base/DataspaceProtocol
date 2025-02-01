@@ -40,6 +40,7 @@ public class SchemaType implements Comparable<SchemaType> {
 
     private final String name;
     private final String baseType;
+    private String itemType;
     private final boolean rootDefinition;
     private final String schemaUri;
     private final Set<String> allOf = new HashSet<>();
@@ -68,12 +69,17 @@ public class SchemaType implements Comparable<SchemaType> {
     }
 
     public SchemaType(String name, String baseType, String schemaUri) {
-        this(name, baseType, false, schemaUri);
+        this(name, baseType, null, false, schemaUri);
     }
 
-    public SchemaType(String name, String baseType, boolean rootDefinition, String schemaUri) {
+    public SchemaType(String name, String baseType, String itemType, String schemaUri) {
+        this(name, baseType, itemType, false, schemaUri);
+    }
+
+    public SchemaType(String name, String baseType, String itemType, boolean rootDefinition, String schemaUri) {
         this.name = name;
         this.baseType = baseType;
+        this.itemType = itemType;
         this.rootDefinition = rootDefinition;
         this.schemaUri = schemaUri;
     }
@@ -88,6 +94,10 @@ public class SchemaType implements Comparable<SchemaType> {
 
     public String getBaseType() {
         return baseType;
+    }
+
+    public String getItemType() {
+        return itemType;
     }
 
     public boolean isRootDefinition() {

@@ -20,6 +20,7 @@ import org.eclipse.dsp.generation.jsom.SchemaPropertyReference;
 import org.eclipse.dsp.generation.jsom.SchemaType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -61,8 +62,7 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
             if (!resolvedProperty.getItemTypes().isEmpty()) {
                 resolvedTypes = getArrayTypeName(resolvedProperty);
             } else {
-                resolvedTypes = resolvedProperty
-                        .getResolvedTypes().stream().map(this::getTypeName).collect(joining(", "));
+                resolvedTypes = parseResolvedTypes(resolvedProperty);
             }
             builder.append(format("<td>%s</td>", resolvedTypes));
             if (resolvedProperty.getConstantValue() != null) {
@@ -84,12 +84,32 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         builder.append("</tr>");
     }
 
+    private String parseResolvedTypes(SchemaProperty property) {
+        String resolvedTypes = "";
+        if (property.getItemTypes().isEmpty()) {
+            resolvedTypes = property
+                    .getResolvedTypes().stream().map(schemaType -> {
+                        if (schemaType.getItemType() != null) {
+                            return "array[" + schemaType.getItemType() + "]";
+                        }
+                        return getTypeName(schemaType);
+                    }).collect(joining(", "));
+        }
+        return resolvedTypes;
+    }
+
     private @NotNull String getArrayTypeName(SchemaProperty resolvedProperty) {
         var itemTypes = resolvedProperty.getItemTypes().stream()
                 .flatMap(t -> t.getResolvedTypes().stream()).map(this::getTypeName)
                 .collect(joining(", "));
         if (itemTypes.isEmpty()) {
-            return "array";
+            itemTypes = resolvedProperty.getResolvedTypes().stream()
+                    .map(SchemaType::getItemType)
+                    .filter(Objects::nonNull)
+                    .collect(joining(", "));
+            if (itemTypes.isEmpty()) {
+                return "array";
+            }
         }
         return "array[" + itemTypes + "]";
     }
