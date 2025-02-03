@@ -25,7 +25,7 @@ import java.util.TreeSet;
 public class ElementDefinition implements Comparable<ElementDefinition> {
 
     public enum Type {
-        REFERENCE, CONSTANT
+        REFERENCE, CONSTANT, JSON
     }
 
     private final Type type;
