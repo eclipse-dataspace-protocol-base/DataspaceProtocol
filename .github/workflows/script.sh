@@ -11,7 +11,5 @@ cp -R "./specifications"/**/"message/diagram"/*".png" message/diagram
 echo "successfully copied message diagrams"
 cp -R "./specifications"/**/"figures"/*".png" ./figures/
 echo "successfully copied figures"
-cp -R "./releases"/** .
-echo "successfully copied releases"
 #rm -rf artifacts
 #echo "successfully removed artifacts"
