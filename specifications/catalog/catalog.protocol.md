@@ -15,14 +15,14 @@ Servers have no obligation to process properties that are not part of the schema
 
 ### Catalog Request Message
 
-|                     |                                                                              |
-|---------------------|------------------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=]                                                                 |
-| **Resulting state** | `TERMINATED`                                                                 |
-| **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                         |
-| **Schema**          | [JSON Schema](message/schema/catalog-request-message-schema.json)          |
-| **Example**         | [Message](message/example/catalog-request-message.json)                    |
-| **Diagram(s)**      | ![](message/diagram/catalog-request-message.png "Catalog Request Message") |
+|                     |                                                                                             |
+|---------------------|---------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=]                                                                                |
+| **Resulting state** | `TERMINATED`                                                                                |
+| **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                                        |
+| **Schema**          | [JSON Schema](message/schema/catalog-request-message-schema.json)                           |
+| **Example**         | [Message](message/example/catalog-request-message.json)                                     |
+| **Properties**      | <p data-include="message/table/catalogrequestmessage.html" data-include-format="html"></p> |
 
 The Catalog Request Message is message sent by a [=Consumer=] to
 a [=Catalog Service=].
@@ -37,14 +37,14 @@ The [=Catalog Service=] must respond with a [Catalog](#ack-catalog) that adheres
 
 ### Dataset Request Message
 
-|                     |                                                                     |
-|---------------------|---------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=]                                                        |
-| **Resulting state** | `TERMINATED`                                                        |
-| **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                |
-| **Schema**          | [JSON Schema](message/schema/dataset-request-message-schema.json) |
-| **Example**         | [Message](message/example/dataset-request-message.json)           |
-| **Diagram(s)**      | ![](message/diagram/dataset-request-message.png)                  |
+|                     |                                                                                             |
+|---------------------|---------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=]                                                                                |
+| **Resulting state** | `TERMINATED`                                                                                |
+| **Response**        | [ACK](#ack-catalog) or [ERROR](#error-catalog-error)                                        |
+| **Schema**          | [JSON Schema](message/schema/dataset-request-message-schema.json)                           |
+| **Example**         | [Message](message/example/dataset-request-message.json)                                     |
+| **Properties**      | <p data-include="message/table/datasetrequestmessage.html" data-include-format="html"></p> |
 
 The Dataset Request Message is message sent by a [=Consumer=] to
 a [=Catalog Service=].
@@ -62,41 +62,36 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 ### ACK - Catalog
 
-|                |                                                     |
-|----------------|-----------------------------------------------------|
-| **Sent by**    | [=Provider=]                                        |
-| **Schema**     | [JSON Schema](message/schema/catalog-schema.json) |
-| **Example**    | [Catalog Example](message/example/catalog.json)   |
-| **Diagram(s)** | ![](message/diagram/catalog.png)                  |
+|                |                                                                               |
+|----------------|-------------------------------------------------------------------------------|
+| **Sent by**    | [=Provider=]                                                                  |
+| **Schema**     | [JSON Schema](message/schema/catalog-schema.json)                             |
+| **Example**    | [Catalog Example](message/example/catalog.json)                               |
+| **Properties**      | <p data-include="message/table/catalog.html" data-include-format="html"></p> |
 
 The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
 
 ### ACK - Dataset
 
-|                |                                                     |
-|----------------|-----------------------------------------------------|
-| **Sent by**    | [=Provider=]                                        |
-| **Schema**     | [JSON Schema](message/schema/dataset-schema.json) |
-| **Example**    | [Dataset Example](message/example/dataset.json)   |
-| **Diagram(s)** | ![](message/diagram/dataset.png)                  |
+|                |                                                                               |
+|----------------|-------------------------------------------------------------------------------|
+| **Sent by**    | [=Provider=]                                                                  |
+| **Schema**     | [JSON Schema](message/schema/dataset-schema.json)                             |
+| **Example**    | [Dataset Example](message/example/dataset.json)                               |
+| **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
 
 ### ERROR - Catalog Error
 
-|                |                                                           |
-|----------------|-----------------------------------------------------------|
-| **Sent by**    | [=Consumer=], [=Provider=]                                |
-| **Schema**     | [JSON Schema](message/schema/catalog-error-schema.json) |
-| **Example**    | [Error](message/example/catalog-error.json)             |
-| **Diagram(s)** | ![](message/diagram/catalog-error.png)                  |
+|                |                                                                                    |
+|----------------|------------------------------------------------------------------------------------|
+| **Sent by**    | [=Consumer=], [=Provider=]                                                         |
+| **Schema**     | [JSON Schema](message/schema/catalog-error-schema.json)                            |
+| **Example**    | [Error](message/example/catalog-error.json)                                        |
+| **Properties**      | <p data-include="message/table/catalogerror.html" data-include-format="html"></p> |
 
 A Catalog Error is used when an error occurred after a [Catalog Request Message](#catalog-request-message) or
 a [Dataset Request Message](#dataset-request-message) and the [=Provider=] cannot
 provide its [=Catalog=] to the requester.
-
-| Field     | Type          | Description                                                 |
-|-----------|---------------|-------------------------------------------------------------|
-| `code`    | String        | An optional implementation-specific error code.             |
-| `reasons` | Array[object] | An optional array of implementation-specific error objects. |
 
 ## Technical Considerations
 

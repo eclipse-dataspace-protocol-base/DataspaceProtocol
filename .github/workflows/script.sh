@@ -1,15 +1,18 @@
 #!/bin/bash
+set -e
+
+mkdir ./figures
 mkdir -p ./message/schema
 mkdir -p ./message/example
-mkdir -p ./message/diagram
-mkdir ./figures
+mkdir -p ./message/table
 cp ./artifacts/src/main/resources/**/* ./message/schema || true
 echo "successfully copied message schemas"
-cp -R "./artifacts/src/main/resources"/**/"example"/* ./message/example
+cp -r "./artifacts/src/main/resources"/**/"example"/* ./message/example
 echo "successfully copied message examples"
-cp -R "./specifications"/**/"message/diagram"/*".png" message/diagram
-echo "successfully copied message diagrams"
-cp -R "./specifications"/**/"figures"/*".png" ./figures/
+cp -r "./specifications"/**/"figures"/*".png" ./figures/
 echo "successfully copied figures"
+cp -r "./artifacts/build/generated/tables"/*".html" ./message/table
+echo "successfully copied message property tables"
+
 #rm -rf artifacts
 #echo "successfully removed artifacts"
