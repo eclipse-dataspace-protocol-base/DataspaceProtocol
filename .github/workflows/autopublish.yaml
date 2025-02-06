@@ -13,17 +13,17 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
+      - uses: ./.github/actions/setup-java
+      - name: build java
+        run: |
+          cd artifacts
+          ./gradlew build
+          ./gradlew generateTablesFromSchemas
+          cd ..
       - name: Copy files for correct web access
         run: |
           chmod +x ./.github/workflows/script.sh
           ./.github/workflows/script.sh
-      - name: Run Respec
-        run:
-          sudo npx puppeteer browsers install chrome
-          npx respec --src index.html --out index.html.build.html -t 60 --disable-sandbox --verbose
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

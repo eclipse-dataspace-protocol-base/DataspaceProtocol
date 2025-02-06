@@ -85,14 +85,14 @@ a [=Provider=] message. Terminal states are final; the state machine may not tra
 
 ### Transfer Request Message
 
-|                     |                                                                                                                                       |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=]                                                                                                                          |
-| **Resulting state** | `REQUESTED`                                                                                                                           |
-| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                                                                        |
-| **Schema**          | [JSON Schema](message/schema/transfer-request-message-schema.json) |
-| **Example**         | [Message](message/example/transfer-request-message.json)                                                                            |
-| **Diagram(s)**      | ![](message/diagram/transfer-request-message.png "Transfer Request Message")                                                        |
+|                     |                                                                                              |
+|---------------------|----------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=]                                                                                 |
+| **Resulting state** | `REQUESTED`                                                                                  |
+| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                               |
+| **Schema**          | [JSON Schema](message/schema/transfer-request-message-schema.json)                           |
+| **Example**         | [Message](message/example/transfer-request-message.json)                                     |
+| **Properties**      | <p data-include="message/table/transferrequestmessage.html" data-include-format="html"></p> |
 
 The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
 
@@ -125,14 +125,14 @@ again, the [=Provider=] should respond with an appropriate [Transfer Start Messa
 
 ### Transfer Start Message
 
-|                     |                                                                            |
-|---------------------|----------------------------------------------------------------------------|
-| **Sent by**         | [=Provider=]                                                               |
-| **Resulting state** | `STARTED`                                                                  |
-| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)             |
-| **Schema**          | [JSON Schema](message/schema/transfer-start-message-schema.json)         |
-| **Example**         | [Message](message/example/transfer-start-message.json)                   |
-| **Diagram(s)**      | ![](message/diagram/transfer-start-message.png "Transfer Start Message") |
+|                     |                                                                                            |
+|---------------------|--------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Provider=]                                                                               |
+| **Resulting state** | `STARTED`                                                                                  |
+| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                             |
+| **Schema**          | [JSON Schema](message/schema/transfer-start-message-schema.json)                           |
+| **Example**         | [Message](message/example/transfer-start-message.json)                                     |
+| **Properties**      | <p data-include="message/table/transferstartmessage.html" data-include-format="html"></p> |
 
 The Transfer Start Message is sent by the [=Provider=] to indicate the data transfer has been initiated.
 
@@ -147,28 +147,28 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 
 ### Transfer Suspension Message
 
-|                     |                                                                                      |
-|---------------------|--------------------------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=], [=Provider=]                                                           |
-| **Resulting state** | `SUSPENDED`                                                                          |
-| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                       |
-| **Schema**          | [JSON Schema](message/schema/transfer-suspension-message-schema.json)              |
-| **Example**         | [Message](message/example/transfer-suspension-message.json)                        |
-| **Diagram(s)**      | ![](message/diagram/transfer-suspension-message.png "Transfer Suspension Message") |
+|                     |                                                                                            |
+|---------------------|--------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=], [=Provider=]                                                                 |
+| **Resulting state** | `SUSPENDED`                                                                                |
+| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                             |
+| **Schema**          | [JSON Schema](message/schema/transfer-suspension-message-schema.json)                      |
+| **Example**         | [Message](message/example/transfer-suspension-message.json)                                |
+| **Properties**      | <p data-include="message/table/transferstartmessage.html" data-include-format="html"></p> |
 
 The Transfer Suspension Message is sent by the [=Provider=] or [=Consumer=] when either of them needs to temporarily
 suspend the TP.
 
 ### Transfer Completion Message
 
-|                     |                                                                                      |
-|---------------------|--------------------------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=], [=Provider=]                                                           |
-| **Resulting state** | `COMPLETED`                                                                          |
-| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                       |
-| **Schema**          | [JSON Schema](message/schema/transfer-completion-message-schema.json)              |
-| **Example**         | [Message](message/example/transfer-completion-message.json)                        |
-| **Diagram(s)**      | ![](message/diagram/transfer-completion-message.png "Transfer Completion Message") |
+|                     |                                                                                                 |
+|---------------------|-------------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=], [=Provider=]                                                                      |
+| **Resulting state** | `COMPLETED`                                                                                     |
+| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                                  |
+| **Schema**          | [JSON Schema](message/schema/transfer-completion-message-schema.json)                           |
+| **Example**         | [Message](message/example/transfer-completion-message.json)                                     |
+| **Properties**      | <p data-include="message/table/transfercompletionmessage.html" data-include-format="html"></p> |
 
 The Transfer Completion Message is sent by the [=Provider=] or [=Consumer=] when a data transfer has completed. Note
 that some [=Connector=] implementations may optimize completion
@@ -177,14 +177,14 @@ need to be sent.
 
 ### Transfer Termination Message
 
-|                     |                                                                                        |
-|---------------------|----------------------------------------------------------------------------------------|
-| **Sent by**         | [=Consumer=], [=Provider=]                                                             |
-| **Resulting state** | `TERMINATED`                                                                           |
-| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                         |
-| **Schema**          | [JSON Schema](message/schema/transfer-termination-message-schema.json)               |
-| **Example**         | [Message](message/example/transfer-termination-message.json)                         |
-| **Diagram(s)**      | ![](message/diagram/transfer-termination-message.png "Transfer Termination Message") |
+|                     |                                                                                                  |
+|---------------------|--------------------------------------------------------------------------------------------------|
+| **Sent by**         | [=Consumer=], [=Provider=]                                                                       |
+| **Resulting state** | `TERMINATED`                                                                                     |
+| **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                                   |
+| **Schema**          | [JSON Schema](message/schema/transfer-termination-message-schema.json)                           |
+| **Example**         | [Message](message/example/transfer-termination-message.json)                                     |
+| **Properties**      | <p data-include="message/table/transferterminationmessage.html" data-include-format="html"></p> |
 
 The Transfer Termination Message is sent by the [=Provider=] or [=Consumer=] at any point except a terminal state to
 indicate the TP should stop and be placed in a terminal state. If the termination was due to an error, the sender may
@@ -197,24 +197,24 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 ### ACK - Transfer Process
 
-|                |                                                                |
-|----------------|----------------------------------------------------------------|
-| **Sent by**    | [=Consumer=], [=Provider=]                                     |
-| **Schema**     | [JSON Schema](message/schema/transfer-process-schema.json)   |
-| **Example**    | [Process](message/example/transfer-process.json)             |
-| **Diagram(s)** | ![](message/diagram/transfer-process.png "Transfer Process") |
+|                |                                                                                       |
+|----------------|---------------------------------------------------------------------------------------|
+| **Sent by**    | [=Consumer=], [=Provider=]                                                            |
+| **Schema**     | [JSON Schema](message/schema/transfer-process-schema.json)                            |
+| **Example**    | [Process](message/example/transfer-process.json)                                      |
+| **Properties** | <p data-include="message/table/transferprocess.html" data-include-format="html"></p> |
 
 The Transfer Process is an object returned by a [=Consumer=] or [=Provider=] indicating a successful state change
 happened.
 
 ### ERROR - Transfer Error
 
-|                |                                                            |
-|----------------|------------------------------------------------------------|
-| **Sent by**    | [=Consumer=], [=Provider=]                                 |
-| **Schema**     | [JSON Schema](message/schema/transfer-error-schema.json) |
-| **Example**    | [Process](message/example/transfer-error.json)           |
-| **Diagram(s)** | ![](message/diagram/transfer-error.png "Transfer Error") |
+|                |                                                                                     |
+|----------------|-------------------------------------------------------------------------------------|
+| **Sent by**    | [=Consumer=], [=Provider=]                                                          |
+| **Schema**     | [JSON Schema](message/schema/transfer-error-schema.json)                            |
+| **Example**    | [Process](message/example/transfer-error.json)                                      |
+| **Properties** | <p data-include="message/table/transfererror.html" data-include-format="html"></p> |
 
 The Transfer Error is an object returned by a [=Consumer=] or [=Provider=] indicating an error has occurred. It does not
 cause a state transition.

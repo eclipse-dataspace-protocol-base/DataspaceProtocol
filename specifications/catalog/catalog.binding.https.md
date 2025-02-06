@@ -79,7 +79,7 @@ Authorization: ...</pre>
 ##### Response
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
-a [Dataset](#ack-dataset) (which isa [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) type described by the [=Catalog Protocol=]).
+a [Dataset](#ack-dataset).
 
 <aside class="example" title="Dataset Response">
     <pre class="json" data-include="message/example/dataset.json">
