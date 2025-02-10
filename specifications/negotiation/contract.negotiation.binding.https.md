@@ -210,8 +210,8 @@ not specified and clients are not required to process it.
 
 | Endpoint                                                             | Method | Description                                      |
 |:---------------------------------------------------------------------|:-------|:-------------------------------------------------|
-| https://consumer.com/negotiations/:consumerPid                       | `GET`  | [[[#negotiations-get-consumer]]]                 |
 | https://consumer.com/negotiations/offers                             | `POST` | [[[#negotiations-offers-post]]]                  |
+| https://consumer.com/:callback/negotiations/:consumerPid             | `GET`  | [[[#negotiations-get-consumer]]]                 |
 | https://consumer.com/:callback/negotiations/:consumerPid/offers      | `POST` | [[[#negotiations-consumerpid-offers-post]]]      |
 | https://consumer.com/:callback/negotiations/:consumerPid/agreement   | `POST` | [[[#negotiations-consumerpid-agreement-post]]]   |
 | https://consumer.com/:callback/negotiations/:consumerPid/events      | `POST` | [[[#negotiations-consumerpid-events-post]]]      |
@@ -232,10 +232,10 @@ resolved URL will be `https://consumer.com/callback/negotiations/:consumerPid/of
 
 ##### Request
 
-A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `negotiations/:consumerPid`:
+A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
 
 <aside class="example" title="Get Negotiation Request">
-    <pre class="http">GET https://consumer.com/negotiations/:consumerPid
+    <pre class="http">GET https://consumer.com/:callback/negotiations/:consumerPid
 Authorization: ...</pre>
 
 </aside>
