@@ -43,7 +43,7 @@ authorization.
 
 | Endpoint                                                              | Method | Description                                                 |
 |:----------------------------------------------------------------------|:-------|:------------------------------------------------------------|
-| https://provider.com/negotiations/:providerPid                        | `GET`  | [[[#negotiations-get]]]                                     |
+| https://provider.com/negotiations/:providerPid                        | `GET`  | [[[#negotiations-get-provider]]]                                    |
 | https://provider.com/negotiations/request                             | `POST` | [[[#negotiations-request-post]]]                            |
 | https://provider.com/negotiations/:providerPid/request                | `POST` | [[[#negotiations-providerpid-request-post]]]                |
 | https://provider.com/negotiations/:providerPid/events                 | `POST` | [[[#negotiations-providerpid-events-post]]]                 |
@@ -52,11 +52,11 @@ authorization.
 
 ### The `negotiations` Endpoint _(Provider-side)_
 
-#### GET {#negotiations-get}
+#### GET {#negotiations-get-provider}
 
 ##### Request
 
-A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `negotiations/:providerPid`:
+A CN can be accessed by a [=Consumer=] sending a GET request to `negotiations/:providerPid`:
 
 <aside class="example" title="Get Negotiation Request">
     <pre class="http">GET https://provider.com/negotiations/:providerPid
@@ -208,13 +208,14 @@ not specified and clients are not required to process it.
 
 ## Consumer Callback Path Bindings
 
-| Endpoint                                                             | Method | Description                                    |
-|:---------------------------------------------------------------------|:-------|:-----------------------------------------------|
-| https://consumer.com/negotiations/offers                             | `POST` | [[[#negotiations-offers-post]]]                |
-| https://consumer.com/:callback/negotiations/:consumerPid/offers      | `POST` | [[[#negotiations-consumerpid-offers-post]]]    |
-| https://consumer.com/:callback/negotiations/:consumerPid/agreement   | `POST` | [[[#negotiations-consumerpid-agreement-post]]] |
-| https://consumer.com/:callback/negotiations/:consumerPid/events      | `POST` | [[[#negotiations-consumerpid-events-post]]]    |
-| https://consumer.com/:callback/negotiations/:consumerPid/termination | `POST` | [[[#negotiations-consumerpid-termination-post]]]                                         |
+| Endpoint                                                             | Method | Description                                      |
+|:---------------------------------------------------------------------|:-------|:-------------------------------------------------|
+| https://consumer.com/negotiations/offers                             | `POST` | [[[#negotiations-offers-post]]]                  |
+| https://consumer.com/:callback/negotiations/:consumerPid             | `GET`  | [[[#negotiations-get-consumer]]]                 |
+| https://consumer.com/:callback/negotiations/:consumerPid/offers      | `POST` | [[[#negotiations-consumerpid-offers-post]]]      |
+| https://consumer.com/:callback/negotiations/:consumerPid/agreement   | `POST` | [[[#negotiations-consumerpid-agreement-post]]]   |
+| https://consumer.com/:callback/negotiations/:consumerPid/events      | `POST` | [[[#negotiations-consumerpid-events-post]]]      |
+| https://consumer.com/:callback/negotiations/:consumerPid/termination | `POST` | [[[#negotiations-consumerpid-termination-post]]] |
 
 **_Note:_** The `:callback` can be chosen freely by the implementations.
 
@@ -224,6 +225,36 @@ All callback paths are relative to the `callbackAddress` base URL specified in
 the [Contract Request Message](#contract-request-message) that initiated a CN. For example, if the `callbackAddress` is
 specified as `https://consumer.com/callback` and a callback path binding is `negotiations/:consumerPid/offers`, the
 resolved URL will be `https://consumer.com/callback/negotiations/:consumerPid/offers`.
+
+### The `negotiations` Endpoint _(Consumer-side)_
+
+#### GET {#negotiations-get-consumer}
+
+##### Request
+
+A CN can be accessed by a [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
+
+<aside class="example" title="Get Negotiation Request">
+    <pre class="http">GET https://consumer.com/:callback/negotiations/:consumerPid
+Authorization: ...</pre>
+
+</aside>
+
+
+##### Response
+
+If the CN is found and the client is authorized, the [=Consumer=] must return an HTTP 200 (OK) response and a body
+containing the [Contract Negotiation](#ack-contract-negotiation):
+
+<aside class="example" title="Contract Negotiation Response">
+    <pre class="json" data-include="message/example/contract-negotiation.json">
+    </pre>
+</aside>
+
+
+
+Predefined states are: `REQUESTED`, `OFFERED`, `ACCEPTED`, `AGREED`, `VERIFIED`, `FINALIZED`, and `TERMINATED` (
+see [[[#contract-negotiation-states]]]).
 
 ### The `negotiations/offers` Endpoint _(Consumer-side)_
 
