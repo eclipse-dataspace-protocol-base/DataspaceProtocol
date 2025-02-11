@@ -1,4 +1,4 @@
-# Contract Negotiation Protocol
+# Contract Negotiation Protocol {#negotiation-protocol}
 
 This document outlines the key elements of the [Contract Negotiation Protocol](#contract-negotiation-protocol). The used
 terms are described [here](#terminology).

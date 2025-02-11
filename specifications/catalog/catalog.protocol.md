@@ -1,4 +1,4 @@
-# Catalog Protocol
+# Catalog Protocol {#catalog-protocol}
 
 This document outlines the [=Catalog Protocol=]. The used terms are described in section [[[#terminology]]].
 

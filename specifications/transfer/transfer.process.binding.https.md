@@ -1,4 +1,4 @@
-# Transfer Process HTTPS Binding
+# Transfer Process HTTPS Binding {#transfer-http}
 
 This specification defines a RESTful API over HTTPS for the [Transfer Process Protocol](#transfer-process-protocol).
 

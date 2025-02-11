@@ -1,4 +1,4 @@
-# General Common Protocol Requirements
+# Common Requirements {#requirements}
 
 ## Authorization
 

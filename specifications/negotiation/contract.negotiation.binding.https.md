@@ -1,4 +1,4 @@
-# Contract Negotiation HTTPS Binding
+# Contract Negotiation HTTPS Binding {#negotiation-http}
 
 This specification defines a RESTful API over HTTPS for
 the [Contract Negotiation Protocol](#contract-negotiation-protocol).

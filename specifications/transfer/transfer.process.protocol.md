@@ -1,4 +1,4 @@
-# Transfer Process Protocol
+# Transfer Process Protocol {#transfer-protocol}
 
 This document outlines the key elements of the [=Transfer Process Protocol=]. The used terms are
 described [here](#terminology).

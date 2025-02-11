@@ -1,4 +1,4 @@
-# Catalog HTTPS Binding
+# Catalog HTTPS Binding {#catalog-http}
 
 This specification defines a RESTful API over HTTPS for the [=Catalog Protocol=].
 
