@@ -56,7 +56,7 @@ authorization.
 
 ##### Request
 
-A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `negotiations/:providerPid`:
+A CN can be accessed by a [=Consumer=] sending a GET request to `negotiations/:providerPid`:
 
 <aside class="example" title="Get Negotiation Request">
     <pre class="http">GET https://provider.com/negotiations/:providerPid
@@ -232,7 +232,7 @@ resolved URL will be `https://consumer.com/callback/negotiations/:consumerPid/of
 
 ##### Request
 
-A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
+A CN can be accessed by a [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
 
 <aside class="example" title="Get Negotiation Request">
     <pre class="http">GET https://consumer.com/:callback/negotiations/:consumerPid
