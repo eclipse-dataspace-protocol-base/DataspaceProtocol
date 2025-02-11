@@ -4,17 +4,11 @@ The following terms and definitions introduce the core concepts, entities, and r
 
 <dfn>Agreement</dfn>
 
-A concrete [=Policy=] associated with a specific [=Dataset=] that has been signed by both the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=]. 
-
-* An Agreement _MUST_ be associated with exactly one [=Dataset=]
-* An Agreement _MUST_ include exactly one `target` attribute that is the identifier of the [=Dataset=] the [=Agreement=] is associated with.
+A concrete [=Policy=] associated with a specific [=Dataset=] that has been signed by both the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=].
 
 <dfn>Catalog</dfn>
 
 A collection of entries representing [=Offers=] that are advertised by a [=Provider=].
-
-* A Catalog _MUST_ have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
-* A Catalog _MUST_ have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] may be obtained.
 
 <dfn>Catalog Protocol</dfn>
 
@@ -44,10 +38,6 @@ A set of allowable [=Message Type=] sequences defined as a state machine.
 
 Data or a technical service that can be shared by a [=Participant=].
 
-* A Dataset _MUST_ have at least one `hasPolicy` attribute that contain an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
-* A Dataset _MUST_ have at least one `Distributions` attribute.
-* Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
-
 <dfn>Dataspace</dfn>
 
 A set of technical services that facilitate interoperable [=Dataset=] sharing between entities.
@@ -66,11 +56,7 @@ A definition of the structure of a [=Message=].
 
 <dfn>Offer</dfn>
 
-A concrete [=Policy=] associated with a specific [=Dataset=]. 
-
-* An Offer _MUST_ have an `@id` that is a unique identifier.
-* An Offer _MUST_ be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
-* Offers _MUST NOT_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] ID. (_Note: If the Offer is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
+A concrete [=Policy=] associated with a specific [=Dataset=].
 
 <dfn>Participant</dfn>
 

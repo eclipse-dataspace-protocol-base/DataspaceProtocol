@@ -69,7 +69,8 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Example**    | [Catalog Example](message/example/catalog.json)                               |
 | **Properties**      | <p data-include="message/table/catalog.html" data-include-format="html"></p> |
 
-The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
+* A [=Catalog=] _MUST_ have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
+* A [=Catalog=] _MUST_ have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] may be obtained.
 
 ### ACK - Dataset
 
@@ -79,6 +80,16 @@ The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
 | **Schema**     | [JSON Schema](message/schema/dataset-schema.json)                             |
 | **Example**    | [Dataset Example](message/example/dataset.json)                               |
 | **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
+
+* A [=Dataset=] _MUST_ have at least one `hasPolicy` attribute that contain an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
+* A [=Dataset=] _MUST_ have at least one `Distributions` attribute.
+* Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
+
+An [=Offer=] contains the following attributes:
+
+* An [=Offer=] _MUST_ have an `@id` that is a unique identifier.
+* An [=Offer=] _MUST_ be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
+* [=Offers=] _MUST NOT_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] ID. (_Note: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
 
 ### ERROR - Catalog Error
 

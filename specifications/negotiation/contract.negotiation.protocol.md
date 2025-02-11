@@ -209,6 +209,11 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 The Contract Negotiation is an object returned by a [=Consumer=] or [=Provider=] indicating a successful state change
 happened.
 
+An [=Agreement=] contains the following attributes:
+
+* An Agreement _MUST_ be associated with exactly one [=Dataset=].
+* An Agreement _MUST_ include exactly one `target` attribute that is the identifier of the [=Dataset=] the [=Agreement=] is associated with.
+
 ### ERROR - Contract Negotiation Error
 
 |                |                                                                                               |
