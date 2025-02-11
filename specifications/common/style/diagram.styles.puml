@@ -1,0 +1,83 @@
+
+
+!$blue = "#066DFA"
+!$gray = "#98A3AB"
+!$lightGray = "#F4F5F9"
+!$darkGray = "#747C94"
+!$green =  "#24DCC1"
+!$blueFill =  "#E4EBFA"
+!$greenFill =  "#CFFBDE"
+!$borderRed = "#F40000"
+!$lightRed = "#FDCCCC"
+
+skinparam sequence {
+ArrowColor Black
+LifeLineBorderColor 000000
+LifeLineBackgroundColor #A9DCDF
+}
+
+skinparam roundCorner 10
+
+skinparam ArrowColor $darkGray
+skinparam ArrowHeadColor $darkGray
+skinparam LifeLineBackgroundColor $darkGray
+
+
+skinparam CloudBackgroundColor $lightGray
+skinparam CloudBorderColor  $gray
+skinparam CloudFontColor  Black
+
+skinparam ArtifactBackgroundColor $lightGray
+skinparam ArtifactBorderColor $gray
+
+skinparam ComponentBackgroundColor $blueFill
+skinparam ComponentBorderColor $blue
+skinparam ComponentFontColor Black
+
+skinparam DatabaseBackgroundColor $greenFill
+skinparam DatabaseBorderColor $green
+skinparam DatabaseFontColor Black
+
+skinparam ParticipantBorderColor $blue
+skinparam ParticipantBackgroundColor $blueFill
+skinparam SequenceGroupBorderColor #DADADA
+skinparam SequenceGroupHeaderFontColor #898A89
+skinparam BoxPadding 20
+skinparam ParticipantPadding 10
+
+skinparam AgentBackgroundColor White
+skinparam AgentBackgroundColor $blueFill
+skinparam AgentBorderColor #066DFA
+skinparam noteBorderColor FEF3BF
+skinparam SequenceBoxBorderColor F2F2F2
+skinparam shadowing false
+skinparam AgentBorderThickness 1
+
+skinparam NoteBackgroundColor FEFFDD
+
+skinparam FrameBackgroundColor $lightGray
+skinparam FrameBorderColor $lightGray
+skinparam FrameFontColor $darkGray
+
+skinparam ActivityBackgroundColor $blueFill
+
+skinparam StateBackgroundColor $blueFill
+skinparam StateBorderColor $blue
+skinparam StateStartColor $blue
+skinparam StateEndColor $blue
+skinparam StateFontSize 12
+
+skinparam ActivityBackgroundColor $blueFill
+skinparam ActivityBorderColor $blue
+skinparam ActivityEndColor $blue
+skinparam ActivityStartColor $blue
+skinparam ActivityDiamondBackgroundColor $lightGray
+skinparam ActivityDiamondBorderColor $blue
+
+skinparam PartitionBackgroundColor $lightGray
+skinparam PartitionBorderColor $darkGray
+skinparam PartitionFontColor $darkGray
+
+skinparam ClassAttributeFontColor Black
+skinparam ClassBorderColor $blue
+skinparam ClassBackgroundColor $blueFill
