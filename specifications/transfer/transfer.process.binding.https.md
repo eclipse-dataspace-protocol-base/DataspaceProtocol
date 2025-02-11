@@ -9,7 +9,7 @@ This specification defines a RESTful API over HTTPS for the [Transfer Process Pr
 1. The `<base>` notation indicates the base URL for a [=Connector=] endpoint. For example, if the scheme is `https` and
    the full hostname is `connector.example.com`, the URL `<base>/transfers/request` will map
    to `https://connector.example.com/transfers/request`.
-2. All request and response messages must use the `application/json` media type. Derived media types,
+2. All request and response [=Messages=] must use the `application/json` media type. Derived media types,
    e.g., `application/ld+json` may be exposed in addition.
 
 ### Transfer Error
@@ -20,7 +20,7 @@ error body is returned it must be a [Transfer Error](#error-transfer-error).
 #### State Transition Errors
 
 If a client or [=Provider=] makes a request that results in an invalid [=Transfer Process=] (TP) state transition as
-defined by the Transfer Process Protocol, it must return an HTTP code 400 (Bad Request) with
+defined by the [=Transfer Process Protocol=], it must return an HTTP code 400 (Bad Request) with
 a [Transfer Error](#error-transfer-error) in the response body.
 
 #### Object Not Found

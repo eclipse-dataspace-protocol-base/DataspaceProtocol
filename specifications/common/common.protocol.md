@@ -8,10 +8,10 @@ does not require authorization.
 
 ## Schemas, Contexts, and Message Processing
 
-All protocol messages are normatively defined by a [[json-schema]]. This specification also uses JSON-LD 1.1 and provides
-a JSON-LD context to serialize data structures and message types as it facilitates extensibility. The JSON-LD context is
-designed to produce message serializations using compaction that validate against the Json Schema for the given message
-type. This allows implementations to choose whether to process messages as plain Json or as JSON-LD and maintain
+All protocol [=Messages=] are normatively defined by a [[json-schema]]. This specification also uses JSON-LD 1.1 and provides
+a JSON-LD context to serialize data structures and [=Message=] types as it facilitates extensibility. The JSON-LD context is
+designed to produce [=Message=] serializations using compaction that validate against the Json Schema for the given [=Message=]
+type. This allows implementations to choose whether to process [=Messages=] as plain JSON or as JSON-LD and maintain
 interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide similar contexts that
 facilitate this approach to interoperability.
 
@@ -19,7 +19,7 @@ facilitate this approach to interoperability.
 
 ### Generic Definition
 
-[=Connectors=] implementing the Dataspace Protocol may operate on different versions. Therefore, it is necessary that
+[=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions. Therefore, it is necessary that
 they can discover the supported versions of each other reliably and unambiguously. Each [=Connector=] must expose
 information of at least one Dataspace Protocol Version it supports. The specifics of how this information is obtained
 its defined by specific protocol bindings.

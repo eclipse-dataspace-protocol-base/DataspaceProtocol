@@ -20,7 +20,7 @@ A [=Participant Agent=] that makes a [=Catalog=] available and accessible to [=P
 
 <dfn data-lt="Data Service">Connector</dfn> (Data Service)
 
-A [=Participant Agent=] that performs [=Contract Negotiation=] and [=Transfer Process=] operations with other Connectors, by implementing [=Dataspace Protocols=]. It produces [=Agreements=] and manages [=Dataset=] sharing. 
+A [=Participant Agent=] that performs [=Contract Negotiation=] and [=Transfer Process=] operations with other [=Connectors=], by implementing [=Dataspace Protocols=]. It produces [=Agreements=] and manages [=Dataset=] sharing. 
 
 <dfn>Consumer</dfn>
 
@@ -44,7 +44,7 @@ A set of technical services that facilitate interoperable [=Dataset=] sharing be
 
 <dfn>Dataspace Protocol</dfn>
 
-A set of messages and message sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specifications themselves.
+A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specifications themselves.
 
 <dfn>Message</dfn>
 

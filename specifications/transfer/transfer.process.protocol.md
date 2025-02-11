@@ -7,8 +7,8 @@ described [here](#terminology).
 
 A [=Transfer Process=] (TP) involves two parties, a [=Provider=] that offers one or more [=Datasets=] under
 a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A TP progresses through a series of states, which are
-controlled by the [=Provider=] and [=Consumer=] using messages. A TP transitions to another state as a result of an
-exchanged message.
+controlled by the [=Provider=] and [=Consumer=] using [=Messages=]. A TP transitions to another state as a result of an
+exchanged [=Message=].
 
 ### Prerequisites
 
@@ -18,9 +18,9 @@ subsection.
 #### Control and Data Planes
 
 A TP involves two logical constructs, a control plane and a data plane. Serving as a coordinating layer, services on the
-_control plane_ receive messages and manage the local state of the TP (same as for the [=Catalog Protocol=] and
+_control plane_ receive [=Messages=] and manage the local state of the TP (same as for the [=Catalog Protocol=] and
 the [=Contract Negotiation Protocol=]). On the _data plane_, the actual transfer of data takes place using a wire
-protocol. Both participants in a data sharing scenario run services logically regarded as control and/or data plane
+protocol. Both [=Participants=] in a data sharing scenario run services logically regarded as control and/or data plane
 services.
 
 The specification of data plane interfaces and interaction patterns are not in scope of this document.
@@ -39,7 +39,7 @@ transmission to an endpoint specified by the [=Consumer=] using an agreed-upon w
 ![](figures/push-transfer-process.png "Push Transfer Process")
 
 _Note that the illustration of the sequence is only exemplary. The activation of actors is not determined, also,
-responses, parameters, possible recursions, and interactions between the components of one participant are not shown._
+responses, parameters, possible recursions, and interactions between the components of one [=Participant=] are not shown._
 
 ##### Pull Transfer
 
@@ -50,7 +50,7 @@ request the data from the [=Provider=]-specified endpoint.
 ![](figures/pull-transfer-process.png "Pull Transfer Process")
 
 _Note that the illustration of the sequence is only exemplary. The activation of actors is not determined, also,
-responses, parameters, possible recursions, and interactions between the components of one participant are not shown._
+responses, parameters, possible recursions, and interactions between the components of one [=Participant=] are not shown._
 
 ##### Finite and Non-Finite Data
 

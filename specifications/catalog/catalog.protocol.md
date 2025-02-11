@@ -4,8 +4,8 @@ This document outlines the [=Catalog Protocol=]. The used terms are described in
 
 ## Introduction
 
-The Catalog Protocol defines how a [=Catalog=] is requested from a [=Catalog Service=] by a [=Consumer=] using an
-abstract message exchange format. The concrete message exchange wire format is defined in the binding specifications.
+The [=Catalog Protocol=] defines how a [=Catalog=] is requested from a [=Catalog Service=] by a [=Consumer=] using an
+abstract [=Message=] exchange format. The concrete [=Message=] exchange wire format is defined in the binding specifications.
 
 The [=Catalog Protocol=] reuses properties from the DCAT and ODRL vocabularies with restrictions defined in this
 specification. This is done implicitly by the use of the JSON schemas and JSON-LD-contexts that are part of the DSP.
@@ -122,7 +122,7 @@ The [=Catalog Protocol=] is designed to be used by federated services without th
 Each [=Consumer=] is responsible for issuing requests to
 1..N [=Catalog Services=], and managing the results. It follows that a specific
 replication protocol is not needed, or more precisely, each [=Consumer=] replicates data
-from catalog services by issuing [Catalog Request Messages](#catalog-request-message).
+from [=Catalog Services=] by issuing [Catalog Request Messages](#catalog-request-message).
 
 The discovery protocol adopted by a particular [=Dataspace=] defines how
 a [=Consumer=] discovers [=Catalog Services=].
@@ -145,7 +145,7 @@ all [=Datasets=] in the [=Catalog=] response and restrict access when a contract
 negotiated; or, require one or more proofs when the [Catalog Request](#catalog-request-message) is made and filter
 the [=Datasets=] accordingly. The latter option requires a mechanism for clients to
 discover the type of proofs that may be presented at request time. The specifics of proof types and presenting a proof
-during a [=Catalog=] request is outside the scope of the Dataspace Protocol.
+during a [=Catalog=] request is outside the scope of the [=Dataspace Protocol=].
 However, [=Catalog Protocol=] bindings should define a proof data endpoint for
 obtaining this information.
 
