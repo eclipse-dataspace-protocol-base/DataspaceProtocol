@@ -6,7 +6,7 @@ described [here](#terminology).
 ## Introduction
 
 A [=Transfer Process=] (TP) involves two parties, a [=Provider=] that offers one or more [=Datasets=] under
-a [=Usage Policy=] and a [=Consumer=] that requests [=Datasets=]. A TP progresses through a series of states, which are
+a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A TP progresses through a series of states, which are
 controlled by the [=Provider=] and [=Consumer=] using messages. A TP transitions to another state as a result of an
 exchanged message.
 
