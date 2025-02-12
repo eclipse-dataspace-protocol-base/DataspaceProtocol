@@ -33,20 +33,18 @@ If the client is not authorized, the [=Consumer=] or [=Provider=] must return an
 
 ## Provider Path Bindings
 
-| Endpoint                                                | Method | Description                                   |
-|:--------------------------------------------------------|:-------|:----------------------------------------------|
-| https://provider.com/transfers/:providerPid             | `GET`  | [[[#transfers-get]]]                          |
-| https://provider.com/transfers/request                  | `POST` | [[[#transfers-request-post]]]                 |
-| https://provider.com/transfers/:providerPid/start       | `POST` | [[[#transfers-providerpid-start-post]]]       |
-| https://provider.com/transfers/:providerPid/completion  | `POST` | [[[#transfers-providerpid-completion-post]]]  |
-| https://provider.com/transfers/:providerPid/termination | `POST` | [[[#transfers-providerpid-termination-post]]] |
-| https://provider.com/transfers/:providerPid/suspension  | `POST` | [[[#transfers-providerpid-suspension-post]]]  |
+| Endpoint                                      | Method | Path                                  |
+|:----------------------------------------------|:-------|:--------------------------------------|
+| [[[#transfers-get]]]                          | `GET`  | `/transfers/:providerPid`             |
+| [[[#transfers-request-post]]]                 | `POST` | `/transfers/request`                  |
+| [[[#transfers-providerpid-start-post]]]       | `POST` | `/transfers/:providerPid/start`       |
+| [[[#transfers-providerpid-completion-post]]]  | `POST` | `/transfers/:providerPid/completion`  |
+| [[[#transfers-providerpid-termination-post]]] | `POST` | `/transfers/:providerPid/termination` |
+| [[[#transfers-providerpid-suspension-post]]]  | `POST` | `/transfers/:providerPid/suspension`  |
 
-### The `transfers` Endpoint _(Provider-side)_
+### Transfer Process Endpoint {#transfers-get}
 
-#### GET {#transfers-get}
-
-##### Request
+**Request**
 
 A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to `transfers/:providerPid`:
 
@@ -55,7 +53,7 @@ A CN can be accessed by a [=Consumer=] or [=Provider=] sending a GET request to 
 Authorization: ...</pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
 containing the [Transfer Process](#ack-transfer-process):
@@ -69,11 +67,9 @@ Authorization: ...</pre>
 
 Predefined states are: `REQUESTED`, `STARTED`, `SUSPENDED`, `REQUESTED`, `COMPLETED`, and `TERMINATED`.
 
-### The `transfers/request` Endpoint _(Provider-side)_
+### Transfer Request Endpoint {#transfers-request-post}
 
-#### POST {#transfers-request-post}
-
-##### Request
+**Request**
 
 A TP is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs
 a [Transfer Request Message](#transfer-request-message) to `transfers/request`:
@@ -92,7 +88,7 @@ Authorization: ...</pre>
   that [=Providers=] should properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL.
 
-##### Response
+**Response**
 
 The [=Provider=] must return an HTTP 201 (Created) response with a body containing
 the [Transfer Process](#ack-transfer-process):
@@ -102,11 +98,9 @@ the [Transfer Process](#ack-transfer-process):
     </pre>
 </aside>
 
-### The `transfers/:providerPid/start` Endpoint _(Provider-side)_
+### Transfer Start Endpoint {#transfers-providerpid-start-post}
 
-#### POST {#transfers-providerpid-start-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST a [Transfer Start Message](#transfer-start-message) to
 attempt to start a TP after it has been suspended:
@@ -118,16 +112,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:providerPid/completion` Endpoint _(Provider-side)_
+### Transfer Completion Endpoint {#transfers-providerpid-completion-post}
 
-#### POST {#transfers-providerpid-completion-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST a [Transfer Completion Message](#transfer-completion-message)
 to complete a TP:
@@ -139,16 +131,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:providerPid/termination` Endpoint _(Provider-side)_
+### Transfer Termination Endpoint {#transfers-providerpid-termination-post}
 
-#### POST {#transfers-providerpid-termination-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST
 a [Transfer Termination Message](#transfer-termination-message) to terminate a TP:
@@ -160,16 +150,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:providerPid/suspension` Endpoint _(Provider-side)_
+### Transfer Suspension Endpoint {#transfers-providerpid-suspension-post}
 
-#### POST {#transfers-providerpid-suspension-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST a [Transfer Suspension Message](#transfer-suspension-message)
 to suspend a TP:
@@ -181,33 +169,33 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 ## Consumer Callback Path Bindings
 
-| Endpoint                                                          | Method | Description                                   |
-|:------------------------------------------------------------------|:-------|:----------------------------------------------|
-| https://consumer.com/:callback/transfers/:consumerPid/start       | `POST` | [[[#transfers-consumerpid-start-post]]]       |
-| https://consumer.com/:callback/transfers/:consumerPid/completion  | `POST` | [[[#transfers-consumerpid-completion-post]]]  |
-| https://consumer.com/:callback/transfers/:consumerPid/termination | `POST` | [[[#transfers-consumerpid-termination-post]]] |
-| https://consumer.com/:callback/transfers/:consumerPid/suspension  | `POST` | [[[#transfers-consumerpid-suspension-post]]] |
+| Endpoint                                      | Method | Path                                            |
+|:----------------------------------------------|:-------|:------------------------------------------------|
+| [[[#transfers-consumerpid-start-post]]]       | `POST` | `/:callback/transfers/:consumerPid/start`       |
+| [[[#transfers-consumerpid-completion-post]]]  | `POST` | `/:callback/transfers/:consumerPid/completion`  |
+| [[[#transfers-consumerpid-termination-post]]] | `POST` | `/:callback/transfers/:consumerPid/termination` |
+| [[[#transfers-consumerpid-suspension-post]]]  | `POST` | `/:callback/transfers/:consumerPid/suspension`  |
 
 ### Prerequisites
 
 All callback paths are relative to the `callbackAddress` base URL specified in
 the [Transfer Request Message](#transfer-request-message) that initiated a TP. For
-example, if the `callbackAddress` is specified as `https://consumer.com/callback` and a callback path binding
+example, if the `callbackAddress` is specified as `https://consumer.com/:callback` and a callback path binding
 is `transfers/:consumerPid/start`, the resolved URL will
-be `https://consumer.com/callback/transfers/:consumerPid/start`.
+be `https://consumer.com/:callback/transfers/:consumerPid/start`.
 
-### The `transfers/:consumerPid/start` Endpoint _(Consumer-side)_
+**_Note:_** The `:callback` can be chosen freely by the implementations.
 
-#### POST {#transfers-consumerpid-start-post}
+### Transfer Start Endpoint {#transfers-consumerpid-start-post}
 
-##### Request
+**Request**
 
 The [=Provider=] can POST a [Transfer Start Message](#transfer-start-message) to
 indicate the start of a TP:
@@ -219,16 +207,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:consumerPid/completion` Endpoint _(Consumer-side)_
+### Transfer Completion Endpoint {#transfers-consumerpid-completion-post}
 
-#### POST {#transfers-consumerpid-completion-post}
-
-##### Request
+**Request**
 
 The [=Provider=] can POST a [Transfer Completion Message](#transfer-completion-message)
 to complete a TP:
@@ -240,16 +226,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:consumerPid/termination` Endpoint _(Consumer-side)_
+### Transfer Termination Endpoint {#transfers-consumerpid-termination-post}
 
-#### POST {#transfers-consumerpid-termination-post}
-
-##### Request
+**Request**
 
 The [=Provider=] can POST
 a [Transfer Termination Message](#transfer-termination-message) to terminate a TP:
@@ -261,16 +245,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `transfers/:consumerPid/suspension` Endpoint _(Consumer-side)_
+### Transfer Suspension Endpoint {#transfers-consumerpid-suspension-post}
 
-#### POST {#transfers-consumerpid-suspension-post}
-
-##### Request
+**Request**
 
 The [=Provider=] can POST a [Transfer Suspension Message](#transfer-suspension-message)
 to suspend a TP:
@@ -282,7 +264,7 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the TP's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it. 

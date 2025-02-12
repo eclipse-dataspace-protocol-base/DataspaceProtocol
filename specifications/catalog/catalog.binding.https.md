@@ -24,11 +24,9 @@ a [Catalog Error](#error-catalog-error) in the response body.
 | https://provider.com/catalog/request      | `POST` | [[[#catalog-request-post]]] |
 | https://provider.com/catalog/datasets/:id | `GET`  | [[[#catalog-datasets-get]]] |
 
-### The `catalog/request` Endpoint (Provider-side)
+### Catalog Request Endpoint {#catalog-request-post}
 
-#### POST {#catalog-request-post}
-
-##### Request
+**Request**
 
 The [Catalog Request Message](#catalog-request-message) corresponds to `POST https://<base>/catalog/request`:
 
@@ -47,7 +45,7 @@ Authorization: ...</pre>
   expression or query to be executed as part of the [=Catalog=] request. If a filter expression is not supported by an
   implementation, it must return a HTTP 400 (Bad Request) response.
 
-##### Response
+**Response**
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
 a [Catalog](#ack-catalog).
@@ -57,11 +55,9 @@ a [Catalog](#ack-catalog).
     </pre>
 </aside>
 
-### The `catalog/datasets/:id` Endpoint (Provider-side)
+### Dataset Request Endpoint {#catalog-datasets-get}
 
-#### GET {#catalog-datasets-get}
-
-##### Request
+**Request**
 
 The [Dataset Request Message](#dataset-request-message) corresponds
 to `GET https://<base>/catalog/datasets/:id}`:
@@ -76,7 +72,7 @@ Authorization: ...</pre>
   contents of the `Authorization` header are detailed in
   the [[[#authorization]]].
 
-##### Response
+**Response**
 
 If the request is successful, the [=Catalog Service=] must return an HTTP 200 (OK) with a response body containing
 a [Dataset](#ack-dataset).
