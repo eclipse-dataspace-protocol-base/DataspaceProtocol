@@ -1,6 +1,6 @@
 # Terms and definitions {#terminology}
 
-The following terms and definitions introduce the core concepts, entities, and relationships that underpin a __dataspace__ and its communication protocols. Not all [=Dataspace=] entities have a concrete _technical_ materialization; some entities may exist as purely logical constructs.
+The following terms and definitions introduce the core concepts, entities, and relationships that underpin a [=Dataspace=] and its communication protocols. Not all [=Dataspace=] entities have a concrete _technical_ materialization; some entities may exist as purely logical constructs.
 
 <dfn>Agreement</dfn>
 
