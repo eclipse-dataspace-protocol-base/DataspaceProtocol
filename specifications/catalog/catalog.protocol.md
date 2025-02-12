@@ -1,11 +1,11 @@
-# Catalog Protocol
+# Catalog Protocol {#catalog-protocol}
 
 This document outlines the [=Catalog Protocol=]. The used terms are described in section [[[#terminology]]].
 
 ## Introduction
 
-The Catalog Protocol defines how a [=Catalog=] is requested from a [=Catalog Service=] by a [=Consumer=] using an
-abstract message exchange format. The concrete message exchange wire format is defined in the binding specifications.
+The [=Catalog Protocol=] defines how a [=Catalog=] is requested from a [=Catalog Service=] by a [=Consumer=] using an
+abstract [=Message=] exchange format. The concrete [=Message=] exchange wire format is defined in the binding specifications.
 
 The [=Catalog Protocol=] reuses properties from the DCAT and ODRL vocabularies with restrictions defined in this
 specification. This is done implicitly by the use of the JSON schemas and JSON-LD-contexts that are part of the DSP.
@@ -69,7 +69,8 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Example**    | [Catalog Example](message/example/catalog.json)                               |
 | **Properties**      | <p data-include="message/table/catalog.html" data-include-format="html"></p> |
 
-The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
+* A [=Catalog=] _MUST_ have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
+* A [=Catalog=] _MUST_ have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] may be obtained.
 
 ### ACK - Dataset
 
@@ -79,6 +80,16 @@ The [=Catalog=] contains all [Datasets](#dataset) which the requester shall see.
 | **Schema**     | [JSON Schema](message/schema/dataset-schema.json)                             |
 | **Example**    | [Dataset Example](message/example/dataset.json)                               |
 | **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
+
+* A [=Dataset=] _MUST_ have at least one `hasPolicy` attribute that contain an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
+* A [=Dataset=] _MUST_ hold at least one `Distribution` object in the `distribution` attribute.
+* Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
+
+An [=Offer=] contains the following attributes:
+
+* An [=Offer=] _MUST_ have an `@id` that is a unique identifier.
+* An [=Offer=] _MUST_ be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
+* [=Offers=] _MUST NOT_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] ID. (_Note: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
 
 ### ERROR - Catalog Error
 
@@ -111,7 +122,7 @@ The [=Catalog Protocol=] is designed to be used by federated services without th
 Each [=Consumer=] is responsible for issuing requests to
 1..N [=Catalog Services=], and managing the results. It follows that a specific
 replication protocol is not needed, or more precisely, each [=Consumer=] replicates data
-from catalog services by issuing [Catalog Request Messages](#catalog-request-message).
+from [=Catalog Services=] by issuing [Catalog Request Messages](#catalog-request-message).
 
 The discovery protocol adopted by a particular [=Dataspace=] defines how
 a [=Consumer=] discovers [=Catalog Services=].
@@ -134,7 +145,7 @@ all [=Datasets=] in the [=Catalog=] response and restrict access when a contract
 negotiated; or, require one or more proofs when the [Catalog Request](#catalog-request-message) is made and filter
 the [=Datasets=] accordingly. The latter option requires a mechanism for clients to
 discover the type of proofs that may be presented at request time. The specifics of proof types and presenting a proof
-during a [=Catalog=] request is outside the scope of the Dataspace Protocol.
+during a [=Catalog=] request is outside the scope of the [=Dataspace Protocol=].
 However, [=Catalog Protocol=] bindings should define a proof data endpoint for
 obtaining this information.
 
