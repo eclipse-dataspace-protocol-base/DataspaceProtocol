@@ -9,14 +9,13 @@ https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/.
 
 Since [Version 0.8](https://github.com/eclipse-dataspace-protocol-base/DataspaceProtocol/tree/main/releases/v0.8), the specification has been stable with changes in details. The latest release candidate ([2024-1](https://docs.internationaldataspaces.org/ids-knowledgebase/dataspace-protocol)) of the Dataspace Protocol specification is considered stable. It has been developed under the governance of the [International Data Spaces Association](https://internationaldataspaces.org/). Further changes shall not affect conformity. 
 
-Now, the spec is maintained and developed by the [Eclipse Dataspace Protocol](https://projects.eclipse.org/projects/technology.dataspace-protocol-base) project under the purview of the [Eclipse Dataspace Working Group](https://dataspace.eclipse.org/) (EDWG). The source of truth is this repository. 
+The spec is maintained and developed by the [Eclipse Dataspace Protocol](https://projects.eclipse.org/projects/technology.dataspace-protocol-base) project under the purview of the [Eclipse Dataspace Working Group](https://dataspace.eclipse.org/) (EDWG). 
 
 > __NOTE:__ 
-> A versioning scheme beside the commits to the repository is not available but will be provided in the future.
 
 ## Best practices
 
-The Dataspace Protocol is under development and the working group is active on this draft, reviewed and improved the content multiple times. During the process, several aspects were discussed, which are not considered part of the _normative_ specification, but important to be documented as support for the users of this specification as **best practices**. The [DSP Best Practices](https://github.com/eclipse-dataspace-protocol-base/dsp_best_practices) are _non-normative_.
+Additional, non-normative information related to this specification can be found in the [DSP Best Practices Guide](https://github.com/eclipse-dataspace-protocol-base/dsp_best_practices). 
 
 ## How to contribute
 

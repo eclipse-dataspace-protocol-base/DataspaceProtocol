@@ -82,7 +82,7 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
 
 * A [=Dataset=] _MUST_ have at least one `hasPolicy` attribute that contain an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
-* A [=Dataset=] _MUST_ have at least one `Distributions` attribute.
+* A [=Dataset=] _MUST_ hold at least one `Distribution` object in the `distribution` attribute.
 * Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
 
 An [=Offer=] contains the following attributes:
