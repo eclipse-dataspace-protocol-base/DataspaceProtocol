@@ -41,20 +41,18 @@ authorization.
 
 ## Provider Path Bindings
 
-| Endpoint                                                              | Method | Description                                                 |
-|:----------------------------------------------------------------------|:-------|:------------------------------------------------------------|
-| https://provider.com/negotiations/:providerPid                        | `GET`  | [[[#negotiations-get-provider]]]                                    |
-| https://provider.com/negotiations/request                             | `POST` | [[[#negotiations-request-post]]]                            |
-| https://provider.com/negotiations/:providerPid/request                | `POST` | [[[#negotiations-providerpid-request-post]]]                |
-| https://provider.com/negotiations/:providerPid/events                 | `POST` | [[[#negotiations-providerpid-events-post]]]                 |
-| https://provider.com/negotiations/:providerPid/agreement/verification | `POST` | [[[#negotiations-providerpid-agreement-verification-post]]] |
-| https://provider.com/negotiations/:providerPid/termination            | `POST` | [[[#negotiations-providerpid-termination-post]]]            |
+| Endpoint                                                    | Method | Path                                                |
+|:------------------------------------------------------------|:-------|:----------------------------------------------------|
+| [[[#negotiations-get-provider]]]                                     | `GET`  | `/negotiations/:providerPid`                        |
+| [[[#negotiations-request-post]]]                            | `POST` | `/negotiations/request`                             |
+| [[[#negotiations-providerpid-request-post]]]                | `POST` | `/negotiations/:providerPid/request`                |
+| [[[#negotiations-providerpid-events-post]]]                 | `POST` | `/negotiations/:providerPid/events`                 |
+| [[[#negotiations-providerpid-agreement-verification-post]]] | `POST` | `/negotiations/:providerPid/agreement/verification` |
+| [[[#negotiations-providerpid-termination-post]]]            | `POST` | `/negotiations/:providerPid/termination`            |
 
-### The `negotiations` Endpoint _(Provider-side)_
+### Contract Negotiation Endpoint {#negotiations-get-provider}
 
-#### GET {#negotiations-get-provider}
-
-##### Request
+**Request**
 
 A CN can be accessed by a [=Consumer=] sending a GET request to `negotiations/:providerPid`:
 
@@ -65,7 +63,7 @@ Authorization: ...</pre>
 </aside>
 
 
-##### Response
+**Response**
 
 If the CN is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
 containing the [Contract Negotiation](#ack-contract-negotiation):
@@ -80,11 +78,9 @@ containing the [Contract Negotiation](#ack-contract-negotiation):
 Predefined states are: `REQUESTED`, `OFFERED`, `ACCEPTED`, `AGREED`, `VERIFIED`, `FINALIZED`, and `TERMINATED` (
 see [[[#contract-negotiation-states]]]).
 
-### The `negotiations/request` Endpoint _(Provider-side)_
+### Contract Request Endpoint (init) {#negotiations-request-post}
 
-#### POST {#negotiations-request-post}
-
-##### Request
+**Request**
 
 A CN is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs an
 initiating [Contract Request Message](#contract-request-message)
@@ -104,7 +100,7 @@ Authorization: ...</pre>
   that [=Providers=] should properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL.
 
-##### Response
+**Response**
 
 The [=Provider=] must return an HTTP 201 (Created) response with a body containing
 the [Contract Negotiation](#ack-contract-negotiation):
@@ -114,11 +110,9 @@ the [Contract Negotiation](#ack-contract-negotiation):
     </pre>
 </aside>
 
-### The `negotiations/:providerPid/request` Endpoint _(Provider-side)_
+### Contract Request Endpoint {#negotiations-providerpid-request-post}
 
-#### POST {#negotiations-providerpid-request-post}
-
-##### Request
+**Request**
 
 A [=Consumer=] may make an [=Offer=] by POSTing
 a [Contract Request Message](#contract-request-message)
@@ -131,16 +125,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the message is successfully processed, the [=Provider=] must return an HTTP 200 (OK) response. The response body is
 not specified and clients are not required to process it.
 
-### The `negotiations/:providerPid/events` Endpoint _(Provider-side)_
+### Contract Negotiation Event Endpoint {#negotiations-providerpid-events-post}
 
-#### POST {#negotiations-providerpid-events-post}
-
-##### Request
+**Request**
 
 A [=Consumer=] can POST
 a [Contract Negotiation Event Message](#contract-negotiation-event-message)
@@ -153,7 +145,7 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
@@ -162,11 +154,9 @@ If the current [=Offer=] was created by the [=Consumer=], the [=Provider=] must 
 with a [Contract Negotiation Error](#error-contract-negotiation-error) in the
 response body.
 
-### The `negotiations/:providerPid/agreement/verification` Endpoint  _(Provider-side)_
+### Contract Agreement Verification Endpoint {#negotiations-providerpid-agreement-verification-post}
 
-#### POST {#negotiations-providerpid-agreement-verification-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST
 a [Contract Agreement Verification Message](#contract-agreement-verification-message)
@@ -179,16 +169,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `negotiations/:providerPid/termination` Endpoint _(Provider-side)_
+### Contract Negotiation Termination Endpoint {#negotiations-providerpid-termination-post}
 
-#### POST {#negotiations-providerpid-termination-post}
-
-##### Request
+**Request**
 
 The [=Consumer=] can POST
 a [Contract Negotiation Termination Message](#contract-negotiation-termination-message)
@@ -201,36 +189,34 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-## Consumer Callback Path Bindings
+## Consumer Path Bindings
 
-| Endpoint                                                             | Method | Description                                      |
-|:---------------------------------------------------------------------|:-------|:-------------------------------------------------|
-| https://consumer.com/negotiations/offers                             | `POST` | [[[#negotiations-offers-post]]]                  |
-| https://consumer.com/:callback/negotiations/:consumerPid             | `GET`  | [[[#negotiations-get-consumer]]]                 |
-| https://consumer.com/:callback/negotiations/:consumerPid/offers      | `POST` | [[[#negotiations-consumerpid-offers-post]]]      |
-| https://consumer.com/:callback/negotiations/:consumerPid/agreement   | `POST` | [[[#negotiations-consumerpid-agreement-post]]]   |
-| https://consumer.com/:callback/negotiations/:consumerPid/events      | `POST` | [[[#negotiations-consumerpid-events-post]]]      |
-| https://consumer.com/:callback/negotiations/:consumerPid/termination | `POST` | [[[#negotiations-consumerpid-termination-post]]] |
-
-**_Note:_** The `:callback` can be chosen freely by the implementations.
+| Endpoint                                         | Method | Path                                               |
+|:-------------------------------------------------|:-------|:---------------------------------------------------|
+| [[[#negotiations-get-consumer]]]                 | `GET`  | `/:callback/negotiations/:consumerPid`             |
+| [[[#negotiations-offers-post]]]                  | `POST` | `/negotiations/offers`                             |
+| [[[#negotiations-consumerpid-offers-post]]]      | `POST` | `/:callback/negotiations/:consumerPid/offers`      |
+| [[[#negotiations-consumerpid-agreement-post]]]   | `POST` | `/:callback/negotiations/:consumerPid/agreement`   |
+| [[[#negotiations-consumerpid-events-post]]]      | `POST` | `/:callback/negotiations/:consumerPid/events`      |
+| [[[#negotiations-consumerpid-termination-post]]] | `POST` | `/:callback/negotiations/:consumerPid/termination` |
 
 ### Prerequisites
 
 All callback paths are relative to the `callbackAddress` base URL specified in
 the [Contract Request Message](#contract-request-message) that initiated a CN. For example, if the `callbackAddress` is
-specified as `https://consumer.com/callback` and a callback path binding is `negotiations/:consumerPid/offers`, the
-resolved URL will be `https://consumer.com/callback/negotiations/:consumerPid/offers`.
+specified as `https://consumer.com/:callback` and a callback path binding is `negotiations/:consumerPid/offers`, the
+resolved URL will be `https://consumer.com/:callback/negotiations/:consumerPid/offers`.
 
-### The `negotiations` Endpoint _(Consumer-side)_
+**_Note:_** The `:callback` can be chosen freely by the implementations.
 
-#### GET {#negotiations-get-consumer}
+### Contract Negotiation Endpoint {#negotiations-get-consumer}
 
-##### Request
+**Request**
 
 A CN can be accessed by a [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
 
@@ -241,7 +227,7 @@ Authorization: ...</pre>
 </aside>
 
 
-##### Response
+**Response**
 
 If the CN is found and the client is authorized, the [=Consumer=] must return an HTTP 200 (OK) response and a body
 containing the [Contract Negotiation](#ack-contract-negotiation):
@@ -256,11 +242,9 @@ containing the [Contract Negotiation](#ack-contract-negotiation):
 Predefined states are: `REQUESTED`, `OFFERED`, `ACCEPTED`, `AGREED`, `VERIFIED`, `FINALIZED`, and `TERMINATED` (
 see [[[#contract-negotiation-states]]]).
 
-### The `negotiations/offers` Endpoint _(Consumer-side)_
+### Contract Offer Endpoint (init) {#negotiations-offers-post}
 
-#### POST {#negotiations-offers-post}
-
-##### Request
+**Request**
 
 A CN is started and placed in the `OFFERED` state when a [=Provider=] POSTs
 a [Contract Offer Message](#contract-offer-message) to `negotiations/offers`:
@@ -279,7 +263,7 @@ Authorization: ...</pre>
   should properly handle the cases where a trailing / is included with or absent from the `callbackAddress` when
   resolving full URL.
 
-##### Response
+**Response**
 
 The [=Consumer=] must return an HTTP 201 (Created) response with a body containing
 the [Contract Negotiation](#ack-contract-negotiation):
@@ -289,11 +273,9 @@ the [Contract Negotiation](#ack-contract-negotiation):
     </pre>
 </aside>
 
-### The `negotiations/:consumerPid/offers` Endpoint _(Consumer-side)_
+### Contract Offer Endpoint {#negotiations-consumerpid-offers-post}
 
-#### POST {#negotiations-consumerpid-offers-post}
-
-##### Request
+**Request**
 
 A [=Provider=] may make an [=Offer=] by POSTing a [Contract Offer Message](#contract-offer-message) to
 the `negotiations/:consumerPid/offers` callback:
@@ -305,16 +287,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the message is successfully processed, the [=Consumer=] must return an HTTP 200 (OK) response. The response body is
 not specified and clients are not required to process it.
 
-### The `negotiations/:consumerPid/agreement` Endpoint _(Consumer-side)_
+### Contract Agreement Endpoint {#negotiations-consumerpid-agreement-post}
 
-#### POST {#negotiations-consumerpid-agreement-post}
-
-##### Request
+**Request**
 
 The [=Provider=] can POST a [Contract Agreement Message](#contract-agreement-message) to
 the `negotiations/:consumerPid/agreement` callback to create an [=Agreement=].
@@ -326,16 +306,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Consumer=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `negotiations/:consumerPid/events` Endpoint _(Consumer-side)_ 
+### Contract Negotiation Event Endpoint {#negotiations-consumerpid-events-post}
 
-#### POST {#negotiations-consumerpid-events-post}
-
-##### Request
+**Request**
 
 A [=Provider=] can POST a [Contract Negotiation Event Message](#contract-negotiation-event-message) to
 the `negotiations/:consumerPid/events` callback with an `eventType` of `FINALIZED` to finalize an [=Agreement=].
@@ -347,16 +325,14 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
-### The `negotiations/:consumerPid/termination` Endpoint _(Consumer-side)_
+### Contract Negotiation Termination Endpoint {#negotiations-consumerpid-termination-post}
 
-#### POST {#negotiations-consumerpid-termination-post}
-
-##### Request
+**Request**
 
 The [=Provider=] can POST a [Contract Negotiation Termination Message](#contract-negotiation-termination-message) to
 terminate a CN.
@@ -368,7 +344,7 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-##### Response
+**Response**
 
 If the CN's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
