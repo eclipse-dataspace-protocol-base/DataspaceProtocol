@@ -15,7 +15,7 @@ type. This allows implementations to choose whether to process messages as plain
 interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide similar contexts that
 facilitate this approach to interoperability.
 
-## Exposure of Versions
+## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
 ### Generic Definition
 
