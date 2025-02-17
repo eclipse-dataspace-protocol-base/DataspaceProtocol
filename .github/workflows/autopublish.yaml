@@ -14,16 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-java
-      - name: build java
-        run: |
-          cd artifacts
-          ./gradlew build
-          ./gradlew generateTablesFromSchemas
-          cd ..
       - name: Copy files for correct web access
         run: |
-          chmod +x ./.github/workflows/script.sh
-          ./.github/workflows/script.sh
+          chmod +x ./.github/scripts/checkout-tags.sh
+          ./.github/scripts/checkout-tags.sh
+      - name: Redirect top to head
+        run: cp .github/scripts/index.html .
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
