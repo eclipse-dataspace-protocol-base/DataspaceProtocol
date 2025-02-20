@@ -1,32 +1,17 @@
 # Introduction
 
-The __Dataspace Protocol__ is used in the context of [=Dataspaces=] as described and defined in the subsequent sections
-with the purpose to support interoperability.
-In this context, the specification provides fundamental technical interoperability for [=Participants=]
-in [=Dataspaces=].
-Beyond the technical interoperability measures described in this specification, semantic interoperability should also be
-addressed by the [=Participants=]. On the perspective of the [=Dataspace=], interoperability needs to be addressed also
-on the level of trust, on organizational levels, and on legal levels.
-The aspect of cross-dataspace communication is not subject of this document, as this is addressed by the [=Dataspaces=]'
-organizational and legal agreements.
+The __Dataspace Protocol__ is used in the context of [=Dataspaces=] as described and defined in the subsequent sections with the purpose to support _interoperability_. In this context, the specification provides fundamental technical interoperability for [=Participants=] in [=Dataspaces=]. 
 
-The interaction of [=Participants=] in a [=Dataspace=] is conducted by the [=Participant Agents=],
-so-called [=Connectors=], which implement the protocols described above.
-While most interactions take place between [=Connectors=], some interactions with other systems are required.
-The figure below provides an overview on the context of this specification.
+This specification builds on protocols located in the [ISO OSI model (ISO/IEC 7498-1:1994)](https://www.iso.org/standard/20269.html) layers, like HTTPS. The purpose of this specification is to define interactions between systems independent of such protocols, but describing how to implement it in an unambiguous and extensible way. To do so, the [=Messages=] that are exchanged during the process are described in this specification and the states and their transitions are specified as state machines, based on the key terms and concepts of a [=Dataspace=]. On this foundation the bindings to data transfer protocols, like HTTPS, are described.
 
-An [=Identity Provider=] realizes the required interfaces and provides required information to implement the Trust
-Framework of a [=Dataspace=].
-The validation of the identity of a given [=Participant Agent=] and the validation of additional claims is a fundamental
-mechanism. The structure and content of such claims and identities may, however, vary between different [=Dataspaces=],
-as well as the structure of such an [=Identity Provider=], e.g. a centralized system, a decentralized system or a
-federated system. Other specifications define the respective functions.
+_Note: This specification does not cover the data transfer as such. While this is controlled by the [=Transfer Process Protocol=], e.g., the initiation of the transfer channels or their decomissioning, the data transfer itself and especially the handling of technical exceptions is an obligation to the transport protocol._
 
-A [=Connector=] will implement additional internal functionalities, like monitoring or policy engines, as appropriate.
-It is not covered by this specification if a [=Connector=] implements such or how.
+The classes and definitions used in this specification are reused from different standards and specifications as much as possible, in particular, DCAT [[?vocab-dcat-3]] and ODRL [[?odrl-model]]. As, however, the external definitions allow different interpretations or provide more attributes than required, this specification is leveraging _profiles_ of the original definitions rather than the complete original expressiveness. A _profile_ in this sense is a restriction or subset of an external definition, enforcing that every occurrence of an externally defined class is always conformant with the original definition. However, not every standard-compliant class might be compliant to the [=Dataspace=] profile. The profiles are not separate artifacts but implicitly contained in the JSON schemas for the [=Message Types=] of this specification.
 
-The same applies for the actual data that is transferred between the systems. While this document does not define the
-transport protocol, the structure, syntax or semantics of the data, a specification for those aspects is required and
-subject to the agreements of the [=Participants=] or the [=Dataspace=].
+This specification is organized into the following documents:
 
-![Overview on protocol and context](./figures/ProtocolOverview.png "Overview on protocol and context")
+* [[[#terminology]]] documents define key terms.
+* [[[#requirements]]] declares cross-cutting functions as, e.g., the declaration of supported versions of this protocol and common data processing rules.
+* [[[#catalog-protocol]]] and [[[#catalog-http]]] define how [=Catalogs=] are published and accessed as HTTPS endpoints respectively.
+* [[[#negotiation-protocol]]] and [[[#negotiation-http]]] documents that define how [=Contract Negotiations=] are conducted and requested via HTTPS endpoints.
+* [[[#transfer-protocol]]] and [[[#transfer-http]]] documents that define how [=Transfer Processes=] using a given data transfer protocol are governed via HTTPS endpoints.

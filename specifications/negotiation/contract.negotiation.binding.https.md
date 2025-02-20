@@ -1,4 +1,4 @@
-# Contract Negotiation HTTPS Binding
+# Contract Negotiation HTTPS Binding {#negotiation-http}
 
 This specification defines a RESTful API over HTTPS for
 the [Contract Negotiation Protocol](#contract-negotiation-protocol).
@@ -10,7 +10,7 @@ the [Contract Negotiation Protocol](#contract-negotiation-protocol).
 1. The `<base>` notation indicates the base URL for a [=Connector=] endpoint. For example, if the base [=Connector=] URL
    is `connector.example.com`, the URL `https://<base>/negotiations/request` will map
    to `https//connector.example.com/negotiation/request`.
-2. All request and response messages must use the `application/json` media type. Derived media types,
+2. All request and response [=Messages=] must use the `application/json` media type. Derived media types,
    e.g., `application/ld+json` may be exposed in addition.
 
 ### Contract Negotiation Error
@@ -21,7 +21,7 @@ error body is returned it must be a [Contract Negotiation Error](#contract-negot
 #### State Transition Errors
 
 If a client makes a request that results in an
-invalid [state transition as defined by the Contract Negotiation Protocol](#contract-negotiation-states), it must return
+invalid [state transition as defined by the [=Contract Negotiation Protocol=]](#contract-negotiation-states), it must return
 an HTTP code 400 (Bad Request) with a [Contract Negotiation Error](#contract-negotiation-error) in the response body.
 
 #### Object Not Found
@@ -97,10 +97,10 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-- The `callbackAddress` property specifies the base endpoint `URL` where the client receives messages associated with
+- The `callbackAddress` property specifies the base endpoint `URL` where the client receives [=Messages=] associated with
   the CN. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
 
-- Callback messages will be sent to paths under the base URL as described by this specification. Note
+- Callback [=Messages=] will be sent to paths under the base URL as described by this specification. Note
   that [=Providers=] should properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL.
 

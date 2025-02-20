@@ -1,4 +1,4 @@
-# Catalog HTTPS Binding
+# Catalog HTTPS Binding {#catalog-http}
 
 This specification defines a RESTful API over HTTPS for the [=Catalog Protocol=].
 
@@ -10,7 +10,7 @@ This specification defines a RESTful API over HTTPS for the [=Catalog Protocol=]
    URL is `api.example.com`, the URL `https://<base>/catalog/request` will map
    to `https//api.example.com/catalog/request`.
 
-2. All request and response messages must use the `application/json` media type.
+2. All request and response [=Messages=] must use the `application/json` media type.
 
 ### Catalog Error
 
