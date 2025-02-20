@@ -6,7 +6,7 @@ All requests to HTTPS endpoints should use the `Authorization` header to include
 of such tokens are not part of these specifications. The `Authorization` HTTP header is optional if the [=Connector=]
 does not require authorization.
 
-## Schemas, Contexts, and Message Processing
+## Schemas & Contexts
 
 All protocol [=Messages=] are normatively defined by a [[json-schema]]. This specification also uses JSON-LD 1.1 and provides
 a JSON-LD context to serialize data structures and [=Message=] types as it facilitates extensibility. The JSON-LD context is
@@ -15,7 +15,7 @@ type. This allows implementations to choose whether to process [=Messages=] as p
 interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide similar contexts that
 facilitate this approach to interoperability.
 
-## Exposure of Dataspace Protocol Versions
+## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
 ### Generic Definition
 
