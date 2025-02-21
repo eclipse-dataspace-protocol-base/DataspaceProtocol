@@ -1,0 +1,9 @@
+{
+  "@context": [
+    "https://w3id.org/dspace/2025/1/context.jsonld",
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id":"some:id",
+  "type": "CatalogService",
+  "serviceEndpoint": "https://bar.example.com/some/path/catalog"
+}
