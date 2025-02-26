@@ -40,7 +40,7 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
     @NotNull
     public String transform(SchemaType schemaType) {
         var builder = new StringBuilder(CSS).append("<table class=\"message-table\">");
-        builder.append(format("<tr><td class=\"message-class\" colspan=\"4\">%s</td></tr>", schemaType.getName()));
+        builder.append(format("<tr><td class=\"message-class\" colspan=\"4\" id=\"%s-table\">%s</td></tr>", schemaType.getName(), schemaType.getName()));
         transformProperties(schemaType.getTransitiveRequiredProperties(), true, builder);
         transformProperties(schemaType.getTransitiveOptionalProperties(), false, builder);
         return builder.append("</table>").toString();
@@ -100,12 +100,23 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
 
     private @NotNull String getArrayTypeName(SchemaProperty resolvedProperty) {
         var itemTypes = resolvedProperty.getItemTypes().stream()
-                .flatMap(t -> t.getResolvedTypes().stream()).map(this::getTypeName)
+                .flatMap(t -> t.getResolvedTypes().stream())
+                .map(e -> {
+                    if (e.isJsonBaseType()) {
+                        return String.format("%s", getTypeName(e));
+                    }
+                    return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
+                })
                 .collect(joining(", "));
         if (itemTypes.isEmpty()) {
             itemTypes = resolvedProperty.getResolvedTypes().stream()
-                    .map(SchemaType::getItemType)
-                    .filter(Objects::nonNull)
+                    .filter(e->getTypeName(e)!=null)
+                    .map(e->{
+                        if (e.isJsonBaseType()) {
+                            return String.format("%s", getTypeName(e));
+                        }
+                        return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
+                    })
                     .collect(joining(", "));
             if (itemTypes.isEmpty()) {
                 return "array";
