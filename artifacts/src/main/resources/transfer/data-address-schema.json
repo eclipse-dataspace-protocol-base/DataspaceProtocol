@@ -25,24 +25,7 @@
         "endpointProperties": {
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "@type": {
-                "type": "string",
-                "const": "EndpointProperty"
-              },
-              "name": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "@type",
-              "name",
-              "value"
-            ]
+            "$ref": "#/definitions/EndpointProperty"
           },
           "minItems": 1
         }
@@ -51,6 +34,26 @@
         "@type",
         "endpointType",
         "endpoint"
+      ]
+    },
+    "EndpointProperty": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "EndpointProperty"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type",
+        "name",
+        "value"
       ]
     }
   }
