@@ -427,6 +427,17 @@
         }
       }
     },
+    "CatalogService": {
+      "@id":"dspace:CatalogService",
+      "@context": {
+        "id": "@id",
+        "type": "@type",
+        "serviceEndpoint": {
+          "@id": "https://www.w3.org/ns/did#serviceEndpoint",
+          "@type": "@id"
+        }
+      }
+    },
     "ACCEPTED": "dspace:ACCEPTED",
     "FINALIZED": "dspace:FINALIZED",
     "REQUESTED": "dspace:REQUESTED",
