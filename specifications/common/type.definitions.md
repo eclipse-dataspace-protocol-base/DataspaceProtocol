@@ -8,6 +8,9 @@
 </p>
 
 
+<p data-include="message/table/catalog.html" data-include-format="html">
+</p>
+
 <p data-include="message/table/dataaddress.html" data-include-format="html">
 </p>
 

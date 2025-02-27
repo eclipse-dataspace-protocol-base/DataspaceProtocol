@@ -62,12 +62,12 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 ### ACK - Catalog
 
-|                |                                                                               |
-|----------------|-------------------------------------------------------------------------------|
-| **Sent by**    | [=Provider=]                                                                  |
-| **Schema**     | [JSON Schema](message/schema/catalog-schema.json)                             |
-| **Example**    | [Catalog Example](message/example/catalog.json)                               |
-| **Properties**      | <p data-include="message/table/catalog.html" data-include-format="html"></p> |
+|                |                                                                                  |
+|----------------|----------------------------------------------------------------------------------|
+| **Sent by**    | [=Provider=]                                                                     |
+| **Schema**     | [JSON Schema](message/schema/catalog-schema.json)                                |
+| **Example**    | [Catalog Example](message/example/catalog.json)                                  |
+| **Properties**      | <p data-include="message/table/rootcatalog.html" data-include-format="html"></p> |
 
 * A [=Catalog=] _MUST_ have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
 * A [=Catalog=] _MUST_ have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] may be obtained.
