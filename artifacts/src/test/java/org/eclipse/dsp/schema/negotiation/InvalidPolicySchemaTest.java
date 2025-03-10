@@ -32,6 +32,7 @@ public class InvalidPolicySchemaTest extends AbstractSchemaTest {
         assertThat(schema.validate(INVALID_NO_OPERATOR, JSON).iterator().next().getType()).isEqualTo(ONE_OF);
         assertThat(schema.validate(INVALID_NO_RIGHT_OPERAND, JSON).iterator().next().getType()).isEqualTo(ONE_OF);
         assertThat(schema.validate(INVALID_MULTIPLICITY_CONSTRAINT, JSON).iterator().next().getType()).isEqualTo(ONE_OF);
+        assertThat(schema.validate(INVALID_LOGICAL_CONTENT_NESTING, JSON).iterator().next().getType()).isEqualTo(ONE_OF);
     }
 
     @BeforeEach
@@ -154,6 +155,34 @@ public class InvalidPolicySchemaTest extends AbstractSchemaTest {
                            "leftOperand": "partner",
                            "operator": "eq",
                            "rightOperand": "silver"
+                         }
+                       ]
+                     }
+                   }
+                 ]
+               }
+            """;
+
+    private static final String INVALID_LOGICAL_CONTENT_NESTING = """
+            {
+                 "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
+                 "@type": "Offer",
+                 "target": "asset:1",
+                 "permission": [
+                   {
+                     "action": "use",
+                     "constraint": {
+                       "and": [
+                         {
+                           "leftOperand": "partner",
+                           "operator": "eq",
+                           "rightOperand": "gold"
+                         },
+                         {
+                           "something": "that",
+                           "is": "definitely",
+                           "not": "a",
+                           "valid": "constraint"
                          }
                        ]
                      }

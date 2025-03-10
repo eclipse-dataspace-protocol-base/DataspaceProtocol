@@ -213,28 +213,27 @@
       "properties": {
         "and": {
           "type": "array",
-          "items": "object"
+          "items": {
+            "$ref": "#/definitions/Constraint"
+          }
         },
         "andSequence": {
           "type": "array",
-          "items": "object"
+          "items": {
+            "$ref": "#/definitions/Constraint"
+          }
         },
         "or": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "$ref": "#/definitions/LogicalConstraint"
-              },
-              {
-                "$ref": "#/definitions/AtomicConstraint"
-              }
-            ]
+            "$ref": "#/definitions/Constraint"
           }
         },
         "xone": {
           "type": "array",
-          "items": "object"
+          "items": {
+            "$ref": "#/definitions/Constraint"
+          }
         }
       },
       "oneOf": [
