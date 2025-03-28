@@ -17,52 +17,32 @@ similar contexts that facilitate this approach to interoperability.
 
 ## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
-### Generic Definition
+[=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
+necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
+must provide the version metadata endpoint using the `dspace-version` Well-Known Uniform Resource Identifier [[rfc8615]]
+at the top of the path hierarchy. Example: `<host>/.well-known/dspace-version`
 
-[=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions. Therefore, it is necessary
-that they can discover the supported versions of each other reliably and unambiguously. Each [=Connector=] must expose
-information of at least one Dataspace Protocol version it supports. The specifics of how this information is obtained
-its defined by specific protocol bindings.
-
-A [=Connector=] must respond to a respective request by providing a JSON object containing an array of supported
-versions with at least one item. The item connects the version tag (`version` attribute) with the absolute URL path
-segment of the domain-only path for all endpoints of this version. The following example specifies that
-this [=Connector=] offers version `2024-1` endpoints at `<host>/some/path/2024-1`, the `2025-1` endpoints at
-`<host>/some/path/2025-1` and another [=Connector=] on the same host under `<host>/different/path/2025-1`.
-
-```json
-{
-  "protocolVersions": [
-    {
-      "version": "2024-1",
-      "path": "/some/path/2024-1"
-    },
-    {
-      "version": "2025-1",
-      "path": "/some/path/2025-1"
-    },
-    {
-      "version": "2025-1",
-      "path": "/different/path/2025-1"
-    }
-  ]
-}
-```
+A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
+with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
+The semantics of the `path` property are specified by each protocol binding.
 
 This data object must comply to the [JSON Schema](message/schema/protocol-version-schema.json). The requesting
 [=Connector=] may select from the endpoints in the response. If the [=Connector=] can't identify a matching Dataspace
-Protocol Version, it must terminate the communication.
+Protocol version, it must terminate the communication. The version endpoint MUST be unversioned and unauthenticated.
 
 ### HTTPS Binding
 
-#### The Well-Known Version Metadata Endpoint
+When using the DSP HTTPS binding, the `path` property is an absolute URL path segment to be appended to the domain for
+all endpoints of this version.
 
-Each implementation must provide the version metadata endpoint, which must use the `dspace-version` Well-Known Uniform
-Resource Identifier [[rfc8615]] at the top of the path hierarchy:
+The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
+`<host>/some/path/2024-1`, the `2025-1` endpoints at`<host>/some/path/2025-1` and another [=Connector=] on the same host
+under `<host>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, determined by
+`protocol`, `version` and the `profile` array.
 
-```
-/.well-known/dspace-version
-```
-
-The contents of the response is a JSON object defined in section [[[#exposure-of-dataspace-protocol-versions]]]. The
-version endpoint MUST be unversioned and unauthenticated.
+<aside class="example" title="well-known version endpoint (HTTPS)">
+    <pre class="http">GET https://provider.com/.well-known/dspace-version
+    </pre>
+    <pre class="json" data-include="message/example/protocol-version.json">
+    </pre>
+</aside>

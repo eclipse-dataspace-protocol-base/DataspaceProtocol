@@ -31,6 +31,11 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
         assertThat(schema.validate(INVALID_EMPTY_VERSIONS, JSON).iterator().next().getType()).isEqualTo(MIN_ITEMS);
         assertThat(schema.validate(INVALID_NO_VERSION, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(INVALID_NO_PATH, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_NO_BINDING, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_BINDING_NOT_IN_ENUM, JSON).iterator().next().getType()).isEqualTo(ENUM);
+        assertThat(schema.validate(INVALID_AUTH_A_STRING, JSON).iterator().next().getType()).isEqualTo(TYPE);
+        assertThat(schema.validate(INVALID_AUTH_MISSING_PROTOCOL, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
+        assertThat(schema.validate(INVALID_AUTH_NOT_AN_ARRAY, JSON).iterator().next().getType()).isEqualTo(TYPE);
     }
 
     @BeforeEach
@@ -63,6 +68,74 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
               "protocolVersions": [
                 {
                   "version": "1.0"
+                }
+              ]
+            }
+            """;
+
+    private static final String INVALID_NO_BINDING = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "some/path/v1"
+                }
+              ]
+            }
+            """;
+
+    private static final String INVALID_BINDING_NOT_IN_ENUM = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "mqtts://mycorp.com/some/path/v1",
+                  "binding": "MQTT",
+                  "auth": "auth-protocol"
+                }
+              ]
+            }
+            """;
+
+    private static final String INVALID_AUTH_A_STRING = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "/some/path/v1",
+                  "binding": "HTTPS",
+                  "auth": "auth-protocol"
+                }
+              ]
+            }
+            """;
+
+    private static final String INVALID_AUTH_MISSING_PROTOCOL = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "/some/path/v1",
+                  "binding": "HTTPS",
+                  "auth": {
+                    "version": "a.b.c",
+                    "profile": ["someprofile"]
+                  }
+                }
+              ]
+            }
+            """;
+    private static final String INVALID_AUTH_NOT_AN_ARRAY = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "/some/path/v1",
+                  "binding": "HTTPS",
+                  "auth": {
+                    "version": "a.b.c",
+                    "profile": "someprofile"
+                  }
                 }
               ]
             }

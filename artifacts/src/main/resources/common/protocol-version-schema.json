@@ -1,35 +1,72 @@
 {
-    "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "title": "VersionSchema",
-    "type": "object",
-    "allOf": [
-        {
-            "$ref": "#/definitions/Version"
-        }
-    ],
-    "$id": "https://w3id.org/dspace/2025/1/common/protocol-version-schema.json",
-    "definitions": {
-        "Version": {
-            "type": "object",
-            "properties": {
-                "protocolVersions": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "version": {
-                                "type": "string"
-                            },
-                            "path": {
-                                "type": "string"
-                            }
-                        },
-                        "required": ["version", "path"]
-                    },
-                    "minItems": 1
-                }
-            },
-            "required": ["protocolVersions"]
-        }
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "title": "VersionSchema",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/definitions/Version"
     }
+  ],
+  "$id": "https://w3id.org/dspace/2025/1/common/protocol-version-schema.json",
+  "definitions": {
+    "VersionResponse": {
+      "type": "object",
+      "properties": {
+        "protocolVersions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Version"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "protocolVersions"
+      ]
+    },
+    "Version": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "binding": {
+          "type": "string",
+          "enum": [
+            "HTTPS"
+          ]
+        },
+        "auth": {
+          "$ref": "#/definitions/Auth"
+        }
+      },
+      "required": [
+        "version",
+        "path",
+        "binding"
+      ]
+    },
+    "Auth": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "array",
+          "items": "string"
+        }
+      },
+      "required": [
+        "protocol",
+        "version"
+      ]
+    }
+  }
 }
