@@ -1,8 +1,34 @@
 {
   "protocolVersions": [
     {
-      "version": "1.0",
-      "path": "/some/path/v1"
+      "version": "2025-1",
+      "path": "/some/path/2025-1",
+      "binding": "HTTPS"
+    },
+    {
+      "version": "2024-1",
+      "path": "/some/path/2024-1",
+      "binding": "HTTPS",
+      "auth": {
+        "protocol": "OAuth",
+        "version": "2",
+        "profile": [
+          "authorization_code",
+          "refresh_token"
+        ]
+      }
+    },
+    {
+      "version": "2025-1",
+      "path": "/different/path/2025-1",
+      "binding": "HTTPS",
+      "auth": {
+        "protocol": "DCP",
+        "version": "1.0",
+        "profile": [
+          "vc11-sl2021/jwt"
+        ]
+      }
     }
   ]
 }
