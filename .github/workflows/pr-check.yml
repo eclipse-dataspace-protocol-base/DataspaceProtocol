@@ -8,3 +8,14 @@ on:
 jobs:
   trigger-workflow:
     uses: eclipse-dataspace-protocol-base/.github/.github/workflows/scan-pr-title.yml@main
+  run-tests:
+    name: gradle
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-java
+      - name: run
+        run: |
+          cd artifacts
+          chmod +x ./gradlew
+          ./gradlew build

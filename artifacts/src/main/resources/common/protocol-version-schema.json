@@ -4,7 +4,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "#/definitions/Version"
+      "$ref": "#/definitions/VersionResponse"
     }
   ],
   "$id": "https://w3id.org/dspace/2025/1/common/protocol-version-schema.json",

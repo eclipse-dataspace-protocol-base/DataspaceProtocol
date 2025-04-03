@@ -35,7 +35,7 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
         assertThat(schema.validate(INVALID_BINDING_NOT_IN_ENUM, JSON).iterator().next().getType()).isEqualTo(ENUM);
         assertThat(schema.validate(INVALID_AUTH_A_STRING, JSON).iterator().next().getType()).isEqualTo(TYPE);
         assertThat(schema.validate(INVALID_AUTH_MISSING_PROTOCOL, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-        assertThat(schema.validate(INVALID_AUTH_NOT_AN_ARRAY, JSON).iterator().next().getType()).isEqualTo(TYPE);
+        assertThat(schema.validate(INVALID_AUTH_PROFILE_NOT_AN_ARRAY, JSON).iterator().next().getType()).isEqualTo(TYPE);
     }
 
     @BeforeEach
@@ -91,7 +91,14 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
                   "version": "1.0",
                   "path": "mqtts://mycorp.com/some/path/v1",
                   "binding": "MQTT",
-                  "auth": "auth-protocol"
+                  "auth": {
+                    "protocol": "some-protocol",
+                    "version": "2",
+                    "profile": [
+                      "one-profile",
+                      "different-profile"
+                    ]
+                  }
                 }
               ]
             }
@@ -104,7 +111,7 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
                   "version": "1.0",
                   "path": "/some/path/v1",
                   "binding": "HTTPS",
-                  "auth": "auth-protocol"
+                  "auth": "a string"
                 }
               ]
             }
@@ -118,14 +125,17 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
                   "path": "/some/path/v1",
                   "binding": "HTTPS",
                   "auth": {
-                    "version": "a.b.c",
-                    "profile": ["someprofile"]
+                    "version": "2",
+                    "profile": [
+                      "one-profile",
+                      "different-profile"
+                    ]
                   }
                 }
               ]
             }
             """;
-    private static final String INVALID_AUTH_NOT_AN_ARRAY = """
+    private static final String INVALID_AUTH_PROFILE_NOT_AN_ARRAY = """
             {
               "protocolVersions": [
                 {
@@ -133,8 +143,9 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
                   "path": "/some/path/v1",
                   "binding": "HTTPS",
                   "auth": {
-                    "version": "a.b.c",
-                    "profile": "someprofile"
+                    "protocol": "some-protocol",
+                    "version": "2",
+                    "profile": "one-profile"
                   }
                 }
               ]
