@@ -40,7 +40,11 @@ Data or a technical service that can be shared by a [=Participant=].
 
 <dfn>Dataspace</dfn>
 
-A set of technical services that facilitate interoperable [=Dataset=] sharing between entities.
+governance framework and supporting services to build trustworthiness and enable the sharing of data through an agreed set of [=Policies=], semantic models, protocols and processes
+
+[SOURCE: ISO/IEC 20151 to be published]
+
+Note 1 to entry: This specification convers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in ISO/IEC 20151.
 
 <dfn>Dataspace Protocol</dfn>
 
