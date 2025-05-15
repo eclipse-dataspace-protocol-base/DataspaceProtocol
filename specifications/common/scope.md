@@ -9,4 +9,4 @@ This document gives guidance of how this metadata is provisioned:
 * This document specifies how [=Agreements=] that govern data usage are syntactically expressed and electronically negotiated during a [=Contract Negotiation=].
 * This document specifies how [=Datasets=] are accessed using [=Transfer Process Protocols=].
 
-This document does not apply to the data transfer protocol.
+This document does not apply to the [=Data Transfer Protocol=].
