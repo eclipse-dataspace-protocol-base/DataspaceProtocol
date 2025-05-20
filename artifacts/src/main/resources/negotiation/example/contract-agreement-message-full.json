@@ -71,16 +71,18 @@
             "rightOperand": "gold"
           }
         ],
-        "duty": {
-          "action": "report",
-          "constraint": [
-            {
-              "leftOperand": "event",
-              "operator": "gt",
-              "rightOperand": "use"
-            }
-          ]
-        }
+        "duty": [
+          {
+            "action": "report",
+            "constraint": [
+              {
+                "leftOperand": "event",
+                "operator": "gt",
+                "rightOperand": "use"
+              }
+            ]
+          }
+        ]
       },
       {
         "action": "use",
