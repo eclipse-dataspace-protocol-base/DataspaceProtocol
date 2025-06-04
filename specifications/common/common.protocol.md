@@ -48,3 +48,10 @@ under `<host>/<path-to-root>/different/path/2025-1` - some of which signal the r
     <pre class="json" data-include="message/example/protocol-version.json">
     </pre>
 </aside>
+
+<aside class="example" title="Well-known Version Endpoint (HTTPS) at different root path">
+    <pre class="http">GET https://provider.com/path-to-root/.well-known/dspace-version
+    </pre>
+    <pre class="json" data-include="message/example/protocol-version.json">
+    </pre>
+</aside>
