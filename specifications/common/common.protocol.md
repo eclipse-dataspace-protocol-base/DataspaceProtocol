@@ -19,10 +19,8 @@ similar contexts that facilitate this approach to interoperability.
 
 [=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
 necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
-must provide a version metadata endpoint `<host>/.well-known/dspace-version`. The location of this endpoint should adhere to the [[rfc8615]]. 
-
-Example A _(recommended)_: `<host>/.well-known/dspace-version`
-Example B: `<host>/<path-to-root>/.well-known/dspace-version`
+must provide a version metadata endpoint `<host>/.well-known/dspace-version`. The location of this endpoint should 
+adhere to the [[rfc8615]]. 
 
 A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
 with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
@@ -38,27 +36,24 @@ When using the DSP HTTPS binding, the `path` property is an absolute URL path se
 all endpoints of this version.
 
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
-`<host>/some/path/2024-1`, the `2025-1` endpoints at`<host>/some/path/2025-1` and another [=Connector=] on the same host
-under `<host>/<path-to-root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, determined by
-`protocol`, `version` and the `profile` array.
-
-<aside class="example" title="Well-known Version Endpoint (HTTPS)">
-    <pre class="http">GET https://provider.com/.well-known/dspace-version
-    </pre>
-    <pre class="json" data-include="message/example/protocol-version.json">
-    </pre>
-</aside>
+`<host>/some/path/2024-1`, the `2025-1` endpoints at `<host>/some/path/2025-1` and another [=Connector=] on the same host
+under `<host>/<path-to-root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, 
+determined by `protocol`, `version` and the `profile` array.
 
 <aside class="example" title="Well-known Version Endpoint (HTTPS) at different root path">
-    <pre class="http">GET https://provider.com/path-to-root/.well-known/dspace-version
+    <pre class="http">GET https://provider.com/.well-known/dspace-version
     </pre>
+    OR
+    <pre class="http">GET https://provider.com/path-to-root/.well-known/dspace-version</pre>
     <pre class="json" data-include="message/example/protocol-version.json">
     </pre>
 </aside>
 
 ## Discovery of Service Endpoints
 
-A Participant may publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a DID document, see [[?did-core]]. In that case, the Participant MUST add an entry to the DID document's `service` array adhering to the corresponding [JSON schema](message/schema/did-service-schema.json).
+A Participant may publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a DID document, 
+see [[?did-core]]. In that case, the Participant MUST add at least one entry to the DID document's `service` array 
+adhering to the corresponding [JSON schema](message/schema/did-service-schema.json).
 
 <aside class="example" title="Catalog Service Did Service Example">
     <pre class="json" data-include="message/example/catalogservice-did-service.json">
