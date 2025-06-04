@@ -19,8 +19,10 @@ similar contexts that facilitate this approach to interoperability.
 
 [=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
 necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
-must provide the version metadata endpoint using the `dspace-version` Well-Known Uniform Resource Identifier [[rfc8615]]
-at the top of the path hierarchy. Example: `<host>/.well-known/dspace-version`
+must provide a version metadata endpoint `<host>/.well-known/dspace-version`. The location of this endpoint should adhere to the [[rfc8615]]. 
+
+Example A _(recommended)_: `<host>/.well-known/dspace-version`
+Example B: `<host>/<path-to-root>/.well-known/dspace-version`
 
 A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
 with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
@@ -37,10 +39,10 @@ all endpoints of this version.
 
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
 `<host>/some/path/2024-1`, the `2025-1` endpoints at`<host>/some/path/2025-1` and another [=Connector=] on the same host
-under `<host>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, determined by
+under `<host>/<path-to-root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, determined by
 `protocol`, `version` and the `profile` array.
 
-<aside class="example" title="well-known version endpoint (HTTPS)">
+<aside class="example" title="Well-known Version Endpoint (HTTPS)">
     <pre class="http">GET https://provider.com/.well-known/dspace-version
     </pre>
     <pre class="json" data-include="message/example/protocol-version.json">
