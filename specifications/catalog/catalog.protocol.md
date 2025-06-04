@@ -158,12 +158,11 @@ respective [=Catalogs=] as a
 single [=Catalog Service=]. The broker is expected to honor upstream access
 control requirements.
 
-### Discovery of [=Catalog Services=]
+### Discovery of [=Connectors=]
 
-A Participant may publicize their [=Catalog Service=] via a DID document, see [[?did-core]]. In that case, the 
-Participant MUST add an entry to the DID document's `service` array adhering to the corresponding [JSON schema](message/schema/catalogservice-did-service-schema.json).
+A Participant may publicize their [=Data Services=], i.e., [=Connectors=], via a DID document, see [[?did-core]]. In that case, the Participant MUST add an entry to the DID document's `service` array adhering to the corresponding [JSON schema](message/schema/dataservice-did-service-schema.json).
 
-<aside class="example" title="Catalog Service Did Service Example">
-    <pre class="json" data-include="message/example/catalogservice-did-service.json">
+<aside class="example" title="Data Service Did Service Example">
+    <pre class="json" data-include="message/example/dataservice-did-service.json">
     </pre>
 </aside>

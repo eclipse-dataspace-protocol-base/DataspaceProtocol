@@ -4,6 +4,6 @@
     "https://www.w3.org/ns/did/v1"
   ],
   "id":"some:id",
-  "type": "CatalogService",
-  "serviceEndpoint": "https://bar.example.com/some/path/catalog"
+  "type": "DataService",
+  "serviceEndpoint": "https://bar.example.com/some/path/.well-known/dspace-version"
 }

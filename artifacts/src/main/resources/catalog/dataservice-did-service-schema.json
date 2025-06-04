@@ -1,15 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "title": "CatalogServiceDidServiceSchema",
+  "title": "DataServiceDidServiceSchema",
   "type": "object",
   "allOf": [
     {
-      "$ref": "#/definitions/CatalogServiceDidService"
+      "$ref": "#/definitions/DataServiceDidService"
     }
   ],
-  "$id": "https://w3id.org/dspace/2025/1/catalog/catalogservice-did-service-schema.json",
+  "$id": "https://w3id.org/dspace/2025/1/catalog/dataservice-did-service-schema.json",
   "definitions": {
-    "CatalogServiceDidService": {
+    "DataServiceDidService": {
       "type": "object",
       "properties": {
         "@context": {
@@ -28,7 +28,7 @@
         },
         "type": {
           "type": "string",
-          "const": "CatalogService"
+          "const": "DataService"
         },
         "id": {
           "type": "string"
