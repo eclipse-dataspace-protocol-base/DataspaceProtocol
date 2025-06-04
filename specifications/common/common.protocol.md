@@ -55,3 +55,12 @@ under `<host>/<path-to-root>/different/path/2025-1` - some of which signal the r
     <pre class="json" data-include="message/example/protocol-version.json">
     </pre>
 </aside>
+
+## Discovery of [=Connectors=]
+
+A Participant may publicize their [=Data Services=], i.e., [=Connectors=], via a DID document, see [[?did-core]]. In that case, the Participant MUST add an entry to the DID document's `service` array adhering to the corresponding [JSON schema](message/schema/dataservice-did-service-schema.json).
+
+<aside class="example" title="Data Service Did Service Example">
+    <pre class="json" data-include="message/example/dataservice-did-service.json">
+    </pre>
+</aside>
