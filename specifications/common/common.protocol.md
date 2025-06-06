@@ -20,7 +20,7 @@ similar contexts that facilitate this approach to interoperability.
 [=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
 necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
 must provide a version metadata endpoint ending with URI segments `/.well-known/dspace-version`. The location of this 
-endpoint should adhere to the [[rfc8615]].
+endpoint should adhere to [[rfc8615]].
 
 A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
 with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
@@ -52,7 +52,7 @@ determined by `protocol`, `version` and the `profile` array.
 ## Discovery of Service Endpoints
 
 A Participant may publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a DID document, 
-see [[?did-core]]. In that case, the Participant MUST add at least one entry to the DID document's `service` array 
+see [[?did-core]]. In this case, the Participant MUST add at least one entry to the DID document's `service` array 
 adhering to the corresponding [JSON schema](message/schema/did-service-schema.json).
 
 <aside class="example" title="Catalog Service Did Service Example">
