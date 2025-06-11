@@ -111,9 +111,6 @@
         },
         {
           "properties": {
-            "@id": {
-              "type": "string"
-            },
             "@type": {
               "type": "string",
               "const": "DataService"
@@ -130,7 +127,6 @@
             }
           },
           "required": [
-            "@id",
             "@type",
             "endpointURL"
           ]
