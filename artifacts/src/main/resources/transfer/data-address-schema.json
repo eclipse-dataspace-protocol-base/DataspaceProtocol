@@ -32,8 +32,7 @@
       },
       "required": [
         "@type",
-        "endpointType",
-        "endpoint"
+        "endpointType"
       ]
     },
     "EndpointProperty": {
