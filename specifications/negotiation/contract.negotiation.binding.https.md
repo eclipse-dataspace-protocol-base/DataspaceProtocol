@@ -89,7 +89,7 @@ to `negotiations/request`:
 <aside class="example" title="Contract Request">
     <pre class="http">POST https://provider.com/negotiations/request
 Authorization: ...</pre>
-    <pre class="json" data-include="message/example/contract-request-message.json">
+    <pre class="json" data-include="message/example/contract-request-message_initial.json">
     </pre>
 </aside>
 
@@ -252,7 +252,7 @@ a [Contract Offer Message](#contract-offer-message) to `negotiations/offers`:
 <aside class="example" title="Contract Offer Request">
     <pre class="http">POST https://consumer.com/negotiations/offers
 Authorization: ...</pre>
-    <pre class="json" data-include="message/example/contract-offer-message.json">
+    <pre class="json" data-include="message/example/contract-offer-message_initial.json">
     </pre>
 </aside>
 
