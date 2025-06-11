@@ -28,7 +28,19 @@
       "type": "object",
       "properties": {
         "version": {
-          "type": "string"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "0.8",
+                "2024-1",
+                "2025-1"
+              ]
+            }
+          ]
         },
         "path": {
           "type": "string"
