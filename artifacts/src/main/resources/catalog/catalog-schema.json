@@ -33,7 +33,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json#/definitions/AbstractDataset"
+          "$ref": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json#/definitions/Resource"
         },
         {
           "properties": {
