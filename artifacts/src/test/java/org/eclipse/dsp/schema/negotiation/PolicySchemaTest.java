@@ -54,9 +54,9 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                     "operator": "eq",
                     "rightOperand": "gold"
                   }],
-                  "duty": {
+                  "duty": [{
                     "action": "report"
-                  }
+                  }]
                 }
               ]
             }""";
@@ -75,9 +75,9 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "operator": "eq",
                       "rightOperand": "gold"
                   }],
-                  "duty": {
+                  "duty": [{
                     "action": "report"
-                  }
+                  }]
                 }
               ]
             }""";
@@ -96,9 +96,9 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "operator": "eq",
                       "rightOperand": "gold"
                   }],
-                  "duty": {
+                  "duty": [{
                     "action": "report"
-                  }
+                  }]
                 }
               ]
             }""";
@@ -117,14 +117,14 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "operator": "eq",
                       "rightOperand": "gold"
                   }],
-                  "duty": {
+                  "duty": [{
                     "action": "report",
                     "constraint": [{
                           "leftOperand": "event",
                           "operator": "gt",
                           "rightOperand": "use"
                     }]
-                  }
+                  }]
                 }
               ]
             }""";
