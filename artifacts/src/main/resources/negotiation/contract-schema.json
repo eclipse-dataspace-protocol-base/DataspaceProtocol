@@ -69,6 +69,9 @@
             "@type": {
               "type": "string",
               "const": "Offer"
+            },
+            "target": {
+              "type": "string"
             }
           }
         },
@@ -95,7 +98,29 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/MessageOffer"
+          "$ref": "#/definitions/PolicyClass"
+        },
+        {
+          "properties": {
+            "@type": {
+              "type": "string",
+              "const": "Offer"
+            }
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "required": [
+                "permission"
+              ]
+            },
+            {
+              "required": [
+                "prohibition"
+              ]
+            }
+          ]
         }
       ],
       "not": {
