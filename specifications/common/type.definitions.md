@@ -6,6 +6,9 @@
 <p data-include="message/table/auth.html" data-include-format="html">
 </p>
 
+<p data-include="message/table/agreement.html" data-include-format="html">
+</p>
+
 <p data-include="message/table/constraint.html" data-include-format="html">
 </p>
 
