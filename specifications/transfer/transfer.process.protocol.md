@@ -138,7 +138,7 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 
 - The `dataAddress` is only provided if the current transfer is a pull transfer and contains a transport-specific
   endpoint address for obtaining the data. The kind of transport is signaled by the `endpointType` property which
-  determines a set of required `endpointProperties` in a profile separate from this specification.
+  determines a set of required `endpointProperties` in a [=Profile=] separate from this specification.
 - The `endpointProperties` may (among others) contain the following optional values:
   - `authorization` - An opaque authorization token that clients must present when accessing the transport-specific
     endpoint address.
