@@ -83,7 +83,10 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 * A [=Dataset=] _MUST_ have at least one `hasPolicy` attribute that contain an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
 * A [=Dataset=] _MUST_ hold at least one `Distribution` object in the `distribution` attribute.
-* Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
+* Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. 
+  Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
+* A `DataService.endpointURL` property contains the URL of the service the Contract Negotiation endpoints extend. The
+  endpoint's DSP version MUST be consistent with the version the `Catalog` object was served through.
 
 An [=Offer=] contains the following attributes:
 
