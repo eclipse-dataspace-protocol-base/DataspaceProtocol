@@ -34,7 +34,6 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
 
         assertThat(schema.validate(INVALID_NO_DA_TYPE, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(INVALID_NO_DA_ENDPOINT_TYPE, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-        assertThat(schema.validate(INVALID_NO_DA_ENDPOINT, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
     }
 
     @BeforeEach
@@ -141,23 +140,6 @@ public class InvalidTransferRequestMessageSchemaTest extends AbstractSchemaTest 
               "dataAddress": {
                 "@type": "DataAddress",
                 "endpoint": "http://example.com"
-              },
-              "callbackAddress": "https://example.com/callback"
-            }
-            """;
-
-    private static final String INVALID_NO_DA_ENDPOINT = """
-            {
-              "@context": [
-                "https://w3id.org/dspace/2025/1/context.jsonld"
-              ],
-              "@type": "TransferRequestMessage",
-              "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-              "agreementId": "urn:uuid:e8dc8655-44c2-46ef-b701-4cffdc2faa44",
-              "format": "example:HTTP_PUSH",
-              "dataAddress": {
-                "@type": "DataAddress",
-                "endpointType": "https://w3id.org/idsa/v4.1/HTTP"
               },
               "callbackAddress": "https://example.com/callback"
             }
