@@ -9,7 +9,7 @@
   ],
   "$id": "https://w3id.org/dspace/2025/1/catalog/dataset-schema.json",
   "definitions": {
-    "AbstractDataset": {
+    "Dataset": {
       "type": "object",
       "allOf": [
         {
@@ -32,14 +32,6 @@
               "minItems": 1
             }
           }
-        }
-      ]
-    },
-    "Dataset": {
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/AbstractDataset"
         }
       ],
       "required": [
