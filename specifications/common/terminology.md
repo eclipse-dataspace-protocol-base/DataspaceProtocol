@@ -46,6 +46,10 @@ A set of technical services that facilitate interoperable [=Dataset=] sharing be
 
 A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specifications themselves.
 
+<dfn>Data Transfer Protocol</dfn>
+
+A set of rules and conventions that dictate how data is transmitted over a network by defining the format, error handling, and flow control. Examples include HTTP, FTP, MQTT, and AMQP.
+
 <dfn>Message</dfn>
 
 An instantiation of a [=Message Type=].
