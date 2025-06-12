@@ -32,13 +32,14 @@ Protocol version, it must terminate the communication. The version endpoint MUST
 
 ### HTTPS Binding
 
-When using the DSP HTTPS binding, the `path` property is an absolute URL path segment to be appended to the domain for
-all endpoints of this version.
+When using the DSP HTTPS binding, the `path` property is an absolute URL path segment to be appended to `<root>` for
+discovery of all endpoints of this version. The concatenation of `<root>` and `path` yields `<base>`
 
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
-`<base>/some/path/2024-1`, the `2025-1` endpoints at `<base>/some/path/2025-1` and another [=Connector=] on the same 
-base URL under `<base>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, 
-determined by `protocol`, `version` and the `profile` array.
+`<root>/some/path/2024-1`, the `2025-1` endpoints at `<root>/some/path/2025-1` and another [=Connector=] on the same 
+root URL under `<root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, 
+determined by `protocol`, `version` and the `profile` array. `<root>` in the examples below is _https://provider.com_ or 
+_https://provider.com/path-to-root/_ respectively.
 
 <aside class="example" title="Well-known Version Endpoint (HTTPS) at different root path">
     <pre class="http">GET https://provider.com/.well-known/dspace-version
