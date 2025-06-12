@@ -101,12 +101,12 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
 - The `dct:format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
   the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
 - The `dataAddress` property must only be provided if the `dct:format` requires a push transfer.
-- The `dataAddress` contains a transport-specific endpoint address for pushing the data. It may include a temporary
-  authorization via the `endpointProperties` property.
+- The `dataAddress` contains a transport-specific set of properties for pushing the data. It may include an `endpoint`, 
+  a temporary authorization via the `endpointProperties` property - depending on the `endpointType`.
 - `callbackAddress` is a URI indicating where messages to the [=Consumer=] should be sent. If the address is not
   understood, the [=Provider=] MUST return an UNRECOVERABLE error.
 
-- The `endpointProperties` may contain the following optional values:
+- The `endpointProperties` may (among others) contain the following optional values:
     - `authorization` - An opaque authorization token that clients must present when accessing the transport-specific
       endpoint address.
     - `authType` - The auth token type. For example, the value may be `bearer`. If present, this value may be used in
@@ -137,13 +137,13 @@ again, the [=Provider=] should respond with an appropriate [Transfer Start Messa
 The Transfer Start Message is sent by the [=Provider=] to indicate the data transfer has been initiated.
 
 - The `dataAddress` is only provided if the current transfer is a pull transfer and contains a transport-specific
-  endpoint address for obtaining the data. It may include a temporary authorization via the `endpointProperties`
-  property.
-- The `endpointProperties` may contain the following optional values:
-    - `authorization` - An opaque authorization token that clients must present when accessing the transport-specific
-      endpoint address.
-    - `authType` - The auth token type. For example, the value may be `bearer`. If present, this value may be used in
-      conjunction with transport rules to define how the client must present an authorization token.
+  endpoint address for obtaining the data. The kind of transport is signaled by the `endpointType` property which
+  determines a set of required `endpointProperties` in a profile separate from this specification.
+- The `endpointProperties` may (among others) contain the following optional values:
+  - `authorization` - An opaque authorization token that clients must present when accessing the transport-specific
+    endpoint address.
+  - `authType` - The auth token type. For example, the value may be `bearer`. If present, this value may be used in
+    conjunction with transport rules to define how the client must present an authorization token.
 
 ### Transfer Suspension Message
 
