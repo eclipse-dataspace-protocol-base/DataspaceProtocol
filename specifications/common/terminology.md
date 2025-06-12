@@ -4,7 +4,7 @@ The following terms and definitions introduce the core concepts, entities, and r
 
 <dfn>Agreement</dfn>
 
-A concrete [=Policy=] associated with a specific [=Dataset=] that has been signed by both the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=].
+A concrete [=Policy=] associated with a specific [=Dataset=] that has been agreed between the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=].
 
 <dfn>Catalog</dfn>
 
