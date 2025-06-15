@@ -33,7 +33,7 @@ For example:
         <td></td>
     </tr>
     <tr>
-        <td class="code">permission</td>
+        <td class="code">rule</td>
         <td>array</td>
         <td></td>
     </tr>
