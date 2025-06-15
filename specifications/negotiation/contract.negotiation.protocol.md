@@ -71,6 +71,7 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
   an appropriate `providerPid`.
 - An `offer.@id` will generally refer to an [=Offer=] contained in a [=Catalog=]. If the [=Provider=] is not aware of
   the `offer.@id` value, it must respond with an error message.
+- `offer.obligation` and `offer.permission` signify the terms at which a [=Consumer=] would accept an [=Offer=]. 
 - The `callbackAddress` is a URL indicating where messages to the [=Consumer=] should be sent in asynchronous settings.
   If the address is not understood, the [=Provider=] MUST return an UNRECOVERABLE error.
 - Different to a [=Catalog=] or [=Dataset=], the [=Offer=] inside

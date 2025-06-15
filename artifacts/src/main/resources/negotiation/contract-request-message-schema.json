@@ -26,35 +26,7 @@
           "type": "string"
         },
         "offer": {
-          "oneOf": [
-            {
-              "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/MessageOffer"
-            },
-            {
-              "properties": {
-                "@id": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "@id"
-              ],
-              "not": {
-                "anyOf": [
-                  {
-                    "required": [
-                      "permission"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "prohibition"
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
+          "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/MessageOffer"
         },
         "callbackAddress": {
           "type": "string",
