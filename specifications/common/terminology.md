@@ -74,6 +74,10 @@ A technology system that performs operations and interactions in a [=Dataspace=]
 
 A set of rules, duties, and obligations that define the terms of use for a [=Dataset=].
 
+<dfn>Profile</dfn>
+
+A restriction or subset of a specification that enforces every occurrence of an externally defined class to be conformant with the original definition.
+
 <dfn>Provider</dfn>
 
 A [=Participant=] that offers a [=Dataset=].
