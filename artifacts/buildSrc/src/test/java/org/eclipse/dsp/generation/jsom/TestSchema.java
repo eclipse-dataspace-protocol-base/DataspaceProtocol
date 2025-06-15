@@ -64,7 +64,14 @@ public interface TestSchema {
                     "permission": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/definitions/Permission"
+                        "$ref": "#/definitions/Rule"
+                      },
+                      "minItems": 1
+                    },
+                    "prohibition": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Rule"
                       },
                       "minItems": 1
                     },
@@ -177,7 +184,7 @@ public interface TestSchema {
                     "assigner"
                   ]
                 },
-                "Permission": {
+                "Rule": {
                   "type": "object",
                   "properties": {
                     "action": {
