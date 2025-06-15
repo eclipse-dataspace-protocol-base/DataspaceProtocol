@@ -14,6 +14,5 @@
         "action": "use"
       }
     ]
-  },
-  "callbackAddress": "https://example.com/callback"
+  }
 }

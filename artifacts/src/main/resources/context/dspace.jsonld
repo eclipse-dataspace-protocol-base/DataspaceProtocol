@@ -67,7 +67,6 @@
         "@protected": true,
         "@import": "https://w3id.org/dspace/2025/1/odrl-profile.jsonld",
         "@propagate": true,
-        "callbackAddress": "dspace:callbackAddress",
         "providerPid": {
           "@type": "@id",
           "@id": "dspace:providerPid"
