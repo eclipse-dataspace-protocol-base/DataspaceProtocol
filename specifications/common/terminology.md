@@ -72,7 +72,7 @@ A set of rules, duties, and obligations that define the terms of use for a [=Dat
 
 <dfn>Profile</dfn>
 
-A profile is a restriction or subset of a specification that enforces every occurrence of an externally defined class to be conformant with the original definition.
+A restriction or subset of a specification that enforces every occurrence of an externally defined class to be conformant with the original definition.
 
 <dfn>Provider</dfn>
 
