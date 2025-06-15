@@ -191,7 +191,10 @@
           }
         },
         "duty": {
-          "$ref": "#/definitions/Duty"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Duty"
+          }
         }
       },
       "required": [
