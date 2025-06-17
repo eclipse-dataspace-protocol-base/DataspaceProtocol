@@ -12,8 +12,9 @@ All protocol [=Messages=] are normatively defined by a [[json-schema]]. This spe
 provides a JSON-LD context to serialize data structures and [=Message=] types as it facilitates extensibility. The
 JSON-LD context is designed to produce [=Message=] serializations using compaction that validate against the Json Schema
 for the given [=Message=] type. This allows implementations to choose whether to process [=Messages=] as plain JSON or
-as JSON-LD and maintain interoperability between those approaches. Extensions that use JSON-LD are encouraged to provide
-similar contexts that facilitate this approach to interoperability.
+as JSON-LD and maintain interoperability between those approaches. Profiles that use JSON-LD are encouraged to provide
+similar contexts that facilitate this approach to interoperability. As this specification's JSON-LD objects are 
+`@protected`, profile authors are advised to define their custom terms as protected to spot term redefinition early.
 
 ## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
