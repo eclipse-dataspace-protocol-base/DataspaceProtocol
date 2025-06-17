@@ -14,7 +14,7 @@ JSON-LD context is designed to produce [=Message=] serializations using compacti
 for the given [=Message=] type. This allows implementations to choose whether to process [=Messages=] as plain JSON or
 as JSON-LD and maintain interoperability between those approaches. Profiles that use JSON-LD are encouraged to provide
 similar contexts that facilitate this approach to interoperability. As this specification's JSON-LD objects are 
-`@protected`, profiles must not be combined such that they override each other's term definitions.
+`@protected`, profile authors are advised to define their custom terms as protected to spot term redefinition early.
 
 ## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
