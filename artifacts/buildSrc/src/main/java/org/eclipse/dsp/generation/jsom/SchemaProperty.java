@@ -33,6 +33,7 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
     private Set<String> types = new TreeSet<>();
     private final Set<SchemaType> resolvedTypes = new TreeSet<>();
     private final Set<ElementDefinition> itemTypes = new TreeSet<>();
+    private final  Set<Object> enumValues = new TreeSet<>();
 
     public String getName() {
         return name;
@@ -48,6 +49,10 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
 
     public String getDescription() {
         return description;
+    }
+
+    public Set<Object> getEnumValues() {
+        return enumValues;
     }
 
     public Set<SchemaType> getResolvedTypes() {
@@ -110,6 +115,11 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
 
         public Builder constantValue(String value) {
             property.constantValue = value;
+            return this;
+        }
+
+        public Builder enumValues(Collection<Object> enumValues) {
+            property.enumValues.addAll(enumValues);
             return this;
         }
 
