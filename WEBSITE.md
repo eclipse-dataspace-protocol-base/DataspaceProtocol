@@ -28,3 +28,35 @@ be easy.
 1. Locally execute the commands from the [autopublish](.github/workflows/autopublish.yaml) workflow's "Copy files for correct web access" step. All resulting folders and files are duplicates, gitignored and don't break anything.
 2. Open the `index.html` file.
 3. You IDE should have a feature to display html documents (either in your browser of choice or inline). Use that and you should always see the updated webpage when saving.
+
+### Publishing versions
+
+When wanting to pin and publish a snapshot in time via a separate url-path, follow the appropriate steps listed below.
+
+#### Prep commits
+
+When the content is finished, a release requires a first commit with
+
+1. a tag with the exact version string (like `2025-1-RC1`) on the release commit
+2. to change the redirect in `.github/scripts/index.html` to point to latest release candidate
+3. set the `respecConfig.publishDate` in `index.html` to a string like `"2025-02-27"`,`
+4. set the `respecConfig.specStatus` in `index.html` to `base`
+
+In case of versions with a new namespace, additionally:
+
+5. adjust the textual description of the context URI in the base spec
+6. appended w3id referrals
+
+and then (independently of major/minor) a second commit
+
+1. setting the specStatus config option to `unofficial` and
+2. increase the spec version in the title of `index.html`
+3. remove the release date
+
+#### Push and build
+
+- Open a PR with both commits. Wait for it to be merged.
+- Push the tag to origin/main on Github.
+- Rerun the actions.
+
+You should now see an additional endpoint at `https://eclipse-dataspace-dcp.github.io/decentralized-claims-protocol/my-version-tag/`.
