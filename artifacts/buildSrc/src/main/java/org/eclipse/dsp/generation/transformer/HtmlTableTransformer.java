@@ -67,6 +67,11 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
             builder.append(format("<td>%s</td>", resolvedTypes));
             if (resolvedProperty.getConstantValue() != null) {
                 builder.append(format("<td>Value must be <span class=\"code\">%s</span></td>", resolvedProperty.getConstantValue()));
+            }  else if (!resolvedProperty.getEnumValues().isEmpty()){
+                var values = resolvedProperty.getEnumValues().stream()
+                        .map(Object::toString)
+                        .collect(Collectors.joining(","));
+                builder.append(format("<td>Must be of the following:<br><span class=\"code\">%s</span></td>",values));
             } else {
                 var constants = resolvedProperty.getResolvedTypes().stream()
                         .flatMap(t -> concat(Stream.of(t), t.getResolvedAllOf().stream()))   // search the contains of the current type and any references 'allOf' types

@@ -30,4 +30,5 @@ public interface JsonSchemaKeywords {
     String PROPERTIES = "properties";
     String REQUIRED = "required";
     String TYPE = "type";
+    String ENUM = "enum";
 }

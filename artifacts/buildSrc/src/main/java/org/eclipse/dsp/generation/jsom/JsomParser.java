@@ -37,6 +37,7 @@ import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.COMMENT;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONST;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.CONTAINS;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.DEFINITIONS;
+import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ENUM;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ITEMS;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.ONE_OF;
 import static org.eclipse.dsp.generation.jsom.JsonSchemaKeywords.PROPERTIES;
@@ -227,6 +228,7 @@ public class JsomParser {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private SchemaProperty parseProperty(String name, Map<String, Object> value) {
         var type = value.get(TYPE);
         var comment = value.containsKey(COMMENT) ? value.get(COMMENT).toString() : "";
@@ -259,6 +261,10 @@ public class JsomParser {
             var constantValue = value.get(CONST);
             if (constantValue != null) {
                 builder.constantValue(constantValue.toString());
+            }
+            var enumValues = (List<Object>) value.get(ENUM);
+            if (enumValues != null) {
+                builder.enumValues(enumValues);
             }
             return builder.build();
         }
