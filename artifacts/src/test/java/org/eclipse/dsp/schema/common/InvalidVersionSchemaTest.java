@@ -36,6 +36,7 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
         assertThat(schema.validate(INVALID_AUTH_A_STRING, JSON).iterator().next().getType()).isEqualTo(TYPE);
         assertThat(schema.validate(INVALID_AUTH_MISSING_PROTOCOL, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(INVALID_AUTH_PROFILE_NOT_AN_ARRAY, JSON).iterator().next().getType()).isEqualTo(TYPE);
+        assertThat(schema.validate(INVALID_SERVICEID_NOT_A_STRING, JSON).iterator().next().getType()).isEqualTo(TYPE);
     }
 
     @BeforeEach
@@ -147,6 +148,24 @@ public class InvalidVersionSchemaTest extends AbstractSchemaTest {
                     "version": "2",
                     "profile": "one-profile"
                   }
+                }
+              ]
+            }
+            """;
+
+    private static final String INVALID_SERVICEID_NOT_A_STRING = """
+            {
+              "protocolVersions": [
+                {
+                  "version": "1.0",
+                  "path": "/some/path/v1",
+                  "binding": "HTTPS",
+                  "auth": [{
+                    "protocol": "some-protocol",
+                    "version": "2",
+                    "profile": "one-profile"
+                  }],
+                  "serviceId": 666
                 }
               ]
             }

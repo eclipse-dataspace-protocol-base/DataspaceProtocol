@@ -3,7 +3,8 @@
     {
       "version": "2025-1",
       "path": "/some/path/2025-1",
-      "binding": "HTTPS"
+      "binding": "HTTPS",
+      "serviceId": "service-asdf"
     },
     {
       "version": "2024-1",
@@ -16,7 +17,9 @@
           "authorization_code",
           "refresh_token"
         ]
-      }
+      },
+      "serviceId": "service-asdf"
+
     },
     {
       "version": "2025-1",
@@ -28,7 +31,8 @@
         "profile": [
           "vc11-sl2021/jwt"
         ]
-      }
+      },
+      "serviceId": "service-qwerty"
     }
   ]
 }
