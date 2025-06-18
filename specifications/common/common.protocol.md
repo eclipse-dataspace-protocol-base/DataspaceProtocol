@@ -25,7 +25,10 @@ endpoint should adhere to [[rfc8615]].
 
 A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
 with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
-The semantics of the `path` property are specified by each protocol binding.
+The semantics of the `path` property are specified by each protocol binding. The `serviceId` is a unique id for 
+a [=Data Service=] and allows to group DSP-endpoints exposed by different [=Data Service=]s across versions. `binding`
+describes the DSP protocol binding such as HTTPS. `auth` describes how a DSP endpoint is secured by means of the 
+`protocol`, `version` strings and the `profile` array.
 
 This data object must comply to the [JSON Schema](message/schema/protocol-version-schema.json). The requesting
 [=Connector=] may select from the endpoints in the response. If the [=Connector=] can't identify a matching Dataspace
@@ -38,9 +41,8 @@ discovery of all endpoints of this version. The concatenation of `<root>` and `p
 
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
 `<root>/some/path/2024-1`, the `2025-1` endpoints at `<root>/some/path/2025-1` and another [=Connector=] on the same 
-root URL under `<root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay, 
-determined by `protocol`, `version` and the `profile` array. `<root>` in the examples below is _https://provider.com_ or 
-_https://provider.com/path-to-root/_ respectively.
+root URL under `<root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay. 
+`<root>` in the examples below is _https://provider.com_ or _https://provider.com/path-to-root/_ respectively.
 
 <aside class="example" title="Well-known Version Endpoint (HTTPS) at different root path">
     <pre class="http">GET https://provider.com/.well-known/dspace-version
