@@ -45,17 +45,13 @@
               ]
             }
           ]
-        },
-        "callbackAddress": {
-          "type": "string"
         }
       },
       "required": [
         "@context",
         "@type",
         "providerPid",
-        "offer",
-        "callbackAddress"
+        "offer"
       ]
     }
   }

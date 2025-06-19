@@ -26,7 +26,6 @@ public class InvalidContractOfferMessageSchemaTest extends AbstractSchemaTest {
     @Test
     void verifyInvalidCases() {
         assertThat(schema.validate(INVALID_MESSAGE_NO_TARGET, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-        assertThat(schema.validate(INVALID_MESSAGE_NO_CALLBACK, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
     }
 
     @BeforeEach
@@ -52,27 +51,6 @@ public class InvalidContractOfferMessageSchemaTest extends AbstractSchemaTest {
                 ]
               },
               "callbackAddress": "https://example.com/callback"
-            }
-            """;
-
-    private static final String INVALID_MESSAGE_NO_CALLBACK = """
-            {
-              "@context": [
-                "https://w3id.org/dspace/2025/1/context.jsonld"
-              ],
-              "@type": "ContractOfferMessage",
-              "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-              "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-              "offer": {
-                "@type": "Offer",
-                "@id": "urn:uuid:6bcea82e-c509-443d-ba8c-8eef25984c07",
-                "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
-                "permission": [
-                  {
-                    "action": "use"
-                  }
-                ]
-              }
             }
             """;
 }
