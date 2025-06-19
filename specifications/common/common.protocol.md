@@ -32,7 +32,7 @@ with at least one item.
 The item connects the version tag (`version` attribute) with a path to the endpoint.
 The semantics of the `path` property are specified by each protocol binding. The `serviceId` is a unique id for 
 a [=Data Service=] and allows to group DSP-endpoints exposed by different [=Data Service=]s across versions. `binding`
-describes the DSP protocol binding such as HTTPS. `identification` describes the type of identifier used to refer to
+describes the DSP protocol binding such as HTTPS. `identifierType` describes the type of identifier used to refer to
 participants in the protocol communication.
 
 <p data-include="message/table/version.html" data-include-format="html">

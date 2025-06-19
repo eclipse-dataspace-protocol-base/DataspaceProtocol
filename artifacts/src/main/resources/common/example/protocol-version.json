@@ -5,7 +5,7 @@
       "path": "/some/path/2025-1",
       "binding": "HTTPS",
       "serviceId": "service-asdf",
-      "identification": "did:web"
+      "identifierType": "did:web"
     },
     {
       "version": "2024-1",
@@ -20,7 +20,7 @@
         ]
       },
       "serviceId": "service-asdf",
-      "identification": "D-U-N-S"
+      "identifierType": "D-U-N-S"
 
     },
     {
