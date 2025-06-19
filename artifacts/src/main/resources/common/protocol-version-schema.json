@@ -51,6 +51,9 @@
             "HTTPS"
           ]
         },
+        "identifierType": {
+          "type": "string"
+        },
         "serviceId": {
           "type": "string"
         },

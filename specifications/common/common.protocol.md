@@ -24,11 +24,26 @@ must provide a version metadata endpoint ending with URI segments `/.well-known/
 endpoint should adhere to [[rfc8615]].
 
 A [=Connector=] must respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
-with at least one item. The item connects the version tag (`version` attribute) with a path to the endpoint.
+with at least one item. 
+
+<p data-include="message/table/versionresponse.html" data-include-format="html">
+</p>
+
+The item connects the version tag (`version` attribute) with a path to the endpoint.
 The semantics of the `path` property are specified by each protocol binding. The `serviceId` is a unique id for 
 a [=Data Service=] and allows to group DSP-endpoints exposed by different [=Data Service=]s across versions. `binding`
-describes the DSP protocol binding such as HTTPS. `auth` describes how a DSP endpoint is secured by means of the 
-`protocol`, `version` strings and the `profile` array.
+describes the DSP protocol binding such as HTTPS. `identifierType` describes the type of identifier used to refer to
+participants in the protocol communication.
+
+<p data-include="message/table/version.html" data-include-format="html">
+</p>
+
+`auth` describes how a DSP endpoint is secured by means of the `protocol`, `version` strings and the `profile` array.
+
+
+<p data-include="message/table/auth.html" data-include-format="html">
+</p>
+
 
 This data object must comply to the [JSON Schema](message/schema/protocol-version-schema.json). The requesting
 [=Connector=] may select from the endpoints in the response. If the [=Connector=] can't identify a matching Dataspace

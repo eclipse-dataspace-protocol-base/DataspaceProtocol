@@ -3,9 +3,6 @@
 <p data-include="message/table/action.html" data-include-format="html">
 </p>
 
-<p data-include="message/table/auth.html" data-include-format="html">
-</p>
-
 <p data-include="message/table/agreement.html" data-include-format="html">
 </p>
 
@@ -37,10 +34,4 @@
 </p>
 
 <p data-include="message/table/rule.html" data-include-format="html">
-</p>
-
-<p data-include="message/table/versionresponse.html" data-include-format="html">
-</p>
-
-<p data-include="message/table/version.html" data-include-format="html">
 </p>
