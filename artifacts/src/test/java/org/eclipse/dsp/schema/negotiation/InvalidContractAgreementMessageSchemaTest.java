@@ -30,7 +30,6 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
         assertThat(schema.validate(INVALID_NO_TYPE, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(INVALID_NO_PROVIDER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(INVALID_NO_CONSUMER_ID, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
-        assertThat(schema.validate(INVALID_NO_CALLBACK, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
         assertThat(schema.validate(NO_AGREEMENT, JSON).iterator().next().getType()).isEqualTo(REQUIRED);
     }
 
@@ -105,18 +104,6 @@ public class InvalidContractAgreementMessageSchemaTest extends AbstractSchemaTes
               "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
               %s,
               "callbackAddress": "https://example.com/callback"
-            }
-            """, AGREEMENT);
-
-    private static final String INVALID_NO_CALLBACK = format("""
-            {
-              "@context": [
-                "https://w3id.org/dspace/2025/1/context.jsonld"
-              ],
-              "@type": "ContractAgreementMessage",
-              "providerPid": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-              "consumerPid": "urn:uuid:32541fe6-c580-409e-85a8-8a9a32fbe833",
-              %s
             }
             """, AGREEMENT);
 
