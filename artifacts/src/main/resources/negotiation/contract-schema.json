@@ -93,6 +93,11 @@
               "required": [
                 "prohibition"
               ]
+            },
+            {
+              "required": [
+                "obligation"
+              ]
             }
           ]
         }
@@ -125,6 +130,11 @@
             {
               "required": [
                 "prohibition"
+              ]
+            },
+            {
+              "required": [
+                "obligation"
               ]
             }
           ]
@@ -173,6 +183,11 @@
             {
               "required": [
                 "prohibition"
+              ]
+            },
+            {
+              "required": [
+                "obligation"
               ]
             }
           ]
