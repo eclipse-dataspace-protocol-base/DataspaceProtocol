@@ -144,7 +144,7 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "operator": "eq",
                       "rightOperand": "gold"
                   }],
-                  "duty": [{
+                  "remedy": [{
                     "action": "report",
                     "constraint": [{
                           "leftOperand": "event",
