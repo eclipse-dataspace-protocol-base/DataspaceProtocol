@@ -42,14 +42,14 @@
         "permission": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Rule"
+            "$ref": "#/definitions/Permission"
           },
           "minItems": 1
         },
         "prohibition": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Rule"
+            "$ref": "#/definitions/Prohibition"
           },
           "minItems": 1
         },
@@ -185,7 +185,7 @@
         "assigner"
       ]
     },
-    "Rule": {
+    "Permission": {
       "type": "object",
       "properties": {
         "action": {
@@ -208,6 +208,29 @@
         "action"
       ]
     },
+    "Prohibition": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "$ref": "#/definitions/Action"
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Constraint"
+          }
+        },
+        "remedy": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Duty"
+          }
+        }
+      },
+      "required": [
+        "action"
+      ]
+    },
     "Duty": {
       "type": "object",
       "allOf": [
@@ -220,6 +243,12 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Constraint"
+              }
+            },
+            "consequence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Duty"
               }
             }
           },
