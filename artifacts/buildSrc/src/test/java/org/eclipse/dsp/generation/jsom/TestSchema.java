@@ -195,9 +195,6 @@ public interface TestSchema {
                       "items": {
                         "$ref": "#/definitions/Constraint"
                       }
-                    },
-                    "duty": {
-                      "$ref": "#/definitions/Duty"
                     }
                   },
                   "required": [

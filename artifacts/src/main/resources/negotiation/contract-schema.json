@@ -208,15 +208,7 @@
         {
           "$ref": "#/definitions/Rule"
         }
-      ],
-      "properties": {
-        "duty": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Duty"
-          }
-        }
-      }
+      ]
     },
     "Prohibition": {
       "type": "object",
@@ -224,15 +216,7 @@
         {
           "$ref": "#/definitions/Rule"
         }
-      ],
-      "properties": {
-        "remedy": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Duty"
-          }
-        }
-      }
+      ]
     },
     "Duty": {
       "type": "object",
@@ -246,12 +230,6 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Constraint"
-              }
-            },
-            "consequence": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Duty"
               }
             }
           },

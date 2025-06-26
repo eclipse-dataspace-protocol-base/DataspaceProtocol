@@ -29,7 +29,6 @@ public class PolicySchemaTest extends AbstractSchemaTest {
         assertThat(schema.validate(POLICY_STRING_PROFILE, JSON)).isEmpty();
         assertThat(schema.validate(POLICY_ARRAY_PROFILE, JSON)).isEmpty();
         assertThat(schema.validate(POLICY_PERMISSION_DUTY, JSON)).isEmpty();
-        assertThat(schema.validate(POLICY_PROHIBITION_DUTY, JSON)).isEmpty();
         assertThat(schema.validate(POLICY_OR_CONSTRAINT, JSON)).isEmpty();
         assertThat(schema.validate(POLICY_AND_CONSTRAINT, JSON)).isEmpty();
         assertThat(schema.validate(POLICY_AND_SEQUENCE_CONSTRAINT, JSON)).isEmpty();
@@ -54,9 +53,6 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                     "leftOperand": "partner",
                     "operator": "eq",
                     "rightOperand": "gold"
-                  }],
-                  "duty": [{
-                    "action": "report"
                   }]
                 }
               ]
@@ -75,9 +71,6 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "leftOperand": "partner",
                       "operator": "eq",
                       "rightOperand": "gold"
-                  }],
-                  "duty": [{
-                    "action": "report"
                   }]
                 }
               ]
@@ -96,9 +89,6 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "leftOperand": "partner",
                       "operator": "eq",
                       "rightOperand": "gold"
-                  }],
-                  "duty": [{
-                    "action": "report"
                   }]
                 }
               ]
@@ -117,45 +107,10 @@ public class PolicySchemaTest extends AbstractSchemaTest {
                       "leftOperand": "partner",
                       "operator": "eq",
                       "rightOperand": "gold"
-                  }],
-                  "duty": [{
-                    "action": "report",
-                    "constraint": [{
-                          "leftOperand": "event",
-                          "operator": "gt",
-                          "rightOperand": "use"
-                    }]
                   }]
                 }
               ]
             }""";
-
-    private static final String POLICY_PROHIBITION_DUTY = """
-            {
-              "@id": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
-              "@type": "Offer",
-              "target": "asset:1",
-              "profile": ["https://test.com/profile"],
-              "prohibition": [
-                {
-                  "action": "use",
-                  "constraint": [{
-                      "leftOperand": "partner",
-                      "operator": "eq",
-                      "rightOperand": "gold"
-                  }],
-                  "remedy": [{
-                    "action": "report",
-                    "constraint": [{
-                          "leftOperand": "event",
-                          "operator": "gt",
-                          "rightOperand": "use"
-                    }]
-                  }]
-                }
-              ]
-            }""";
-
 
     private static final String POLICY_OR_CONSTRAINT = """
             {
