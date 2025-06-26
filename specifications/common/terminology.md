@@ -44,7 +44,7 @@ A set of technical services that facilitate interoperable [=Dataset=] sharing be
 
 <dfn>Dataspace Protocol</dfn>
 
-A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specifications themselves.
+A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specification itself.
 
 <dfn>Data Transfer Protocol</dfn>
 

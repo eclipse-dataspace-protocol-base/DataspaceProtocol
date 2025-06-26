@@ -3,7 +3,7 @@
 ## Authorization
 
 All requests to HTTPS endpoints should use the `Authorization` header to include an authorization token. The semantics
-of such tokens are not part of these specifications. The `Authorization` HTTP header is optional if the [=Connector=]
+of such tokens are not part of this specification. The `Authorization` HTTP header is optional if the [=Connector=]
 does not require authorization.
 
 ## Schemas & Contexts
