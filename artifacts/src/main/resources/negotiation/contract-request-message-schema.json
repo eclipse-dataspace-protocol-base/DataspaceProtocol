@@ -33,12 +33,23 @@
           "$comment": "A URL indicating where messages to the consumer should be sent"
         }
       },
+      "oneOf": [
+        {
+          "required": [
+            "callbackAddress"
+          ]
+        },
+        {
+          "required": [
+            "providerPid"
+          ]
+        }
+      ],
       "required": [
         "@context",
         "@type",
         "consumerPid",
-        "offer",
-        "callbackAddress"
+        "offer"
       ]
     }
   }
