@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SchemaLocation;
+import com.networknt.schema.ValidationMessage;
 
 import static com.networknt.schema.SpecVersion.VersionFlag.V202012;
 import static org.eclipse.dsp.DspConstants.DSP_PREFIX;
@@ -44,5 +45,17 @@ public abstract class AbstractSchemaTest {
         );
 
         schema = schemaFactory.getSchema(SchemaLocation.of(DSP_PREFIX + schemaFile));
+    }
+
+    protected SchemaError errorExtractor(ValidationMessage validationMessage) {
+        return new SchemaError(validationMessage.getProperty(), validationMessage.getType());
+    }
+
+    protected SchemaError error(String property, String type) {
+        return new SchemaError(property, type);
+    }
+
+    public record SchemaError(String property, String type) {
+
     }
 }

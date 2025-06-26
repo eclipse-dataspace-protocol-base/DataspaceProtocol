@@ -27,9 +27,6 @@
         },
         "agreement": {
           "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Agreement"
-        },
-        "callbackAddress": {
-          "type": "string"
         }
       },
       "required": [
@@ -37,8 +34,7 @@
         "@type",
         "providerPid",
         "consumerPid",
-        "agreement",
-        "callbackAddress"
+        "agreement"
       ]
     }
   }

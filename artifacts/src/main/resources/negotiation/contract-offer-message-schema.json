@@ -50,12 +50,23 @@
           "type": "string"
         }
       },
+      "oneOf": [
+        {
+          "required": [
+            "callbackAddress"
+          ]
+        },
+        {
+          "required": [
+            "consumerPid"
+          ]
+        }
+      ],
       "required": [
         "@context",
         "@type",
         "providerPid",
-        "offer",
-        "callbackAddress"
+        "offer"
       ]
     }
   }
