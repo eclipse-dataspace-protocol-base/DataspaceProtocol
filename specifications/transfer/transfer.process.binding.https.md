@@ -1,35 +1,35 @@
 # Transfer Process HTTPS Binding {#transfer-http}
 
-This specification defines a RESTful API over HTTPS for the [Transfer Process Protocol](#transfer-process-protocol).
-
 ## Introduction
+
+This binding defines a RESTful API over HTTPS for the [Transfer Process Protocol](#transfer-process-protocol).
 
 ### Prerequisites
 
 1. The `<base>` notation indicates the base URL for a [=Connector=] endpoint. For example, if the scheme is `https` and
    the full hostname is `connector.example.com`, the URL `<base>/transfers/request` will map
    to `https://connector.example.com/transfers/request`.
-2. All request and response [=Messages=] must use the `application/json` media type. Derived media types,
-   e.g., `application/ld+json` may be exposed in addition.
+2. All request and response [=Messages=] _MUST_ use the `application/json` media type. Derived media types,
+   e.g., `application/ld+json` _MAY_ be exposed in addition.
 
 ### Transfer Error
 
-In the event of a client request error, the [=Connector=] must return an appropriate HTTP 4xx client error code. If an
-error body is returned it must be a [Transfer Error](#error-transfer-error).
+In the event of a client request error, the [=Connector=] _MUST_ return an appropriate HTTP 4xx client error code. If an
+error body is returned it _MUST_ be a [Transfer Error](#error-transfer-error).
 
 #### State Transition Errors
 
 If a client or [=Provider=] makes a request that results in an invalid [=Transfer Process=] state transition as
-defined by the [=Transfer Process Protocol=], it must return an HTTP code 400 (Bad Request) with
+defined by the [=Transfer Process Protocol=], it _MUST_ return an HTTP code 400 (Bad Request) with
 a [Transfer Error](#error-transfer-error) in the response body.
 
 #### Object Not Found
 
-If the [=Transfer Process=] does not exist, the [=Consumer=] or [=Provider=] must return an HTTP 404 (Not Found) response.
+If the [=Transfer Process=] does not exist, the [=Consumer=] or [=Provider=] _MUST_ return an HTTP 404 (Not Found) response.
 
 #### Unauthorized Access
 
-If the client is not authorized, the [=Consumer=] or [=Provider=] must return an HTTP 404 (Not Found) response.
+If the client is not authorized, the [=Consumer=] or [=Provider=] _MUST_ return an HTTP 404 (Not Found) response.
 
 ## Provider Path Bindings
 
@@ -55,7 +55,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=] is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
+If the [=Transfer Process=] is found and the client is authorized, the [=Provider=] _MUST_ return an HTTP 200 (OK) response and a body
 containing the [Transfer Process](#ack-transfer-process):
 
 <aside class="example" title="Transfer Process Response">
@@ -65,7 +65,8 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-Predefined states are: `REQUESTED`, `STARTED`, `SUSPENDED`, `REQUESTED`, `COMPLETED`, and `TERMINATED`.
+Predefined states are: `REQUESTED`, `STARTED`, `SUSPENDED`, `REQUESTED`, `COMPLETED`, and `TERMINATED` (
+see [[[#transfer-process-states]]]).
 
 ### Transfer Request Endpoint {#transfers-request-post}
 
@@ -82,15 +83,15 @@ Authorization: ...</pre>
 </aside>
 
 - The `callbackAddress` property specifies the base endpoint `URL` where the client receives messages associated with
-  the [=Transfer Process=]. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
+  the [=Transfer Process=]. The HTTPS scheme _MUST_ be supported. Implementations _MAY_ optionally support other URL schemes.
 
 - Callback messages will be sent to paths under the base URL as described by this specification. Note
-  that [=Providers=] should properly handle the cases where a trailing `/` is included
+  that [=Providers=] _SHOULD_ properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL.
 
 **Response**
 
-The [=Provider=] must return an HTTP 201 (Created) response with a body containing
+The [=Provider=] _MUST_ return an HTTP 201 (Created) response with a body containing
 the [Transfer Process](#ack-transfer-process):
 
 <aside class="example" title="Transfer Process Response">
@@ -114,8 +115,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Completion Endpoint {#transfers-providerpid-completion-post}
 
@@ -133,8 +134,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Termination Endpoint {#transfers-providerpid-termination-post}
 
@@ -152,8 +153,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Suspension Endpoint {#transfers-providerpid-suspension-post}
 
@@ -171,8 +172,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ## Consumer Callback Path Bindings
 
@@ -191,7 +192,7 @@ example, if the `callbackAddress` is specified as `https://consumer.com/:callbac
 is `transfers/:consumerPid/start`, the resolved URL will
 be `https://consumer.com/:callback/transfers/:consumerPid/start`.
 
-**_Note:_** The `:callback` can be chosen freely by the implementations.
+The `:callback` _MAY_ be chosen freely by the implementations.
 
 ### Transfer Start Endpoint {#transfers-consumerpid-start-post}
 
@@ -209,8 +210,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Completion Endpoint {#transfers-consumerpid-completion-post}
 
@@ -228,8 +229,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Termination Endpoint {#transfers-consumerpid-termination-post}
 
@@ -247,8 +248,8 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it.
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it.
 
 ### Transfer Suspension Endpoint {#transfers-consumerpid-suspension-post}
 
@@ -266,5 +267,5 @@ Authorization: ...</pre>
 
 **Response**
 
-If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
-not specified and clients are not required to process it. 
+If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
+not specified and clients _MUST NOT_ process it. 
