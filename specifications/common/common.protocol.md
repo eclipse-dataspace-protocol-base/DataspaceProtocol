@@ -46,8 +46,8 @@ participants in the protocol communication.
 
 
 This data object must comply to the [JSON Schema](message/schema/protocol-version-schema.json). The requesting
-[=Connector=] may select from the endpoints in the response. If the [=Connector=] can't identify a matching Dataspace
-Protocol version, it must terminate the communication. The version endpoint MUST be unversioned and unauthenticated.
+[=Connector=] may select from the endpoints in the response. If the [=Connector=] cannot identify a matching [=Dataspace
+Protocol=] version, it must terminate the communication. The version endpoint MUST be unversioned and unauthenticated.
 
 ### HTTPS Binding
 
@@ -57,7 +57,7 @@ discovery of all endpoints of this version. The concatenation of `<root>` and `p
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
 `<root>/some/path/2024-1`, the `2025-1` endpoints at `<root>/some/path/2025-1` and another [=Connector=] on the same 
 root URL under `<root>/different/path/2025-1` - some of which signal the relevant authentication protocol overlay. 
-`<root>` in the examples below is _https://provider.com_ or _https://provider.com/path-to-root/_ respectively.
+`<root>` in the examples below is `https://provider.com` or `https://provider.com/path-to-root/` respectively.
 
 <aside class="example" title="Well-known Version Endpoint (HTTPS) at different root path">
     <pre class="http">GET https://provider.com/.well-known/dspace-version

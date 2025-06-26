@@ -46,7 +46,7 @@ as abstract [=Message Types=].
 
 - Concrete wire formats are defined by the protocol binding,
   e.g., [Contract Negotiation HTTPS Binding](#contract-negotiation-https-binding).
-- All [=Policy=] types ([=Offer=], [=Agreement=]) must contain an unique identifier in the form of a URI. GUIDs can also
+- All [=Policy=] types ([=Offer=], [=Agreement=]) must contain a unique identifier in the form of a URI. GUIDs can also
   be used in the form of URNs, for instance following the pattern <urn:uuid:{GUID}>.
 - An [=Agreement=] must have a `target` property containing the [=Dataset=] ID.
 
