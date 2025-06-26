@@ -70,18 +70,6 @@
             "operator": "eq",
             "rightOperand": "gold"
           }
-        ],
-        "duty": [
-          {
-            "action": "report",
-            "constraint": [
-              {
-                "leftOperand": "event",
-                "operator": "gt",
-                "rightOperand": "use"
-              }
-            ]
-          }
         ]
       },
       {

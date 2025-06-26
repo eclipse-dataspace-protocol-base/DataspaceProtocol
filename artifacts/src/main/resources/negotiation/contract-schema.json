@@ -42,14 +42,14 @@
         "permission": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Rule"
+            "$ref": "#/definitions/Permission"
           },
           "minItems": 1
         },
         "prohibition": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Rule"
+            "$ref": "#/definitions/Prohibition"
           },
           "minItems": 1
         },
@@ -196,16 +196,26 @@
           "items": {
             "$ref": "#/definitions/Constraint"
           }
-        },
-        "duty": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Duty"
-          }
         }
       },
       "required": [
         "action"
+      ]
+    },
+    "Permission": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Rule"
+        }
+      ]
+    },
+    "Prohibition": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Rule"
+        }
       ]
     },
     "Duty": {

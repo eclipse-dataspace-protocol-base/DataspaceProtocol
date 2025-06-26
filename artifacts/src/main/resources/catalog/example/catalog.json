@@ -29,11 +29,6 @@
                   "operator": "eq",
                   "rightOperand": "http://example.org/EU"
                 }
-              ],
-              "duty": [
-                {
-                  "action": "Attribution"
-                }
               ]
             }
           ]
