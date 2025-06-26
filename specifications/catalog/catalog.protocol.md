@@ -50,7 +50,7 @@ The Dataset Request Message is message sent by a [=Consumer=] to
 a [=Catalog Service=].
 The [=Catalog Service=] must respond with a [Dataset](#ack-dataset) that adheres to the schema linked above.
 
-- The message must have a `dataset` property which contains the id of the [=Dataset=].
+- The message must have a `dataset` property which contains the ID of the [=Dataset=].
 
 - The [=Catalog Service=] may require an authorization token. Details for
   including that token can be found in the protocol binding, e.g., [Catalog HTTPS Binding](#catalog-https-binding).
@@ -86,7 +86,7 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 * Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. 
   Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
 * A `DataService.endpointURL` property contains the URL of the service the Contract Negotiation endpoints extend. The
-  endpoint's DSP version MUST be consistent with the version the `Catalog` object was served through.
+  endpoint's [=Dataspace Protocol=] version MUST be consistent with the version the `Catalog` object was served through.
 
 An [=Offer=] contains the following attributes:
 

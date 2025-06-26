@@ -10,7 +10,7 @@ does not require authorization.
 
 All protocol [=Messages=] are normatively defined by a [[json-schema]]. This specification also uses JSON-LD 1.1 and
 provides a JSON-LD context to serialize data structures and [=Message=] types as it facilitates extensibility. The
-JSON-LD context is designed to produce [=Message=] serializations using compaction that validate against the Json Schema
+JSON-LD context is designed to produce [=Message=] serializations using compaction that validate against the JSON Schema
 for the given [=Message=] type. This allows implementations to choose whether to process [=Messages=] as plain JSON or
 as JSON-LD and maintain interoperability between those approaches. Profiles that use JSON-LD are encouraged to provide
 similar contexts that facilitate this approach to interoperability. As this specification's JSON-LD objects are 
@@ -30,15 +30,15 @@ with at least one item.
 </p>
 
 The item connects the version tag (`version` attribute) with a path to the endpoint.
-The semantics of the `path` property are specified by each protocol binding. The `serviceId` is a unique id for 
+The semantics of the `path` property are specified by each protocol binding. The `serviceId` is a unique Identifier (ID) for 
 a [=Data Service=] and allows to group DSP-endpoints exposed by different [=Data Service=]s across versions. `binding`
-describes the DSP protocol binding such as HTTPS. `identifierType` describes the type of identifier used to refer to
+describes the [=Dataspace Protocol=] binding such as HTTPS. `identifierType` describes the type of identifier used to refer to
 participants in the protocol communication.
 
 <p data-include="message/table/version.html" data-include-format="html">
 </p>
 
-`auth` describes how a DSP endpoint is secured by means of the `protocol`, `version` strings and the `profile` array.
+`auth` describes how a [=Dataspace Protocol=] endpoint is secured by means of the `protocol`, `version` strings and the `profile` array.
 
 
 <p data-include="message/table/auth.html" data-include-format="html">
@@ -51,7 +51,7 @@ Protocol version, it must terminate the communication. The version endpoint MUST
 
 ### HTTPS Binding
 
-When using the DSP HTTPS binding, the `path` property is an absolute URL path segment to be appended to `<root>` for
+When using the [=Dataspace Protocol=] HTTPS binding, the `path` property is an absolute Uniform Resource Locator (URL) path segment to be appended to `<root>` for
 discovery of all endpoints of this version. The concatenation of `<root>` and `path` yields `<base>`.
 
 The following example demonstrates that a [=Connector=] offers the HTTPS binding from version `2024-1` at
@@ -70,16 +70,16 @@ root URL under `<root>/different/path/2025-1` - some of which signal the relevan
 
 ## Discovery of Service Endpoints
 
-A Participant may publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a DID document, 
+A Participant may publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a Decentralized Identifier (DID) document, 
 see [[?did-core]]. In this case, the Participant MUST add at least one entry to the DID document's `service` array 
 adhering to the corresponding [JSON schema](message/schema/did-service-schema.json).
 
-<aside class="example" title="Catalog Service Did Service Example">
+<aside class="example" title="Catalog Service DID Service Example">
     <pre class="json" data-include="message/example/catalogservice-did-service.json">
     </pre>
 </aside>
 
-<aside class="example" title="Data Service Did Service Example">
+<aside class="example" title="Data Service DID Service Example">
     <pre class="json" data-include="message/example/dataservice-did-service.json">
     </pre>
 </aside>

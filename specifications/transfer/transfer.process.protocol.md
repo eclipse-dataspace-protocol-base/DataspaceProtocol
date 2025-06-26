@@ -5,9 +5,9 @@ described [here](#terminology).
 
 ## Introduction
 
-A [=Transfer Process=] (TP) involves two parties, a [=Provider=] that offers one or more [=Datasets=] under
-a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A TP progresses through a series of states, which are
-controlled by the [=Provider=] and [=Consumer=] using [=Messages=]. A TP transitions to another state as a result of an
+A [=Transfer Process=] involves two parties, a [=Provider=] that offers one or more [=Datasets=] under
+a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A [=Transfer Process=] progresses through a series of states, which are
+controlled by the [=Provider=] and [=Consumer=] using [=Messages=]. A [=Transfer Process=] transitions to another state as a result of an
 exchanged [=Message=].
 
 ### Prerequisites
@@ -17,8 +17,8 @@ subsection.
 
 #### Control and Data Planes
 
-A TP involves two logical constructs, a control plane and a data plane. Serving as a coordinating layer, services on the
-_control plane_ receive [=Messages=] and manage the local state of the TP (same as for the [=Catalog Protocol=] and
+A [=Transfer Process=] involves two logical constructs, a control plane and a data plane. Serving as a coordinating layer, services on the
+_control plane_ receive [=Messages=] and manage the local state of the [=Transfer Process=] (same as for the [=Catalog Protocol=] and
 the [=Contract Negotiation Protocol=]). On the _data plane_, the actual transfer of data takes place using a wire
 protocol. Both [=Participants=] in a data sharing scenario run services logically regarded as control and/or data plane
 services.
@@ -56,13 +56,13 @@ responses, parameters, possible recursions, and interactions between the compone
 
 Data may be `finite` or `non-finite`. This applies to either push and pull transfers. Finite data is data that is
 defined by a finite set, for example, machine learning data or images. After finite data transmission has finished, the
-TP is completed. Non-finite data is data that is defined by an infinite set or has no specified end, for example,
-streams or an API endpoint. With non-finite data, a TP will continue indefinitely until either the [=Consumer=]
+[=Transfer Process=] is completed. Non-finite data is data that is defined by an infinite set or has no specified end, for example,
+streams or an API endpoint. With non-finite data, a [=Transfer Process=] will continue indefinitely until either the [=Consumer=]
 or [=Provider=] explicitly terminates the transmission.
 
 ### States
 
-The TP states are:
+The [=Transfer Process=] states are:
 
 - **REQUESTED**: A [=Dataset=] has been requested under an [=Agreement=] by the [=Consumer=] and the [=Provider=] has
   sent an ACK response.
@@ -74,7 +74,7 @@ The TP states are:
 
 ### State Machine
 
-The TP state machine is represented in the following diagram:
+The [=Transfer Process=] state machine is represented in the following diagram:
 
 ![](figures/transfer-process-state-machine.png "Transfer Process State Machine")
 
@@ -94,9 +94,9 @@ a [=Provider=] message. Terminal states are final; the state machine may not tra
 | **Example**         | [Message](message/example/transfer-request-message.json)                                     |
 | **Properties**      | <p data-include="message/table/transferrequestmessage.html" data-include-format="html"></p> |
 
-The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
+The Transfer Request Message is sent by a [=Consumer=] to initiate a [=Transfer Process=].
 
-- The `consumerPid` property refers to the transfer id of the [=Consumer=] side.
+- The `consumerPid` property refers to the transfer ID of the [=Consumer=] side.
 - The `agreementId` property refers to an existing contract [=Agreement=] between the [=Consumer=] and [=Provider=].
 - The `dct:format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
   the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
@@ -114,14 +114,14 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a TP.
 
 Note that [=Providers=] should implement idempotent behavior for [Transfer Request Messages](#transfer-request-message)
 based on the value of `consumerPid`. [=Providers=] may choose to implement idempotent behavior for a certain period of
-time. For example, until a TP has completed and been archived after an implementation-specific expiration period,
-repeated sending of [Transfer Request Messages](#transfer-request-message) does not change the state of the TP. If a
+time. For example, until a [=Transfer Process=] has completed and been archived after an implementation-specific expiration period,
+repeated sending of [Transfer Request Messages](#transfer-request-message) does not change the state of the [=Transfer Process=]. If a
 request for the given `consumerPid` has already been received *and* the same [=Consumer=] sent the original message
 again, the [=Provider=] should respond with an appropriate [Transfer Start Message](#transfer-start-message).
 
-- Once a TP has been created, all associated callback messages must include a `consumerPid` and `providerPid`.
+- Once a [=Transfer Process=] has been created, all associated callback messages must include a `consumerPid` and `providerPid`.
 - [=Providers=] must include a `consumerPid` and a `providerPid` property in the object.
-- Valid states of a TP are `REQUESTED`, `STARTED`, `TERMINATED`, `COMPLETED`, and `SUSPENDED`.
+- Valid states of a [=Transfer Process=] are `REQUESTED`, `STARTED`, `TERMINATED`, `COMPLETED`, and `SUSPENDED`.
 
 ### Transfer Start Message
 
@@ -157,7 +157,7 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 | **Properties**      | <p data-include="message/table/transferstartmessage.html" data-include-format="html"></p> |
 
 The Transfer Suspension Message is sent by the [=Provider=] or [=Consumer=] when either of them needs to temporarily
-suspend the TP.
+suspend the [=Transfer Process=].
 
 ### Transfer Completion Message
 
@@ -187,7 +187,7 @@ need to be sent.
 | **Properties**      | <p data-include="message/table/transferterminationmessage.html" data-include-format="html"></p> |
 
 The Transfer Termination Message is sent by the [=Provider=] or [=Consumer=] at any point except a terminal state to
-indicate the TP should stop and be placed in a terminal state. If the termination was due to an error, the sender may
+indicate the [=Transfer Process=] should stop and be placed in a terminal state. If the termination was due to an error, the sender may
 include error information.
 
 ## Response Types

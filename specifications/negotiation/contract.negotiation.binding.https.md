@@ -26,7 +26,7 @@ an HTTP code 400 (Bad Request) with a [Contract Negotiation Error](#contract-neg
 
 #### Object Not Found
 
-If the [=Contract Negotiation=] (CN) does not exist, the [=Consumer=] or [=Provider=] must return an HTTP 404 (Not
+If the [=Contract Negotiation=] does not exist, the [=Consumer=] or [=Provider=] must return an HTTP 404 (Not
 Found) response.
 
 #### Unauthorized Access
@@ -54,7 +54,7 @@ authorization.
 
 **Request**
 
-A CN can be accessed by a [=Consumer=] sending a GET request to `negotiations/:providerPid`:
+A [=Contract Negotiation=] can be accessed by a [=Consumer=] sending a GET request to `negotiations/:providerPid`:
 
 <aside class="example" title="Get Negotiation Request">
     <pre class="http">GET https://provider.com/negotiations/:providerPid
@@ -65,7 +65,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
+If the [=Contract Negotiation=] is found and the client is authorized, the [=Provider=] must return an HTTP 200 (OK) response and a body
 containing the [Contract Negotiation](#ack-contract-negotiation):
 
 <aside class="example" title="Contract Negotiation Response">
@@ -82,7 +82,7 @@ see [[[#contract-negotiation-states]]]).
 
 **Request**
 
-A CN is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs an
+A [=Contract Negotiation=] is started and placed in the `REQUESTED` state when a [=Consumer=] POSTs an
 initiating [Contract Request Message](#contract-request-message)
 to `negotiations/request`:
 
@@ -94,7 +94,7 @@ Authorization: ...</pre>
 </aside>
 
 - The `callbackAddress` property specifies the base endpoint `URL` where the client receives [=Messages=] associated with
-  the CN. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
+  the [=Contract Negotiation=]. Support for the `HTTPS` scheme is required. Implementations may optionally support other URL schemes.
 
 - Callback [=Messages=] will be sent to paths under the base URL as described by this specification. Note
   that [=Providers=] should properly handle the cases where a trailing `/` is included
@@ -147,7 +147,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 If the current [=Offer=] was created by the [=Consumer=], the [=Provider=] must return an HTTP code 400 (Bad Request)
@@ -171,7 +171,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 ### Contract Negotiation Termination Endpoint {#negotiations-providerpid-termination-post}
@@ -180,7 +180,7 @@ not specified and clients are not required to process it.
 
 The [=Consumer=] can POST
 a [Contract Negotiation Termination Message](#contract-negotiation-termination-message)
-to terminate a CN.
+to terminate a [=Contract Negotiation=].
 
 <aside class="example" title="Contract Negotiation Termination Request">
     <pre class="http">POST https://provider.com/negotiations/:providerPid/termination
@@ -191,7 +191,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 ## Consumer Path Bindings
@@ -208,7 +208,7 @@ not specified and clients are not required to process it.
 ### Prerequisites
 
 All callback paths are relative to the `callbackAddress` base URL specified in
-the [Contract Request Message](#contract-request-message) that initiated a CN. For example, if the `callbackAddress` is
+the [Contract Request Message](#contract-request-message) that initiated a [=Contract Negotiation=]. For example, if the `callbackAddress` is
 specified as `https://consumer.com/:callback` and a callback path binding is `negotiations/:consumerPid/offers`, the
 resolved URL will be `https://consumer.com/:callback/negotiations/:consumerPid/offers`.
 
@@ -218,7 +218,7 @@ resolved URL will be `https://consumer.com/:callback/negotiations/:consumerPid/o
 
 **Request**
 
-A CN can be accessed by a [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
+A [=Contract Negotiation=] can be accessed by a [=Provider=] sending a GET request to the `negotiations/:consumerPid` callback:
 
 <aside class="example" title="Get Negotiation Request">
     <pre class="http">GET https://consumer.com/:callback/negotiations/:consumerPid
@@ -229,7 +229,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN is found and the client is authorized, the [=Consumer=] must return an HTTP 200 (OK) response and a body
+If the [=Contract Negotiation=] is found and the client is authorized, the [=Consumer=] must return an HTTP 200 (OK) response and a body
 containing the [Contract Negotiation](#ack-contract-negotiation):
 
 <aside class="example" title="Contract Negotiation Response">
@@ -246,7 +246,7 @@ see [[[#contract-negotiation-states]]]).
 
 **Request**
 
-A CN is started and placed in the `OFFERED` state when a [=Provider=] POSTs
+A [=Contract Negotiation=] is started and placed in the `OFFERED` state when a [=Provider=] POSTs
 a [Contract Offer Message](#contract-offer-message) to `negotiations/offers`:
 
 <aside class="example" title="Contract Offer Request">
@@ -257,7 +257,7 @@ Authorization: ...</pre>
 </aside>
 
 - The `callbackAddress` property specifies the base endpoint URL where the client receives messages associated with the
-  CN. Support for the HTTPS scheme is required. Implementations may optionally support other URL schemes.
+  [=Contract Negotiation=]. Support for the HTTPS scheme is required. Implementations may optionally support other URL schemes.
 
 - Callback messages will be sent to paths under the base URL as described by this specification. Note that [=Consumers=]
   should properly handle the cases where a trailing / is included with or absent from the `callbackAddress` when
@@ -308,7 +308,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Consumer=] must return an HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] must return an HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 ### Contract Negotiation Event Endpoint {#negotiations-consumerpid-events-post}
@@ -327,7 +327,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
 
 ### Contract Negotiation Termination Endpoint {#negotiations-consumerpid-termination-post}
@@ -335,7 +335,7 @@ not specified and clients are not required to process it.
 **Request**
 
 The [=Provider=] can POST a [Contract Negotiation Termination Message](#contract-negotiation-termination-message) to
-terminate a CN.
+terminate a [=Contract Negotiation=].
 
 <aside class="example" title="Contract Negotiation Termination Request">
     <pre class="http">POST https://consumer.com/negotiations/:consumerPid/termination
@@ -346,5 +346,5 @@ Authorization: ...</pre>
 
 **Response**
 
-If the CN's state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
+If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] must return HTTP code 200 (OK). The response body is
 not specified and clients are not required to process it.
