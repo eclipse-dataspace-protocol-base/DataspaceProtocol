@@ -4,10 +4,10 @@
 
 A [=Contract Negotiation=] involves two parties, a [=Provider=] that offers one or more [=Datasets=] along with a [=Policy=] 
 and a [=Consumer=] that requests [=Datasets=]. A [=Contract Negotiation=] is uniquely identified through an Internationalized Resource Identifier (IRI) [[rfc3987]]. Each [=Contract Negotiation=]
-requires a newly generated IRI, which _MAY_ not be used in a [=Contract Negotiation=] after a terminal state has been reached. A [=Contract Negotiation=] progresses
+requires a newly generated IRI, which MAY not be used in a [=Contract Negotiation=] after a terminal state has been reached. A [=Contract Negotiation=] progresses
 through a series of states, which are tracked by the [=Provider=] and [=Consumer=] using [=Messages=]. A [=Contract Negotiation=] transitions to a
 state in response to an acknowledged [=Message=] from the counter-party. Both parties have the same state of the [=Contract Negotiation=]. In case
-the states differ, the [=Contract Negotiation=] _MUST_ be terminated and a new [=Contract Negotiation=] _MAY_ be initiated.
+the states differ, the [=Contract Negotiation=] MUST be terminated and a new [=Contract Negotiation=] MAY be initiated.
 
 ### States {#contract-negotiation-states}
 
@@ -33,7 +33,7 @@ The [=Contract Negotiation=] state machine is represented in the following diagr
 !["Contract Negotiation State Machine"](figures/contract.negotiation.state.machine.png "Contract Negotiation State Machine")
 
 Transitions marked with `C` indicate a [=Message=] sent by the [=Consumer=], transitions marked with `P` indicate
-a [=Provider=] [=Message=]. Terminal states are final; the state machine _MUST NOT_ transition to another state. A new [=Contract Negotiation=] _MAY_ be initiated if, for instance, the [=Contract Negotiation=] entered the `TERMINATED` state due to a network issue.
+a [=Provider=] [=Message=]. Terminal states are final; the state machine MUST NOT transition to another state. A new [=Contract Negotiation=] MAY be initiated if, for instance, the [=Contract Negotiation=] entered the `TERMINATED` state due to a network issue.
 
 ## Message Types
 
@@ -42,10 +42,10 @@ The [=Contract Negotiation=] state machine is transitioned upon receipt and ackn
 - Concrete wire formats are defined by the protocol binding,
   e.g., [Contract Negotiation HTTPS Binding](#contract-negotiation-https-binding).
 
-- All [=Policy=] types ([=Offer=], [=Agreement=]) _MUST_ contain a unique identifier in the form of a URI. Globally Unique Identifiers (GUIDs) _MAY_ also
+- All [=Policy=] types ([=Offer=], [=Agreement=]) MUST contain a unique identifier in the form of a URI. Globally Unique Identifiers (GUIDs) MAY also
   be used in the form of Uniform Resource Names (URNs), for instance following the pattern <urn:uuid:{GUID}>.
 
-- An [=Agreement=] _MUST_ have a `target` property containing the [=Dataset=] identifier.
+- An [=Agreement=] MUST have a `target` property containing the [=Dataset=] identifier.
 
 ### Contract Request Message
 
@@ -61,23 +61,23 @@ The [=Contract Negotiation=] state machine is transitioned upon receipt and ackn
 The Contract Request Message is sent by a [=Consumer=] to initiate a [=Contract Negotiation=] or to respond to
 a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 
-- The [=Consumer=] _MUST_ include an `offer` property, which itself _MUST_ have a `@id` property. If the message includes
-  a `providerPid` property, the request _MUST_ be associated with an existing [=Contract Negotiation=] and a [=Consumer=] [=Offer=]  _MUST_ be
+- The [=Consumer=] MUST include an `offer` property, which itself MUST have a `@id` property. If the message includes
+  a `providerPid` property, the request MUST be associated with an existing [=Contract Negotiation=] and a [=Consumer=] [=Offer=]  MUST be
   created using either the `offer` or `offer.@id` properties. If the message does not include a `providerPid`, a new [=Contract Negotiation=]
-  _MUST_ be created on [=Provider=] side using either the `offer` or `offer.@id` properties and the [=Provider=] _MUST_ select
+  MUST be created on [=Provider=] side using either the `offer` or `offer.@id` properties and the [=Provider=] MUST select
   an appropriate `providerPid`.
 
-- An `offer.@id` _MUST_ generally refer to an [=Offer=] contained in a [=Catalog=]. If the [=Provider=] is not aware of
-  the `offer.@id` value, it _MUST_ respond with an error message.
+- An `offer.@id` MUST generally refer to an [=Offer=] contained in a [=Catalog=]. If the [=Provider=] is not aware of
+  the `offer.@id` value, it MUST respond with an error message.
 
 - `offer.obligation` and `offer.permission` signify the terms at which a [=Consumer=] would accept an [=Offer=]. 
 
-- The `callbackAddress` is a URL indicating where messages to the [=Consumer=] _SHOULD_ be sent in asynchronous settings.
-  If the address is not understood, the [=Provider=] _MUST_ return an **unrecoverable** error.
+- The `callbackAddress` is a URL indicating where messages to the [=Consumer=] SHOULD be sent in asynchronous settings.
+  If the address is not understood, the [=Provider=] MUST return an **unrecoverable** error.
 
 - Different to a [=Catalog=] or [=Dataset=], the [=Offer=] inside
-  a [Contract Request Message](#contract-request-message) _MUST_ have a `target` attribute. However, it's contained
-  Rules _MUST_ not have any `target` attributes to prevent inconsistencies with
+  a [Contract Request Message](#contract-request-message) MUST have a `target` attribute. However, it's contained
+  Rules MUST not have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
 ### Contract Offer Message
@@ -94,17 +94,17 @@ a [Contract Offer Message](#contract-offer-message) sent by a [=Provider=].
 The Contract Offer Message is sent by a [=Provider=] to initiate a [=Contract Negotiation=] or to respond to
 a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
 
-- If the message includes a `consumerPid` property, the request _MUST_ be associated with an existing [=Contract Negotiation=]. If the message does not include a `consumerPid`, a new [=Contract Negotiation=] _MUST_ be created on [=Consumer=] side and the [=Consumer=] selects an appropriate `consumerPid`.
+- If the message includes a `consumerPid` property, the request MUST be associated with an existing [=Contract Negotiation=]. If the message does not include a `consumerPid`, a new [=Contract Negotiation=] MUST be created on [=Consumer=] side and the [=Consumer=] selects an appropriate `consumerPid`.
 
-- The [=Dataset=] identifier _MAY_ be included when the [=Provider=] initiates a [=Contract Negotiation=].
+- The [=Dataset=] identifier MAY be included when the [=Provider=] initiates a [=Contract Negotiation=].
 
 - Different to a [=Dataset=],
-  the [=Offer=] inside a [Contract Offer Message](#contract-offer-message) _MUST_ have a `target` attribute. However, its contained Rules _MUST_ not
+  the [=Offer=] inside a [Contract Offer Message](#contract-offer-message) MUST have a `target` attribute. However, its contained Rules MUST not
   have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
-- If the message initiates a [=Contract Negotiation=], it _MUST_ contain a `callbackAddress` property indicating where messages to the [=Provider=] _SHOULD_ be sent in asynchronous settings.
-  If the address is not understood, the [=Consumer=] _MUST_ return an **unrecoverable** error.
+- If the message initiates a [=Contract Negotiation=], it MUST contain a `callbackAddress` property indicating where messages to the [=Provider=] SHOULD be sent in asynchronous settings.
+  If the address is not understood, the [=Consumer=] MUST return an **unrecoverable** error.
 
 ### Contract Agreement Message
 
@@ -120,17 +120,17 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
 The Contract Agreement Message is sent by a [=Provider=] when it agrees to a [=Policy=]. It contains the
 complete [=Agreement=].
 
-- The message _MUST_ contain a `consumerPid` and a `providerPid`.
+- The message MUST contain a `consumerPid` and a `providerPid`.
 
-- The message _MUST_ contain an [=Agreement=].
+- The message MUST contain an [=Agreement=].
 
-- An [=Agreement=] _MUST_ contain a `timestamp` property defined as an [XSD DateTime](https://www.w3schools.com/XML/schema_dtypes_date.asp) type.
+- An [=Agreement=] MUST contain a `timestamp` property defined as an [XSD DateTime](https://www.w3schools.com/XML/schema_dtypes_date.asp) type.
 
-- An [=Agreement=] _MUST_ contain an `assigner` and `assignee`. The contents of these properties are a dataspace-specific
-  unique identifier of the [=Agreement=] parties. These identifiers _MAY_ be the same as the
+- An [=Agreement=] MUST contain an `assigner` and `assignee`. The contents of these properties are a dataspace-specific
+  unique identifier of the [=Agreement=] parties. These identifiers MAY be the same as the
   identifiers of the [=Participant Agents=] negotiating the [=Agreement=] (e.g., [=Connectors=]).
 
-- An [=Agreement=] _MUST_ contain a `target` property. None of its Rules, however, _MUST_ have any `target`
+- An [=Agreement=] MUST contain a `target` property. None of its Rules, however, MUST have any `target`
   attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
@@ -147,9 +147,9 @@ complete [=Agreement=].
 
 The Contract Agreement Verification Message is sent by a [=Consumer=] to verify the acceptance of an [=Agreement=].
 
-- A [=Provider=] _MUST_ respond with an error if the [=Agreement=] cannot be validated or is incorrect.
+- A [=Provider=] MUST respond with an error if the [=Agreement=] cannot be validated or is incorrect.
 
-- The message _MUST_ contain a `consumerPid` and a `providerPid`.
+- The message MUST contain a `consumerPid` and a `providerPid`.
 
 ### Contract Negotiation Event Message
 
@@ -168,11 +168,11 @@ the `FINALIZED` state.
 
 - Other event types may be defined in the future.
 
-- A [=Consumer=] _MUST_ respond with an error if the [=Agreement=] cannot be validated or is incorrect.
+- A [=Consumer=] MUST respond with an error if the [=Agreement=] cannot be validated or is incorrect.
 
-- The message _MUST_ contain a `consumerPid` and a `providerPid`.
+- The message MUST contain a `consumerPid` and a `providerPid`.
 
-- When the message is sent by a [=Consumer=] with an `eventType` set to `ACCEPTED`, the state machine _MUST_ be placed in
+- When the message is sent by a [=Consumer=] with an `eventType` set to `ACCEPTED`, the state machine MUST be placed in
   the `ACCEPTED` state.
 
 - It is an error for a [=Consumer=] to send the message with an event type `FINALIZED` to the [=Provider=].
@@ -180,8 +180,8 @@ the `FINALIZED` state.
 - It is an error for a [=Provider=] to send the message with an event type `ACCEPTED` to the [=Consumer=].
 
 Note that [=Contract Negotiation=] events are not intended for propagation of an [=Agreement=] state after a [=Contract Negotiation=] has entered a terminal state.
-[=Consumer=] or [=Provider=] _MUST NOT_ send an event after the [=Contract Negotiation=] state machine has entered a
-terminal state. If they do so, this event _MUST_ be handled as error.
+[=Consumer=] or [=Provider=] MUST NOT send an event after the [=Contract Negotiation=] state machine has entered a
+terminal state. If they do so, this event MUST be handled as error.
 
 ### Contract Negotiation Termination Message
 
@@ -195,20 +195,20 @@ terminal state. If they do so, this event _MUST_ be handled as error.
 | **Properties**      | <p data-include="message/table/contractnegotiationterminationmessage.html" data-include-format="html"></p> |
 
 The Contract Negotiation Termination Message is sent by a [=Consumer=] or [=Provider=] indicating it has cancelled the
-[=Contract Negotiation=] sequence. The message _MAY_ be sent at any state of a [=Contract Negotiation=] without providing an explanation. Nevertheless, the sender _MAY_
+[=Contract Negotiation=] sequence. The message MAY be sent at any state of a [=Contract Negotiation=] without providing an explanation. Nevertheless, the sender MAY
 provide a description to help the receiver.
 
-- The message _MUST_ contain a `consumerPid` and a `providerPid`.
+- The message MUST contain a `consumerPid` and a `providerPid`.
 
-- If an error is received in response to the message, the sending party _MAY_ choose to ignore the error.
+- If an error is received in response to the message, the sending party MAY choose to ignore the error.
 
 Note that a [=Contract Negotiation=] may be terminated for a variety of reasons, for example, an unrecoverable error was encountered or one of
-the parties no longer wishes to continue. A [=Connector=]'s operator _MAY_
+the parties no longer wishes to continue. A [=Connector=]'s operator MAY
 remove terminated [=Contract Negotiation=] resources after it has reached the terminated state.
 
 ## Response Types
 
-The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error _MAY_ be
+The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error MAY be
 provided in protocol-dependent forms, e.g., for an HTTPS binding in the request or response body.
 
 ### ACK - Contract Negotiation
@@ -225,9 +225,9 @@ happened.
 
 An [=Agreement=] contains the following attributes:
 
-- An Agreement _MUST_ be associated with exactly one [=Dataset=].
+- An Agreement MUST be associated with exactly one [=Dataset=].
 
-- An Agreement _MUST_ include exactly one `target` attribute that is the identifier of the [=Dataset=] the [=Agreement=] is associated with.
+- An Agreement MUST include exactly one `target` attribute that is the identifier of the [=Dataset=] the [=Agreement=] is associated with.
 
 ### ERROR - Contract Negotiation Error
 

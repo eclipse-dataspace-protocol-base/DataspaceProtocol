@@ -7,7 +7,7 @@ abstract [=Message=] exchange format. The concrete [=Message=] exchange wire for
 
 The [=Catalog Protocol=] reuses properties from the DCAT and ODRL vocabularies with restrictions defined in this
 specification. This is done implicitly by the use of the JSON schemas and JSON-LD-contexts that are part of the [=Dataspace Protocol=].
-Servers _MAY_ process properties that are not part of the schemas.
+Servers MAY process properties that are not part of the schemas.
 
 ## Message Types
 
@@ -23,14 +23,14 @@ Servers _MAY_ process properties that are not part of the schemas.
 | **Properties**      | <p data-include="message/table/catalogrequestmessage.html" data-include-format="html"></p> |
 
 The Catalog Request Message is sent by a [=Consumer=] to a [=Catalog Service=].
-The [=Catalog Service=] _MUST_ respond with a [Catalog](#ack-catalog) that adheres to the schema linked above.
+The [=Catalog Service=] MUST respond with a [Catalog](#ack-catalog) that adheres to the schema linked above.
 
-- The message _MAY_ have a `filter` property which contains an implementation-specific query or filter expression type
+- The message MAY have a `filter` property which contains an implementation-specific query or filter expression type
   supported by the [=Catalog Service=].
 
-- The [=Catalog Service=] _MAY_ require an authorization token. Details for
+- The [=Catalog Service=] MAY require an authorization token. Details for
   including that token can be found in the protocol binding, e.g., [Catalog HTTPS Binding](#catalog-https-binding).
-  Similarly, pagination _MAY_ be defined in the protocol binding.
+  Similarly, pagination MAY be defined in the protocol binding.
 
 ### Dataset Request Message
 
@@ -44,16 +44,16 @@ The [=Catalog Service=] _MUST_ respond with a [Catalog](#ack-catalog) that adher
 | **Properties**      | <p data-include="message/table/datasetrequestmessage.html" data-include-format="html"></p> |
 
 The Dataset Request Message is sent by a [=Consumer=] to a [=Catalog Service=].
-The [=Catalog Service=] _MUST_ respond with a [Dataset](#ack-dataset) that adheres to the schema linked above.
+The [=Catalog Service=] MUST respond with a [Dataset](#ack-dataset) that adheres to the schema linked above.
 
-- The message _MUST_ have a `dataset` property which contains the identifier of the [=Dataset=].
+- The message MUST have a `dataset` property which contains the identifier of the [=Dataset=].
 
-- The [=Catalog Service=] _MAY_ require an authorization token. Details for
+- The [=Catalog Service=] MAY require an authorization token. Details for
   including that token can be found in the protocol binding, e.g., [Catalog HTTPS Binding](#catalog-https-binding).
 
 ## Response Types
 
-The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error _MAY_ be
+The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error MAY be
 provided in protocol-dependent forms, e.g., for an HTTPS binding in the request or response body.
 
 ### ACK - Catalog
@@ -65,9 +65,9 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Example**    | [Catalog Example](message/example/catalog.json)                                  |
 | **Properties**      | <p data-include="message/table/rootcatalog.html" data-include-format="html"></p> |
 
-- A [=Catalog=] _MUST_ have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
+- A [=Catalog=] MUST have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
 
-- A [=Catalog=] _MUST_ have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] _MAY_ be obtained.
+- A [=Catalog=] MUST have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] MAY be obtained.
 
 ### ACK - Dataset
 
@@ -78,23 +78,23 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Example**    | [Dataset Example](message/example/dataset.json)                               |
 | **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
 
-- A [=Dataset=] _MUST_ have at least one `hasPolicy` attribute that contains an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
+- A [=Dataset=] MUST have at least one `hasPolicy` attribute that contains an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
 
-- A [=Dataset=] _MUST_ hold at least one `Distribution` object in the `distribution` attribute.
+- A [=Dataset=] MUST hold at least one `Distribution` object in the `distribution` attribute.
 
-- Each `DataService` object _MUST HAVE_ at least one `DataService` which specifies where the distribution is obtained. 
+- Each `DataService` object MUST have at least one `DataService` which specifies where the distribution is obtained. 
   Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
 
 - A `DataService.endpointURL` property contains the URL of the service the [=Contract Negotiation=] endpoints extend. The
-  endpoint's [=Dataspace Protocol=] version _MUST_ be consistent with the version the `Catalog` object was served through.
+  endpoint's [=Dataspace Protocol=] version MUST be consistent with the version the `Catalog` object was served through.
 
 An [=Offer=] contains the following attributes:
 
-- An [=Offer=] _MUST_ have an `@id` that is a unique identifier.
+- An [=Offer=] MUST have an `@id` that is a unique identifier.
 
-- An [=Offer=] _MUST_ be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
+- An [=Offer=] MUST be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
 
-- [=Offers=] _MAY_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
+- [=Offers=] MAY contain any `target` attributes. The value of the `target` attribute MUST be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
 
 ### ERROR - Catalog Error
 
@@ -113,7 +113,7 @@ a [Dataset Request Message](#dataset-request-message) and the [=Provider=] canno
 ### Queries and Filter Expressions
 
 A [=Catalog Service=] may support [=Catalog=] queries or filter expressions as an
-implementation-specific feature. However, query capabilities by the [=Consumer=] _MUST_ be implemented 
+implementation-specific feature. However, query capabilities by the [=Consumer=] MUST be implemented 
 against the results of a [Catalog Request Message](#catalog-request-message). Client-side querying can
 be scaled by periodically crawling
 the [=Provider=]'s [=Catalog Services=], caching
@@ -132,9 +132,9 @@ a [=Consumer=] discovers [=Catalog Services=].
 
 ### Security
 
-[=Catalog Services=] _SHOULD_ implement access control. 
+[=Catalog Services=] SHOULD implement access control. 
 A [=Catalog=] as well as individual [=Datasets=] may be restricted to trusted
-parties. Therefore, the [=Catalog Service=] _MAY_
+parties. Therefore, the [=Catalog Service=] MAY
 require [=Consumers=] to include a security token along with
 a [Catalog Request Message](#catalog-request-message). The specifics of how this is done can be found in the relevant
 protocol binding, e.g., [Catalog HTTPS Binding](#catalog-https-binding). The semantics of such tokens are not part
@@ -148,7 +148,7 @@ negotiated; or, require one or more proofs when the [Catalog Request](#catalog-r
 the [=Datasets=] accordingly. The latter option requires a mechanism for clients to
 discover the type of proofs that may be presented at request time. The specifics of proof types and presenting a proof
 during a [=Catalog=] request is outside the scope of the [=Dataspace Protocol=].
-However, [=Catalog Protocol=] bindings _SHOULD_ define a proof data endpoint for
+However, [=Catalog Protocol=] bindings SHOULD define a proof data endpoint for
 obtaining this information.
 
 ### Catalog Brokers
@@ -157,5 +157,5 @@ A [=Dataspace=] may include Catalog Brokers. A Catalog Broker is
 a [=Consumer=] that has trusted access to 1..N
 upstream [=Catalog Services=] and advertises their
 respective [=Catalogs=] as a
-single [=Catalog Service=]. The Catalog Broker _SHOULD_ honor upstream access
+single [=Catalog Service=]. The Catalog Broker SHOULD honor upstream access
 control requirements ([=Policies=]).

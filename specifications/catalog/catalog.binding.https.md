@@ -10,11 +10,11 @@ This binding defines a RESTful Application Programming Interface (API) over HTTP
    URL is `api.example.com`, the URL `https://<base>/catalog/request` will map
    to `https//api.example.com/catalog/request`.
 
-2. All request and response [=Messages=] _MUST_ use the `application/json` media type.
+2. All request and response [=Messages=] MUST use the `application/json` media type.
 
 ### Catalog Error
 
-In the event of a request error, the [=Catalog Service=] _MUST_ return an appropriate HTTP code and
+In the event of a request error, the [=Catalog Service=] MUST return an appropriate HTTP code and
 a [Catalog Error](#error-catalog-error) in the response body.
 
 ## Path Bindings
@@ -41,13 +41,13 @@ Authorization: ...</pre>
   contents of the `Authorization` header are detailed in
   the [Authorization section](../common/common.binding.https.md#2-authorization).
 
-- The `filter` property is optional. If present, the `filter` property _MAY_ contain an implementation-specific filter
+- The `filter` property is optional. If present, the `filter` property MAY contain an implementation-specific filter
   expression or query to be executed as part of the [=Catalog=] request. If a filter expression is not supported by an
-  implementation, it _MUST_ return a HTTP 400 (Bad Request) response.
+  implementation, it MUST return a HTTP 400 (Bad Request) response.
 
 **Response**
 
-If the request is successful, the [=Catalog Service=] _MUST_ return an HTTP 200 (OK) with a response body containing
+If the request is successful, the [=Catalog Service=] MUST return an HTTP 200 (OK) with a response body containing
 a [Catalog](#ack-catalog).
 
 <aside class="example" title="Catalog Response">
@@ -73,7 +73,7 @@ Authorization: ...</pre>
 
 **Response**
 
-If the request is successful, the [=Catalog Service=] _MUST_ return an HTTP 200 (OK) with a response body containing
+If the request is successful, the [=Catalog Service=] MUST return an HTTP 200 (OK) with a response body containing
 a [Dataset](#ack-dataset).
 
 <aside class="example" title="Dataset Response">
@@ -86,9 +86,9 @@ a [Dataset](#ack-dataset).
 ### Pagination
 
 A [=Catalog Service=] may paginate the results of a [Catalog Request Message](#catalog-request-message). Pagination data
-_MUST_ be specified using [Web Linking](https://datatracker.ietf.org/doc/html/rfc5988) and the HTTP `Link` header.
+MUST be specified using [Web Linking](https://datatracker.ietf.org/doc/html/rfc5988) and the HTTP `Link` header.
 The `Link` header will contain URLs for navigating to previous and subsequent results. Only the `next` and `previous`
-link relation types _MUST_ be supported.
+link relation types MUST be supported.
 Note that the content and structure of the link query parameters is not defined by the current specification.
 
 The following request sequence demonstrates pagination:

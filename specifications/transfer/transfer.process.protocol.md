@@ -76,7 +76,7 @@ The [=Transfer Process=] state machine is represented in the following diagram:
 ![](figures/transfer-process-state-machine.png "Transfer Process State Machine")
 
 Transitions marked with `C` indicate a message sent by the [=Consumer=], transitions marked with `P` indicate
-a [=Provider=] message. Terminal states are final; the state machine _MUST NOT_ transition to another state.
+a [=Provider=] message. Terminal states are final; the state machine MUST NOT transition to another state.
 
 ## Message Types
 
@@ -93,37 +93,37 @@ a [=Provider=] message. Terminal states are final; the state machine _MUST NOT_ 
 
 The Transfer Request Message is sent by a [=Consumer=] to initiate a [=Transfer Process=].
 
-- The `consumerPid` property _MUST_ refer to the transfer identifier of the [=Consumer=] side.
+- The `consumerPid` property MUST refer to the transfer identifier of the [=Consumer=] side.
 
-- The `agreementId` property _MUST_ refer to an existing [=Agreement=] between the [=Consumer=] and [=Provider=].
+- The `agreementId` property MUST refer to an existing [=Agreement=] between the [=Consumer=] and [=Provider=].
 
 - The `format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
   the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
 
-- The `dataAddress` property _MUST_ only be provided if the `format` requires a push transfer.
+- The `dataAddress` property MUST only be provided if the `format` requires a push transfer.
 
-- The `dataAddress` _MUST_ contain a transport-specific set of properties for pushing the data. It _MAY_ include an `endpoint`, 
+- The `dataAddress` MUST contain a transport-specific set of properties for pushing the data. It MAY include an `endpoint`, 
   a temporary authorization via the `endpointProperties` property - depending on the `endpointType`.
 
-- `callbackAddress` _MUST_ be a URI indicating where messages to the [=Consumer=] should be sent. If the address is not
-  understood, the [=Provider=] _MUST_ return an **unrecoverable** error.
+- `callbackAddress` MUST be a URI indicating where messages to the [=Consumer=] should be sent. If the address is not
+  understood, the [=Provider=] MUST return an **unrecoverable** error.
 
-- The `endpointProperties` _MAY_ (among others) contain the following optional values:
-    - `authorization` - An opaque authorization token that clients _MAY_ present when accessing the transport-specific
+- The `endpointProperties` MAY (among others) contain the following optional values:
+    - `authorization` - An opaque authorization token that clients MAY present when accessing the transport-specific
       endpoint address.
-    - `authType` - The auth token type. For example, the value _MAY_ be `bearer`. If present, this value _MAY_ be used in
-      conjunction with transport rules to define how the client _MAY_ present an authorization token.
+    - `authType` - The auth token type. For example, the value MAY be `bearer`. If present, this value MAY be used in
+      conjunction with transport rules to define how the client MAY present an authorization token.
 
-Note that [=Providers=] _SHOULD_ implement idempotent behavior for [Transfer Request Messages](#transfer-request-message)
-based on the value of `consumerPid`. [=Providers=] _MAY_ choose to implement idempotent behavior for a certain period of
+Note that [=Providers=] SHOULD implement idempotent behavior for [Transfer Request Messages](#transfer-request-message)
+based on the value of `consumerPid`. [=Providers=] MAY choose to implement idempotent behavior for a certain period of
 time. For example, until a [=Transfer Process=] has completed and been archived after an implementation-specific expiration period,
 repeated sending of [Transfer Request Messages](#transfer-request-message) does not change the state of the [=Transfer Process=]. If a
 request for the given `consumerPid` has already been received *and* the same [=Consumer=] sent the original message
-again, the [=Provider=] _SHOULD_ respond with an appropriate [Transfer Start Message](#transfer-start-message).
+again, the [=Provider=] SHOULD respond with an appropriate [Transfer Start Message](#transfer-start-message).
 
-- Once a [=Transfer Process=] has been created, all associated callback messages _MUST_ include a `consumerPid` and `providerPid`.
+- Once a [=Transfer Process=] has been created, all associated callback messages MUST include a `consumerPid` and `providerPid`.
 
-- [=Providers=] _MUST_ include a `consumerPid` and a `providerPid` property in the object.
+- [=Providers=] MUST include a `consumerPid` and a `providerPid` property in the object.
 
 - Valid states of a [=Transfer Process=] are `REQUESTED`, `STARTED`, `TERMINATED`, `COMPLETED`, and `SUSPENDED`.
 
@@ -140,15 +140,15 @@ again, the [=Provider=] _SHOULD_ respond with an appropriate [Transfer Start Mes
 
 The Transfer Start Message is sent by the [=Provider=] to indicate the data transfer has been initiated.
 
-- The `dataAddress` _MUST_ be provided if the current transfer is a pull transfer and contains a transport-specific
+- The `dataAddress` MUST be provided if the current transfer is a pull transfer and contains a transport-specific
   endpoint address for obtaining the data. The kind of transport is signaled by the `endpointType` property which
   determines a set of required `endpointProperties` in a [=Profile=] separate from this specification.
 
-- The `endpointProperties` _MAY_ (among others) contain the following optional values:
-  - `authorization` - An opaque authorization token that clients _MAY_ present when accessing the transport-specific
+- The `endpointProperties` MAY (among others) contain the following optional values:
+  - `authorization` - An opaque authorization token that clients MAY present when accessing the transport-specific
     endpoint address.
-  - `authType` - The auth token type. For example, the value _MAY_ be `bearer`. If present, this value _MAY_ be used in
-    conjunction with transport rules to define how the client _MAY_ present an authorization token.
+  - `authType` - The auth token type. For example, the value MAY be `bearer`. If present, this value MAY be used in
+    conjunction with transport rules to define how the client MAY present an authorization token.
 
 ### Transfer Suspension Message
 
@@ -176,7 +176,7 @@ suspend the [=Transfer Process=].
 | **Properties**      | <p data-include="message/table/transfercompletionmessage.html" data-include-format="html"></p> |
 
 The Transfer Completion Message is sent by the [=Provider=] or [=Consumer=] when a data transfer has completed. Note
-that some [=Connector=] implementations _MAY_ optimize completion
+that some [=Connector=] implementations MAY optimize completion
 notification by performing it as part of their wire protocol. In those cases, a [Transfer Completion Message](transfer-completion-message) does not
 need to be sent.
 
@@ -192,12 +192,12 @@ need to be sent.
 | **Properties**      | <p data-include="message/table/transferterminationmessage.html" data-include-format="html"></p> |
 
 The Transfer Termination Message is sent by the [=Provider=] or [=Consumer=] at any point except a terminal state to
-indicate the [=Transfer Process=] should stop and be placed in a terminal state. If the termination was due to an error, the sender _MAY_
+indicate the [=Transfer Process=] should stop and be placed in a terminal state. If the termination was due to an error, the sender MAY
 include error information.
 
 ## Response Types
 
-The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error _MAY_ be
+The `ACK` and `ERROR` response types are mapped onto a protocol such as HTTPS. A description of an error MAY be
 provided in protocol-dependent forms, e.g., for an HTTPS binding in the request or response body.
 
 ### ACK - Transfer Process

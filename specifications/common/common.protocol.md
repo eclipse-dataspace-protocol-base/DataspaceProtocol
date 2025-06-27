@@ -2,7 +2,7 @@
 
 ## Authorization
 
-All requests to HTTPS endpoints _SHOULD_ use the `Authorization` header to include an authorization token. The semantics
+All requests to HTTPS endpoints SHOULD use the `Authorization` header to include an authorization token. The semantics
 of such tokens are not part of this specification. The `Authorization` HTTP header is optional if the [=Connector=]
 does not require authorization.
 
@@ -20,10 +20,10 @@ similar contexts that facilitate this approach to interoperability. As this spec
 
 [=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
 necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
-_MUST_ provide a version metadata endpoint ending with Uniform Resource Identifier (URI) segments `/.well-known/dspace-version`. The location of this 
-endpoint _SHOULD_ adhere to [[rfc8615]].
+MUST provide a version metadata endpoint ending with Uniform Resource Identifier (URI) segments `/.well-known/dspace-version`. The location of this 
+endpoint SHOULD adhere to [[rfc8615]].
 
-A [=Connector=] _MUST_ respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
+A [=Connector=] MUST respond to a respective HTTPS request by returning a [`VersionResponse`](#VersionResponse-table)
 with at least one item. 
 
 <p data-include="message/table/versionresponse.html" data-include-format="html">
@@ -45,9 +45,9 @@ participants in the protocol communication.
 </p>
 
 
-This data object _MUST_ comply to the [JSON schema](message/schema/protocol-version-schema.json). The requesting
-[=Connector=] _MAY_ select from the endpoints in the response. If the [=Connector=] cannot identify a matching [=Dataspace
-Protocol=] version, it _MUST_ terminate the communication. The version endpoint _MUST_ be unversioned and unauthenticated.
+This data object MUST comply to the [JSON schema](message/schema/protocol-version-schema.json). The requesting
+[=Connector=] MAY select from the endpoints in the response. If the [=Connector=] cannot identify a matching [=Dataspace
+Protocol=] version, it MUST terminate the communication. The version endpoint MUST be unversioned and unauthenticated.
 
 ### HTTPS Binding
 
@@ -70,8 +70,8 @@ root URL under `<root>/different/path/2025-1` - some of which signal the relevan
 
 ## Discovery of Service Endpoints
 
-A Participant _MAY_ publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a Decentralized Identifier (DID) document, 
-see [[?did-core]]. In this case, the Participant _MUST_ add at least one entry to the DID document's `service` array 
+A Participant MAY publicize their [=Data Services=], i.e., [=Connectors=], or [=Catalog Services=] via a Decentralized Identifier (DID) document, 
+see [[?did-core]]. In this case, the Participant MUST add at least one entry to the DID document's `service` array 
 adhering to the corresponding [JSON schema](message/schema/did-service-schema.json).
 
 <aside class="example" title="Catalog Service DID Service Example">
