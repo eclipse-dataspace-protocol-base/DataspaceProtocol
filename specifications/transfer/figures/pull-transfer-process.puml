@@ -30,9 +30,9 @@ DataPlane_C -> DataPlane_P : pull data
 deactivate DataPlane_P
 deactivate DataPlane_C
 
-alt "Consumer ends TP"
+alt "Consumer ends Transfer Process"
     ControlPlane_C -> ControlPlane_P : TransferCompletionMessage
-else "Provider ends TP"
+else "Provider ends Transfer Process"
     ControlPlane_P -> ControlPlane_C : TransferCompletionMessage
 end
 

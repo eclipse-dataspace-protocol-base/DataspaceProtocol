@@ -1,6 +1,6 @@
 # Introduction
 
-This directory contains the Schema Table Generator plugin. The plugin generates readable type information in HTML for Json
+This directory contains the Schema Table Generator plugin. The plugin generates readable type information in HTML for JSON
 schema definitions found in the project source set.
 
 For example:
@@ -56,7 +56,7 @@ the `aside` element in the appropriate Markdown file:
    
 ## Implementation notes
 
-The Json Schema Object Model parser does not yet support all Json Schema features such `anyOf` or `oneOf`.  
+The JSON Schema Object Model parser does not yet support all JSON Schema features such `anyOf` or `oneOf`.  
 
 # Build Setup
 

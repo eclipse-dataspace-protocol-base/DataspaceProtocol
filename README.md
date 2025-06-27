@@ -1,6 +1,6 @@
 # Dataspace Protocol
 
-The __Dataspace Protocol__ is a set of specifications designed to facilitate interoperable data sharing between entities governed by usage control and based on Web technologies. These specifications define the schemas and protocols required for entities to publish data, negotiate [Agreements](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/#dfn-agreement), and access data as part of a federation of technical systems termed a [Dataspace](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/#dfn-dataspace).
+The __Dataspace Protocol__ is a specification designed to facilitate interoperable data sharing between entities governed by usage control and based on Web technologies. This specification defines the schemas and protocols required for entities to publish data, negotiate [Agreements](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/#dfn-agreement), and access data as part of a federation of technical systems termed a [Dataspace](https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/#dfn-dataspace).
 
 The web rendering of the Dataspace Protocol represents the current state on this repo's main branch: https://eclipse-dataspace-protocol-base.github.io/DataspaceProtocol/.
 

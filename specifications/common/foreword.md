@@ -1,6 +1,6 @@
 # Foreword
 
-ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO
+The International Organization for Standardization (ISO) is a worldwide federation of national standards bodies (ISO
 member bodies). The work of preparing International Standards is normally carried out through ISO technical committees.
 Each member body interested in a subject for which a technical committee has been established has the right to be
 represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also
