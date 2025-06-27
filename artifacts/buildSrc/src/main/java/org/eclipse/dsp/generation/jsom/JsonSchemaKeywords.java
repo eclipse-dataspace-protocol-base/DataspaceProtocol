@@ -26,6 +26,7 @@ public interface JsonSchemaKeywords {
     String CONTAINS = "contains";
     String DEFINITIONS = "definitions";
     String ITEMS = "items";
+    String NOT = "not";
     String ONE_OF = "oneOf";
     String PROPERTIES = "properties";
     String REQUIRED = "required";

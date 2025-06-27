@@ -40,11 +40,13 @@ public class SchemaType implements Comparable<SchemaType> {
 
     private final String name;
     private final String baseType;
-    private String itemType;
+    private final String itemType;
     private final boolean rootDefinition;
     private final String schemaUri;
     private final Set<String> allOf = new HashSet<>();
     private final Set<SchemaType> resolvedAllOf = new HashSet<>();
+    private final Set<String> oneOf = new HashSet<>();
+    private final Set<SchemaType> resolvedOneOf = new HashSet<>();
     private final Set<SchemaProperty> properties = new TreeSet<>();
     private final Set<ElementDefinition> contains = new TreeSet<>();
     private final Map<String, SchemaProperty> propertiesMap = new HashMap<>();
@@ -119,17 +121,19 @@ public class SchemaType implements Comparable<SchemaType> {
 
     @NotNull
     public Set<SchemaPropertyReference> getTransitiveRequiredProperties() {
-        return concat(requiredProperties.values().stream(), resolvedAllOf.stream()
-                .flatMap(type -> type.getTransitiveRequiredProperties().stream()))
+        return concat(requiredProperties.values().stream(),
+                concat(resolvedAllOf.stream().flatMap(type -> type.getTransitiveRequiredProperties().stream()),
+                resolvedOneOf.stream().flatMap(type -> type.getTransitiveRequiredProperties().stream())))
                 .collect((toCollection(TreeSet::new)));
     }
 
     @NotNull
     public Set<SchemaPropertyReference> getTransitiveOptionalProperties() {
-        // a type by include multple other types (allOf) where a property is optional in one but mandatory in another - filter it
+        // a type may include multiple other types (allOf) where a property is optional in one but mandatory in another - filter it
         var required = getRequiredProperties().stream().map(SchemaPropertyReference::getName).collect(Collectors.toSet());
-        return concat(optionalProperties.values().stream(), resolvedAllOf.stream()
-                .flatMap(type -> type.getTransitiveOptionalProperties().stream()))
+        return concat(optionalProperties.values().stream(),
+                concat(resolvedAllOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream()),
+                resolvedOneOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream())))
                 .filter(prop -> !required.contains(prop.getName()))  // filter required
                 .collect((toCollection(TreeSet::new)));
     }
@@ -162,6 +166,23 @@ public class SchemaType implements Comparable<SchemaType> {
 
     public void resolvedAllOfType(SchemaType type) {
         this.resolvedAllOf.add(type);
+    }
+
+    @NotNull
+    public Set<String> getOneOf() {
+        return oneOf;
+    }
+
+    public Set<SchemaType> getResolvedOneOf() {
+        return resolvedOneOf;
+    }
+
+    public void oneOf(Collection<String> oneOf) {
+        this.oneOf.addAll(oneOf);
+    }
+
+    public void resolvedOneOfType(SchemaType type) {
+        this.resolvedOneOf.add(type);
     }
 
     public void required(Collection<SchemaPropertyReference> required) {

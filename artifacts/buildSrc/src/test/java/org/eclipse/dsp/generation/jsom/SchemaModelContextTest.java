@@ -105,6 +105,37 @@ class SchemaModelContextTest {
     }
 
     @Test
+    void verifyOneOfTypeResolution() {
+        var abstractFooSchema = new SchemaType("AbstractFoo", "SchemaFile");
+
+        var abstractProperty = SchemaProperty.Builder.newInstance()
+                .name("abstractProperty")
+                .types(Set.of("#/definitions/Foo"))
+                .build();
+
+        var abstractRequiredProperty = SchemaProperty.Builder.newInstance()
+                .name("abstractRequiredProperty")
+                .types(Set.of("string"))
+                .build();
+
+        abstractFooSchema.properties(List.of(abstractProperty, abstractRequiredProperty));
+
+        var fooSchema = new SchemaType("Foo", "SchemaFile");
+        fooSchema.oneOf(Set.of("#/definitions/AbstractFoo"));
+        fooSchema.required(Set.of(new SchemaPropertyReference("abstractRequiredProperty")));
+
+        modelContext.addType(abstractFooSchema);
+        modelContext.addType(fooSchema);
+        modelContext.resolve();
+
+        assertThat(fooSchema.getTransitiveOptionalProperties().size()).isEqualTo(1);
+        assertThat(fooSchema.getTransitiveOptionalProperties().iterator().next().getResolvedProperty()).isSameAs(abstractProperty);
+
+        assertThat(fooSchema.getTransitiveRequiredProperties().size()).isEqualTo(1);
+        assertThat(fooSchema.getTransitiveRequiredProperties().iterator().next().getResolvedProperty()).isSameAs(abstractRequiredProperty);
+    }
+
+    @Test
     void verifyContainsTypeResolution() {
         var fooSchema = new SchemaType("Foo", "SchemaFile");
         var barSchema = new SchemaType("Bar", "SchemaFile");
