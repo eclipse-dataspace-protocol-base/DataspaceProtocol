@@ -127,7 +127,7 @@ complete [=Agreement=].
 - An [=Agreement=] _MUST_ contain a `timestamp` property defined as an [XSD DateTime](https://www.w3schools.com/XML/schema_dtypes_date.asp) type.
 
 - An [=Agreement=] _MUST_ contain an `assigner` and `assignee`. The contents of these properties are a dataspace-specific
-  unique identifier of the [=Agreement=] parties. These identifiers _MUST NOT_ be the same as the
+  unique identifier of the [=Agreement=] parties. These identifiers _MAY_ be the same as the
   identifiers of the [=Participant Agents=] negotiating the [=Agreement=] (e.g., [=Connectors=]).
 
 - An [=Agreement=] _MUST_ contain a `target` property. None of its Rules, however, _MUST_ have any `target`
@@ -240,10 +240,3 @@ An [=Agreement=] contains the following attributes:
 
 The Contract Negotiation Error is an object returned by a [=Consumer=] or [=Provider=] indicating an error has occurred.
 It does not cause a state transition.
-
-| Field         | Type          | Description                                                  |
-|---------------|---------------|--------------------------------------------------------------|
-| `consumerPid` | UUID          | The [=Contract Negotiation=] unique identifier on [=Consumer=] side. |
-| `providerPid` | UUID          | The [=Contract Negotiation=] unique identifier on [=Provider=] side. |
-| `code`        | String        | An optional implementation-specific error code.              |
-| `reason`      | Array[object] | An optional array of implementation-specific error objects.  |

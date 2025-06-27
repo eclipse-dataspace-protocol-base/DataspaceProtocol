@@ -124,7 +124,7 @@ Authorization: ...</pre>
 **Response**
 
 If the message is successfully processed, the [=Provider=] _MUST_ return an HTTP 200 (OK) response. The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Contract Negotiation Event Endpoint {#negotiations-providerpid-events-post}
 
@@ -144,7 +144,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] _MUST_ return an HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 If the current [=Offer=] was created by the [=Consumer=], the [=Provider=] _MUST_ return an HTTP code 400 (Bad Request)
 with a [Contract Negotiation Error](#error-contract-negotiation-error) in the
@@ -168,7 +168,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] _MUST_ return an HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Contract Negotiation Termination Endpoint {#negotiations-providerpid-termination-post}
 
@@ -188,7 +188,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ## Consumer Path Bindings
 
@@ -284,7 +284,7 @@ Authorization: ...</pre>
 **Response**
 
 If the message is successfully processed, the [=Consumer=] _MUST_ return an HTTP 200 (OK) response. The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Contract Agreement Endpoint {#negotiations-consumerpid-agreement-post}
 
@@ -303,7 +303,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return an HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Contract Negotiation Event Endpoint {#negotiations-consumerpid-events-post}
 
@@ -322,7 +322,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Contract Negotiation Termination Endpoint {#negotiations-consumerpid-termination-post}
 
@@ -341,4 +341,4 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Contract Negotiation=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.

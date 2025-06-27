@@ -116,7 +116,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Completion Endpoint {#transfers-providerpid-completion-post}
 
@@ -135,7 +135,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Termination Endpoint {#transfers-providerpid-termination-post}
 
@@ -154,7 +154,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Suspension Endpoint {#transfers-providerpid-suspension-post}
 
@@ -173,7 +173,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Provider=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ## Consumer Callback Path Bindings
 
@@ -211,7 +211,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Completion Endpoint {#transfers-consumerpid-completion-post}
 
@@ -230,7 +230,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Termination Endpoint {#transfers-consumerpid-termination-post}
 
@@ -249,7 +249,7 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it.
+not specified and clients _MAY_ process it.
 
 ### Transfer Suspension Endpoint {#transfers-consumerpid-suspension-post}
 
@@ -268,4 +268,4 @@ Authorization: ...</pre>
 **Response**
 
 If the [=Transfer Process=]'s state is successfully transitioned, the [=Consumer=] _MUST_ return HTTP code 200 (OK). The response body is
-not specified and clients _MUST NOT_ process it. 
+not specified and clients _MAY_ process it. 

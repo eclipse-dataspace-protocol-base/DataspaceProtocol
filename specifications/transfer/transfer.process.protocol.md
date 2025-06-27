@@ -97,10 +97,10 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a [=Transfer 
 
 - The `agreementId` property _MUST_ refer to an existing [=Agreement=] between the [=Consumer=] and [=Provider=].
 
-- The `dct:format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
+- The `format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
   the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
 
-- The `dataAddress` property _MUST_ only be provided if the `dct:format` requires a push transfer.
+- The `dataAddress` property _MUST_ only be provided if the `format` requires a push transfer.
 
 - The `dataAddress` _MUST_ contain a transport-specific set of properties for pushing the data. It _MAY_ include an `endpoint`, 
   a temporary authorization via the `endpointProperties` property - depending on the `endpointType`.
@@ -117,7 +117,7 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a [=Transfer 
 Note that [=Providers=] _SHOULD_ implement idempotent behavior for [Transfer Request Messages](#transfer-request-message)
 based on the value of `consumerPid`. [=Providers=] _MAY_ choose to implement idempotent behavior for a certain period of
 time. For example, until a [=Transfer Process=] has completed and been archived after an implementation-specific expiration period,
-repeated sending of [Transfer Request Messages](#transfer-request-message) _MUST NOT_ change the state of the [=Transfer Process=]. If a
+repeated sending of [Transfer Request Messages](#transfer-request-message) does not change the state of the [=Transfer Process=]. If a
 request for the given `consumerPid` has already been received *and* the same [=Consumer=] sent the original message
 again, the [=Provider=] _SHOULD_ respond with an appropriate [Transfer Start Message](#transfer-start-message).
 
@@ -140,7 +140,7 @@ again, the [=Provider=] _SHOULD_ respond with an appropriate [Transfer Start Mes
 
 The Transfer Start Message is sent by the [=Provider=] to indicate the data transfer has been initiated.
 
-- The `dataAddress` _MAY_ be provided if the current transfer is a pull transfer and contains a transport-specific
+- The `dataAddress` _MUST_ be provided if the current transfer is a pull transfer and contains a transport-specific
   endpoint address for obtaining the data. The kind of transport is signaled by the `endpointType` property which
   determines a set of required `endpointProperties` in a [=Profile=] separate from this specification.
 

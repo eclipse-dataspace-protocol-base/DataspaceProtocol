@@ -7,7 +7,7 @@ abstract [=Message=] exchange format. The concrete [=Message=] exchange wire for
 
 The [=Catalog Protocol=] reuses properties from the DCAT and ODRL vocabularies with restrictions defined in this
 specification. This is done implicitly by the use of the JSON schemas and JSON-LD-contexts that are part of the [=Dataspace Protocol=].
-Servers _MUST NOT_ process properties that are not part of the schemas.
+Servers _MAY_ process properties that are not part of the schemas.
 
 ## Message Types
 
@@ -94,7 +94,7 @@ An [=Offer=] contains the following attributes:
 
 - An [=Offer=] _MUST_ be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
 
-- [=Offers=] _MUST NOT_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
+- [=Offers=] _MAY_ contain any `target` attributes. The value of the `target` attribute _MUST_ be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
 
 ### ERROR - Catalog Error
 
