@@ -60,3 +60,7 @@ and then (independently of major/minor) a second commit
 - Rerun the actions.
 
 You should now see an additional endpoint at `https://eclipse-dataspace-dcp.github.io/decentralized-claims-protocol/my-version-tag/`.
+
+#### Github Release
+
+Create a Github Release by adding a bit of context, autogenerating the releasenotes. For RCs, it's customary to 
