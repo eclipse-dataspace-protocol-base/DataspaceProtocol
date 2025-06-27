@@ -27,13 +27,29 @@ import static java.util.stream.Collectors.joining;
  * A property defined in a schema type.
  */
 public class SchemaProperty implements Comparable<SchemaProperty> {
+    public enum ConstraintType {
+        ANY_OF(JsonSchemaKeywords.ANY_OF), ONE_OF(JsonSchemaKeywords.ONE_OF), ALL_OF(JsonSchemaKeywords.ALL_OF), NOT(JsonSchemaKeywords.NOT), UNDEFINED("undefined");
+
+        private final String key;
+
+        public String key() {
+            return key;
+        }
+
+        ConstraintType(String key) {
+            this.key = key;
+        }
+    }
+
     private String name;
     private String description = "";
     private String constantValue;
     private Set<String> types = new TreeSet<>();
     private final Set<SchemaType> resolvedTypes = new TreeSet<>();
     private final Set<ElementDefinition> itemTypes = new TreeSet<>();
-    private final  Set<Object> enumValues = new TreeSet<>();
+    private final Set<Object> enumValues = new TreeSet<>();
+
+    private ConstraintType constraintType = ConstraintType.UNDEFINED;
 
     public String getName() {
         return name;
@@ -61,6 +77,10 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
 
     public void resolvedType(SchemaType resolvedType) {
         this.resolvedTypes.add(resolvedType);
+    }
+
+    public ConstraintType getConstraintType() {
+        return constraintType;
     }
 
     public Set<ElementDefinition> getItemTypes() {
@@ -105,6 +125,11 @@ public class SchemaProperty implements Comparable<SchemaProperty> {
 
         public Builder types(Set<String> types) {
             property.types = types;
+            return this;
+        }
+
+        public Builder constraintType(ConstraintType type) {
+            property.constraintType = type;
             return this;
         }
 

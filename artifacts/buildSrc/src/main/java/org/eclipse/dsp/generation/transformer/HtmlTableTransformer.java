@@ -20,7 +20,6 @@ import org.eclipse.dsp.generation.jsom.SchemaPropertyReference;
 import org.eclipse.dsp.generation.jsom.SchemaType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -60,21 +59,21 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         if (resolvedProperty != null) {
             String resolvedTypes = "";
             if (!resolvedProperty.getItemTypes().isEmpty()) {
-                resolvedTypes = getArrayTypeName(resolvedProperty);
+                resolvedTypes = getConstraintOrArrayTypeName(resolvedProperty);
             } else {
                 resolvedTypes = parseResolvedTypes(resolvedProperty);
             }
             builder.append(format("<td>%s</td>", resolvedTypes));
             if (resolvedProperty.getConstantValue() != null) {
                 builder.append(format("<td>Value must be <span class=\"code\">%s</span></td>", resolvedProperty.getConstantValue()));
-            }  else if (!resolvedProperty.getEnumValues().isEmpty()){
+            } else if (!resolvedProperty.getEnumValues().isEmpty()) {
                 var values = resolvedProperty.getEnumValues().stream()
                         .map(Object::toString)
                         .collect(Collectors.joining(","));
-                builder.append(format("<td>Must be of the following:<br><span class=\"code\">%s</span></td>",values));
+                builder.append(format("<td>Must be of the following:<br><span class=\"code\">%s</span></td>", values));
             } else {
                 var constants = resolvedProperty.getResolvedTypes().stream()
-                        .flatMap(t -> concat(Stream.of(t), t.getResolvedAllOf().stream()))   // search the contains of the current type and any references 'allOf' types
+                        .flatMap(t -> concat(Stream.of(t), t.getResolvedAllOf().stream()))   // search the current type and any references 'allOf' types
                         .flatMap(t -> t.getContains().stream())
                         .filter(cd -> cd.getType() == CONSTANT)
                         .map(ElementDefinition::getValue)
@@ -103,7 +102,7 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         return resolvedTypes;
     }
 
-    private @NotNull String getArrayTypeName(SchemaProperty resolvedProperty) {
+    private @NotNull String getConstraintOrArrayTypeName(SchemaProperty resolvedProperty) {
         var itemTypes = resolvedProperty.getItemTypes().stream()
                 .flatMap(t -> t.getResolvedTypes().stream())
                 .map(e -> {
@@ -115,8 +114,8 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
                 .collect(joining(", "));
         if (itemTypes.isEmpty()) {
             itemTypes = resolvedProperty.getResolvedTypes().stream()
-                    .filter(e->getTypeName(e)!=null)
-                    .map(e->{
+                    .filter(e -> getTypeName(e) != null)
+                    .map(e -> {
                         if (e.isJsonBaseType()) {
                             return String.format("%s", getTypeName(e));
                         }
@@ -127,6 +126,15 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
                 return "array";
             }
         }
+        if (SchemaProperty.ConstraintType.ONE_OF == resolvedProperty.getConstraintType()) {
+            return "one of [" + itemTypes + "]";
+        } else if (SchemaProperty.ConstraintType.ANY_OF == resolvedProperty.getConstraintType()) {
+            return "any of [" + itemTypes + "]";
+        } else if (SchemaProperty.ConstraintType.ALL_OF == resolvedProperty.getConstraintType()) {
+            return "all of [" + itemTypes + "]";
+        } else if (SchemaProperty.ConstraintType.NOT == resolvedProperty.getConstraintType()) {
+            return "not [" + itemTypes + "]";
+        }
         return "array[" + itemTypes + "]";
     }
 
@@ -134,10 +142,14 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         if (schemaType.isRootDefinition()) {
             // root definition, check to see if it has an allOf, and if not, fallback to the Json base type
             if (!schemaType.getResolvedAllOf().isEmpty()) {
-                // ue the allOf types and return the type name if it is a Json base object type; otherwise use the base type name
+                // use the allOf types and return the type name if it is a Json base object type; otherwise use the base type name
                 return schemaType.getResolvedAllOf().stream()
                         .map(t -> OBJECT.getName().equals(t.getBaseType()) ? t.getName() : t.getBaseType())
                         .collect(joining(", "));
+            } else if (!schemaType.getResolvedOneOf().isEmpty()) {
+                return schemaType.getResolvedOneOf().stream()
+                        .map(t -> OBJECT.getName().equals(t.getBaseType()) ? t.getName() : t.getBaseType())
+                        .collect(joining(" or "));
             }
             return schemaType.getBaseType();
         }

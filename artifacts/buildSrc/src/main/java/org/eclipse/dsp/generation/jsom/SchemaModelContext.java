@@ -103,6 +103,11 @@ public class SchemaModelContext implements SchemaModel {
                 .filter(Objects::nonNull)
                 .forEach(type::resolvedAllOfType));
 
+        types.forEach(type -> type.getOneOf().stream()
+                .map(ref -> resolveType(ref, type.getSchemaUri()))
+                .filter(Objects::nonNull)
+                .forEach(type::resolvedOneOfType));
+
         // resolve all property type references and link them
         types.forEach(type -> type.getProperties()
                 .forEach(property -> property.getTypes().stream()
@@ -118,6 +123,13 @@ public class SchemaModelContext implements SchemaModel {
                 .forEach(ref -> {
                     // check in allOf
                     var resolved = type.getResolvedAllOf().stream()
+                            .flatMap(t -> t.getProperties().stream()
+                                    .map(p -> p.getName().equals(ref.getName()) ? p : null)
+                                    .filter(Objects::nonNull)).findFirst().orElse(null);
+
+                    ref.resolvedProperty(resolved);
+
+                    resolved = type.getResolvedOneOf().stream()
                             .flatMap(t -> t.getProperties().stream()
                                     .map(p -> p.getName().equals(ref.getName()) ? p : null)
                                     .filter(Objects::nonNull)).findFirst().orElse(null);

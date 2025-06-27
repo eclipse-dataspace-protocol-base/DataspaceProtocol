@@ -15,6 +15,7 @@
 package org.eclipse.dsp.generation.jsom;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.eclipse.dsp.generation.jsom.SchemaProperty.ConstraintType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -174,8 +175,8 @@ public class JsomParser {
             schemaType.properties(schemaProperties);
         }
 
-        // parse allOf properties
-        parseAllOf(definition, schemaType);
+        parseReferences(definition, ConstraintType.ALL_OF, schemaType);
+        parseReferences(definition, ConstraintType.ONE_OF, schemaType);
 
         // parse contains
         var contains = (Map<String, Object>) definition.get(CONTAINS);
@@ -198,24 +199,34 @@ public class JsomParser {
     }
 
     @SuppressWarnings("unchecked")
-    private void parseAllOf(Map<String, Object> definition, SchemaType schemaType) {
-        var allOfDefinition = (List<Map<String, Object>>) definition.getOrDefault(ALL_OF, emptyList());
-        var allOfProperties = allOfDefinition.stream()
+    private void parseReferences(Map<String, Object> definition, ConstraintType constraintType, SchemaType schemaType) {
+        var constraintDef = (List<Map<String, Object>>) definition.getOrDefault(constraintType.key(), emptyList());
+        var properties = constraintDef.stream()
                 .map(e -> (Map<String, Object>) e.get(PROPERTIES))
                 .filter(Objects::nonNull)
                 .flatMap(e -> e.entrySet().stream())
                 .map(e -> parseProperty(e.getKey(), (Map<String, Object>) e.getValue()))
                 .toList();
-        schemaType.properties(allOfProperties);
+        schemaType.properties(properties);
 
-        // parse allOf references
-        var allOf = allOfDefinition
+        // parse references
+        var references = constraintDef
                 .stream()
                 .map(e -> e.get(REF))
                 .filter(Objects::nonNull)
                 .map(Object::toString)
                 .toList();
-        schemaType.allOf(allOf);
+        switch (constraintType) {
+            case ONE_OF -> {
+                schemaType.oneOf(references);
+            }
+            case ALL_OF -> {
+                schemaType.allOf(references);
+            }
+            default -> {
+                throw new UnsupportedOperationException("Unsupported constraint type: " + constraintType);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -244,7 +255,7 @@ public class JsomParser {
             var oneOf = value.get(ONE_OF);
             //noinspection rawtypes
             if (oneOf instanceof List oneOfList) {
-                return parseListProperty(name, oneOfList, comment);
+                return parseListProperty(name, oneOfList, comment, ConstraintType.ONE_OF);
             }
             return SchemaProperty.Builder.newInstance()
                     .name(name)
@@ -271,7 +282,7 @@ public class JsomParser {
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    private SchemaProperty parseListProperty(String name, List list, String comment) {
+    private SchemaProperty parseListProperty(String name, List list, String comment, ConstraintType type) {
         var types = new HashSet<String>();
         var itemTypes = new HashSet<ElementDefinition>();
         for (var entry : list) {
@@ -283,28 +294,32 @@ public class JsomParser {
                     if (items instanceof Map) {
                         itemTypes.addAll(parseElementDefinition((Map<String, Object>) items));
                     } else if (items instanceof String itemString) {
-                        itemTypes.add(parseJsonElementDefinition(itemString));
+                        parseArrayOfTypeElementDefinition(itemString, itemTypes);
                     }
-                } else if (subtype == null) {
-                    var oneOfRef = oneOfMap.get(REF);
-                    if (oneOfRef instanceof String oneOfRefString) {
-                        itemTypes.add(parseRefElementDefinition(oneOfRefString));
+                } else if (subtype != null) {
+                    itemTypes.add(parseJsonElementDefinition(subtype.toString()));
+                } else {
+                    var ref = oneOfMap.get(REF);
+                    if (ref instanceof String refString) {
+                        itemTypes.add(new ElementDefinition(REFERENCE, refString));
                     }
                 }
             }
         }
         return SchemaProperty.Builder.newInstance()
                 .name(name)
+                .constraintType(type)
                 .types(types)
                 .itemTypes(itemTypes)
                 .description(comment)
                 .build();
     }
 
-    private @NotNull ElementDefinition parseRefElementDefinition(String ref) {
-        var elementDefinition = new ElementDefinition(REFERENCE, ref);
-        elementDefinition.resolvedType(JsonTypes.STRING);
-        return elementDefinition;
+    private void parseArrayOfTypeElementDefinition(String itemString, HashSet<ElementDefinition> itemTypes) {
+        var elementDefinition = new ElementDefinition(JSON, ARRAY.getBaseType());
+        var itemType = new SchemaType("array[" + itemString + "]", ARRAY.getBaseType());
+        elementDefinition.resolvedType(itemType);
+        itemTypes.add(elementDefinition);
     }
 
     private @NotNull ElementDefinition parseJsonElementDefinition(String type) {
