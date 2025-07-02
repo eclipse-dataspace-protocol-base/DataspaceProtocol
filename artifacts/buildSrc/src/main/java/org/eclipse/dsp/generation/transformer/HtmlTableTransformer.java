@@ -106,7 +106,7 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         var itemTypes = resolvedProperty.getItemTypes().stream()
                 .flatMap(t -> t.getResolvedTypes().stream())
                 .map(e -> {
-                    if (e.isJsonBaseType()) {
+                    if (e.isJsonBaseType() || getTypeName(e).startsWith("array")) {
                         return String.format("%s", getTypeName(e));
                     }
                     return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
