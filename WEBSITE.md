@@ -63,5 +63,4 @@ You should now see an additional endpoint at `https://eclipse-dataspace-dcp.gith
 
 #### Github Release
 
-Create a Github Release by adding a bit of context, autogenerating the releasenotes. For RCs, it's customary to include
-a permalink to the rendered respec webpage.
+Create a Github Release by adding a bit of context, autogenerating the releasenotes. For RCs, it's customary to 
