@@ -36,7 +36,7 @@ import java.util.Map;
 
 import static com.apicatalog.jsonld.JsonLd.compact;
 import static com.apicatalog.jsonld.JsonLd.expand;
-import static com.networknt.schema.SpecVersion.VersionFlag.V202012;
+import static com.networknt.schema.SpecVersion.VersionFlag.V201909;
 import static java.lang.String.format;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.eclipse.dsp.DspConstants.DSP_CONTEXT;
@@ -61,7 +61,7 @@ public abstract class AbstractJsonLdTest {
             var expanded = expand(JsonDocument.of(message)).options(options).get();
             var compacted = compact(JsonDocument.of(expanded), JsonDocument.of(compactionContext)).options(options).get();
 
-            var schemaFactory = JsonSchemaFactory.getInstance(V202012, builder ->
+            var schemaFactory = JsonSchemaFactory.getInstance(V201909, builder ->
                     builder.schemaMappers(schemaMappers -> schemaMappers.mapPrefix(DSP_PREFIX, CLASSPATH_SCHEMA))
             );
 
