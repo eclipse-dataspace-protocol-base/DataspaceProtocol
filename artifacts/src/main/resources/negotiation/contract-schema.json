@@ -32,7 +32,9 @@
           "oneOf": [
             {
               "type": "array",
-              "items": "string"
+              "items": {
+                "type": "string"
+              }
             },
             {
               "type": "string"
