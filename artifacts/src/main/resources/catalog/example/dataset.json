@@ -8,7 +8,6 @@
     {
       "@type": "Offer",
       "@id": "urn:uuid:2828282:3dd1add8-4d2d-569e-d634-8394a8836a88",
-      "assigner": "http://example.com/Provider",
       "permission": [
         {
           "action": "use",
