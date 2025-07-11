@@ -7,7 +7,6 @@
   "offer": {
     "@type": "Offer",
     "@id": "urn:uuid:d526561f-528e-4d5a-ae12-9a9dd9b7a518",
-    "assigner": "urn:tsdshhs636378",
     "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
     "permission": [
       {
