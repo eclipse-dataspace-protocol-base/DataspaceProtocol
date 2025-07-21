@@ -71,12 +71,12 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 ### ACK - Dataset
 
-|                |                                                                               |
-|----------------|-------------------------------------------------------------------------------|
-| **Sent by**    | [=Provider=]                                                                  |
-| **Schema**     | [JSON Schema](message/schema/dataset-schema.json)                             |
-| **Example**    | [Dataset Example](message/example/dataset.json)                               |
-| **Properties**      | <p data-include="message/table/dataset.html" data-include-format="html"></p> |
+|                |                                                                                  |
+|----------------|----------------------------------------------------------------------------------|
+| **Sent by**    | [=Provider=]                                                                     |
+| **Schema**     | [JSON Schema](message/schema/dataset-schema.json)                                |
+| **Example**    | [Dataset Example](message/example/dataset.json)                                  |
+| **Properties**      | <p data-include="message/table/rootdataset.html" data-include-format="html"></p> |
 
 - A [=Dataset=] MUST have at least one `hasPolicy` attribute that contains an [=Offer=] defining the [=Policy=] associated with the [=Dataset=].
 
