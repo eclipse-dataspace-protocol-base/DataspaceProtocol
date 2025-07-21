@@ -17,13 +17,6 @@
         },
         {
           "properties": {
-            "hasPolicy": {
-              "type": "array",
-              "items": {
-                "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Offer"
-              },
-              "minItems": 1
-            },
             "distribution": {
               "type": "array",
               "items": {
@@ -42,6 +35,15 @@
           "$ref": "#/definitions/AbstractDataset"
         }
       ],
+      "properties": {
+        "hasPolicy": {
+          "type": "array",
+          "items": {
+            "$ref": "https://w3id.org/dspace/2025/1/negotiation/contract-schema.json#/definitions/Offer"
+          },
+          "minItems": 1
+        }
+      },
       "required": [
         "hasPolicy",
         "distribution"
