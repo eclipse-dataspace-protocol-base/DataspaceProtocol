@@ -12,6 +12,9 @@
 <p data-include="message/table/dataaddress.html" data-include-format="html">
 </p>
 
+<p data-include="message/table/dataset.html" data-include-format="html">
+</p>
+
 <p data-include="message/table/distribution.html" data-include-format="html">
 </p>
 
