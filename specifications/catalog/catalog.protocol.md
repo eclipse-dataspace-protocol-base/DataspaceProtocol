@@ -65,7 +65,7 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 | **Example**    | [Catalog Example](message/example/catalog.json)                                  |
 | **Properties**      | <p data-include="message/table/rootcatalog.html" data-include-format="html"></p> |
 
-- A [=Catalog=] MUST have zero to many [=Datasets=]. (_NOTE: Since a Catalog may be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
+- A [=Catalog=] MUST have zero to many [=Datasets=]. (_NOTE: Since a Catalog MAY be dynamically generated for a request based on the requesting [=Participant=]'s credentials, it is possible for it to contain 0 matching [=Datasets=]._)
 
 - A [=Catalog=] MUST have one to many [=Data Services=] that reference a [=Connector=] where [=Datasets=] MAY be obtained.
 
@@ -94,7 +94,7 @@ An [=Offer=] contains the following attributes:
 
 - An [=Offer=] MUST be unique to a [=Dataset=] since the target of the [=Offer=] is derived from its enclosing context.
 
-- [=Offers=] MAY contain any `target` attributes. The value of the `target` attribute MUST be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there must not be any `target` attribute set._)
+- [=Offers=] MAY contain any `target` attributes. The value of the `target` attribute MUST be the [=Dataset=] identifier. (_NOTE: If the [=Offer=] is used in an enclosing [=Catalog=] or [=Dataset=], there MUST NOT be any `target` attribute set._)
 
 ### ERROR - Catalog Error
 
@@ -112,7 +112,7 @@ a [Dataset Request Message](#dataset-request-message) and the [=Provider=] canno
 
 ### Queries and Filter Expressions
 
-A [=Catalog Service=] may support [=Catalog=] queries or filter expressions as an
+A [=Catalog Service=] MAY support [=Catalog=] queries or filter expressions as an
 implementation-specific feature. However, query capabilities by the [=Consumer=] MUST be implemented 
 against the results of a [Catalog Request Message](#catalog-request-message). Client-side querying can
 be scaled by periodically crawling
@@ -133,7 +133,7 @@ a [=Consumer=] discovers [=Catalog Services=].
 ### Security
 
 [=Catalog Services=] SHOULD implement access control. 
-A [=Catalog=] as well as individual [=Datasets=] may be restricted to trusted
+A [=Catalog=] as well as individual [=Datasets=] MAY be restricted to trusted
 parties. Therefore, the [=Catalog Service=] MAY
 require [=Consumers=] to include a security token along with
 a [Catalog Request Message](#catalog-request-message). The specifics of how this is done can be found in the relevant
@@ -146,14 +146,14 @@ If a [=Catalog=] contains protected [=Datasets=], the [=Provider=] has two optio
 all [=Datasets=] in the [=Catalog=] response and restrict access when a [=Policy=] is
 negotiated; or, require one or more proofs when the [Catalog Request](#catalog-request-message) is made and filter
 the [=Datasets=] accordingly. The latter option requires a mechanism for clients to
-discover the type of proofs that may be presented at request time. The specifics of proof types and presenting a proof
+discover the type of proofs that MAY be presented at request time. The specifics of proof types and presenting a proof
 during a [=Catalog=] request is outside the scope of the [=Dataspace Protocol=].
 However, [=Catalog Protocol=] bindings SHOULD define a proof data endpoint for
 obtaining this information.
 
 ### Catalog Brokers
 
-A [=Dataspace=] may include Catalog Brokers. A Catalog Broker is
+A [=Dataspace=] MAY include Catalog Brokers. A Catalog Broker is
 a [=Consumer=] that has trusted access to 1..N
 upstream [=Catalog Services=] and advertises their
 respective [=Catalogs=] as a

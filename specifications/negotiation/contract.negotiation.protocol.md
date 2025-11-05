@@ -99,7 +99,7 @@ a [Contract Request Message](#contract-request-message) sent by a [=Consumer=].
 - The [=Dataset=] identifier MAY be included when the [=Provider=] initiates a [=Contract Negotiation=].
 
 - Different to a [=Dataset=],
-  the [=Offer=] inside a [Contract Offer Message](#contract-offer-message) MUST have a `target` attribute. However, its contained Rules MUST not
+  the [=Offer=] inside a [Contract Offer Message](#contract-offer-message) MUST have a `target` attribute. However, its contained Rules MUST NOT
   have any `target` attributes to prevent inconsistencies with
   the [ODRL inferencing rules for compact policies](https://www.w3.org/TR/odrl-model/#composition-compact).
 
@@ -166,7 +166,7 @@ When the Contract Negotiation Event Message is sent by a [=Provider=] with an `e
 an [=Agreement=] has been finalized and the associated [=Dataset=] is accessible. The state machine is transitioned to
 the `FINALIZED` state.
 
-- Other event types may be defined in the future.
+- Other event types MAY be defined in the future.
 
 - A [=Consumer=] MUST respond with an error if the [=Agreement=] cannot be validated or is incorrect.
 
@@ -202,7 +202,7 @@ provide a description to help the receiver.
 
 - If an error is received in response to the message, the sending party MAY choose to ignore the error.
 
-Note that a [=Contract Negotiation=] may be terminated for a variety of reasons, for example, an unrecoverable error was encountered or one of
+Note that a [=Contract Negotiation=] MAY be terminated for a variety of reasons, for example, an unrecoverable error was encountered or one of
 the parties no longer wishes to continue. A [=Connector=]'s operator MAY
 remove terminated [=Contract Negotiation=] resources after it has reached the terminated state.
 
