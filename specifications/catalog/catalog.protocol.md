@@ -3,7 +3,7 @@
 ## Introduction
 
 The [=Catalog Protocol=] defines how a [=Catalog=] is requested from a [=Catalog Service=] by a [=Consumer=] using an
-abstract [=Message=] exchange format. The concrete [=Message=] exchange wire format is defined in the binding.
+abstract Message exchange format. The concrete Message exchange wire format is defined in the binding.
 
 The [=Catalog Protocol=] reuses properties from the DCAT and ODRL vocabularies with restrictions defined in this
 specification. This is done implicitly by the use of the JSON schemas and JSON-LD-contexts that are part of the [=Dataspace Protocol=].

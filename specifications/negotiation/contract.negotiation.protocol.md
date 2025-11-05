@@ -6,7 +6,7 @@ A [=Contract Negotiation=] involves two parties, a [=Provider=] that offers one 
 and a [=Consumer=] that requests [=Datasets=]. A [=Contract Negotiation=] is uniquely identified through an Internationalized Resource Identifier (IRI) [[rfc3987]]. Each [=Contract Negotiation=]
 requires a newly generated IRI, which MAY not be used in a [=Contract Negotiation=] after a terminal state has been reached. A [=Contract Negotiation=] progresses
 through a series of states, which are tracked by the [=Provider=] and [=Consumer=] using [=Messages=]. A [=Contract Negotiation=] transitions to a
-state in response to an acknowledged [=Message=] from the counter-party. Both parties have the same state of the [=Contract Negotiation=]. In case
+state in response to an acknowledged Message from the counter-party. Both parties have the same state of the [=Contract Negotiation=]. In case
 the states differ, the [=Contract Negotiation=] MUST be terminated and a new [=Contract Negotiation=] MAY be initiated.
 
 ### States {#contract-negotiation-states}
@@ -21,9 +21,9 @@ The [=Contract Negotiation=] states are:
   the [=Consumer=] has sent an ACK response.
 - **VERIFIED**: The [=Consumer=] has sent an [=Agreement=] verification to the [=Provider=] and the [=Provider=] has
   sent an ACK response.
-- **FINALIZED**: The [=Provider=] has sent a finalization [=Message=] including his own [=Agreement=] verification to
+- **FINALIZED**: The [=Provider=] has sent a finalization Message including his own [=Agreement=] verification to
   the [=Consumer=] and the [=Consumer=] has sent an ACK response. Data is now available to the [=Consumer=].
-- **TERMINATED**: The [=Provider=] or [=Consumer=] has placed the [=Contract Negotiation=] in a terminated state. A termination [=Message=] has
+- **TERMINATED**: The [=Provider=] or [=Consumer=] has placed the [=Contract Negotiation=] in a terminated state. A termination Message has
   been sent by either of the [=Participants=] and the other has sent an ACK response. This is a terminal state.
 
 ### State Machine
@@ -32,12 +32,12 @@ The [=Contract Negotiation=] state machine is represented in the following diagr
 
 !["Contract Negotiation State Machine"](figures/contract.negotiation.state.machine.png "Contract Negotiation State Machine")
 
-Transitions marked with `C` indicate a [=Message=] sent by the [=Consumer=], transitions marked with `P` indicate
-a [=Provider=] [=Message=]. Terminal states are final; the state machine MUST NOT transition to another state. A new [=Contract Negotiation=] MAY be initiated if, for instance, the [=Contract Negotiation=] entered the `TERMINATED` state due to a network issue.
+Transitions marked with `C` indicate a Message sent by the [=Consumer=], transitions marked with `P` indicate
+a [=Provider=] Message. Terminal states are final; the state machine MUST NOT transition to another state. A new [=Contract Negotiation=] MAY be initiated if, for instance, the [=Contract Negotiation=] entered the `TERMINATED` state due to a network issue.
 
 ## Message Types
 
-The [=Contract Negotiation=] state machine is transitioned upon receipt and acknowledgement of a [=Message=]. This section details those [=Messages=] as abstract [=Message Types=].
+The [=Contract Negotiation=] state machine is transitioned upon receipt and acknowledgement of a Message. This section details those [=Messages=] as abstract [=Message Types=].
 
 - Concrete wire formats are defined by the protocol binding,
   e.g., [Contract Negotiation HTTPS Binding](#contract-negotiation-https-binding).
