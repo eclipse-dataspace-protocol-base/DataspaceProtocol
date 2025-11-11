@@ -1,6 +1,6 @@
 # Terms and definitions {#terminology}
 
-The following terms and definitions introduce the core concepts, entities, and relationships that underpin a [=Dataspace=] and its communication protocols. Not all [=Dataspace=] entities have a concrete _technical_ materialization; some entities may exist as purely logical constructs.
+The following terms and definitions introduce the core concepts, entities, and relationships that underpin a [=Dataspace=] and its communication protocols. Not all [=Dataspace=] entities have a concrete _technical_ materialization; some entities MAY exist as purely logical constructs.
 
 <dfn>Agreement</dfn>
 
@@ -28,7 +28,7 @@ A [=Participant=] that requests access to an offered [=Dataset=].
 
 <dfn>Contract Negotiation</dfn>
 
-A set of interactions between a [=Provider=] and [=Consumer=] that establish an [=Agreement=]. It is an instantiation of the state machine of a [=Contract Negotiation Protocol=]. An outcome of a Contract Negotiation may be the production of an [=Agreement=].
+A set of interactions between a [=Provider=] and [=Consumer=] that establish an [=Agreement=]. It is an instantiation of the state machine of a [=Contract Negotiation Protocol=]. An outcome of a Contract Negotiation MAY be the production of an [=Agreement=].
 
 <dfn>Contract Negotiation Protocol</dfn>
 
@@ -48,7 +48,7 @@ Note 1 to entry: This specification convers only protocols to facilitate interop
 
 <dfn>Dataspace Protocol</dfn>
 
-A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This may require additional concepts, which are not in the scope of the specification itself.
+A set of [=Messages=] and [=Message=] sequences that enables the interaction between [=Participant Agents=] in a [=Dataspace=]. This MAY require additional concepts, which are not in the scope of the specification itself.
 
 <dfn>Data Transfer Protocol</dfn>
 
