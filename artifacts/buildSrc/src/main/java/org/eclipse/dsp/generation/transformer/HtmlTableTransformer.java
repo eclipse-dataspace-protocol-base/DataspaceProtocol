@@ -54,7 +54,7 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
     private void transformProperty(SchemaPropertyReference propertyReference, boolean required, StringBuilder builder) {
         builder.append("<tr>");
         builder.append(format("<td class=\"code\">%s</td>", propertyReference.getName()));
-        builder.append("<td>").append(required ? "required" : "optional").append("</td>");
+        builder.append("<td>").append(required ? "REQUIRED" : "OPTIONAL").append("</td>");
         var resolvedProperty = propertyReference.getResolvedProperty();
         if (resolvedProperty != null) {
             String resolvedTypes = "";

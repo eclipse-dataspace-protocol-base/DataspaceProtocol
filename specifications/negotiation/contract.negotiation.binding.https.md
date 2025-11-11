@@ -35,7 +35,7 @@ If the client is not authorized, the [=Consumer=] or [=Provider=] MUST return an
 ### Authorization
 
 All requests SHOULD use the `Authorization` header to include an authorization token. The semantics of such tokens are
-not part of this specification. The `Authorization` HTTP header is optional if the [=Connector=] does not require
+not part of this specification. The `Authorization` HTTP header is OPTIONAL if the [=Connector=] does not require
 authorization.
 
 ## Provider Path Bindings
@@ -93,7 +93,7 @@ Authorization: ...</pre>
   the [=Contract Negotiation=]. The HTTPS scheme MUST be supported. Implementations MAY optionally support other URL schemes.
 
 - Callback [=Messages=] will be sent to paths under the base URL as described by this specification. (_NOTE:
-  [=Providers=] should properly handle the cases where a trailing `/` is included
+  [=Providers=] SHOULD properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL._)
 
 **Response**
@@ -110,7 +110,7 @@ the [Contract Negotiation](#ack-contract-negotiation):
 
 **Request**
 
-A [=Consumer=] may make an [=Offer=] by POSTing
+A [=Consumer=] MAY make an [=Offer=] by POSTing
 a [Contract Request Message](#contract-request-message)
 to `negotiations/:providerPid/request`:
 
@@ -254,7 +254,7 @@ Authorization: ...</pre>
   [=Contract Negotiation=]. The HTTPS scheme MUST be supported. Implementations MAY optionally support other URL schemes.
 
 - Callback messages will be sent to paths under the base URL as described by this specification. (_NOTE: [=Consumers=]
-  should properly handle the cases where a trailing / is included with or absent from the `callbackAddress` when
+  SHOULD properly handle the cases where a trailing / is included with or absent from the `callbackAddress` when
   resolving full URL._)
 
 **Response**
@@ -271,7 +271,7 @@ the [Contract Negotiation](#ack-contract-negotiation):
 
 **Request**
 
-A [=Provider=] may make an [=Offer=] by POSTing a [Contract Offer Message](#contract-offer-message) to
+A [=Provider=] MAY make an [=Offer=] by POSTing a [Contract Offer Message](#contract-offer-message) to
 the `negotiations/:consumerPid/offers` callback:
 
 <aside class="example" title="Contract Offer Request">

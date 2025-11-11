@@ -3,7 +3,7 @@
 ## Authorization
 
 All requests to HTTPS endpoints SHOULD use the `Authorization` header to include an authorization token. The semantics
-of such tokens are not part of this specification. The `Authorization` HTTP header is optional if the [=Connector=]
+of such tokens are not part of this specification. The `Authorization` HTTP header is OPTIONAL if the [=Connector=]
 does not require authorization.
 
 ## Schemas & Contexts
@@ -18,7 +18,7 @@ similar contexts that facilitate this approach to interoperability. As this spec
 
 ## Exposure of Versions {#exposure-of-dataspace-protocol-versions}
 
-[=Connectors=] implementing the [=Dataspace Protocol=] may operate on different versions and bindings. Therefore, it is
+[=Connectors=] implementing the [=Dataspace Protocol=] MAY operate on different versions and bindings. Therefore, it is
 necessary that they can discover such information reliably and unambiguously. Each [=Connector=]
 MUST provide a version metadata endpoint ending with Uniform Resource Identifier (URI) segments `/.well-known/dspace-version`. The location of this 
 endpoint SHOULD adhere to [[rfc8615]].

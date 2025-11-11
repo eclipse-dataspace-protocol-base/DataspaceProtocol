@@ -51,7 +51,7 @@ responses, parameters, possible recursions, and interactions between the compone
 
 ##### Finite and Non-Finite Data
 
-Data may be `finite` or `non-finite`. This applies to either push and pull transfers. Finite data is data that is
+Data MAY be `finite` or `non-finite`. This applies to either push and pull transfers. Finite data is data that is
 defined by a finite set, for example, machine learning data or images. After finite data transmission has finished, the
 [=Transfer Process=] is completed. Non-finite data is data that is defined by an infinite set or has no specified end, for example,
 streams or an API endpoint. With non-finite data, a [=Transfer Process=] will continue indefinitely until either the [=Consumer=]
@@ -100,15 +100,15 @@ The Transfer Request Message is sent by a [=Consumer=] to initiate a [=Transfer 
 - The `format` property is a format specified by a `Distribution` for the [=Dataset=] associated with
   the [=Agreement=]. This is generally obtained from the [=Provider=]'s [=Catalog=].
 
-- The `dataAddress` property MUST only be provided if the `format` requires a push transfer.
+- The `dataAddress` property MUST only be provided if the `format` REQUIRES a push transfer.
 
 - The `dataAddress` MUST contain a transport-specific set of properties for pushing the data. It MAY include an `endpoint`, 
   a temporary authorization via the `endpointProperties` property - depending on the `endpointType`.
 
-- `callbackAddress` MUST be a URI indicating where messages to the [=Consumer=] should be sent. If the address is not
+- `callbackAddress` MUST be a URI indicating where messages to the [=Consumer=] SHOULD be sent. If the address is not
   understood, the [=Provider=] MUST return an **unrecoverable** error.
 
-- The `endpointProperties` MAY (among others) contain the following optional values:
+- The `endpointProperties` MAY (among others) contain the following OPTIONAL values:
     - `authorization` - An opaque authorization token that clients MAY present when accessing the transport-specific
       endpoint address.
     - `authType` - The auth token type. For example, the value MAY be `bearer`. If present, this value MAY be used in
@@ -142,9 +142,9 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 
 - The `dataAddress` MUST be provided if the current transfer is a pull transfer and contains a transport-specific
   endpoint address for obtaining the data. The kind of transport is signaled by the `endpointType` property which
-  determines a set of required `endpointProperties` in a [=Profile=] separate from this specification.
+  determines a set of REQUIRED `endpointProperties` in a [=Profile=] separate from this specification.
 
-- The `endpointProperties` MAY (among others) contain the following optional values:
+- The `endpointProperties` MAY (among others) contain the following OPTIONAL values:
   - `authorization` - An opaque authorization token that clients MAY present when accessing the transport-specific
     endpoint address.
   - `authType` - The auth token type. For example, the value MAY be `bearer`. If present, this value MAY be used in
@@ -192,7 +192,7 @@ need to be sent.
 | **Properties**      | <p data-include="message/table/transferterminationmessage.html" data-include-format="html"></p> |
 
 The Transfer Termination Message is sent by the [=Provider=] or [=Consumer=] at any point except a terminal state to
-indicate the [=Transfer Process=] should stop and be placed in a terminal state. If the termination was due to an error, the sender MAY
+indicate the [=Transfer Process=] SHOULD stop and be placed in a terminal state. If the termination was due to an error, the sender MAY
 include error information.
 
 ## Response Types

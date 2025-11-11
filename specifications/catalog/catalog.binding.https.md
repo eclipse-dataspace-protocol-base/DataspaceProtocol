@@ -37,11 +37,11 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-- The `Authorization` header is optional if the [=Catalog Service=] does not require authorization. If present, the
+- The `Authorization` header is OPTIONAL if the [=Catalog Service=] does not require authorization. If present, the
   contents of the `Authorization` header are detailed in
   the [Authorization section](../common/common.binding.https.md#2-authorization).
 
-- The `filter` property is optional. If present, the `filter` property MAY contain an implementation-specific filter
+- The `filter` property is OPTIONAL. If present, the `filter` property MAY contain an implementation-specific filter
   expression or query to be executed as part of the [=Catalog=] request. If a filter expression is not supported by an
   implementation, it MUST return a HTTP 400 (Bad Request) response.
 
@@ -68,7 +68,7 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-- The `Authorization` header is optional if the [=Catalog Service=] does not require authorization. If present, the
+- The `Authorization` header is OPTIONAL if the [=Catalog Service=] does not require authorization. If present, the
   contents of the `Authorization` header are detailed in the [[[#authorization]]].
 
 **Response**
@@ -85,7 +85,7 @@ a [Dataset](#ack-dataset).
 
 ### Pagination
 
-A [=Catalog Service=] may paginate the results of a [Catalog Request Message](#catalog-request-message). Pagination data
+A [=Catalog Service=] MAY paginate the results of a [Catalog Request Message](#catalog-request-message). Pagination data
 MUST be specified using [Web Linking](https://datatracker.ietf.org/doc/html/rfc5988) and the HTTP `Link` header.
 The `Link` header will contain URLs for navigating to previous and subsequent results. Only the `next` and `previous`
 link relation types MUST be supported.
@@ -128,7 +128,7 @@ Link: <https://provider.com/catalog?continuationToken=bn9556075bn44de8ab4bfc9014
 
 ### Compression
 
-[=Catalog Services=] may compress responses to
+[=Catalog Services=] MAY compress responses to
 a [Catalog Request](#catalog-request-message) by setting the `Content-Encoding` header to `gzip` as described in
 the [HTTP 1.1 Specification](https://www.rfc-editor.org/rfc/rfc9110.html#name-gzip-coding).
 
