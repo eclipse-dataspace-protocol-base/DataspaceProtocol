@@ -5,7 +5,7 @@
 A [=Transfer Process=] involves two parties, a [=Provider=] that offers one or more [=Datasets=] along with
 a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A [=Transfer Process=] progresses through a series of states, which are
 controlled by the [=Provider=] and [=Consumer=] using [=Messages=]. A [=Transfer Process=] transitions to another state as a result of an
-exchanged [=Message=].
+exchanged Message.
 
 ### Prerequisites
 
