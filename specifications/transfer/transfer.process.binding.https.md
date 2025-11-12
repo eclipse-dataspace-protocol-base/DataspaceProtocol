@@ -9,7 +9,7 @@ This binding defines a RESTful API over HTTPS for the [Transfer Process Protocol
 1. The `<base>` notation indicates the base URL for a [=Connector=] endpoint. For example, if the scheme is `https` and
    the full hostname is `connector.example.com`, the URL `<base>/transfers/request` will map
    to `https://connector.example.com/transfers/request`.
-2. All request and response [=Messages=] MUST use the `application/json` media type. Derived media types,
+2. All request and response messages MUST use the `application/json` media type. Derived media types,
    e.g., `application/ld+json` MAY be exposed in addition.
 
 ### Transfer Error
