@@ -82,7 +82,7 @@ provided in protocol-dependent forms, e.g., for an HTTPS binding in the request 
 
 - A [=Dataset=] MUST hold at least one `Distribution` object in the `distribution` attribute.
 
-- Each `DataService` object MUST have at least one `DataService` which specifies where the distribution is obtained. 
+- Each `Distribution` object MUST have at least one `DataService` which specifies where the distribution is obtained. 
   Specifically, a `DataService` specifies the endpoint for initiating a [=Contract Negotiation=] and [=Transfer Process=].
 
 - A `DataService.endpointURL` property contains the URL of the service the [=Contract Negotiation=] endpoints extend. The
