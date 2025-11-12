@@ -9,7 +9,7 @@ This binding defines a RESTful API over HTTPS for the [Contract Negotiation Prot
 1. The `<base>` notation indicates the base URL for a [=Connector=] endpoint. For example, if the base [=Connector=] URL
    is `connector.example.com`, the URL `https://<base>/negotiations/request` will map
    to `https//connector.example.com/negotiation/request`.
-2. All request and response [=Messages=] MUST use the `application/json` media type. Derived media types,
+2. All request and response messages MUST use the `application/json` media type. Derived media types,
    e.g., `application/ld+json` MAY be exposed in addition.
 
 ### Contract Negotiation Error
@@ -89,10 +89,10 @@ Authorization: ...</pre>
     </pre>
 </aside>
 
-- The `callbackAddress` property specifies the base endpoint `URL` where the client receives [=Messages=] associated with
+- The `callbackAddress` property specifies the base endpoint `URL` where the client receives messages associated with
   the [=Contract Negotiation=]. The HTTPS scheme MUST be supported. Implementations MAY optionally support other URL schemes.
 
-- Callback [=Messages=] will be sent to paths under the base URL as described by this specification. (_NOTE:
+- Callback messages will be sent to paths under the base URL as described by this specification. (_NOTE:
   [=Providers=] SHOULD properly handle the cases where a trailing `/` is included
   with or absent from the `callbackAddress` when resolving full URL._)
 

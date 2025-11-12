@@ -10,7 +10,7 @@ This binding defines a RESTful Application Programming Interface (API) over HTTP
    URL is `api.example.com`, the URL `https://<base>/catalog/request` will map
    to `https//api.example.com/catalog/request`.
 
-2. All request and response [=Messages=] MUST use the `application/json` media type.
+2. All request and response messages MUST use the `application/json` media type.
 
 ### Catalog Error
 

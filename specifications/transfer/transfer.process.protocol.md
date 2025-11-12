@@ -4,7 +4,7 @@
 
 A [=Transfer Process=] involves two parties, a [=Provider=] that offers one or more [=Datasets=] along with
 a [=Policy=] and a [=Consumer=] that requests [=Datasets=]. A [=Transfer Process=] progresses through a series of states, which are
-controlled by the [=Provider=] and [=Consumer=] using [=Messages=]. A [=Transfer Process=] transitions to another state as a result of an
+controlled by the [=Provider=] and [=Consumer=] using messages. A [=Transfer Process=] transitions to another state as a result of an
 exchanged Message.
 
 ### Prerequisites
@@ -15,7 +15,7 @@ subsection.
 #### Control and Data Planes
 
 A [=Transfer Process=] involves two logical constructs, a control plane and a data plane. Serving as a coordinating layer, services on the
-_control plane_ receive [=Messages=] and manage the local state of the [=Transfer Process=] (same as for the [=Catalog Protocol=] and
+_control plane_ receive messages and manage the local state of the [=Transfer Process=] (same as for the [=Catalog Protocol=] and
 the [=Contract Negotiation Protocol=]). On the _data plane_, the actual transfer of data takes place using a wire
 protocol. Both [=Participants=] in a data sharing scenario run services logically regarded as control and/or data plane
 services.
