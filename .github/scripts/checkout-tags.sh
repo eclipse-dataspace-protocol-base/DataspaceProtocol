@@ -13,7 +13,7 @@ do
   echo starting with tag $tag
   mkdir $tag
   cd $tag
-  git clone https://github.com/eclipse-dataspace-protocol-base/DataspaceProtocol.git --depth 1 --branch ${tag} --quiet
+  git clone $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git --depth 1 --branch ${tag} --quiet
   mv ./DataspaceProtocol/* .
   cd ..
 done
