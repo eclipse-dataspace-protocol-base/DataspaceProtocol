@@ -44,7 +44,7 @@ governance framework and supporting services to build trustworthiness and enable
 
 [SOURCE: ISO/IEC 20151 to be published]
 
-Note 1 to entry: This specification convers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in ISO/IEC 20151.
+Note 1 to entry: This specification covers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in ISO/IEC 20151.
 
 <dfn>Dataspace Protocol</dfn>
 
