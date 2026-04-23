@@ -19,7 +19,11 @@ jobs:
           chmod +x ./.github/scripts/checkout-tags.sh
           ./.github/scripts/checkout-tags.sh
       - name: Redirect top to head
-        run: cp .github/scripts/index.html .
+        run: |
+          REPO_OWNER="${GITHUB_REPOSITORY%%/*}"
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          PAGES_REDIRECT_URL="https://${REPO_OWNER}.github.io/${REPO_NAME}/2025-1-err1"
+          sed "s|PAGES_REDIRECT_URL|${PAGES_REDIRECT_URL}|g" .github/scripts/index.html > index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
