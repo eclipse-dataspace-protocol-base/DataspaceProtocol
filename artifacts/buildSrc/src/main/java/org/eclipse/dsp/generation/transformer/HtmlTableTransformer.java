@@ -89,38 +89,28 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
     }
 
     private String parseResolvedTypes(SchemaProperty property) {
-        String resolvedTypes = "";
-        if (property.getItemTypes().isEmpty()) {
-            resolvedTypes = property
-                    .getResolvedTypes().stream().map(schemaType -> {
-                        if (schemaType.getItemType() != null) {
-                            return "array[" + schemaType.getItemType() + "]";
-                        }
-                        return getTypeName(schemaType);
-                    }).collect(joining(", "));
+        if (!property.getItemTypes().isEmpty()) {
+            return "";
         }
-        return resolvedTypes;
+        return property.getResolvedTypes().stream()
+                .map(schemaType -> {
+                    if (schemaType.getItemType() != null) {
+                        return "array[" + schemaType.getItemType() + "]";
+                    }
+                    return typeNameWithLink(schemaType);
+                })
+                .collect(joining(", "));
     }
 
     private @NotNull String getConstraintOrArrayTypeName(SchemaProperty resolvedProperty) {
         var itemTypes = resolvedProperty.getItemTypes().stream()
                 .flatMap(t -> t.getResolvedTypes().stream())
-                .map(e -> {
-                    if (e.isJsonBaseType() || getTypeName(e).startsWith("array")) {
-                        return String.format("%s", getTypeName(e));
-                    }
-                    return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
-                })
+                .map(this::typeNameWithLink)
                 .collect(joining(", "));
         if (itemTypes.isEmpty()) {
             itemTypes = resolvedProperty.getResolvedTypes().stream()
                     .filter(e -> getTypeName(e) != null)
-                    .map(e -> {
-                        if (e.isJsonBaseType()) {
-                            return String.format("%s", getTypeName(e));
-                        }
-                        return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
-                    })
+                    .map(this::typeNameWithLink)
                     .collect(joining(", "));
             if (itemTypes.isEmpty()) {
                 return "array";
@@ -136,6 +126,14 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
             return "not [" + itemTypes + "]";
         }
         return "array[" + itemTypes + "]";
+    }
+
+    private String typeNameWithLink(SchemaType schemaType) {
+        var name = getTypeName(schemaType);
+        if (name == null || schemaType.isJsonBaseType() || name.startsWith("array")) {
+            return name;
+        }
+        return String.format("<a href=#%s-table>%s</a>", name, name);
     }
 
     private String getTypeName(SchemaType schemaType) {
