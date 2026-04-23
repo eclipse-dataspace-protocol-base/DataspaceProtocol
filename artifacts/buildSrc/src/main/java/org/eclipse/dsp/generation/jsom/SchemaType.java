@@ -115,6 +115,14 @@ public class SchemaType implements Comparable<SchemaType> {
         return properties;
     }
 
+    @NotNull
+    public Set<SchemaProperty> getTransitiveProperties() {
+        return concat(properties.stream(),
+                concat(resolvedAllOf.stream().flatMap(t -> t.getTransitiveProperties().stream()),
+                        resolvedOneOf.stream().flatMap(t -> t.getTransitiveProperties().stream())))
+                .collect(toCollection(TreeSet::new));
+    }
+
     public Collection<SchemaPropertyReference> getRequiredProperties() {
         return requiredProperties.values();
     }
@@ -129,8 +137,8 @@ public class SchemaType implements Comparable<SchemaType> {
 
     @NotNull
     public Set<SchemaPropertyReference> getTransitiveOptionalProperties() {
-        // a type may include multiple other types (allOf) where a property is optional in one but mandatory in another - filter it
-        var required = getRequiredProperties().stream().map(SchemaPropertyReference::getName).collect(Collectors.toSet());
+        // a type may include multiple other types (allOf/oneOf) where a property is optional in one but mandatory in another - filter it
+        var required = getTransitiveRequiredProperties().stream().map(SchemaPropertyReference::getName).collect(Collectors.toSet());
         return concat(optionalProperties.values().stream(),
                 concat(resolvedAllOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream()),
                 resolvedOneOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream())))

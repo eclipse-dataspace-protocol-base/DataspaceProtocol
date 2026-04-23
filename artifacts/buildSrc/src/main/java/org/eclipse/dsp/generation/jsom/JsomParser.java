@@ -209,6 +209,11 @@ public class JsomParser {
                 .toList();
         schemaType.properties(properties);
 
+        // parse required from inline entries (entries without $ref)
+        constraintDef.stream()
+                .filter(e -> e.get(REF) == null)
+                .forEach(e -> parseRequired(e, schemaType));
+
         // parse references
         var references = constraintDef
                 .stream()
