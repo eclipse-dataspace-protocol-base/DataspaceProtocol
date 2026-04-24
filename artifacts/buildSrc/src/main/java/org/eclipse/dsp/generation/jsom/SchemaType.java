@@ -54,6 +54,7 @@ public class SchemaType implements Comparable<SchemaType> {
     private final Map<String, SchemaPropertyReference> optionalProperties = new HashMap<>();
 
     private boolean jsonBaseType; // denotes if this type represents a base Json type, e.g. string, object, array
+    private final Set<Object> enumValues = new TreeSet<>();
 
     /**
      * Ctor for base Json types.
@@ -108,6 +109,18 @@ public class SchemaType implements Comparable<SchemaType> {
 
     public String getSchemaUri() {
         return schemaUri;
+    }
+
+    public Set<Object> getEnumValues() {
+        return enumValues;
+    }
+
+    public void enumValues(Collection<Object> values) {
+        enumValues.addAll(values);
+    }
+
+    public boolean isNamedScalar() {
+        return !jsonBaseType && properties.isEmpty() && resolvedAllOf.isEmpty() && resolvedOneOf.isEmpty();
     }
 
     @NotNull
