@@ -22,6 +22,10 @@ for dir in */; do
   pwd
   ls -l
   if [ -f "$dir/index.html" ]; then
+      if [ "$dir" != "HEAD/" ]; then
+        rm -rf "$dir/artifacts/buildSrc"
+        cp -r HEAD/artifacts/buildSrc "$dir/artifacts/buildSrc"
+      fi
       cd "$dir/artifacts"
       ./gradlew build
       ./gradlew generateTablesFromSchemas
