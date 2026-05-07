@@ -146,6 +146,10 @@ public class JsomParser {
         var itemType = parseItemType(definition, baseType);
         var context = prefix + schemaPath.substring(resolutionPath.length());
         var schemaType = new SchemaType(type, baseType, itemType, context);
+        var enumValues = (List<Object>) definition.get(ENUM);
+        if (enumValues != null) {
+            schemaType.enumValues(enumValues);
+        }
         parseAttributes(definition, schemaType);
         return schemaType;
     }
@@ -208,6 +212,12 @@ public class JsomParser {
                 .map(e -> parseProperty(e.getKey(), (Map<String, Object>) e.getValue()))
                 .toList();
         schemaType.properties(properties);
+
+        if (constraintType == ConstraintType.ALL_OF) {
+            constraintDef.stream()
+                    .filter(e -> e.get(REF) == null)
+                    .forEach(e -> parseRequired(e, schemaType));
+        }
 
         // parse references
         var references = constraintDef

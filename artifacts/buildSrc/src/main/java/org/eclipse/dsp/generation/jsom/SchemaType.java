@@ -54,6 +54,7 @@ public class SchemaType implements Comparable<SchemaType> {
     private final Map<String, SchemaPropertyReference> optionalProperties = new HashMap<>();
 
     private boolean jsonBaseType; // denotes if this type represents a base Json type, e.g. string, object, array
+    private final Set<Object> enumValues = new TreeSet<>();
 
     /**
      * Ctor for base Json types.
@@ -110,9 +111,29 @@ public class SchemaType implements Comparable<SchemaType> {
         return schemaUri;
     }
 
+    public Set<Object> getEnumValues() {
+        return enumValues;
+    }
+
+    public void enumValues(Collection<Object> values) {
+        enumValues.addAll(values);
+    }
+
+    public boolean isNamedScalar() {
+        return !jsonBaseType && properties.isEmpty() && resolvedAllOf.isEmpty() && resolvedOneOf.isEmpty();
+    }
+
     @NotNull
     public Set<SchemaProperty> getProperties() {
         return properties;
+    }
+
+    @NotNull
+    public Set<SchemaProperty> getTransitiveProperties() {
+        return concat(properties.stream(),
+                concat(resolvedAllOf.stream().flatMap(t -> t.getTransitiveProperties().stream()),
+                        resolvedOneOf.stream().flatMap(t -> t.getTransitiveProperties().stream())))
+                .collect(toCollection(TreeSet::new));
     }
 
     public Collection<SchemaPropertyReference> getRequiredProperties() {
@@ -129,8 +150,8 @@ public class SchemaType implements Comparable<SchemaType> {
 
     @NotNull
     public Set<SchemaPropertyReference> getTransitiveOptionalProperties() {
-        // a type may include multiple other types (allOf) where a property is optional in one but mandatory in another - filter it
-        var required = getRequiredProperties().stream().map(SchemaPropertyReference::getName).collect(Collectors.toSet());
+        // a type may include multiple other types (allOf/oneOf) where a property is optional in one but mandatory in another - filter it
+        var required = getTransitiveRequiredProperties().stream().map(SchemaPropertyReference::getName).collect(Collectors.toSet());
         return concat(optionalProperties.values().stream(),
                 concat(resolvedAllOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream()),
                 resolvedOneOf.stream().flatMap(type -> type.getTransitiveOptionalProperties().stream())))

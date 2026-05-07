@@ -40,6 +40,10 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
     public String transform(SchemaType schemaType) {
         var builder = new StringBuilder(CSS).append("<table class=\"message-table\">");
         builder.append(format("<tr><td class=\"message-class\" colspan=\"4\" id=\"%s-table\">%s</td></tr>", schemaType.getName(), schemaType.getName()));
+        if (!schemaType.getEnumValues().isEmpty()) {
+            var values = schemaType.getEnumValues().stream().map(Object::toString).collect(Collectors.joining(", "));
+            builder.append(format("<tr><td colspan=\"4\"><span class=\"code\">%s</span></td></tr>", values));
+        }
         transformProperties(schemaType.getTransitiveRequiredProperties(), true, builder);
         transformProperties(schemaType.getTransitiveOptionalProperties(), false, builder);
         return builder.append("</table>").toString();
@@ -64,7 +68,22 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
                 resolvedTypes = parseResolvedTypes(resolvedProperty);
             }
             builder.append(format("<td>%s</td>", resolvedTypes));
-            if (resolvedProperty.getConstantValue() != null) {
+
+            // if all resolved types are named scalars, render their base type and enum values
+            var namedScalars = resolvedProperty.getResolvedTypes().stream()
+                    .filter(this::isNamedScalar)
+                    .toList();
+            if (!namedScalars.isEmpty() && namedScalars.size() == resolvedProperty.getResolvedTypes().size()) {
+                var enumValues = namedScalars.stream()
+                        .flatMap(t -> t.getEnumValues().stream())
+                        .map(Object::toString)
+                        .collect(Collectors.joining(", "));
+                if (!enumValues.isEmpty()) {
+                    builder.append(format("<td>Must be one of:<br><span class=\"code\">%s</span></td>", enumValues));
+                } else {
+                    builder.append(format("<td>%s</td>", resolvedProperty.getDescription()));
+                }
+            } else if (resolvedProperty.getConstantValue() != null) {
                 builder.append(format("<td>Value must be <span class=\"code\">%s</span></td>", resolvedProperty.getConstantValue()));
             } else if (!resolvedProperty.getEnumValues().isEmpty()) {
                 var values = resolvedProperty.getEnumValues().stream()
@@ -88,39 +107,36 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
         builder.append("</tr>");
     }
 
+    private boolean isNamedScalar(SchemaType schemaType) {
+        return schemaType.isNamedScalar();
+    }
+
     private String parseResolvedTypes(SchemaProperty property) {
-        String resolvedTypes = "";
-        if (property.getItemTypes().isEmpty()) {
-            resolvedTypes = property
-                    .getResolvedTypes().stream().map(schemaType -> {
-                        if (schemaType.getItemType() != null) {
-                            return "array[" + schemaType.getItemType() + "]";
-                        }
-                        return getTypeName(schemaType);
-                    }).collect(joining(", "));
+        if (!property.getItemTypes().isEmpty()) {
+            return "";
         }
-        return resolvedTypes;
+        return property.getResolvedTypes().stream()
+                .map(schemaType -> {
+                    if (schemaType.getItemType() != null) {
+                        return "array[" + schemaType.getItemType() + "]";
+                    }
+                    if (isNamedScalar(schemaType)) {
+                        return schemaType.getBaseType();
+                    }
+                    return typeNameWithLink(schemaType);
+                })
+                .collect(joining(", "));
     }
 
     private @NotNull String getConstraintOrArrayTypeName(SchemaProperty resolvedProperty) {
         var itemTypes = resolvedProperty.getItemTypes().stream()
                 .flatMap(t -> t.getResolvedTypes().stream())
-                .map(e -> {
-                    if (e.isJsonBaseType() || getTypeName(e).startsWith("array")) {
-                        return String.format("%s", getTypeName(e));
-                    }
-                    return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
-                })
+                .map(this::typeNameWithLink)
                 .collect(joining(", "));
         if (itemTypes.isEmpty()) {
             itemTypes = resolvedProperty.getResolvedTypes().stream()
                     .filter(e -> getTypeName(e) != null)
-                    .map(e -> {
-                        if (e.isJsonBaseType()) {
-                            return String.format("%s", getTypeName(e));
-                        }
-                        return String.format("<a href=#%s-table>%s</a>", getTypeName(e), getTypeName(e));
-                    })
+                    .map(this::typeNameWithLink)
                     .collect(joining(", "));
             if (itemTypes.isEmpty()) {
                 return "array";
@@ -136,6 +152,14 @@ public class HtmlTableTransformer implements SchemaTypeTransformer<String> {
             return "not [" + itemTypes + "]";
         }
         return "array[" + itemTypes + "]";
+    }
+
+    private String typeNameWithLink(SchemaType schemaType) {
+        var name = getTypeName(schemaType);
+        if (name == null || schemaType.isJsonBaseType() || name.startsWith("array")) {
+            return name;
+        }
+        return String.format("<a href=#%s-table>%s</a>", name, name);
     }
 
     private String getTypeName(SchemaType schemaType) {

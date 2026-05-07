@@ -121,20 +121,22 @@ public class SchemaModelContext implements SchemaModel {
                 .stream()
                 .filter(ref -> ref.getResolvedProperty() == null)
                 .forEach(ref -> {
-                    // check in allOf
+                    // check in allOf (transitively, since properties may be defined in nested allOf entries)
                     var resolved = type.getResolvedAllOf().stream()
-                            .flatMap(t -> t.getProperties().stream()
+                            .flatMap(t -> t.getTransitiveProperties().stream()
                                     .map(p -> p.getName().equals(ref.getName()) ? p : null)
                                     .filter(Objects::nonNull)).findFirst().orElse(null);
 
-                    ref.resolvedProperty(resolved);
+                    if (resolved == null) {
+                        resolved = type.getResolvedOneOf().stream()
+                                .flatMap(t -> t.getTransitiveProperties().stream()
+                                        .map(p -> p.getName().equals(ref.getName()) ? p : null)
+                                        .filter(Objects::nonNull)).findFirst().orElse(null);
+                    }
 
-                    resolved = type.getResolvedOneOf().stream()
-                            .flatMap(t -> t.getProperties().stream()
-                                    .map(p -> p.getName().equals(ref.getName()) ? p : null)
-                                    .filter(Objects::nonNull)).findFirst().orElse(null);
-
-                    ref.resolvedProperty(resolved);
+                    if (resolved != null) {
+                        ref.resolvedProperty(resolved);
+                    }
                 }));
 
 

@@ -62,7 +62,7 @@ public class SchemaTableGeneratorPlugin implements Plugin<Project> {
             var schemaModel = parser.parseFiles(stream);
 
             schemaModel.getSchemaTypes().stream()
-                    .filter(type -> !type.isRootDefinition() && !type.isJsonBaseType())  // do not process built-in Json types and root schema types
+                    .filter(type -> !type.isRootDefinition() && !type.isJsonBaseType() && !type.isNamedScalar())  // do not process built-in Json types and root schema types
                     .forEach(type -> {
                         var content = htmlTransformer.transform(type);
                         var destination = new File(tablesDir, type.getName().toLowerCase() + ".html");

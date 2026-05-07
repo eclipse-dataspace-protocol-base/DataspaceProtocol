@@ -38,7 +38,7 @@ When wanting to pin and publish a snapshot in time via a separate url-path, foll
 When the content is finished, a release requires a first commit with
 
 1. a tag with the exact version string (like `2025-1-RC1`) on the release commit
-2. to change the redirect in `.github/scripts/index.html` to point to latest release candidate
+2. to change the redirect target version in `.github/workflows/autopublish.yaml` (`PAGES_REDIRECT_URL`) to point to the latest release candidate (the URL is constructed dynamically from the repository owner and name)
 3. set the `respecConfig.publishDate` in `index.html` to a string like `"2025-02-27"`,`
 4. set the `respecConfig.specStatus` in `index.html` to `base`
 
