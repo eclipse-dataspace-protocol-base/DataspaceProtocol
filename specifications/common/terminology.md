@@ -38,7 +38,7 @@ A set of allowable [=Message Type=] sequences defined as a state machine.
 
 <dfn>Data Sharing</dfn>
 
-access to the same data by more than one authorized entity
+access to the same data by more than one authorized entity.
 
 Note 1 to entry: Use of the data can be synchronous or asynchronous.
 
@@ -54,7 +54,7 @@ Data or a technical service that can be shared by a [=Participant=].
 
 <dfn>Dataspace</dfn>
 
-[=Environment=] enabling trusted [=Data Sharing=] between participating parties, based on an agreed [=Governance Framework=], along with an agreed set of [=Policies=], semantic models, standardized protocols, processes, and facilitating services
+[=Environment=] enabling trusted [=Data Sharing=] between participating parties, based on an agreed [=Governance Framework=], along with an agreed set of [=Policies=], semantic models, standardized protocols, processes, and facilitating services.
 
 [SOURCE: ISO/IEC FDIS 20151-1]
 
@@ -70,19 +70,19 @@ A set of rules and conventions that dictate how data is transmitted over a netwo
 
 <dfn>Environment</dfn>
 
-context determining the setting and circumstances of all influences upon a system
+context determining the setting and circumstances of all influences upon a system.
 
 [SOURCE: ISO/IEC FDIS 20151-1]
 
 <dfn>Governance</dfn>
 
-human-based system comprising directing, overseeing and accountability
+human-based system comprising directing, overseeing and accountability.
 
 [SOURCE: ISO/IEC 38500:2024, 3.3]
 
 <dfn>Governance Framework</dfn>
 
-strategies, policies, decision-making structures and accountabilities through which the organization's [=Governance=] arrangements operate
+strategies, policies, decision-making structures and accountabilities through which the organization's [=Governance=] arrangements operate.
 
 [SOURCE: ISO/IEC FDIS 20151-1]
 
