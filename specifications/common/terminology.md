@@ -6,6 +6,8 @@ The following terms and definitions introduce the core concepts, entities, and r
 
 A concrete [=Policy=] associated with a specific [=Dataset=] that has been agreed between the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=].
 
+Note 1 to entry: The policies agreed upon typically include machine-processable access and usage policies.
+
 <dfn>Catalog</dfn>
 
 A collection of entries representing [=Offers=] that are advertised by a [=Provider=].
