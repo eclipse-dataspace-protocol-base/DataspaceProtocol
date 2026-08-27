@@ -46,7 +46,7 @@ Note 2 to entry: Data can be shared, for example, (i) by allowing access to, or 
 
 Note 3 to entry: The way in which data is shared fundamentally influences the available controls and the statements needed in a data sharing agreement.
 
-[SOURCE: ISO/IEC FDIS 20151-1]
+[SOURCE: [[?iso-20151-1]]]
 
 <dfn>Dataset</dfn>
 
@@ -56,9 +56,9 @@ Data or a technical service that can be shared by a [=Participant=].
 
 [=Environment=] enabling trusted [=Data Sharing=] between participating parties, based on an agreed [=Governance Framework=], along with an agreed set of [=Policies=], semantic models, standardized protocols, processes, and facilitating services.
 
-[SOURCE: ISO/IEC FDIS 20151-1]
+[SOURCE: [[?iso-20151-1]]]
 
-Note 1 to entry: This specification covers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in ISO/IEC FDIS 20151-1.
+Note 1 to entry: This specification covers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in [ISO/IEC FDIS 20151-1](#bib-iso-20151-1).
 
 <dfn>Dataspace Protocol</dfn>
 
@@ -72,7 +72,7 @@ A set of rules and conventions that dictate how data is transmitted over a netwo
 
 context determining the setting and circumstances of all influences upon a system.
 
-[SOURCE: ISO/IEC FDIS 20151-1]
+[SOURCE: [[?iso-20151-1]]]
 
 <dfn>Governance</dfn>
 
@@ -84,7 +84,7 @@ human-based system comprising directing, overseeing and accountability.
 
 strategies, policies, decision-making structures and accountabilities through which the organization's [=Governance=] arrangements operate.
 
-[SOURCE: ISO/IEC FDIS 20151-1]
+[SOURCE: [[?iso-20151-1]]]
 
 <dfn>Message Type</dfn>
 
