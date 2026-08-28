@@ -78,7 +78,7 @@ context determining the setting and circumstances of all influences upon a syste
 
 human-based system comprising directing, overseeing and accountability.
 
-[SOURCE: ISO/IEC 38500:2024, 3.3]
+[SOURCE: [[?iso-38500-2024]]]
 
 <dfn>Governance Framework</dfn>
 
