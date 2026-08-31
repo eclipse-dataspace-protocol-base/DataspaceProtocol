@@ -6,6 +6,8 @@ The following terms and definitions introduce the core concepts, entities, and r
 
 A concrete [=Policy=] associated with a specific [=Dataset=] that has been agreed between the [=Provider=] and [=Consumer=]. It is a result of a [=Contract Negotiation=] defining the [=Policy=] agreed to for a [=Dataset=].
 
+Note 1 to entry: The policies agreed upon typically include machine-processable access and usage policies.
+
 <dfn>Catalog</dfn>
 
 A collection of entries representing [=Offers=] that are advertised by a [=Provider=].
@@ -34,17 +36,29 @@ A set of interactions between a [=Provider=] and [=Consumer=] that establish an 
 
 A set of allowable [=Message Type=] sequences defined as a state machine.
 
+<dfn>Data Sharing</dfn>
+
+access to the same data by more than one authorized entity.
+
+Note 1 to entry: Use of the data can be synchronous or asynchronous.
+
+Note 2 to entry: Data can be shared, for example, (i) by allowing access to, or the execution of operations over, the original dataset, or (ii) by giving a copy of the data to the interested entity.
+
+Note 3 to entry: The way in which data is shared fundamentally influences the available controls and the statements needed in a data sharing agreement.
+
+[SOURCE: [[?iso-20151-1]]]
+
 <dfn>Dataset</dfn>
 
 Data or a technical service that can be shared by a [=Participant=].
 
 <dfn>Dataspace</dfn>
 
-governance framework and supporting services to build trustworthiness and enable the sharing of data through an agreed set of [=Policies=], semantic models, protocols and processes
+[=Environment=] enabling trusted [=Data Sharing=] between participating parties, based on an agreed [=Governance Framework=], along with an agreed set of [=Policies=], semantic models, standardized protocols, processes, and facilitating services.
 
-[SOURCE: ISO/IEC 20151 to be published]
+[SOURCE: [[?iso-20151-1]]]
 
-Note 1 to entry: This specification covers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in ISO/IEC 20151.
+Note 1 to entry: This specification covers only protocols to facilitate interoperable [=Dataset=] sharing between entities based on technical services. The overarching concepts and characteristics of Dataspaces are described in [ISO/IEC FDIS 20151-1](#bib-iso-20151-1).
 
 <dfn>Dataspace Protocol</dfn>
 
@@ -53,6 +67,24 @@ A set of Messages and Message sequences that enables the interaction between [=P
 <dfn>Data Transfer Protocol</dfn>
 
 A set of rules and conventions that dictate how data is transmitted over a network by defining the format, error handling, and flow control. Examples include HTTP, FTP, MQTT, and AMQP.
+
+<dfn>Environment</dfn>
+
+context determining the setting and circumstances of all influences upon a system.
+
+[SOURCE: [[?iso-20151-1]]]
+
+<dfn>Governance</dfn>
+
+human-based system comprising directing, overseeing and accountability.
+
+[SOURCE: [[?iso-38500-2024]]]
+
+<dfn>Governance Framework</dfn>
+
+strategies, policies, decision-making structures and accountabilities through which the organization's [=Governance=] arrangements operate.
+
+[SOURCE: [[?iso-20151-1]]]
 
 <dfn>Message Type</dfn>
 
