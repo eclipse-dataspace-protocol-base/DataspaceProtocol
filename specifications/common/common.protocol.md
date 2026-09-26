@@ -1,6 +1,6 @@
 # Common Requirements {#requirements}
 
-## Authorization
+## Authorization {#authorization}
 
 All requests to HTTPS endpoints SHOULD use the `Authorization` header to include an authorization token. The semantics
 of such tokens are not part of this specification. The `Authorization` HTTP header is OPTIONAL if the [=Connector=]

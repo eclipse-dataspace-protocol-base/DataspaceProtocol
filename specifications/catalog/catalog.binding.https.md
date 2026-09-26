@@ -39,7 +39,7 @@ Authorization: ...</pre>
 
 - The `Authorization` header is OPTIONAL if the [=Catalog Service=] does not require authorization. If present, the
   contents of the `Authorization` header are detailed in
-  the [Authorization section](../common/common.binding.https.md#2-authorization).
+  the [Authorization section](#authorization).
 
 - The `filter` property is OPTIONAL. If present, the `filter` property MAY contain an implementation-specific filter
   expression or query to be executed as part of the [=Catalog=] request. If a filter expression is not supported by an
