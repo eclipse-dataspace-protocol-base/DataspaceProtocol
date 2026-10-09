@@ -159,7 +159,7 @@ The Transfer Start Message is sent by the [=Provider=] to indicate the data tran
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                             |
 | **Schema**          | [JSON Schema](message/schema/transfer-suspension-message-schema.json)                      |
 | **Example**         | [Message](message/example/transfer-suspension-message.json)                                |
-| **Properties**      | <p data-include="message/table/transferstartmessage.html" data-include-format="html"></p> |
+| **Properties**      | <p data-include="message/table/transfersuspensionmessage.html" data-include-format="html"></p> |
 
 The Transfer Suspension Message is sent by the [=Provider=] or [=Consumer=] when either of them needs to temporarily
 suspend the [=Transfer Process=].
