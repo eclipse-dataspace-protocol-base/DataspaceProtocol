@@ -131,7 +131,7 @@ again, the [=Provider=] SHOULD respond with an appropriate [Transfer Start Messa
 
 |                     |                                                                                            |
 |---------------------|--------------------------------------------------------------------------------------------|
-| **Sent by**         | [=Provider=]                                                                               |
+| **Sent by**         | [=Provider=], or [=Consumer=] if transfer process is `SUSPENDED`.                        |
 | **Resulting state** | `STARTED`                                                                                  |
 | **Response**        | [ACK](#ack-transfer-process) or [ERROR](#error-transfer-error)                             |
 | **Schema**          | [JSON Schema](message/schema/transfer-start-message-schema.json)                           |
